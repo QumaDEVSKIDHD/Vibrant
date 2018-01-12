@@ -1,5 +1,7 @@
 package net.cydhra.vibrant.modulesystem
 
+import net.cydhra.vibrant.modules.movement.FlyModule
+
 /**
  *
  */
@@ -10,7 +12,7 @@ object ModuleManager {
     val modules: List<Module> = registeredModules
 
     fun init() {
-
+        this.registerModule(FlyModule())
     }
 
     fun registerModule(module: Module) {

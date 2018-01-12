@@ -7,5 +7,5 @@ import net.cydhra.vibrant.api.entity.VibrantPlayerSP
  */
 interface VibrantMinecraft {
 
-    val thePlayer: VibrantPlayerSP
+    val thePlayer: VibrantPlayerSP?
 }
