@@ -34,6 +34,13 @@ abstract class Module(val name: String,
         get() = this.name
 
     /**
+     * Toggle the module on or off
+     */
+    fun toggle() {
+        this.isEnabled = !isEnabled
+    }
+
+    /**
      * Called when the module is disabled
      */
     protected open fun onDisable() {
