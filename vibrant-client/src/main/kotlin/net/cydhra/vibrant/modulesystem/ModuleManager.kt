@@ -4,9 +4,11 @@ import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
 import net.cydhra.vibrant.modules.movement.FlyModule
+import net.cydhra.vibrant.modulesystem.ModuleManager.init
+import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
 
 /**
- *
+ * A registry for [Module] implementations. They will get registered in [init] and are enabled when [onKeyEvent] handles a fitting [KeyboardEvent]
  */
 object ModuleManager {
 
@@ -14,12 +16,19 @@ object ModuleManager {
 
     val modules: List<Module> = registeredModules
 
+    /**
+     * Initialize manager. Registere [KeyboardEvent] handler and register all modules.
+     */
     fun init() {
         EventManager.registerListeners(this)
 
         this.registerModule(FlyModule())
     }
 
+    /**
+     * Register a module
+     * @param module module to be registered
+     */
     fun registerModule(module: Module) {
         this.registeredModules.add(module)
     }
