@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.modulesystem
 
 import net.cydhra.eventsystem.EventManager
+import net.cydhra.vibrant.VibrantClient
 
 /**
  * A client module (e.g. a hack). Modules are handled by a [ModuleManager] and therefore must be saved at any position covered by a
@@ -25,6 +26,9 @@ abstract class Module(val name: String,
 
             field = enabled
         }
+
+    val mc
+        get() = VibrantClient.minecraft
 
 
     /**
