@@ -1,10 +1,7 @@
 package net.cydhra.vibrant.api.client
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
-import net.cydhra.vibrant.api.render.VibrantFramebuffer
-import net.cydhra.vibrant.api.render.VibrantFrustum
-import net.cydhra.vibrant.api.render.VibrantRenderGlobal
-import net.cydhra.vibrant.api.render.VibrantScaledResolution
+import net.cydhra.vibrant.api.render.*
 import net.cydhra.vibrant.api.world.VibrantWorld
 
 /**
@@ -15,6 +12,7 @@ interface VibrantMinecraft {
     val thePlayer: VibrantPlayerSP?
     val theWorld: VibrantWorld?
     val renderGlobal: VibrantRenderGlobal
+    val entityRenderer: VibrantEntityRenderer
 
     val framebuffer: VibrantFramebuffer?
 
