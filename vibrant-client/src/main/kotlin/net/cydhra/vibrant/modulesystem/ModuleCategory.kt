@@ -1,4 +1,4 @@
-package net.cydhra.transcendence.modulesystem
+package net.cydhra.vibrant.modulesystem
 
 /**
  * A category for modules (being used to classify them)

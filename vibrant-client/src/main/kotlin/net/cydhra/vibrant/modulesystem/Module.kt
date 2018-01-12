@@ -1,8 +1,6 @@
 package net.cydhra.vibrant.modulesystem
 
 import net.cydhra.eventsystem.EventManager
-import net.cydhra.transcendence.modulesystem.DefaultCategories
-import net.cydhra.transcendence.modulesystem.ModuleCategory
 
 /**
  * A client module (e.g. a hack). Modules are handled by a [ModuleManager] and therefore must be saved at any position covered by a
