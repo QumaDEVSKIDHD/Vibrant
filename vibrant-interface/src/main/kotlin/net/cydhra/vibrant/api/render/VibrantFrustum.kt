@@ -3,4 +3,7 @@ package net.cydhra.vibrant.api.render
 /**
  *
  */
-interface VibrantFrustum
+interface VibrantFrustum {
+
+    fun setPosition(posX: Double, posY: Double, posZ: Double)
+}
