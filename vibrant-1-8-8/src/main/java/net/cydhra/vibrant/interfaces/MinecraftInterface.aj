@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.hooks;
+package net.cydhra.vibrant.interfaces;
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.minecraft.client.Minecraft;
