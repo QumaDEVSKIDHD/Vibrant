@@ -11,4 +11,8 @@ interface VibrantEntityLiving : VibrantEntity {
 
     val rotationYaw: Float
     val rotationPitch: Float
+
+    fun setPosition(posX: Double, posY: Double, posZ: Double)
+
+    fun setPositionAndRotation(posX: Double, posY: Double, posZ: Double, yaw: Float, pitch: Float)
 }
