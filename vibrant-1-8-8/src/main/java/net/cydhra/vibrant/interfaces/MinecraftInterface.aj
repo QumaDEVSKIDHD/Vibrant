@@ -1,7 +1,9 @@
 package net.cydhra.vibrant.interfaces;
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
+import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 
 /**
  *
@@ -13,4 +15,6 @@ public aspect MinecraftInterface {
     public VibrantPlayerSP Minecraft.getThePlayer() {
         return (VibrantPlayerSP) thePlayer;
     }
+    
+    public VibrantScaledResolution Minecraft.newScaledResolution() { return (VibrantScaledResolution) new ScaledResolution(this); }
 }
