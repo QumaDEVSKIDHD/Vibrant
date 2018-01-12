@@ -1,9 +1,11 @@
 package net.cydhra.vibrant.interfaces;
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
+import net.cydhra.vibrant.api.render.VibrantFrustum;
 import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.culling.Frustum;
 
 /**
  *
@@ -17,6 +19,8 @@ public aspect MinecraftInterface {
     }
     
     public VibrantScaledResolution Minecraft.newScaledResolution() { return (VibrantScaledResolution) new ScaledResolution(this); }
+    
+    public VibrantFrustum Minecraft.newFrustum() { return (VibrantFrustum) new Frustum(); }
     
     public int Minecraft.getDisplayWidth() { return this.displayWidth; }
     
