@@ -23,5 +23,6 @@ interface VibrantMinecraft {
 
     fun newFrustum(): VibrantFrustum
 
+    fun getTextureManager(): VibrantTextureManager
 
 }
