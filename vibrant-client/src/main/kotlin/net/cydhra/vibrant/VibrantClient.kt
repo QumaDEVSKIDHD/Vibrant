@@ -1,6 +1,7 @@
 package net.cydhra.vibrant
 
 import net.cydhra.vibrant.api.client.VibrantMinecraft
+import net.cydhra.vibrant.modulesystem.ModuleManager
 import org.slf4j.LoggerFactory
 
 /**
@@ -14,8 +15,10 @@ object VibrantClient {
         private set
 
     fun init(minecraft: VibrantMinecraft) {
+        logger.info("Vibrant Client successfully hooked.")
         this.minecraft = minecraft
 
-        logger.info("Vibrant Client successfully hooked.")
+        logger.info("loading modules")
+        ModuleManager.init()
     }
 }
