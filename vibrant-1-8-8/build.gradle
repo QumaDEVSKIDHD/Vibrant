@@ -44,6 +44,7 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
     compile 'org.aspectj:aspectjrt:1.8.9'
     compile project(":vibrant-client")
+    compile project(":vibrant-interface")
 
     compile files('lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar')
     compile files('lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar')
