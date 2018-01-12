@@ -2,11 +2,13 @@ package net.cydhra.vibrant.interfaces;
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.cydhra.vibrant.api.render.VibrantFrustum;
+import net.cydhra.vibrant.api.render.VibrantRenderGlobal;
 import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.world.World;
 
@@ -20,14 +22,17 @@ public aspect MinecraftInterface {
     /**
      * @return the current {@link EntityPlayerSP} instance
      */
-    public VibrantPlayerSP Minecraft.getThePlayer() {
-        return (VibrantPlayerSP) thePlayer;
-    }
+    public VibrantPlayerSP Minecraft.getThePlayer() { return (VibrantPlayerSP) thePlayer; }
     
     /**
      * @return the current {@link World} instance
      */
     public VibrantWorld Minecraft.getTheWorld() { return (VibrantWorld) theWorld; }
+    
+    /**
+     * @return the {@link RenderGlobal} instance
+     */
+    public VibrantRenderGlobal Minecraft.getRenderGlobal() { return (VibrantRenderGlobal) renderGlobal; }
     
     /**
      * @return a new {@link ScaledResolution} instance
