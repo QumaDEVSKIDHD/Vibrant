@@ -8,7 +8,7 @@ import kotlin.math.sin
 /**
  *
  */
-object Render2D {
+object RenderUtil {
 
     /**
      * Set the OpenGL rendering color
@@ -47,6 +47,17 @@ object Render2D {
         GL11.glEnd()
 
         GL11.glPopMatrix()
+    }
+
+    fun drawLine3d(sourcePosX: Double, sourcePosY: Double, sourcePosZ: Double, targetPosX: Double, targetPosY: Double, targetPosZ: Double,
+                   color: Color, lineWidth: Float) {
+        setColor(color)
+        GL11.glLineWidth(lineWidth)
+
+        GL11.glBegin(GL11.GL_LINE_STRIP);
+        GL11.glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
+        GL11.glVertex3d(targetPosX, targetPosY, targetPosZ)
+        GL11.glEnd()
     }
 
     /**
