@@ -1,17 +1,21 @@
 buildscript {
     ext.kotlin_version = '1.2.10'
+    ext.aspectjVersion = '1.8.9'
 
     repositories {
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
     }
 }
 
 group 'net.cydhra'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'aspectj.gradle'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
@@ -19,7 +23,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    maven { url="https://jitpack.io" }
+    maven { url = "https://jitpack.io" }
 }
 
 dependencies {
@@ -38,6 +42,7 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
+    compile 'org.aspectj:aspectjrt:1.8.9'
     compile project(":vibrant-client")
 
     compile files('lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar')

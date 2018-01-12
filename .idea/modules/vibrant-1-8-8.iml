@@ -42,6 +42,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="vibrant-client" scope="PROVIDED" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
@@ -157,6 +158,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="vibrant-client" scope="RUNTIME" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
@@ -272,6 +274,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="vibrant-client" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
