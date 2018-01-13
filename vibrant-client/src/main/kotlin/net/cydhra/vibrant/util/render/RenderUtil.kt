@@ -16,10 +16,10 @@ object RenderUtil {
      * @param color [Color] instance
      */
     fun setColor(color: Color) {
-        val alpha = (color.alpha shr 24 and 255) / 255.0f
-        val red = (color.red shr 16 and 255) / 255.0f
-        val green = (color.green shr 8 and 255) / 255.0f
-        val blue = (color.blue and 255) / 255.0f
+        val alpha = color.alpha / 255.0f
+        val red = color.red / 255.0f
+        val green = color.green / 255.0f
+        val blue = color.blue / 255.0f
 
         GL11.glColor4f(red, green, blue, alpha)
     }
@@ -36,7 +36,7 @@ object RenderUtil {
         GL11.glPushMatrix()
         this.setColor(color)
 
-        GL11.glBegin(GL11.GL_TRIANGLE_STRIP);
+        GL11.glBegin(GL11.GL_TRIANGLE_STRIP)
         for (i in (0..360)) {
             GL11.glVertex2d(posX.toDouble(), posY.toDouble())
             GL11.glVertex2d(posX + radius * cos(Math.toRadians(i.toDouble())),
