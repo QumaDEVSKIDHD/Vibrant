@@ -4,6 +4,7 @@ import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
 import net.cydhra.vibrant.modules.movement.FlyModule
+import net.cydhra.vibrant.modules.render.MinimapModule
 import net.cydhra.vibrant.modulesystem.ModuleManager.init
 import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
 
@@ -23,6 +24,7 @@ object ModuleManager {
         EventManager.registerListeners(this)
 
         this.registerModule(FlyModule())
+        this.registerModule(MinimapModule())
     }
 
     /**
