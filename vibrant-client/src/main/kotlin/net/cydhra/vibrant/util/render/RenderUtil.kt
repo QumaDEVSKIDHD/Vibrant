@@ -61,22 +61,4 @@ object RenderUtil {
         GL11.glVertex3d(targetPosX, targetPosY, targetPosZ)
         GL11.glEnd()
     }
-
-    inline fun disableDepthTest() = GL11.glDisable(GL11.GL_DEPTH_TEST)
-    inline fun enableDepthTest() = GL11.glEnable(GL11.GL_DEPTH_TEST)
-
-    inline fun enableTexture2D() = GL11.glEnable(GL11.GL_TEXTURE_2D)
-    inline fun disableTexture2D() = GL11.glDisable(GL11.GL_TEXTURE_2D)
-
-    inline fun disableColorBlending() = GL11.glDisable(GL11.GL_BLEND)
-    inline fun enableColorBlending() = GL11.glEnable(GL11.GL_BLEND)
-
-    inline fun enableLineSmoothing() = GL11.glEnable(GL11.GL_LINE_SMOOTH)
-    inline fun disableLineSmoothing() = GL11.glDisable(GL11.GL_LINE_SMOOTH)
-
-    inline fun enableDepthMask() = GL11.glDepthMask(true)
-    inline fun disableDepthMask() = GL11.glDepthMask(false)
-
-    inline fun pushMatrix() = GL11.glPushMatrix()
-    inline fun popMatrix() = GL11.glPopMatrix()
 }

@@ -8,16 +8,16 @@ import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.settings.VibrantConfig
 import net.cydhra.vibrant.settings.VibrantSettings
+import net.cydhra.vibrant.util.render.GlStateManager
 import net.cydhra.vibrant.util.render.RenderUtil
 import net.cydhra.vibrant.util.render.StencilUtil
-import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 
 /**
  *
  */
-class MinimapModule : Module("Minimap", DefaultCategories.RENDER, Keyboard.KEY_NONE) {
+class MinimapModule : Module("Minimap", DefaultCategories.RENDER) {
 
     private val perspectiveAngle = VibrantSettings.registerConfig(VibrantConfig("Map Angle", 45, 40, 70, 1))
     private val mapRadius = VibrantSettings.registerConfig(VibrantConfig("Map Radius", 80, 50, 100, 1))
@@ -40,23 +40,25 @@ class MinimapModule : Module("Minimap", DefaultCategories.RENDER, Keyboard.KEY_N
 
         mc.entityRenderer.setupOverlayRendering()
 
-        RenderUtil.pushMatrix()
+        GlStateManager.pushState()
+        GlStateManager.pushMatrix()
+
         val sc = mc.newScaledResolution()
         GL11.glTranslatef((sc.getScaledWidth() - mapRadius.value).toFloat(), (sc.getScaledHeight() - mapRadius.value).toFloat(), 0f)
 
         // prepare circular stencil
         StencilUtil.setupStencil()
 
-        RenderUtil.disableDepthTest()
-        RenderUtil.disableTexture2D()
-        RenderUtil.enableColorBlending()
-        RenderUtil.enableLineSmoothing()
+        GlStateManager.disableDepthTest()
+        GlStateManager.disableTexture2D()
+        GlStateManager.enableColorBlending()
+        GlStateManager.enableLineSmoothing()
 
         RenderUtil.fillCircle(0, 0, mapRadius.value, Color.BLACK)
         StencilUtil.enableStencil(StencilUtil.StencilMode.CROP_OUTSIDE)
 
-        RenderUtil.enableTexture2D()
-        RenderUtil.enableDepthTest()
+        GlStateManager.enableTexture2D()
+        GlStateManager.enableDepthTest()
 
         // flip and turn
         GL11.glScalef(1f, -1f, 1f)
@@ -86,19 +88,20 @@ class MinimapModule : Module("Minimap", DefaultCategories.RENDER, Keyboard.KEY_N
         mc.renderGlobal.renderBlockLayer(VibrantRenderGlobal.VibrantBlockLayerType.CUTOUT_MIPPED, zombie!!)
         mc.renderGlobal.renderBlockLayer(VibrantRenderGlobal.VibrantBlockLayerType.CUTOUT, zombie!!)
 
-        RenderUtil.disableTexture2D()
-        RenderUtil.disableDepthTest()
+        GlStateManager.disableTexture2D()
+        GlStateManager.disableDepthTest()
         if (showLines.value) {
             RenderUtil.drawLine3d(-200.0, 1.0, 0.0, 200.0, 1.0, 0.0, Color.WHITE, lineWidth.value)
             RenderUtil.drawLine3d(0.0, 1.0, -200.0, 0.0, 1.0, 200.0, Color.WHITE, lineWidth.value)
         }
-        RenderUtil.enableTexture2D()
+        GlStateManager.enableTexture2D()
 
         // end circular stencil
         StencilUtil.endStencil()
 
-        RenderUtil.disableLineSmoothing()
-        RenderUtil.enableDepthMask()
-        RenderUtil.popMatrix()
+        GlStateManager.disableLineSmoothing()
+        GlStateManager.enableDepthMask()
+        GlStateManager.popMatrix()
+        GlStateManager.popState()
     }
 }
