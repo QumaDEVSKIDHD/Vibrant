@@ -1,10 +1,10 @@
 package net.cydhra.vibrant.api.render
 
+import net.cydhra.vibrant.gui.util.IFramebuffer
+
 /**
  *
  */
-interface VibrantFramebuffer {
-
-    var depthBuffer: Int
+interface VibrantFramebuffer : IFramebuffer {
 
 }

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":vibrant-interface" external.linked.project.path="$MODULE_DIR$/../../vibrant-interface" external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="net.cydhra" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":vibrant-gui" external.linked.project.path="$MODULE_DIR$/../../vibrant-gui" external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="net.cydhra" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="3" platform="JVM 1.8" useProjectSettings="false">
         <compilerSettings />
         <compilerArguments>
-          <option name="destination" value="$MODULE_DIR$/../../vibrant-interface/build/classes/kotlin/main" />
+          <option name="destination" value="$MODULE_DIR$/../../vibrant-gui/build/classes/kotlin/main" />
           <option name="noStdlib" value="true" />
           <option name="noReflect" value="true" />
-          <option name="moduleName" value="vibrant-interface" />
+          <option name="moduleName" value="vibrant-gui" />
           <option name="jvmTarget" value="1.8" />
           <option name="addCompilerBuiltIns" value="true" />
           <option name="loadBuiltInsFromDependencies" value="true" />
@@ -25,29 +25,28 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/../../vibrant-interface/out/production/classes" />
-    <output-test url="file://$MODULE_DIR$/../../vibrant-interface/out/test/classes" />
+    <output url="file://$MODULE_DIR$/../../vibrant-gui/out/production/classes" />
+    <output-test url="file://$MODULE_DIR$/../../vibrant-gui/out/test/classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../vibrant-interface">
-      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-interface/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-interface/src/main/kotlin" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-interface/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-interface/src/test/kotlin" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-interface/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-interface/src/test/resources" type="java-test-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../../vibrant-interface/.gradle" />
-      <excludeFolder url="file://$MODULE_DIR$/../../vibrant-interface/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../vibrant-interface/out" />
+    <content url="file://$MODULE_DIR$/../../vibrant-gui">
+      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-gui/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-gui/src/main/kotlin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-gui/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-gui/src/test/kotlin" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-gui/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../vibrant-gui/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../vibrant-gui/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../vibrant-gui/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../vibrant-gui/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="vibrant-gui" scope="PROVIDED" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.10" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx" level="project" />
@@ -56,13 +55,12 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
-    <orderEntry type="module" module-name="vibrant-gui" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.10" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx" level="project" />
@@ -71,13 +69,12 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
-    <orderEntry type="module" module-name="vibrant-gui" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx" level="project" />

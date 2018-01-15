@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.util.render
+package net.cydhra.vibrant.gui.util
 
 import org.lwjgl.opengl.GL11
 

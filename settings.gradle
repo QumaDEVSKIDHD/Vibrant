@@ -2,4 +2,5 @@ rootProject.name = 'vibrant'
 include 'vibrant-client'
 include 'vibrant-1-8-8'
 include 'vibrant-interface'
+include 'vibrant-gui'
 

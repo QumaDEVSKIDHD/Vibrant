@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package net.cydhra.vibrant.util.render
+package net.cydhra.vibrant.gui.util
 
 import org.lwjgl.opengl.GL11
 import java.awt.Color
@@ -26,6 +26,17 @@ object RenderUtil {
         GL11.glColor4f(red, green, blue, alpha)
     }
 
+    fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color) {
+        this.setColor(color)
+
+        GL11.glBegin(GL11.GL_QUADS)
+        GL11.glVertex2d(posX.toDouble(), posY.toDouble())
+        GL11.glVertex2d((posX + width).toDouble(), posY.toDouble())
+        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+        GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
+        GL11.glEnd()
+    }
+
     /**
      * Fill a circle at the given position with the given color.
      *
@@ -36,7 +47,7 @@ object RenderUtil {
      */
     fun fillCircle(posX: Int, posY: Int, radius: Int, color: Color) {
         GL11.glPushMatrix()
-        this.setColor(color)
+        setColor(color)
 
         GL11.glBegin(GL11.GL_TRIANGLE_STRIP)
         for (i in (0..360)) {
@@ -56,7 +67,7 @@ object RenderUtil {
         setColor(color)
         GL11.glLineWidth(lineWidth)
 
-        GL11.glBegin(GL11.GL_LINE_STRIP);
+        GL11.glBegin(GL11.GL_LINE_STRIP)
         GL11.glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
         GL11.glVertex3d(targetPosX, targetPosY, targetPosZ)
         GL11.glEnd()

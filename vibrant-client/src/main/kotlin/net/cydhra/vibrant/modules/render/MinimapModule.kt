@@ -4,13 +4,13 @@ import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.api.entity.VibrantZombie
 import net.cydhra.vibrant.api.render.VibrantRenderGlobal
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
+import net.cydhra.vibrant.gui.util.GlStateManager
+import net.cydhra.vibrant.gui.util.RenderUtil
+import net.cydhra.vibrant.gui.util.StencilUtil
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.settings.VibrantConfig
 import net.cydhra.vibrant.settings.VibrantSettings
-import net.cydhra.vibrant.util.render.GlStateManager
-import net.cydhra.vibrant.util.render.RenderUtil
-import net.cydhra.vibrant.util.render.StencilUtil
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 
@@ -47,7 +47,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.RENDER) {
         GL11.glTranslatef((sc.getScaledWidth() - mapRadius.value).toFloat(), (sc.getScaledHeight() - mapRadius.value).toFloat(), 0f)
 
         // prepare circular stencil
-        StencilUtil.setupStencil()
+        StencilUtil.setupStencil(mc.framebuffer, mc.displayWidth, mc.displayHeight)
 
         GlStateManager.disableDepthTest()
         GlStateManager.disableTexture2D()

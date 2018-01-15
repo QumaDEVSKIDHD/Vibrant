@@ -1,8 +1,7 @@
-package net.cydhra.vibrant.util.render
+package net.cydhra.vibrant.gui.util
 
-import net.cydhra.vibrant.VibrantClient
-import net.cydhra.vibrant.util.render.StencilUtil.StencilMode.CROP_INSIDE
-import net.cydhra.vibrant.util.render.StencilUtil.StencilMode.CROP_OUTSIDE
+import net.cydhra.vibrant.gui.util.StencilUtil.StencilMode.CROP_INSIDE
+import net.cydhra.vibrant.gui.util.StencilUtil.StencilMode.CROP_OUTSIDE
 import org.lwjgl.opengl.EXTFramebufferObject
 import org.lwjgl.opengl.EXTPackedDepthStencil
 import org.lwjgl.opengl.GL11
@@ -15,18 +14,21 @@ object StencilUtil {
     /**
      * Enable the stencil buffer filling. Everything drawn from now on until a call of [enableStencil] will be drawn onto the stencil
      * buffer and will work as a stencil on every render call after [enableStencil]
+     *
+     * @param fbo a [IFramebuffer] implementation representing a framebuffer object. This should be an adapter class
+     * @param displayWidth the width of the framebuffer
+     * @param displayHeight the height of the framebuffer
      */
-    fun setupStencil() {
+    fun setupStencil(fbo: IFramebuffer?, displayWidth: Int, displayHeight: Int) {
         GL11.glPushMatrix()
 
-        val fbo = VibrantClient.minecraft.framebuffer
         if (fbo != null) {
             if (fbo.depthBuffer > -1) {
                 EXTFramebufferObject.glDeleteRenderbuffersEXT(fbo.depthBuffer)
                 val stencil_depth_buffer_ID = EXTFramebufferObject.glGenRenderbuffersEXT()
                 EXTFramebufferObject.glBindRenderbufferEXT(EXTFramebufferObject.GL_RENDERBUFFER_EXT, stencil_depth_buffer_ID)
                 EXTFramebufferObject.glRenderbufferStorageEXT(EXTFramebufferObject.GL_RENDERBUFFER_EXT,
-                        EXTPackedDepthStencil.GL_DEPTH_STENCIL_EXT, VibrantClient.minecraft.displayWidth, VibrantClient.minecraft.displayHeight)
+                        EXTPackedDepthStencil.GL_DEPTH_STENCIL_EXT, displayWidth, displayHeight)
                 EXTFramebufferObject.glFramebufferRenderbufferEXT(EXTFramebufferObject.GL_FRAMEBUFFER_EXT,
                         EXTFramebufferObject.GL_STENCIL_ATTACHMENT_EXT, EXTFramebufferObject.GL_RENDERBUFFER_EXT,
                         stencil_depth_buffer_ID)
