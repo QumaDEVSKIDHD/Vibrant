@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.api.client
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
+import net.cydhra.vibrant.api.gui.VibrantGuiScreen
 import net.cydhra.vibrant.api.render.*
 import net.cydhra.vibrant.api.world.VibrantWorld
 
@@ -25,4 +26,5 @@ interface VibrantMinecraft {
 
     fun getTextureManager(): VibrantTextureManager
 
+    fun displayGuiScreen(screen: VibrantGuiScreen)
 }

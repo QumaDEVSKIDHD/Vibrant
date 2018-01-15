@@ -1,6 +1,8 @@
 package net.cydhra.vibrant.interfaces;
 
+import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
+import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
 import net.cydhra.vibrant.api.render.VibrantEntityRenderer;
 import net.cydhra.vibrant.api.render.VibrantFrustum;
 import net.cydhra.vibrant.api.render.VibrantRenderGlobal;
@@ -50,6 +52,12 @@ public aspect MinecraftInterface {
      * @return a new {@link Frustum} instance
      */
     public VibrantFrustum Minecraft.newFrustum() { return (VibrantFrustum) new Frustum(); }
+    
+    /**
+     * Delegate the {@link VibrantGuiScreen} through a {@link VibrantGuiScreenAdapter} to Minecraft
+     * @param screen screen implementation
+     */
+    public void Minecraft.displayGuiScreen(VibrantGuiScreen screen) { this.displayGuiScreen(new VibrantGuiScreenAdapter(screen)); }
     
     /**
      * @return the current display width
