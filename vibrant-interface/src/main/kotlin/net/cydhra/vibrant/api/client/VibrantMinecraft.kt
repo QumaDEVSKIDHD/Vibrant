@@ -28,5 +28,5 @@ interface VibrantMinecraft {
 
     fun getTextureManager(): VibrantTextureManager
 
-    fun displayGuiScreen(screen: VibrantGuiScreen)
+    fun displayGuiScreen(screen: VibrantGuiScreen?)
 }

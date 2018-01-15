@@ -10,6 +10,7 @@ import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderGlobal;
@@ -57,7 +58,12 @@ public aspect MinecraftInterface {
      * Delegate the {@link VibrantGuiScreen} through a {@link VibrantGuiScreenAdapter} to Minecraft
      * @param screen screen implementation
      */
-    public void Minecraft.displayGuiScreen(VibrantGuiScreen screen) { this.displayGuiScreen(new VibrantGuiScreenAdapter(screen)); }
+    public void Minecraft.displayGuiScreen(VibrantGuiScreen screen) {
+        if (screen != null)
+            this.displayGuiScreen(new VibrantGuiScreenAdapter(screen));
+        else
+            this.displayGuiScreen((GuiScreen) null);
+    }
     
     /**
      * @return the current display width
