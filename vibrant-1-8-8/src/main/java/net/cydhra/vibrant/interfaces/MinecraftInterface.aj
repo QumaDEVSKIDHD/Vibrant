@@ -68,4 +68,9 @@ public aspect MinecraftInterface {
      * @return the current display height
      */
     public int Minecraft.getDisplayHeight() { return this.displayHeight; }
+    
+    /**
+     * @return true, if no screen is displayed at the moment
+     */
+    public boolean Minecraft.isCurrentlyDisplayingScreen() { return this.currentScreen != null; }
 }

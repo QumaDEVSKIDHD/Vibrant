@@ -20,6 +20,8 @@ interface VibrantMinecraft {
     val displayWidth: Int
     val displayHeight: Int
 
+    val isCurrentlyDisplayingScreen: Boolean
+
     fun newScaledResolution(): VibrantScaledResolution
 
     fun newFrustum(): VibrantFrustum
