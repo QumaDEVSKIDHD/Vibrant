@@ -33,8 +33,9 @@ interface IComponent {
      *
      * @param mouseX mouse position x relative to component's origin
      * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton pressed mouse button
      */
-//    fun onClick(mouseX: Int, mouseY: Int)
+    fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int)
 
     /**
      * Get a list of all child components of this component

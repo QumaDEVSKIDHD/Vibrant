@@ -10,4 +10,8 @@ open class VibrantButton(positionX: Double, positionY: Double, width: Double, he
     : AbstractVibrantComponent(positionX, positionY, width, height, text), IButton {
 
     override val clickHandlers: MutableCollection<(IComponent) -> Unit> = mutableListOf()
+
+    override fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        this.clickHandlers.forEach { it.invoke(this) }
+    }
 }

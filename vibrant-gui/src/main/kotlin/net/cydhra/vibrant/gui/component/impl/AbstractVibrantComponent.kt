@@ -22,7 +22,7 @@ abstract class AbstractVibrantComponent(
     override fun updateHovering(mouseX: Int, mouseY: Int, shallHighlight: Boolean): Boolean {
         isMouseOver = false
 
-        if(children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, shallHighlight) } != null) {
+        if (children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, shallHighlight) } != null) {
             return true
         }
 
@@ -50,4 +50,19 @@ abstract class AbstractVibrantComponent(
                 IllegalStateException("No renderer for ${this.javaClass} was set in the GuiManager")
         this.children.forEach(IComponent::drawComponent)
     }
+
+    override fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
+                ?.apply { this.onClick(mouseX - this.posX, mouseY - this.posY, mouseButton) }
+                ?: this.onClickAction(mouseX, mouseY, mouseButton)
+    }
+
+    /**
+     * Click handler that is only executed when the component was actually clicked (and not one of its sub-components)
+     *
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton clicked mouse button
+     */
+    abstract fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int)
 }
