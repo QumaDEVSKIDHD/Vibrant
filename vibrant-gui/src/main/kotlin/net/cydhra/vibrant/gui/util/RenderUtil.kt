@@ -31,9 +31,10 @@ object RenderUtil {
 
         GL11.glBegin(GL11.GL_QUADS)
         GL11.glVertex2d(posX.toDouble(), posY.toDouble())
-        GL11.glVertex2d((posX + width).toDouble(), posY.toDouble())
-        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
         GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
+        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+        GL11.glVertex2d((posX + width).toDouble(), posY.toDouble())
+
         GL11.glEnd()
     }
 
@@ -46,7 +47,6 @@ object RenderUtil {
      * @param color circle fill color
      */
     fun fillCircle(posX: Int, posY: Int, radius: Int, color: Color) {
-        GL11.glPushMatrix()
         setColor(color)
 
         GL11.glBegin(GL11.GL_TRIANGLE_STRIP)
@@ -58,8 +58,6 @@ object RenderUtil {
                     posY + radius * sin(Math.toRadians((i + 1).toDouble())))
         }
         GL11.glEnd()
-
-        GL11.glPopMatrix()
     }
 
     fun drawLine3d(sourcePosX: Double, sourcePosY: Double, sourcePosZ: Double, targetPosX: Double, targetPosY: Double, targetPosZ: Double,
