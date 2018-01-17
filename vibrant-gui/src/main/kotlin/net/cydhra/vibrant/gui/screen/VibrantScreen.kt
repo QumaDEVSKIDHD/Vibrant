@@ -14,8 +14,15 @@ open class VibrantScreen {
         this.components.add(component)
     }
 
+    fun updateMousePosition(mouseX: Int, mouseY: Int) {
+        var hoveredComponentIdentified = false
+        this.components.forEach { comp -> hoveredComponentIdentified = comp.updateHovering(mouseX - comp.posX, mouseY - comp.posY, !hoveredComponentIdentified) }
+    }
+
     fun draw() {
-        this.components.forEach(IComponent::drawComponent)
+        for (i in (0 until components.size).reversed()) {
+            this.components[i].drawComponent()
+        }
     }
 
     fun tick() {

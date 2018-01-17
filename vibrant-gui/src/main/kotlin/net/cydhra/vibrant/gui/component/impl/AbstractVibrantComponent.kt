@@ -17,10 +17,21 @@ abstract class AbstractVibrantComponent(
 
     private val children: MutableList<AbstractVibrantComponent> = mutableListOf()
 
-    override fun isHovered(mouseX: Int, mouseY: Int): Boolean {
-        return this.children.any { isHovered(mouseX - this.posX, mouseY - this.posY) }
-                || (this.posX < mouseX && this.posX + this.width > mouseX
-                && this.posY < mouseY && this.posY + this.height > mouseY)
+    override var isMouseOver: Boolean = false
+
+    override fun updateHovering(mouseX: Int, mouseY: Int, shallHighlight: Boolean): Boolean {
+        isMouseOver = false
+
+        if(children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, shallHighlight) } != null) {
+            return true
+        }
+
+        if (0 < mouseX && this.width > mouseX && 0 < mouseY && this.height > mouseY) {
+            isMouseOver = shallHighlight
+            return true
+        }
+
+        return false
     }
 
     override fun getChildComponents(): List<IComponent> {

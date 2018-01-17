@@ -11,7 +11,19 @@ import net.cydhra.vibrant.gui.util.RenderUtil
 class VibrantButtonRenderer : ComponentRenderer<VibrantButton> {
 
     override fun renderComponent(component: VibrantButton, theme: Theme) {
-        RenderUtil.fillRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), theme.primaryColor)
-        RenderUtil.drawRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), theme.secondaryColor, 0.05f)
+        val innerColor = if (component.isMouseOver) {
+            theme.highlightColor(theme.primaryColor)
+        } else {
+            theme.primaryColor
+        }
+
+        val outerColor = if (component.isMouseOver) {
+            theme.highlightColor(theme.secondaryColor)
+        } else {
+            theme.secondaryColor
+        }
+
+        RenderUtil.fillRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), innerColor)
+        RenderUtil.drawRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), outerColor, 0.05f)
     }
 }

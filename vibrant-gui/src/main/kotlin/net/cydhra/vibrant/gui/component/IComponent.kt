@@ -25,6 +25,7 @@ interface IComponent {
     val posY: Int
         get() = positionY.toInt()
 
+    var isMouseOver: Boolean
 
     /**
      * Called, iff the mouse clicked this component. The component must check its sub-components whether they were clicked and if not,
@@ -49,9 +50,9 @@ interface IComponent {
      * @param mouseX mouse position x relative to component's origin
      * @param mouseY mouse position y relative to component's origin
      *
-     * @return true, if this or any of the child components is hovered by this mouse position
+     * @return
      */
-    fun isHovered(mouseX: Int, mouseY: Int): Boolean
+    fun updateHovering(mouseX: Int, mouseY: Int, shallHighlight: Boolean): Boolean
 
     /**
      * Draw this and all of its child components
