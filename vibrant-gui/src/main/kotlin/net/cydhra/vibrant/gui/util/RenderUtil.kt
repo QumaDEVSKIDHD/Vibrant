@@ -26,14 +26,35 @@ object RenderUtil {
         GL11.glColor4f(red, green, blue, alpha)
     }
 
-    fun fillRect(posX: Int, posY: Int, width: Int, height: Int, color: Color) {
-        this.setColor(color)
+    fun fillRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null) {
+        if (color != null)
+            this.setColor(color)
 
         GL11.glBegin(GL11.GL_QUADS)
         GL11.glVertex2d(posX.toDouble(), posY.toDouble())
         GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
         GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
         GL11.glVertex2d((posX + width).toDouble(), posY.toDouble())
+
+        GL11.glEnd()
+    }
+
+    fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null) {
+        if (color != null)
+            this.setColor(color)
+
+        GL11.glBegin(GL11.GL_LINE_STRIP)
+        GL11.glVertex2d(posX.toDouble(), posY.toDouble())
+        GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
+
+        GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
+        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+
+        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+        GL11.glVertex2d((posX + width).toDouble(), (posY).toDouble())
+
+        GL11.glVertex2d((posX + width).toDouble(), (posY).toDouble())
+        GL11.glVertex2d(posX.toDouble(), posY.toDouble())
 
         GL11.glEnd()
     }
@@ -46,8 +67,9 @@ object RenderUtil {
      * @param radius circle radius
      * @param color circle fill color
      */
-    fun fillCircle(posX: Int, posY: Int, radius: Int, color: Color) {
-        setColor(color)
+    fun fillCircle(posX: Int, posY: Int, radius: Int, color: Color? = null) {
+        if (color != null)
+            this.setColor(color)
 
         GL11.glBegin(GL11.GL_TRIANGLE_STRIP)
         for (i in (0..360)) {
@@ -61,9 +83,12 @@ object RenderUtil {
     }
 
     fun drawLine3d(sourcePosX: Double, sourcePosY: Double, sourcePosZ: Double, targetPosX: Double, targetPosY: Double, targetPosZ: Double,
-                   color: Color, lineWidth: Float) {
-        setColor(color)
-        GL11.glLineWidth(lineWidth)
+                   color: Color? = null, lineWidth: Float? = null) {
+        if (color != null)
+            this.setColor(color)
+
+        if (lineWidth != null)
+            GL11.glLineWidth(lineWidth)
 
         GL11.glBegin(GL11.GL_LINE_STRIP)
         GL11.glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
