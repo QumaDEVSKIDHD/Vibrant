@@ -26,7 +26,7 @@ object RenderUtil {
         GL11.glColor4f(red, green, blue, alpha)
     }
 
-    fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color) {
+    fun fillRect(posX: Int, posY: Int, width: Int, height: Int, color: Color) {
         this.setColor(color)
 
         GL11.glBegin(GL11.GL_QUADS)
