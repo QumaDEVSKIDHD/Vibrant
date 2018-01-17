@@ -39,9 +39,12 @@ object RenderUtil {
         GL11.glEnd()
     }
 
-    fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null) {
+    fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null, lineWidth: Float? = null) {
         if (color != null)
             this.setColor(color)
+
+        if (lineWidth != null)
+            GL11.glLineWidth(lineWidth)
 
         GL11.glBegin(GL11.GL_LINE_STRIP)
         GL11.glVertex2d(posX.toDouble(), posY.toDouble())
