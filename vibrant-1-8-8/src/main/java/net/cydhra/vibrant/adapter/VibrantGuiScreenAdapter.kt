@@ -13,7 +13,9 @@ import net.minecraft.client.gui.GuiScreen
 class VibrantGuiScreenAdapter(private val vScreen: VibrantGuiScreen) : GuiScreen() {
 
     override fun drawScreen(mouseX: Int, mouseY: Int, partialTicks: Float) {
+        net.cydhra.vibrant.gui.util.GlStateManager.pushState()
         vScreen.drawScreen(mouseX, mouseY, partialTicks)
+        net.cydhra.vibrant.gui.util.GlStateManager.popState()
     }
 
     override fun keyTyped(typedChar: Char, keyCode: Int) {
