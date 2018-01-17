@@ -19,15 +19,19 @@ abstract class AbstractVibrantComponent(
 
     override var isMouseOver: Boolean = false
 
-    override fun updateHovering(mouseX: Int, mouseY: Int, shallHighlight: Boolean): Boolean {
+    override fun updateHovering(mouseX: Int, mouseY: Int, shallUpdate: Boolean): Boolean {
         isMouseOver = false
 
-        if (children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, shallHighlight) } != null) {
-            return true
+        var foundHoveredComponent = false
+
+        children.forEach {
+            foundHoveredComponent = it.updateHovering(mouseX - it.posX, mouseY - it.posY, shallUpdate && !foundHoveredComponent)
+            if (foundHoveredComponent)
+                return true
         }
 
         if (0 < mouseX && this.width > mouseX && 0 < mouseY && this.height > mouseY) {
-            isMouseOver = shallHighlight
+            isMouseOver = shallUpdate
             return true
         }
 

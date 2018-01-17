@@ -19,9 +19,30 @@ open class VibrantScreen {
         this.components.forEach { comp -> hoveredComponentIdentified = comp.updateHovering(mouseX - comp.posX, mouseY - comp.posY, !hoveredComponentIdentified) }
     }
 
+    /**
+     * Handle a click on the screen. The components are searched in order for the one clicked. If one is found, it is moved to the head
+     * of the list, so it is now the focused one.
+     *
+     * @param mouseX mouse x coordinate on screen
+     * @param mouseY mouse y coordinate on screen
+     * @param mouseButton pressed mouse button
+     */
     fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int) {
-        this.components.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, true) }?.apply {
-            this.onClick(mouseX - this.posX, mouseY - this.posY, mouseButton)
+        val iterator = this.components.iterator()
+        var hoveredComponent: IComponent? = null
+
+        while (iterator.hasNext()) {
+            val component = iterator.next()
+            if (component.updateHovering(mouseX - component.posX, mouseY - component.posY, false)) {
+                component.onClick(mouseX - component.posX, mouseY - component.posY, mouseButton)
+                hoveredComponent = component
+                iterator.remove()
+                break
+            }
+        }
+
+        if (hoveredComponent != null) {
+            this.components.add(0, hoveredComponent)
         }
     }
 

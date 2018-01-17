@@ -48,12 +48,16 @@ interface IComponent {
     fun addChildComponent(component: IComponent)
 
     /**
+     * Update or determine the hovering state of this component. This method returns true, if this component or any child-component is
+     * hovered with the given mouse coordinates and can optionally update the hovering state of all components while doing that.
+     *
      * @param mouseX mouse position x relative to component's origin
      * @param mouseY mouse position y relative to component's origin
+     * @param shallUpdate whether the hovered state shall actually be updated
      *
-     * @return
+     * @return true, if this component or any of its child-components is hovered
      */
-    fun updateHovering(mouseX: Int, mouseY: Int, shallHighlight: Boolean): Boolean
+    fun updateHovering(mouseX: Int, mouseY: Int, shallUpdate: Boolean): Boolean
 
     /**
      * Draw this and all of its child components
