@@ -30,7 +30,7 @@ abstract class AbstractVibrantComponent(
                 return true
         }
 
-        if (0 < mouseX && this.width > mouseX && 0 < mouseY && this.height > mouseY) {
+        if (isMouseInsideComponent(mouseX, mouseY)) {
             isMouseOver = shallUpdate
             return true
         }

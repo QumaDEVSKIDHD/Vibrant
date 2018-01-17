@@ -28,16 +28,6 @@ interface IComponent {
     var isMouseOver: Boolean
 
     /**
-     * Called, iff the mouse clicked this component. The component must check its sub-components whether they were clicked and if not,
-     * handle the click itself.
-     *
-     * @param mouseX mouse position x relative to component's origin
-     * @param mouseY mouse position y relative to component's origin
-     * @param mouseButton pressed mouse button
-     */
-    fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int)
-
-    /**
      * Get a list of all child components of this component
      */
     fun getChildComponents(): List<IComponent>
@@ -58,6 +48,27 @@ interface IComponent {
      * @return true, if this component or any of its child-components is hovered
      */
     fun updateHovering(mouseX: Int, mouseY: Int, shallUpdate: Boolean): Boolean
+
+    /**
+     * Called, iff the mouse clicked this component. The component must check its sub-components whether they were clicked and if not,
+     * handle the click itself.
+     *
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton pressed mouse button
+     */
+    fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int)
+
+    /**
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     *
+     * @return true, if the mouse is considered inside this component. By default: whether it is inside the rectangle defined by the
+     * components position and size, but this can be overridden in order to be changed
+     */
+    fun isMouseInsideComponent(mouseX: Int, mouseY: Int): Boolean {
+        return mouseX > 0 && this.width > mouseX && mouseY > 0 && this.height > mouseY
+    }
 
     /**
      * Draw this and all of its child components
