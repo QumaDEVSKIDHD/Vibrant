@@ -22,7 +22,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.RENDER) {
     private val perspectiveAngle = VibrantSettings.registerConfig(VibrantConfig("Map Angle", 45, 40, 70, 1))
     private val mapRadius = VibrantSettings.registerConfig(VibrantConfig("Map Radius", 80, 50, 100, 1))
     private val showLines = VibrantSettings.registerConfig(VibrantConfig("Show Map Axis", true))
-    private val lineWidth = VibrantSettings.registerConfig(VibrantConfig("Axis Strength", 0.2f, 0.1f, 1f, 0.05f))
+    private val lineWidth = VibrantSettings.registerConfig(VibrantConfig("Axis Strength", 0.2, 0.1, 1.0, 0.05))
 
     private var zombie: VibrantZombie? = null
 
@@ -54,7 +54,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.RENDER) {
         GlStateManager.enableColorBlending()
         GlStateManager.enableLineSmoothing()
 
-        RenderUtil.fillCircle(0, 0, mapRadius.value, Color.BLACK)
+        RenderUtil.fillCircle(0, 0, mapRadius.value.toDouble(), Color.BLACK)
         StencilUtil.enableStencil(StencilUtil.StencilMode.CROP_OUTSIDE)
 
         GlStateManager.enableTexture2D()
@@ -91,8 +91,8 @@ class MinimapModule : Module("Minimap", DefaultCategories.RENDER) {
         GlStateManager.disableTexture2D()
         GlStateManager.disableDepthTest()
         if (showLines.value) {
-            RenderUtil.drawLine3d(-200.0, 1.0, 0.0, 200.0, 1.0, 0.0, Color.WHITE, lineWidth.value)
-            RenderUtil.drawLine3d(0.0, 1.0, -200.0, 0.0, 1.0, 200.0, Color.WHITE, lineWidth.value)
+            RenderUtil.drawLine3d(-200.0, 1.0, 0.0, 200.0, 1.0, 0.0, Color.WHITE, lineWidth.value.toFloat())
+            RenderUtil.drawLine3d(0.0, 1.0, -200.0, 0.0, 1.0, 200.0, Color.WHITE, lineWidth.value.toFloat())
         }
         GlStateManager.enableTexture2D()
 

@@ -4,8 +4,10 @@ package net.cydhra.vibrant.gui.util
 
 import org.lwjgl.opengl.GL11
 import java.awt.Color
+import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+
 
 /**
  *
@@ -18,17 +20,20 @@ object RenderUtil {
      * @param color [Color] instance
      */
     fun setColor(color: Color) {
-        val alpha = color.alpha / 255.0f
-        val red = color.red / 255.0f
-        val green = color.green / 255.0f
-        val blue = color.blue / 255.0f
+        GlStateManager.color(color)
+    }
 
-        GL11.glColor4f(red, green, blue, alpha)
+    fun setOptions(color: Color? = null, lineWidth: Float? = null) {
+        if (color != null)
+            this.setColor(color)
+
+        if (lineWidth != null)
+            GL11.glLineWidth(lineWidth)
+
     }
 
     fun fillRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null) {
-        if (color != null)
-            this.setColor(color)
+        this.setOptions(color)
 
         GL11.glBegin(GL11.GL_QUADS)
         GL11.glVertex2d(posX.toDouble(), posY.toDouble())
@@ -40,11 +45,7 @@ object RenderUtil {
     }
 
     fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null, lineWidth: Float? = null) {
-        if (color != null)
-            this.setColor(color)
-
-        if (lineWidth != null)
-            GL11.glLineWidth(lineWidth)
+        this.setOptions(color, lineWidth)
 
         GL11.glBegin(GL11.GL_LINE_STRIP)
         GL11.glVertex2d(posX.toDouble(), posY.toDouble())
@@ -70,28 +71,36 @@ object RenderUtil {
      * @param radius circle radius
      * @param color circle fill color
      */
-    fun fillCircle(posX: Int, posY: Int, radius: Int, color: Color? = null) {
-        if (color != null)
-            this.setColor(color)
+    fun fillCircle(posX: Int, posY: Int, radius: Double, color: Color? = null) {
+        this.setOptions(color)
+        this.fillCircleLike(posX, posY, radius, 360)
+    }
 
-        GL11.glBegin(GL11.GL_TRIANGLE_STRIP)
-        for (i in (0..360)) {
-            GL11.glVertex2d(posX.toDouble(), posY.toDouble())
-            GL11.glVertex2d(posX + radius * cos(Math.toRadians(i.toDouble())),
-                    posY + radius * sin(Math.toRadians(i.toDouble())))
-            GL11.glVertex2d(posX + radius * cos(Math.toRadians((i + 1).toDouble())),
-                    posY + radius * sin(Math.toRadians((i + 1).toDouble())))
+    fun fillCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, color: Color? = null) {
+        this.setOptions(color)
+
+        GL11.glBegin(GL11.GL_POLYGON)
+        for (i in (0 until edges)) {
+            GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
+        }
+        GL11.glEnd()
+    }
+
+    fun drawCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, color: Color? = null, lineWidth: Float? = null) {
+        this.setOptions(color, lineWidth)
+
+        GL11.glBegin(GL11.GL_LINE_STRIP)
+        for (i in 0..5) {
+            GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
+            GL11.glVertex2d(posX + sin((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius,
+                    posY + cos((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius)
         }
         GL11.glEnd()
     }
 
     fun drawLine3d(sourcePosX: Double, sourcePosY: Double, sourcePosZ: Double, targetPosX: Double, targetPosY: Double, targetPosZ: Double,
                    color: Color? = null, lineWidth: Float? = null) {
-        if (color != null)
-            this.setColor(color)
-
-        if (lineWidth != null)
-            GL11.glLineWidth(lineWidth)
+        this.setOptions(color, lineWidth)
 
         GL11.glBegin(GL11.GL_LINE_STRIP)
         GL11.glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
