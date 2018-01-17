@@ -43,6 +43,9 @@ object GlStateManager {
     fun enableDepthMask() = GL11.glDepthMask(true)
     fun disableDepthMask() = GL11.glDepthMask(false)
 
+    fun enableCullFace() = GL11.glEnable(GL11.GL_CULL_FACE)
+    fun disableCullFace() = GL11.glDisable(GL11.GL_CULL_FACE)
+
     fun pushMatrix() = GL11.glPushMatrix()
     fun popMatrix() = GL11.glPopMatrix()
 }
