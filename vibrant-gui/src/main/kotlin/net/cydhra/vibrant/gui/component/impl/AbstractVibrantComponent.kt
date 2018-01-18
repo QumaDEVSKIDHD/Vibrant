@@ -2,6 +2,7 @@ package net.cydhra.vibrant.gui.component.impl
 
 import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.IComponent
+import org.lwjgl.opengl.GL11
 
 /**
  * A basic implementation of the features all components have. Everything not implemented by this class must be implemented by its
@@ -15,7 +16,7 @@ abstract class AbstractVibrantComponent(
         override var height: Double,
         override var text: String) : IComponent {
 
-    private val children: MutableList<AbstractVibrantComponent> = mutableListOf()
+    protected val children: MutableList<AbstractVibrantComponent> = mutableListOf()
 
     override var isMouseOver: Boolean = false
 
@@ -52,7 +53,10 @@ abstract class AbstractVibrantComponent(
     override fun drawComponent() {
         GuiManager.getRenderer(this.javaClass)?.renderComponent(this, GuiManager.theme) ?:
                 IllegalStateException("No renderer for ${this.javaClass} was set in the GuiManager")
+
+        GL11.glTranslated(this.positionX, this.positionY, 0.0)
         this.children.forEach(IComponent::drawComponent)
+        GL11.glTranslated(-this.positionX, -this.positionY, 0.0)
     }
 
     override fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int) {
