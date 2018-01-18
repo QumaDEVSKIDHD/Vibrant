@@ -2,8 +2,10 @@ package net.cydhra.vibrant.gui
 
 import net.cydhra.vibrant.gui.component.IComponent
 import net.cydhra.vibrant.gui.component.impl.VibrantButton
+import net.cydhra.vibrant.gui.component.impl.VibrantCheckbox
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.renderer.impl.VibrantButtonRenderer
+import net.cydhra.vibrant.gui.renderer.impl.VibrantCheckboxRenderer
 import net.cydhra.vibrant.gui.theme.DefaultTheme
 import net.cydhra.vibrant.gui.theme.Theme
 
@@ -18,6 +20,7 @@ object GuiManager {
 
     init {
         this.setRenderer(VibrantButton::class.java, VibrantButtonRenderer())
+        this.setRenderer(VibrantCheckbox::class.java, VibrantCheckboxRenderer())
     }
 
     /**

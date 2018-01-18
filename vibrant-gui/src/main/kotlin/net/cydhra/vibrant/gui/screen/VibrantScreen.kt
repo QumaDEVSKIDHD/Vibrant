@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.gui.screen
 
 import net.cydhra.vibrant.gui.component.IComponent
+import net.cydhra.vibrant.gui.util.GlStateManager
 import java.util.*
 
 /**
@@ -47,6 +48,8 @@ open class VibrantScreen {
     }
 
     fun draw() {
+        GlStateManager.enableLineSmoothing()
+
         for (i in (0 until components.size).reversed()) {
             this.components[i].drawComponent()
         }
