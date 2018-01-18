@@ -27,7 +27,7 @@ class VibrantCheckboxRenderer : ComponentRenderer<VibrantCheckbox> {
 
         GlStateManager.pushMatrix()
         GL11.glTranslated(component.posX + component.height / 2, component.posY + component.height / 2, 0.0)
-        val edges = 6
+        val edges = theme.getThemeProperty("edges", 6)
 
         RenderUtil.fillCircleLike(0, 0, component.height / 2, edges, innerColor)
         RenderUtil.drawCircleLike(0, 0, component.height / 2, edges, outerColor)

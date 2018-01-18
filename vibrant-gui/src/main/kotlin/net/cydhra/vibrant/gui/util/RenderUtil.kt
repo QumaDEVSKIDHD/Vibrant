@@ -23,13 +23,22 @@ object RenderUtil {
         GlStateManager.color(color)
     }
 
-    fun setOptions(color: Color? = null, lineWidth: Float? = null) {
+    private fun setOptions(color: Color? = null, lineWidth: Float? = null) {
         if (color != null)
             this.setColor(color)
 
         if (lineWidth != null)
             GL11.glLineWidth(lineWidth)
 
+    }
+
+    fun drawLine(startVertexX: Int, startVertexY: Int, endVertexX: Int, endVertexY: Int, color: Color? = null, lineWidth: Float? = null) {
+        setOptions(color, lineWidth)
+
+        GL11.glBegin(GL11.GL_LINE_STRIP)
+        GL11.glVertex2d(startVertexX.toDouble(), startVertexY.toDouble())
+        GL11.glVertex2d(endVertexX.toDouble(), endVertexY.toDouble())
+        GL11.glEnd()
     }
 
     fun fillRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null) {
@@ -72,29 +81,38 @@ object RenderUtil {
      * @param color circle fill color
      */
     fun fillCircle(posX: Int, posY: Int, radius: Double, color: Color? = null) {
-        this.setOptions(color)
-        this.fillCircleLike(posX, posY, radius, 360)
+        this.fillCircleLike(posX, posY, radius, 360, color)
     }
 
     fun fillCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, color: Color? = null) {
-        this.setOptions(color)
+        fillPartialCircleLike(posX, posY, radius, edges, 0, edges - 1, color)
+    }
+
+    fun drawCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, color: Color? = null, lineWidth: Float? = null) {
+        drawPartialCircleLike(posX, posY, radius, edges, 0, edges, color, lineWidth)
+    }
+
+    fun fillPartialCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, beginVertex: Int, endVertex: Int, color: Color? = null) {
+        setOptions(color)
 
         GL11.glBegin(GL11.GL_POLYGON)
-        for (i in (0 until edges)) {
+        for (i in (beginVertex .. endVertex)) {
             GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
         }
         GL11.glEnd()
     }
 
-    fun drawCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, color: Color? = null, lineWidth: Float? = null) {
+    fun drawPartialCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, beginVertex: Int, endVertex: Int, color: Color? = null,
+                              lineWidth: Float? = null) {
         this.setOptions(color, lineWidth)
 
         GL11.glBegin(GL11.GL_LINE_STRIP)
-        for (i in 0..5) {
+        for (i in beginVertex until endVertex) {
             GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
             GL11.glVertex2d(posX + sin((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius,
                     posY + cos((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius)
         }
+
         GL11.glEnd()
     }
 

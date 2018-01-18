@@ -31,4 +31,12 @@ interface Theme {
      * @return a changed version of this color representing disabling
      */
     fun disableColor(color: Color): Color
+
+    /**
+     * Get a specific property required by a renderer. If this theme does not support the property, it will just return the default value.
+     *
+     * @param name property identifier
+     * @param default default value to be returned
+     */
+    fun <T> getThemeProperty(name: String, default: T): T
 }
