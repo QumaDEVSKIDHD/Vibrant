@@ -34,7 +34,7 @@ open class VibrantScreen {
 
         while (iterator.hasNext()) {
             val component = iterator.next()
-            if (component.updateHovering(mouseX - component.posX, mouseY - component.posY, false)) {
+            if (component.updateHovering(mouseX - component.posX, mouseY - component.posY, true)) {
                 component.onClick(mouseX - component.posX, mouseY - component.posY, mouseButton)
                 hoveredComponent = component
                 iterator.remove()
