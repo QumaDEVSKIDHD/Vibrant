@@ -72,5 +72,5 @@ abstract class AbstractVibrantComponent(
      * @param mouseY mouse position y relative to component's origin
      * @param mouseButton clicked mouse button
      */
-    abstract protected fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int)
+    open protected fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
 }

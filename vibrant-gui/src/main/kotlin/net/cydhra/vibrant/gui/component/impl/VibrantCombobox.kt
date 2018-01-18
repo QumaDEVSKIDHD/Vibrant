@@ -39,8 +39,6 @@ class VibrantCombobox<T>(override var positionX: Double,
 
     override val selectionHandlers: MutableCollection<(T) -> Unit> = mutableListOf()
 
-    override fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
-
     /**
      * Toggle the expand state of the combobox
      */
