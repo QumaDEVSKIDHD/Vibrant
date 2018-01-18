@@ -60,6 +60,24 @@ interface IComponent {
     fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int)
 
     /**
+     * Called when the component is dragged
+     *
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton pressed mouse button
+     */
+    fun onDrag(mouseX: Int, mouseY: Int, mouseButton: Int)
+
+    /**
+     * Called when the component is no longer dragged
+     *
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton pressed mouse button
+     */
+    fun onDragReleased(mouseX: Int, mouseY: Int, mouseButton: Int)
+
+    /**
      * @param mouseX mouse position x relative to component's origin
      * @param mouseY mouse position y relative to component's origin
      *

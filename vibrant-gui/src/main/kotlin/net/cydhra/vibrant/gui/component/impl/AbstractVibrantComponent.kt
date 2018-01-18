@@ -73,4 +73,34 @@ abstract class AbstractVibrantComponent(
      * @param mouseButton clicked mouse button
      */
     open protected fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
+
+    override fun onDrag(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
+                ?.apply { this.onDrag(mouseX - this.posX, mouseY - this.posY, mouseButton) }
+                ?: this.onDragAction(mouseX, mouseY, mouseButton)
+    }
+
+    override fun onDragReleased(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
+                ?.apply { this.onDragReleased(mouseX - this.posX, mouseY - this.posY, mouseButton) }
+                ?: this.onDragReleasedAction(mouseX, mouseY, mouseButton)
+    }
+
+    /**
+     * Drag handler that is only executed when the component was actually clicked (and not one of its sub-components)
+     *
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton clicked mouse button
+     */
+    open protected fun onDragAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
+
+    /**
+     * Drag-Release handler that is only executed when the component was actually clicked (and not one of its sub-components)
+     *
+     * @param mouseX mouse position x relative to component's origin
+     * @param mouseY mouse position y relative to component's origin
+     * @param mouseButton clicked mouse button
+     */
+    open protected fun onDragReleasedAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
 }

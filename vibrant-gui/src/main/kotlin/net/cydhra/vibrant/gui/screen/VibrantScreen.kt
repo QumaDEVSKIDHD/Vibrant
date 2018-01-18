@@ -11,6 +11,9 @@ open class VibrantScreen {
 
     private val components: LinkedList<IComponent> = LinkedList()
 
+    private var isDragging = false
+    private var draggedComponent: IComponent? = null
+
     fun addComponent(component: IComponent) {
         this.components.add(component)
     }
@@ -47,6 +50,39 @@ open class VibrantScreen {
         if (hoveredComponent != null) {
             this.components.add(0, hoveredComponent)
         }
+    }
+
+    fun onDrag(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        if (!isDragging) {
+            val iterator = this.components.iterator()
+            var hoveredComponent: IComponent? = null
+
+            while (iterator.hasNext()) {
+                val component = iterator.next()
+                if (component.updateHovering(mouseX - component.posX, mouseY - component.posY, true)) {
+                    component.onDrag(mouseX - component.posX, mouseY - component.posY, mouseButton)
+                    hoveredComponent = component
+                    iterator.remove()
+                    break
+                }
+            }
+
+            if (hoveredComponent != null) {
+                this.components.add(0, hoveredComponent)
+
+                draggedComponent = hoveredComponent
+            }
+
+            isDragging = true
+        }
+
+        draggedComponent?.onDrag(mouseX, mouseY, mouseButton)
+    }
+
+    fun dragReleased(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        isDragging = false
+        draggedComponent?.onDragReleased(mouseX, mouseY, mouseButton)
+        draggedComponent = null
     }
 
     fun draw() {
