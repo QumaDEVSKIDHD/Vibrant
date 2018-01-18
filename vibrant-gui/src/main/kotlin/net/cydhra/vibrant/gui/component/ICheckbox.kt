@@ -5,6 +5,6 @@ import net.cydhra.vibrant.gui.component.capabilities.Selectable
 /**
  *
  */
-interface ICheckBox : IComponent, Selectable<ICheckBox> {
+interface ICheckbox : IComponent, Selectable<ICheckbox> {
     var isChecked: Boolean
 }

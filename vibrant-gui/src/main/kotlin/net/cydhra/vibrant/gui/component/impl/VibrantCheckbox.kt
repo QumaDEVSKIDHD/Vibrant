@@ -1,12 +1,12 @@
 package net.cydhra.vibrant.gui.component.impl
 
-import net.cydhra.vibrant.gui.component.ICheckBox
+import net.cydhra.vibrant.gui.component.ICheckbox
 
 /**
  * A checkbox component
  */
 class VibrantCheckbox(positionX: Double, positionY: Double, width: Double, height: Double, text: String, isSelected: Boolean = false) :
-        AbstractVibrantComponent(positionX, positionY, width, height, text), ICheckBox {
+        AbstractVibrantComponent(positionX, positionY, width, height, text), ICheckbox {
     override var isChecked: Boolean = isSelected
         set(value) {
             if (field != value) {
@@ -15,7 +15,7 @@ class VibrantCheckbox(positionX: Double, positionY: Double, width: Double, heigh
             }
         }
 
-    override val selectionHandlers: MutableCollection<(ICheckBox) -> Unit> = mutableListOf()
+    override val selectionHandlers: MutableCollection<(ICheckbox) -> Unit> = mutableListOf()
 
     /**
      * Toggle checkbox selection
