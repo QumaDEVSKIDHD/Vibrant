@@ -23,12 +23,12 @@ abstract class AbstractVibrantComponent(
         isMouseOver = false
 
         var foundHoveredComponent = false
-
         children.forEach {
             foundHoveredComponent = it.updateHovering(mouseX - it.posX, mouseY - it.posY, shallUpdate && !foundHoveredComponent)
-            if (foundHoveredComponent)
-                return true
         }
+
+        if (foundHoveredComponent)
+            return true
 
         if (isMouseInsideComponent(mouseX, mouseY)) {
             isMouseOver = shallUpdate

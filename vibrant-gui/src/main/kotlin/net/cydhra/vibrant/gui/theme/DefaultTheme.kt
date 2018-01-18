@@ -13,7 +13,7 @@ class DefaultTheme : Theme {
     override val primaryTextColor: Color = Color.WHITE
     override val secondaryTextColor: Color = Color(255, 220, 190)
 
-    private val edges = 6
+    private val edges = 4
 
     override fun highlightColor(color: Color): Color {
         return color.brighter()
