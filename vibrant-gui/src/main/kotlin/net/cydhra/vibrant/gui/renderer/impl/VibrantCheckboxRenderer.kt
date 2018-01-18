@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.renderer.impl
 
+import net.cydhra.vibrant.gui.component.ICheckBox
 import net.cydhra.vibrant.gui.component.impl.VibrantCheckbox
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
@@ -10,9 +11,9 @@ import org.lwjgl.opengl.GL11
 /**
  * Default renderer for [VibrantCheckbox]
  */
-class VibrantCheckboxRenderer : ComponentRenderer<VibrantCheckbox> {
+class VibrantCheckboxRenderer : ComponentRenderer<ICheckBox> {
 
-    override fun renderComponent(component: VibrantCheckbox, theme: Theme) {
+    override fun renderComponent(component: ICheckBox, theme: Theme) {
         val innerColor = if (component.isMouseOver) {
             theme.highlightColor(theme.primaryColor)
         } else {
