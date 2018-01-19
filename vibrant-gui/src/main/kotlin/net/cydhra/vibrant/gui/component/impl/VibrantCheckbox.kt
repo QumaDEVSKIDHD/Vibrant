@@ -5,7 +5,7 @@ import net.cydhra.vibrant.gui.component.ICheckbox
 /**
  * A checkbox component
  */
-class VibrantCheckbox(positionX: Double, positionY: Double, width: Double, height: Double, text: String, isSelected: Boolean = false) :
+open class VibrantCheckbox(positionX: Double, positionY: Double, width: Double, height: Double, text: String, isSelected: Boolean = false) :
         AbstractVibrantComponent(positionX, positionY, width, height, text), ICheckbox {
     override var isChecked: Boolean = isSelected
         set(value) {

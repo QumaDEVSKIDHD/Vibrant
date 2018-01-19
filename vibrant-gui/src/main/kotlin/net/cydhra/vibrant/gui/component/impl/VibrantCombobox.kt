@@ -3,7 +3,7 @@ package net.cydhra.vibrant.gui.component.impl
 import net.cydhra.vibrant.gui.component.ICombobox
 import net.cydhra.vibrant.gui.component.IPanel
 
-class VibrantCombobox<T>(override var positionX: Double,
+open class VibrantCombobox<T>(override var positionX: Double,
                          override var positionY: Double,
                          override var width: Double,
                          override var height: Double,

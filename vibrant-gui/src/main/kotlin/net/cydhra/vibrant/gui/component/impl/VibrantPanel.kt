@@ -5,7 +5,7 @@ import net.cydhra.vibrant.gui.component.IPanel
 /**
  * Believe me, it really does nothing.
  */
-class VibrantPanel(override var positionX: Double,
+open class VibrantPanel(override var positionX: Double,
                    override var positionY: Double,
                    override var width: Double,
                    override var height: Double,
