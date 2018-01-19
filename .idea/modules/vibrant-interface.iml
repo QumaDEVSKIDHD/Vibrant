@@ -42,11 +42,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="vibrant-gui" scope="PROVIDED" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.10" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.20" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.20" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.20" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
@@ -56,12 +55,12 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="module" module-name="vibrant-gui" scope="RUNTIME" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.10" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.20" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.20" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.20" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
@@ -71,12 +70,12 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="module" module-name="vibrant-gui" scope="TEST" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.20" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.20" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.20" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
@@ -86,5 +85,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
   </component>
 </module>

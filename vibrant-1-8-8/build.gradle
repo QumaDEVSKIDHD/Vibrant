@@ -1,5 +1,6 @@
+def clientBaseName = 'vibrant'
+
 buildscript {
-    ext.kotlin_version = '1.2.10'
     ext.aspectjVersion = '1.8.9'
 
     repositories {
@@ -7,8 +8,8 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
     }
 }
 
@@ -17,7 +18,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'aspectj.gradle'
 apply plugin: 'java'
-apply plugin: 'kotlin'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 
@@ -27,8 +28,6 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-
     compile 'com.google.code.findbugs:jsr305:3.0.1'
     compile 'org.apache.logging.log4j:log4j-core:2.8'
     compile 'com.google.code.gson:gson:2.7'
@@ -46,20 +45,39 @@ dependencies {
     compile project(":vibrant-client")
     compile project(":vibrant-interface")
 
+    compile files('workspace/versions/1.8.8/1.8.8.jar')
     compile files('lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar')
     compile files('lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar')
-    compile files('lib/com/paulscode/codecwav/20101023/codecwav-20101023.jar')
     compile files('lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar')
     compile files('lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar')
     compile files('lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar')
     compile files('lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar')
-    compile files('workspace/versions/1.8.8/1.8.8.jar')
     compile files('lib/tv/twitch/twitch/6.5/twitch-6.5.jar')
 }
 
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+shadowJar {
+    baseName = clientBaseName
+    classifier = null
+    version = null
+
+    dependencies {
+        exclude(dependency('io.netty:netty-all'))
+        exclude(dependency('net.sf.jopt-simple:jopt-simple'))
+        exclude(dependency('org.apache.directory.studio:org.apache.commons.codec'))
+        exclude(dependency('com.ibm.icu:icu4j'))
+        exclude(dependency('org.lwjgl.lwjgl:lwjgl_util'))
+        exclude(dependency('it.unimi.dsi:fastutil'))
+        exclude(dependency('com.google.code.gson:gson'))
+        exclude(dependency('org.apache.logging.log4j:log4j-core'))
+        exclude(dependency('com.google.code.findbugs:jsr305'))
+
+        exclude('tv/**')
+        exclude('oshi-project/oshi-core/**')
+        exclude('com/paulscode/soundsystem/**')
+        exclude('com/paulscode/librarylwjglopenal/**')
+        exclude('com/paulscode/libraryjavasound/**')
+        exclude('com/paulscode/codecwav/**')
+        exclude('com/paulscode/codecjorbis/**')
+        exclude('com/mojang/authlib/**')
+    }
 }
