@@ -89,8 +89,8 @@ abstract class AbstractVibrantComponent(
     /**
      * Drag handler that is only executed when the component was actually clicked (and not one of its sub-components)
      *
-     * @param mouseX mouse position x relative to component's origin
-     * @param mouseY mouse position y relative to component's origin
+     * @param mouseX mouse position x relative to the component's parent's origin
+     * @param mouseY mouse position y relative to component's parent's origin
      * @param mouseButton clicked mouse button
      */
     open protected fun onDragAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
