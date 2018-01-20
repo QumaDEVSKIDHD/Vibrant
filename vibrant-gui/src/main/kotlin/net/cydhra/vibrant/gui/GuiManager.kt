@@ -22,6 +22,7 @@ object GuiManager {
         this.setRenderer(VibrantPanel::class.java, VibrantBoxRenderer())
         this.setRenderer(VibrantMenuItem::class.java, VibrantMenuItemRenderer())
         this.setRenderer(VibrantCombobox::class.java, VibrantComboboxRenderer())
+        this.setRenderer(VibrantDraggablePanel::class.java, VibrantBoxRenderer())
     }
 
     /**
