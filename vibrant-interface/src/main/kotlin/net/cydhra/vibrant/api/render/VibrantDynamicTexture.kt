@@ -1,10 +1,5 @@
 package net.cydhra.vibrant.api.render
 
-interface VibrantDynamicTexture {
+import net.cydhra.vibrant.gui.util.IDynamicTexture
 
-    fun getGlTextureId(): Int
-
-    fun deleteGlTexture()
-
-    fun updateDynamicTexture()
-}
+interface VibrantDynamicTexture : IDynamicTexture

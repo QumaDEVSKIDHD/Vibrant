@@ -25,6 +25,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     compile 'org.lwjgl.lwjgl:lwjgl_util:2.9.3'
+
+    compile files("../lib/slick.jar")
 }
 
 compileKotlin {

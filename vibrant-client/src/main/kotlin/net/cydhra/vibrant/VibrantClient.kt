@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory
  */
 object VibrantClient {
 
+    const val VERSION = "v1.0"
+
     val logger = LoggerFactory.getLogger("Vibrant")!!
 
     lateinit var minecraft: VibrantMinecraft
