@@ -149,3 +149,4 @@ gradle-app.setting
 
 /*/src/main/java/net/minecraft/
 **/lib/
+!**/lib/slick.jar

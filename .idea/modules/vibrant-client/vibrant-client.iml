@@ -68,6 +68,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: slick" level="project" />
     <orderEntry type="module" module-name="vibrant-interface" scope="RUNTIME" />
     <orderEntry type="module" module-name="vibrant-gui" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.21" level="project" />
@@ -95,6 +96,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: slick" level="project" />
     <orderEntry type="module" module-name="vibrant-interface" scope="TEST" />
     <orderEntry type="module" module-name="vibrant-gui" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.21" level="project" />
@@ -122,5 +124,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: slick" level="project" />
   </component>
 </module>
