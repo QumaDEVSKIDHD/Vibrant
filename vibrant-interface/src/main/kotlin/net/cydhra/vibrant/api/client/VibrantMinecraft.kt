@@ -4,6 +4,7 @@ import net.cydhra.vibrant.api.entity.VibrantPlayerSP
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen
 import net.cydhra.vibrant.api.render.*
 import net.cydhra.vibrant.api.world.VibrantWorld
+import java.awt.image.BufferedImage
 
 /**
  *
@@ -25,6 +26,10 @@ interface VibrantMinecraft {
     fun newScaledResolution(): VibrantScaledResolution
 
     fun newFrustum(): VibrantFrustum
+
+    fun newDynamicTexture(bufferedImage: BufferedImage): VibrantDynamicTexture
+
+    fun newDynamicTexture(width: Int, height: Int): VibrantDynamicTexture
 
     fun getTextureManager(): VibrantTextureManager
 
