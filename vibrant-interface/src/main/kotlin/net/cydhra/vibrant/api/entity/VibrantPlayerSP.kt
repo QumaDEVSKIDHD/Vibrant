@@ -9,4 +9,5 @@ interface VibrantPlayerSP : VibrantEntityLiving {
 
     var isFlying: Boolean
 
+    var isSprinting: Boolean
 }
