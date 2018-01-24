@@ -6,6 +6,7 @@ import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
 import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
+import java.awt.Color
 
 
 /**
@@ -30,13 +31,14 @@ class VibrantTextboxRenderer : ComponentRenderer<VibrantTextbox> {
                 (textPosY - 1).toInt(),
                 GuiManager.fontRenderer.getStringWidth(component.text.substring(component.cursorIndex, (component.cursorIndex + component
                         .markerLength))),
-                GuiManager.fontRenderer.getStringHeight(component.text) + 2)
+                GuiManager.fontRenderer.getStringHeight(component.text) + 2,
+                Color(theme.tertiaryColor.red, theme.tertiaryColor.green, theme.tertiaryColor.blue, 100))
 
         // draw cursor
         if (component.isMouseOver && System.currentTimeMillis() / 500 % 2 == 0L) {
             val cursorX = (component.posX + VibrantTextbox.MARGIN_LEFT +
                     GuiManager.fontRenderer.getStringWidth(component.text.substring(0, component.cursorIndex)) + 1)
-            GlStateManager.disableColorBlending()
+
             GlStateManager.disableLineSmoothing()
             RenderUtil.drawLine(cursorX, (textPosY - 1).toInt(), cursorX,
                     (textPosY + GuiManager.fontRenderer.getStringHeight(component.text) + 1).toInt(), theme.primaryTextColor)
