@@ -70,8 +70,8 @@ abstract class AbstractVibrantComponent(
         children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
                 ?.apply { this.onClick(mouseX - this.posX, mouseY - this.posY, mouseButton) }
                 ?.apply {
-                    this@AbstractVibrantComponent.children.remove(this@apply);
-                    this@AbstractVibrantComponent.children.add(0, this@apply)
+                    if (this@AbstractVibrantComponent.children.remove(this@apply))
+                        this@AbstractVibrantComponent.children.add(0, this@apply)
                 }
                 ?: this.onClickAction(mouseX, mouseY, mouseButton)
     }
