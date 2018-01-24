@@ -2,7 +2,6 @@ package net.cydhra.vibrant.gui.component.impl
 
 import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.IComponent
-import net.cydhra.vibrant.gui.util.GlStateManager
 import org.lwjgl.opengl.GL11
 import java.util.*
 
@@ -53,10 +52,8 @@ abstract class AbstractVibrantComponent(
     }
 
     override fun drawComponent() {
-        GlStateManager.pushState()
         GuiManager.getRenderer(this.javaClass)?.renderComponent(this, GuiManager.theme)
                 ?: IllegalStateException("No renderer for ${this.javaClass} was set in the GuiManager")
-        GlStateManager.popState()
 
         GL11.glTranslated(this.positionX, this.positionY, 0.0)
         for (it in this.children) {

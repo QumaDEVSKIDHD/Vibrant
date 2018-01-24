@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.font
 
+import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL11.*
 import org.newdawn.slick.SlickException
 import org.newdawn.slick.UnicodeFont
@@ -33,37 +34,22 @@ class VibrantFontRenderer(awtFont: Font) {
             return 0
         }
 
+        GL11.glPushAttrib(GL11.GL_ENABLE_BIT)
         glPushMatrix()
         glScaled(0.5, 0.5, 0.5)
 
-        val blend = glIsEnabled(GL_BLEND)
-        val lighting = glIsEnabled(GL_LIGHTING)
-        val texture = glIsEnabled(GL_TEXTURE_2D)
+        GL11.glEnable(GL11.GL_BLEND)
+        GL11.glDisable(GL11.GL_LIGHTING)
+        GL11.glEnable(GL11.GL_TEXTURE_2D)
 
-        if (!blend) {
-            glEnable(GL_BLEND)
-        }
-        if (lighting) {
-            glDisable(GL_LIGHTING)
-        }
-        if (texture) {
-            glDisable(GL_TEXTURE_2D)
-        }
         x *= 2
         y *= 2
 
         font.drawString(x.toFloat(), y.toFloat(), string, org.newdawn.slick.Color(color))
 
-        if (texture) {
-            glEnable(GL_TEXTURE_2D)
-        }
-        if (lighting) {
-            glEnable(GL_LIGHTING)
-        }
-        if (!blend) {
-            glDisable(GL_BLEND)
-        }
         glPopMatrix()
+        GL11.glPopAttrib()
+
         return x
     }
 
