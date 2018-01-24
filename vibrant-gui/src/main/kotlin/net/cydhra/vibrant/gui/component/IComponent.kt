@@ -78,6 +78,14 @@ interface IComponent {
     fun onDragReleased(mouseX: Int, mouseY: Int, mouseButton: Int)
 
     /**
+     * Called when this component is focused and a key on the keyboard is typed
+     *
+     * @param typedChar the character code for the typed key (if any)
+     * @param keyCode the code for the typed key
+     */
+    fun onKeyTyped(typedChar: Char, keyCode: Int)
+
+    /**
      * @param mouseX mouse position x relative to component's origin
      * @param mouseY mouse position y relative to component's origin
      *

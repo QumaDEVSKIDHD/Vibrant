@@ -33,6 +33,6 @@ open class VibrantSlider(initialValue: Double,
      * Update the value of the slider based on the current mouse position while dragging
      */
     private fun updateValue(mouseX: Int) {
-        this.value = Math.min(Math.max(mouseX - this.positionX, 0.0), this.width) / this.width
+        this.value = Math.min(Math.max(mouseX.toDouble(), 0.0), this.width) / this.width
     }
 }

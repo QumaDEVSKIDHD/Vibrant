@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.gui.theme
 
 import java.awt.Color
+import java.awt.Font
 
 /**
  *
@@ -13,6 +14,8 @@ interface Theme {
 
     val primaryTextColor: Color
     val secondaryTextColor: Color
+
+    val textFont: Font
 
     /**
      * Create a highlighted version of the given color

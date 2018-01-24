@@ -2,6 +2,7 @@ package net.cydhra.vibrant.gui
 
 import net.cydhra.vibrant.gui.component.IComponent
 import net.cydhra.vibrant.gui.component.impl.*
+import net.cydhra.vibrant.gui.font.VibrantFontRenderer
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.renderer.impl.*
 import net.cydhra.vibrant.gui.theme.DefaultTheme
@@ -16,6 +17,18 @@ object GuiManager {
 
     var theme: Theme = DefaultTheme()
 
+    private var _fontObjHash: Int = theme.textFont.hashCode()
+    var fontRenderer: VibrantFontRenderer = VibrantFontRenderer(theme.textFont)
+        get() {
+            if (theme.textFont.hashCode() != _fontObjHash) {
+                field = VibrantFontRenderer(theme.textFont)
+                _fontObjHash = theme.textFont.hashCode()
+            }
+
+            return field
+        }
+        private set
+
     init {
         this.setRenderer(VibrantButton::class.java, VibrantButtonRenderer())
         this.setRenderer(VibrantCheckbox::class.java, VibrantCheckboxRenderer())
@@ -24,6 +37,7 @@ object GuiManager {
         this.setRenderer(VibrantCombobox::class.java, VibrantComboboxRenderer())
         this.setRenderer(VibrantDraggablePanel::class.java, VibrantBoxRenderer())
         this.setRenderer(VibrantSlider::class.java, VibrantSliderRenderer())
+        this.setRenderer(VibrantTextbox::class.java, VibrantTextboxRenderer())
     }
 
     /**

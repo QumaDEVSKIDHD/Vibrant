@@ -19,8 +19,8 @@ open class VibrantDraggablePanel(override var positionX: Double,
             dragY = mouseY
             isDragging = true
         } else {
-            this.positionX = (mouseX - dragX).toDouble()
-            this.positionY = (mouseY - dragY).toDouble()
+            this.positionX = ((mouseX + posX) - dragX).toDouble()
+            this.positionY = ((mouseY + posY) - dragY).toDouble()
         }
     }
 

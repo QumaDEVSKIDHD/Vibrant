@@ -76,13 +76,17 @@ open class VibrantScreen {
             isDragging = true
         }
 
-        draggedComponent?.onDrag(mouseX, mouseY, mouseButton)
+        draggedComponent?.onDrag(mouseX - draggedComponent!!.posX, mouseY - draggedComponent!!.posY, mouseButton)
     }
 
     fun dragReleased(mouseX: Int, mouseY: Int, mouseButton: Int) {
         isDragging = false
         draggedComponent?.onDragReleased(mouseX, mouseY, mouseButton)
         draggedComponent = null
+    }
+
+    fun onKeyTyped(typedChar: Char, keyCode: Int) {
+        this.components.first?.onKeyTyped(typedChar, keyCode)
     }
 
     fun draw() {

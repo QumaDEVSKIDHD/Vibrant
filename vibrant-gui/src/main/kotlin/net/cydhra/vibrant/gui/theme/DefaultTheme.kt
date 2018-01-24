@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.gui.theme
 
 import java.awt.Color
+import java.awt.Font
 
 /**
  *
@@ -14,6 +15,8 @@ class DefaultTheme : Theme {
     override val secondaryTextColor: Color = Color(255, 220, 190)
 
     private val edges = 6
+
+    override val textFont: Font = Font("Tahoma", Font.PLAIN, 18)
 
     override fun highlightColor(color: Color): Color {
         return color.brighter()

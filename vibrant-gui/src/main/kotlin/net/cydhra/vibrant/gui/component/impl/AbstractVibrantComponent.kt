@@ -3,6 +3,7 @@ package net.cydhra.vibrant.gui.component.impl
 import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.IComponent
 import org.lwjgl.opengl.GL11
+import java.util.*
 
 /**
  * A basic implementation of the features all components have. Everything not implemented by this class must be implemented by its
@@ -16,7 +17,7 @@ abstract class AbstractVibrantComponent(
         override var height: Double,
         override var text: String) : IComponent {
 
-    protected val children: MutableList<AbstractVibrantComponent> = mutableListOf()
+    protected val children: MutableList<AbstractVibrantComponent> = LinkedList()
 
     override var isMouseOver: Boolean = false
 
@@ -51,8 +52,8 @@ abstract class AbstractVibrantComponent(
     }
 
     override fun drawComponent() {
-        GuiManager.getRenderer(this.javaClass)?.renderComponent(this, GuiManager.theme) ?:
-                IllegalStateException("No renderer for ${this.javaClass} was set in the GuiManager")
+        GuiManager.getRenderer(this.javaClass)?.renderComponent(this, GuiManager.theme)
+                ?: IllegalStateException("No renderer for ${this.javaClass} was set in the GuiManager")
 
         GL11.glTranslated(this.positionX, this.positionY, 0.0)
         this.children.forEach(IComponent::drawComponent)
@@ -62,7 +63,32 @@ abstract class AbstractVibrantComponent(
     override fun onClick(mouseX: Int, mouseY: Int, mouseButton: Int) {
         children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
                 ?.apply { this.onClick(mouseX - this.posX, mouseY - this.posY, mouseButton) }
+                ?.apply {
+                    this@AbstractVibrantComponent.children.remove(this@apply);
+                    this@AbstractVibrantComponent.children.add(0, this@apply)
+                }
                 ?: this.onClickAction(mouseX, mouseY, mouseButton)
+    }
+
+    override fun onDrag(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
+                ?.apply { this.onDrag(mouseX - this.posX, mouseY - this.posY, mouseButton) }
+                ?.apply {
+                    this@AbstractVibrantComponent.children.remove(this@apply);
+                    this@AbstractVibrantComponent.children.add(0, this@apply)
+                }
+                ?: this.onDragAction(mouseX, mouseY, mouseButton)
+    }
+
+    override fun onDragReleased(mouseX: Int, mouseY: Int, mouseButton: Int) {
+        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
+                ?.apply { this.onDragReleased(mouseX - this.posX, mouseY - this.posY, mouseButton) }
+                ?: this.onDragReleasedAction(mouseX, mouseY, mouseButton)
+    }
+
+    override fun onKeyTyped(typedChar: Char, keyCode: Int) {
+        this.children.firstOrNull()?.onKeyTyped(typedChar, keyCode)
+            ?: this.onKeyAction(typedChar, keyCode)
     }
 
     /**
@@ -73,18 +99,6 @@ abstract class AbstractVibrantComponent(
      * @param mouseButton clicked mouse button
      */
     open protected fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
-
-    override fun onDrag(mouseX: Int, mouseY: Int, mouseButton: Int) {
-        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
-                ?.apply { this.onDrag(mouseX - this.posX, mouseY - this.posY, mouseButton) }
-                ?: this.onDragAction(mouseX, mouseY, mouseButton)
-    }
-
-    override fun onDragReleased(mouseX: Int, mouseY: Int, mouseButton: Int) {
-        children.firstOrNull { it.updateHovering(mouseX - it.posX, mouseY - it.posY, false) }
-                ?.apply { this.onDragReleased(mouseX - this.posX, mouseY - this.posY, mouseButton) }
-                ?: this.onDragReleasedAction(mouseX, mouseY, mouseButton)
-    }
 
     /**
      * Drag handler that is only executed when the component was actually clicked (and not one of its sub-components)
@@ -103,4 +117,12 @@ abstract class AbstractVibrantComponent(
      * @param mouseButton clicked mouse button
      */
     open protected fun onDragReleasedAction(mouseX: Int, mouseY: Int, mouseButton: Int) {}
+
+    /**
+     * Key press handler that is only executed when the component was actually in focus
+     *
+     * @param typedChar the character code for the typed key (if any)
+     * @param keyCode the code for the typed key
+     */
+    open protected fun onKeyAction(typedChar: Char, keyCode: Int) {}
 }
