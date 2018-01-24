@@ -10,7 +10,7 @@ import net.minecraft.client.gui.GuiScreen;
  *
  */
 public class VibrantGuiScreenAdapter extends GuiScreen {
-    private VibrantGuiScreen vScreen;
+    private final VibrantGuiScreen vScreen;
     
     public VibrantGuiScreenAdapter(VibrantGuiScreen vScreen) {
         this.vScreen = vScreen;
@@ -40,6 +40,10 @@ public class VibrantGuiScreenAdapter extends GuiScreen {
     }
     
     public void initGui() {
+        // set the properties of the VibrantGuiScreen implementation.
+        this.vScreen.setWidth(width);
+        this.vScreen.setHeight(height);
+        
         vScreen.initGui();
     }
     

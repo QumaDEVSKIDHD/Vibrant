@@ -7,6 +7,10 @@ import net.cydhra.vibrant.api.client.VibrantMinecraft
  */
 interface VibrantGuiScreen {
 
+    var height: Int
+
+    var width: Int
+
     fun drawScreen(mouseX: Int, mouseY: Int, partialTicks: Float) {}
 
     fun keyTyped(typedChar: Char, keyCode: Int) {}
