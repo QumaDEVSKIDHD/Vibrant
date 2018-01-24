@@ -25,7 +25,7 @@ open class VibrantSlider(initialValue: Double,
     }
 
     override fun onClickAction(mouseX: Int, mouseY: Int, mouseButton: Int) {
-        this.updateValue(mouseX + this.posX)
+        this.updateValue(mouseX)
         selectionHandlers.forEach { it.invoke(this.value) }
     }
 

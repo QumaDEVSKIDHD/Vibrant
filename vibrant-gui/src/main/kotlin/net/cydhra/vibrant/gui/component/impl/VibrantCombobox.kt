@@ -53,7 +53,7 @@ open class VibrantCombobox<T>(override var positionX: Double,
         val panel = VibrantPanel(this.height / 2, this.height, this.width - this.height, 1.0, "")
 
         this.items.forEach { item ->
-            panel.addChildComponent(VibrantMenuItem<T>(this, 0.0, panel.height, panel.width, 20.0, item).apply {
+            panel.addChildComponent(VibrantMenuItem(this, 0.0, panel.height, panel.width, 20.0, item).apply {
                 this.registerClickHandler {
                     this@VibrantCombobox.selectedItem = this.content
                     this@VibrantCombobox.isExpanded = false
