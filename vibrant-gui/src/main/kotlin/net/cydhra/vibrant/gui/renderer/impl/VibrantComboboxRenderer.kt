@@ -42,10 +42,11 @@ class VibrantComboboxRenderer : ComponentRenderer<ICombobox<*>> {
 
         GlStateManager.popMatrix()
 
+        val textToRender = component.selectedItem?.toString() ?: component.text
+
         GuiManager.fontRenderer.drawString(component.text,
-                (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(component.text)) / 2).toInt(),
-                (component.posY + (component.height -
-                        GuiManager.fontRenderer.getStringHeight(component.selectedItem?.toString() ?: component.text)) / 2 - 1).toInt(),
+                (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(textToRender)) / 2  - component.height).toInt(),
+                (component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(textToRender)) / 2 - 1).toInt(),
                 theme.primaryTextColor.rgb)
     }
 
