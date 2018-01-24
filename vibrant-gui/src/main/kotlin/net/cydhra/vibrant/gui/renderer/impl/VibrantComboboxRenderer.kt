@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.renderer.impl
 
+import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.ICombobox
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
@@ -40,6 +41,12 @@ class VibrantComboboxRenderer : ComponentRenderer<ICombobox<*>> {
                 (component.width - component.height).toInt(), 0, component.height / 2, edges, 0, edges / 2, theme.secondaryColor)
 
         GlStateManager.popMatrix()
+
+        GuiManager.fontRenderer.drawString(component.text,
+                (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(component.text)) / 2).toInt(),
+                (component.posY + (component.height -
+                        GuiManager.fontRenderer.getStringHeight(component.selectedItem?.toString() ?: component.text)) / 2 - 1).toInt(),
+                theme.primaryTextColor.rgb)
     }
 
 }

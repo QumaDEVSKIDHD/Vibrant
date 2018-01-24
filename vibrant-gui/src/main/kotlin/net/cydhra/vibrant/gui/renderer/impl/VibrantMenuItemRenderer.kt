@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.renderer.impl
 
+import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.IMenuItem
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
@@ -25,5 +26,8 @@ class VibrantMenuItemRenderer : ComponentRenderer<IMenuItem<*>> {
 
         RenderUtil.fillRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), innerColor)
         RenderUtil.drawRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), outerColor)
+
+        GuiManager.fontRenderer.drawString(component.text, component.posX + 4, (component.posY + (component.height -
+                GuiManager.fontRenderer.getStringHeight(component.text)) / 2 + 1).toInt(), theme.primaryTextColor.rgb)
     }
 }

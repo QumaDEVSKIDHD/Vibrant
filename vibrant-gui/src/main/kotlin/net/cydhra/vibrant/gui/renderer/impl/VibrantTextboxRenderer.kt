@@ -14,8 +14,6 @@ import net.cydhra.vibrant.gui.util.RenderUtil
 class VibrantTextboxRenderer : ComponentRenderer<VibrantTextbox> {
 
     override fun renderComponent(component: VibrantTextbox, theme: Theme) {
-        GlStateManager.pushState()
-
         // draw box
         RenderUtil.fillRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), theme.primaryColor)
         RenderUtil.drawRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), theme.secondaryColor)
@@ -44,8 +42,6 @@ class VibrantTextboxRenderer : ComponentRenderer<VibrantTextbox> {
                     (textPosY + GuiManager.fontRenderer.getStringHeight(component.text) + 1).toInt(), theme.primaryTextColor)
             GlStateManager.enableLineSmoothing()
         }
-
-        GlStateManager.popState()
     }
 
 }

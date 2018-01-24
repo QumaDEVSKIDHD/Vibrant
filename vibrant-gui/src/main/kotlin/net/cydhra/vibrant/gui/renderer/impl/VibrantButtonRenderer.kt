@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.renderer.impl
 
+import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.IButton
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
@@ -52,5 +53,10 @@ class VibrantButtonRenderer : ComponentRenderer<IButton> {
                 (component.width - component.height).toInt(), 0, component.height / 2, edges, 0, edges / 2, outerColor)
 
         GlStateManager.popMatrix()
+
+        GuiManager.fontRenderer.drawString(component.text,
+                (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(component.text)) / 2).toInt(),
+                (component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(component.text)) / 2 - 1).toInt(),
+                theme.primaryTextColor.rgb)
     }
 }

@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.renderer.impl
 
+import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.ICheckbox
 import net.cydhra.vibrant.gui.component.impl.VibrantCheckbox
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
@@ -38,6 +39,10 @@ class VibrantCheckboxRenderer : ComponentRenderer<ICheckbox> {
             RenderUtil.drawCircleLike(0, 0, component.height / 4, edges, outerColor)
         }
         GlStateManager.popMatrix()
+
+        GuiManager.fontRenderer.drawString(component.text, (component.posX + 4 + component.height).toInt(),
+                (component.posY + (component.height
+                        - GuiManager.fontRenderer.getStringHeight(component.text)) / 2 - 1).toInt(), theme.primaryTextColor.rgb)
     }
 
 }
