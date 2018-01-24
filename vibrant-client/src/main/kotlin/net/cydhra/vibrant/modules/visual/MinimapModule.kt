@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.modules.render
+package net.cydhra.vibrant.modules.visual
 
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.api.entity.VibrantZombie
@@ -17,7 +17,7 @@ import java.awt.Color
 /**
  *
  */
-class MinimapModule : Module("Minimap", DefaultCategories.RENDER) {
+class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
 
     private val perspectiveAngle = VibrantSettings.registerConfig(VibrantConfig("Map Angle", 45, 40, 70, 1))
     private val mapRadius = VibrantSettings.registerConfig(VibrantConfig("Map Radius", 80, 50, 100, 1))

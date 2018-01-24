@@ -3,9 +3,10 @@ package net.cydhra.vibrant.modulesystem
 import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
+import net.cydhra.vibrant.modules.gui.ClickGuiModule
 import net.cydhra.vibrant.modules.movement.FlyModule
-import net.cydhra.vibrant.modules.render.MinimapModule
 import net.cydhra.vibrant.modules.system.HudModule
+import net.cydhra.vibrant.modules.visual.MinimapModule
 import net.cydhra.vibrant.modulesystem.ModuleManager.init
 import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
 
@@ -27,6 +28,7 @@ object ModuleManager {
         this.registerModule(FlyModule())
         this.registerModule(MinimapModule())
         this.registerModule(HudModule())
+        this.registerModule(ClickGuiModule())
     }
 
     /**

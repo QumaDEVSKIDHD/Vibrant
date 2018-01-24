@@ -12,7 +12,7 @@ abstract class Module(val name: String,
                       val category: ModuleCategory = DefaultCategories.MISCELLANEOUS,
                       var keycode: Int = 0) {
 
-    var isEnabled = false
+    open var isEnabled = false
         set(enabled) {
             if (field != enabled) {
                 if (enabled) {

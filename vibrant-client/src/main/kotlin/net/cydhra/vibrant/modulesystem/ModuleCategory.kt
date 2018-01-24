@@ -16,5 +16,5 @@ object DefaultCategories {
     val AUTO = ModuleCategory("Automation");
     val COMBAT = ModuleCategory("Combat")
     val BUILD = ModuleCategory("Building")
-    val RENDER = ModuleCategory("Render")
+    val VISUAL = ModuleCategory("Render")
 }
