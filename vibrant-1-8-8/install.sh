@@ -34,7 +34,7 @@ cd ..
 echo
 
 echo 'Copying Sources...'
-mkdirhier src/main/java
+mkdir -p src/main/java
 cp --parents tmp/src/minecraft/* src/main/java
 echo
 
