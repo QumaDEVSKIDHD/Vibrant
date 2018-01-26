@@ -65,9 +65,9 @@ mkdir workspace
 cp --parents tmp/jars/* workspace
 echo
 
-echo Cleaning Up...
-rm -rf tmp
-echo
+#echo Cleaning Up...
+#rm -rf tmp
+#echo
 
 echo 'Done.'
 echo
