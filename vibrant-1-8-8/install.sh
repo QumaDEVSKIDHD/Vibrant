@@ -30,7 +30,7 @@ echo
 
 echo 'Configuring MCP...'
 cd ..
-cp mcp.conf tmp/conf/mcp.conf
+cp mcp.cfg tmp/conf/mcp.cfg
 cd tmp
 
 echo 'Executing MCP...'
