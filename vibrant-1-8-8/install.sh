@@ -29,7 +29,9 @@ rm 'mcp.zip'
 echo
 
 echo 'Configuring MCP...'
+cd ..
 cp mcp.conf tmp/conf/mcp.conf
+cd tmp
 
 echo 'Executing MCP...'
 sh decompile.sh
