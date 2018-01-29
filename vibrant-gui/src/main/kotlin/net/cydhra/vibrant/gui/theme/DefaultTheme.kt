@@ -16,7 +16,7 @@ class DefaultTheme : Theme {
 
     private val edges = 6
 
-    override val textFont: Font = Font("Tahoma", Font.PLAIN, 18)
+    override val textFont: Font = Font("Agency FB", Font.PLAIN, 22)
 
     override fun highlightColor(color: Color): Color {
         return color.brighter()
