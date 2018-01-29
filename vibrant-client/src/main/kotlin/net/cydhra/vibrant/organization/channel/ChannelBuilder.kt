@@ -6,16 +6,17 @@ package net.cydhra.vibrant.organization.channel
 class ChannelBuilder<R : Any>(private var channel: IResourceChannel<R>) {
 
     companion object {
-        fun <R : Any> newBuilder(monitor: () -> R): ChannelBuilder<R> {
-            return ChannelBuilder(ResourceChannel(monitor))
+        fun <R : Any> newBuilder(monitor: () -> R, updater: (R, R) -> Unit): ChannelBuilder<R> {
+            return ChannelBuilder(ResourceChannel(monitor, updater))
         }
     }
 
     /**
      * Creates a channel where client and server side cannot diverge
      */
-    fun convergent() {
+    fun convergent(): ChannelBuilder<R> {
         this.channel = ConvergentResourceChannel(this.channel)
+        return this
     }
 
     /**

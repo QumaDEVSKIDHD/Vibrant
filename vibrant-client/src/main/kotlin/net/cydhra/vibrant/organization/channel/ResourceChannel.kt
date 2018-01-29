@@ -5,10 +5,10 @@ import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 /**
  *
  */
-open class ResourceChannel<R : Any>(protected val monitor: () -> R) : IResourceChannel<R> {
+open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater: (R, R) -> Unit) : IResourceChannel<R> {
 
-    protected lateinit var clientSideState: R
-    protected lateinit var serverSideState: R
+    protected var clientSideState: R = monitor.invoke()
+    protected var serverSideState: R = monitor.invoke()
 
     protected val requests: MutableCollection<Request<R>> = mutableListOf()
 
@@ -38,6 +38,8 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R) : IResourceC
     }
 
     override fun evaluateNewState() {
+        this.clientSideState = monitor.invoke()
+
         val newClientSideState = this.requests
                 .stream()
                 .filter { it.side == Side.CLIENT || it.side == Side.BOTH }
@@ -59,6 +61,8 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R) : IResourceC
         if (newServerSideState != this.serverSideState) {
             this.updateState(Side.SERVER, newServerSideState)
         }
+
+        this.requests.clear()
     }
 
     override fun updateState(side: Side, state: R) {
@@ -70,6 +74,9 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R) : IResourceC
                 serverSideState = state
             }
         }
+
+        println("_")
+        updater.invoke(clientSideState, serverSideState)
     }
 
     enum class Side {

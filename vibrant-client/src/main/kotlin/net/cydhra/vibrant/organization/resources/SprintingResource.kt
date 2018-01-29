@@ -14,7 +14,10 @@ object SprintingResource : GameResource<SprintingResource.SprintResourceState>()
 
     override fun register(): MutableMap<GameResource<*>, in IResourceChannel<*>>.() -> Unit = {
         this[this@SprintingResource] = ChannelBuilder
-                .newBuilder { SprintResourceState(VibrantClient.minecraft.thePlayer?.isSprinting ?: false) }
+                .newBuilder(
+                        { SprintResourceState(VibrantClient.minecraft.thePlayer?.isSprinting ?: false) },
+                        { clientSide, _ -> VibrantClient.minecraft.thePlayer?.isSprinting = clientSide.isSprinting })
+                .convergent()
                 .create()
     }
 

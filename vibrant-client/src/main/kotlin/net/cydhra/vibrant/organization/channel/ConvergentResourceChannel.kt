@@ -24,6 +24,8 @@ class ConvergentResourceChannel<R : Any>(channel: IResourceChannel<R>) : Resourc
     }
 
     override fun updateState(side: ResourceChannel.Side, state: R) {
-        super.updateState(ResourceChannel.Side.BOTH, state)
+        if (side == ResourceChannel.Side.CLIENT)
+            super.updateState(ResourceChannel.Side.BOTH, state)
+        // else just ignore, because server sided updates do not change the state, since the client one already did.
     }
 }
