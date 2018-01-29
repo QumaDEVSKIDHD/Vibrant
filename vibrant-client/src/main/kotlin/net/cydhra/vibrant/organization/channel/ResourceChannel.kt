@@ -5,7 +5,7 @@ import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 /**
  *
  */
-open class ResourceChannel<R : Any>(protected val monitor: () -> R): IResourceChannel<R> {
+open class ResourceChannel<R : Any>(protected val monitor: () -> R) : IResourceChannel<R> {
 
     protected lateinit var clientSideState: R
     protected lateinit var serverSideState: R
@@ -30,10 +30,45 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R): IResourceCh
      * @return the state this channel holds currently for given side
      */
     override fun getCurrentState(side: Side): R {
-        return when(side) {
+        return when (side) {
             Side.CLIENT -> clientSideState
             Side.SERVER -> serverSideState
             Side.BOTH -> throw IllegalStateException("Cannot return both states")
+        }
+    }
+
+    override fun evaluateNewState() {
+        val newClientSideState = this.requests
+                .stream()
+                .filter { it.side == Side.CLIENT || it.side == Side.BOTH }
+                .reduce { acc, e -> if (acc.priority < e.priority) e else acc }
+                .map { it.state }
+                .orElse(monitor.invoke())
+
+        val newServerSideState = this.requests
+                .stream()
+                .filter { it.side == Side.SERVER || it.side == Side.BOTH }
+                .reduce { acc, e -> if (acc.priority < e.priority) e else acc }
+                .map { it.state }
+                .orElse(monitor.invoke())
+
+        if (newClientSideState != this.clientSideState) {
+            this.updateState(Side.CLIENT, newClientSideState)
+        }
+
+        if (newServerSideState != this.serverSideState) {
+            this.updateState(Side.SERVER, newServerSideState)
+        }
+    }
+
+    override fun updateState(side: Side, state: R) {
+        when (side) {
+            Side.CLIENT -> clientSideState = state
+            Side.SERVER -> serverSideState = state
+            else -> {
+                clientSideState = state
+                serverSideState = state
+            }
         }
     }
 

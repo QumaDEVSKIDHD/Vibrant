@@ -22,4 +22,8 @@ class ConvergentResourceChannel<R : Any>(channel: IResourceChannel<R>) : Resourc
     override fun getCurrentState(side: ResourceChannel.Side): R {
         return channel.getCurrentState(ResourceChannel.Side.CLIENT)
     }
+
+    override fun updateState(side: ResourceChannel.Side, state: R) {
+        super.updateState(ResourceChannel.Side.BOTH, state)
+    }
 }

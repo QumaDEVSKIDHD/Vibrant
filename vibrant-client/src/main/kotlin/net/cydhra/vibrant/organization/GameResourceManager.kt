@@ -35,6 +35,8 @@ object GameResourceManager {
         canRequestResources = true
         ModuleManager.modules.forEach(Module::requestResources)
         canRequestResources = false
+
+        this.resources.values.forEach(IResourceChannel<*>::evaluateNewState)
     }
 
     /**
