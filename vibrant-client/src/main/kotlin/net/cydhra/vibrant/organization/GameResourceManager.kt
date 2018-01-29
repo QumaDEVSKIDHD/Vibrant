@@ -7,6 +7,7 @@ import net.cydhra.vibrant.organization.channel.IResourceChannel
 import net.cydhra.vibrant.organization.channel.ResourceChannel
 import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
+import net.cydhra.vibrant.organization.resources.FlyingResource
 import net.cydhra.vibrant.organization.resources.SprintingResource
 
 /**
@@ -28,9 +29,18 @@ object GameResourceManager {
     init {
         EventManager.registerListeners(this)
 
-        SprintingResource.register()(this.resources as MutableMap<GameResource<*>, in IResourceChannel<*>>)
+        registerResource(SprintingResource)
+        registerResource(FlyingResource)
     }
 
+    @Suppress("UNCHECKED_CAST")
+    private fun <S : GameResourceState> registerResource(resource: GameResource<S>) {
+        resource.register()(this.resources as MutableMap<GameResource<*>, in IResourceChannel<*>>)
+    }
+
+    /**
+     * Called pre-tick: Calls all modules and requests for resource updates
+     */
     fun updateResources() {
         canRequestResources = true
         ModuleManager.modules.forEach(Module::requestResources)
