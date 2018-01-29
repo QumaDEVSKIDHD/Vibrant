@@ -20,9 +20,11 @@ class FlyModule : Module("Fly", DefaultCategories.MOVEMENT, Keyboard.KEY_F) {
 
     @EventHandler
     fun onTick(e: MinecraftTickEvent) {
-        if (VibrantClient.minecraft.thePlayer?.onGround == false) {
-            VibrantClient.minecraft.thePlayer?.isAllowedFlying = true
-            VibrantClient.minecraft.thePlayer?.isFlying = true
+        if (VibrantClient.minecraft.thePlayer != null) {
+            val grounded = !VibrantClient.minecraft.thePlayer!!.onGround
+
+            VibrantClient.minecraft.thePlayer!!.isAllowedFlying = grounded
+            VibrantClient.minecraft.thePlayer!!.isFlying = grounded
         }
     }
 }

@@ -28,8 +28,8 @@ class VibrantFontRenderer(awtFont: Font) {
     }
 
     fun drawString(string: String?, x: Int, y: Int, color: Int): Int {
-        var x = x
-        var y = y
+        var fx = x
+        var fy = y
         if (string == null) {
             return 0
         }
@@ -42,15 +42,15 @@ class VibrantFontRenderer(awtFont: Font) {
         GL11.glDisable(GL11.GL_LIGHTING)
         GL11.glEnable(GL11.GL_TEXTURE_2D)
 
-        x *= 2
-        y *= 2
+        fx *= 2
+        fy *= 2
 
-        font.drawString(x.toFloat(), y.toFloat(), string, org.newdawn.slick.Color(color))
+        font.drawString(fx.toFloat(), fy.toFloat(), string, org.newdawn.slick.Color(color))
 
         glPopMatrix()
         GL11.glPopAttrib()
 
-        return x
+        return fx
     }
 
     fun drawStringWithShadow(string: String, x: Float, y: Float, color: Int): Int {

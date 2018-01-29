@@ -1,7 +1,6 @@
 package net.cydhra.vibrant.modules.system
 
 import net.cydhra.eventsystem.listeners.EventHandler
-import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
 import net.cydhra.vibrant.gui.font.VibrantFontRenderer
 import net.cydhra.vibrant.modulesystem.DefaultCategories
@@ -15,6 +14,6 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
 
     @EventHandler
     fun onRenderOverlay(e: RenderOverlayEvent) {
-        fontRenderer.drawString("Vibrant ${VibrantClient.VERSION}", 2, 2, -1)
+        fontRenderer.drawString("Vibrant ${this.javaClass.`package`.implementationVersion}", 2, 2, -1)
     }
 }
