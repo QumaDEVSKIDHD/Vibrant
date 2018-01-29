@@ -1,6 +1,6 @@
 package net.cydhra.vibrant.hooks;
 
-import net.cydhra.eventsystem.EventManager;
+import net.cydhra.vibrant.VibrantClient;
 import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent;
 import net.minecraft.client.Minecraft;
 
@@ -13,6 +13,6 @@ public aspect TickHook {
             call(void net.minecraft.client.Minecraft.runTick());
     
     after(): tick() {
-        EventManager.callEvent(new MinecraftTickEvent());
+        VibrantClient.INSTANCE.tick();
     }
 }

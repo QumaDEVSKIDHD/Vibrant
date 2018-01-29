@@ -1,13 +1,24 @@
 package net.cydhra.vibrant.organization
 
+import net.cydhra.vibrant.organization.channel.IResourceChannel
+import net.cydhra.vibrant.organization.channel.ResourceChannel
+
 /**
  *
  */
-abstract class GameResource {
+abstract class GameResource<out S : GameResourceState> {
 
     /**
-     * This function is called once per tick and allows the resource to update state in the client application or sending packets to the
-     * remote server to update its state respectively.
+     * Register a [ResourceChannel] in a map of game resources with this instance as key. The channel shall not be exposed and therefore,
+     * this function returns a lambda with the map as receiver instead of the channel.
      */
-    abstract fun updateResourceState()
+    abstract fun register(): MutableMap<GameResource<*>, in IResourceChannel<*>>.() -> Unit
+
+    /**
+     * @return the current state for this resource on the given side. Note that [ResourceChannel.Side.BOTH] may yield invalid results
+     * thus throwing an Exception.
+     */
+    fun getCurrentState(side: ResourceChannel.Side): S {
+        return GameResourceManager.getCurrentState(this, side)
+    }
 }

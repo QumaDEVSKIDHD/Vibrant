@@ -57,4 +57,12 @@ abstract class Module(val name: String,
     protected open fun onEnable() {
 
     }
+
+    /**
+     * This method is called once per tick before the tick event is called. Every module can overwrite this method to request or
+     * manipulate resources of the GameResourceManager.
+     */
+    open fun requestResources() {
+
+    }
 }

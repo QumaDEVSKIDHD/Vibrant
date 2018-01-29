@@ -1,7 +1,10 @@
 package net.cydhra.vibrant
 
+import net.cydhra.eventsystem.EventManager
 import net.cydhra.vibrant.api.client.VibrantMinecraft
+import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
 import net.cydhra.vibrant.modulesystem.ModuleManager
+import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.settings.VibrantSettings
 import org.slf4j.LoggerFactory
 
@@ -27,5 +30,10 @@ object VibrantClient {
         ModuleManager.init()
 
         VibrantSettings.save()
+    }
+
+    fun tick() {
+        GameResourceManager.updateResources()
+        EventManager.callEvent(MinecraftTickEvent())
     }
 }

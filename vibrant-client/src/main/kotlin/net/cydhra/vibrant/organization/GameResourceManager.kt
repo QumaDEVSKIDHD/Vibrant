@@ -1,35 +1,63 @@
 package net.cydhra.vibrant.organization
 
 import net.cydhra.eventsystem.EventManager
-import net.cydhra.eventsystem.listeners.EventHandler
-import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
+import net.cydhra.vibrant.modulesystem.Module
+import net.cydhra.vibrant.modulesystem.ModuleManager
+import net.cydhra.vibrant.organization.channel.IResourceChannel
+import net.cydhra.vibrant.organization.channel.ResourceChannel
 import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
+import net.cydhra.vibrant.organization.resources.SprintingResource
 
 /**
- * Manages in-game resources of the player (like for example sprinting). A module can - at any time - request, require, enforce, disable
- * or otherwise manipulate any resource of the player, that is tracked here. This prevents multiple modules from concurrently setting
- * different player resources to different values thus creating bugs. If a module urgently requires a resource that is currently blocked
- * by another module with lower priority, it can be reassigned to the new requesting module. On the other hand, if a module requires a
- * certain resource, that is disabled at the moment due to urgent work of another module with higher priority, the first requesting
- * module must wait for that resource and cannot perform its work (unless the resource is not mandatory). It is always the module's
- * responsibility to react to missing or suddenly vanishing resources properly.
+ * Manages in-game resources of the player (like for example sprinting). A module can - while the updateResources state - request, require,
+ * enforce, disable or otherwise manipulate any resource of the player, that is tracked here. This prevents multiple modules from
+ * concurrently setting different player resources to different values thus creating bugs. If a module urgently requires a resource that
+ * is currently blocked by another module with lower priority, it can be reassigned to the new requesting module. On the other hand, if
+ * a module requires a certain resource, that is disabled at the moment due to urgent work of another module with higher priority, the
+ * first requesting module must wait for that resource and cannot perform its work (unless the resource is not mandatory). It is always
+ * the module's responsibility to react to missing or suddenly vanishing resources properly.
  */
 object GameResourceManager {
 
-    private val resources: MutableList<GameResource> = mutableListOf()
+    private var canRequestResources: Boolean = false
+    private val resources: MutableMap<GameResource<*>, IResourceChannel<in Any>> = mutableMapOf()
 
     val resourceRequestPriorityComparator: Comparator<ResourceRequestPriority> = DefaultPriorityComparator()
 
     init {
         EventManager.registerListeners(this)
+
+        SprintingResource.register()(this.resources as MutableMap<GameResource<*>, in IResourceChannel<*>>)
+    }
+
+    fun updateResources() {
+        canRequestResources = true
+        ModuleManager.modules.forEach(Module::requestResources)
+        canRequestResources = false
     }
 
     /**
-     * Update the resources' state by calling [GameResource.updateResourceState]
+     * Request a resource by providing a state the resource shall accept alongside a priority and a side for the channel
+     *
+     * @param resource the requested game resource
+     * @param state the state that shall be applied to the requested resource
+     * @param priority the priority which the request has
+     * @param side on which side (server or client) the resource shall be updated
+     *
+     * @throws IllegalStateException if it is currently not the right time to request resources
+     * @see Module.requestResources
      */
-    @EventHandler
-    fun onTick(e: MinecraftTickEvent) {
-        resources.forEach(GameResource::updateResourceState)
+    fun <T : GameResourceState> requestGameResource(
+            resource: GameResource<T>, state: T, priority: ResourceRequestPriority, side: ResourceChannel.Side = ResourceChannel.Side.BOTH) {
+        if (canRequestResources)
+            this.resources[resource]!!.appendState(state, priority, side)
+        else
+            throw IllegalStateException("Cannot request game resources outside of ${Module::requestResources.name}")
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <S : GameResourceState> getCurrentState(gameResource: GameResource<S>, side: ResourceChannel.Side): S {
+        return this.resources[gameResource]!!.getCurrentState(side) as S
     }
 }
