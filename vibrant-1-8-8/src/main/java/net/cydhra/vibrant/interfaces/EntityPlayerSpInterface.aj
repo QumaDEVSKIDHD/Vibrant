@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.interfaces;
 
+import net.cydhra.vibrant.api.client.VibrantMovementInput;
 import net.minecraft.client.entity.EntityPlayerSP;
 
 /**
@@ -23,4 +24,6 @@ public aspect EntityPlayerSpInterface {
     public void EntityPlayerSP.setFlying(boolean isFlying) {
         this.capabilities.isFlying = isFlying;
     }
+    
+    public VibrantMovementInput EntityPlayerSP.getMovementInput() { return (VibrantMovementInput) this.movementInput; }
 }
