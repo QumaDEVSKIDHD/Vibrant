@@ -15,9 +15,4 @@ interface IResourceChannel<R : Any> {
      * Determine the new state of the channel of all appended states and the previous state
      */
     fun evaluateNewState()
-
-    /**
-     * Forces a state upate. This should not be called from outside a channel or a decorator for a channel
-     */
-    fun updateState(side: ResourceChannel.Side, state: R)
 }

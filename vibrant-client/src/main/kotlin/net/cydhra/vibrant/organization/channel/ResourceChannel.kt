@@ -1,11 +1,14 @@
 package net.cydhra.vibrant.organization.channel
 
+import net.cydhra.vibrant.organization.channel.ResourceChannel.Side
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 
 /**
- *
+ * @param monitor a getter for the actual resource state in the client
+ * @param updater a function taking a side (it wont receive [Side.BOTH]) and the new state for that side which will then update the
+ * actual resource
  */
-open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater: (R, R) -> Unit) : IResourceChannel<R> {
+open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater: (Side, R) -> Unit) : IResourceChannel<R> {
 
     protected var clientSideState: R = monitor.invoke()
     protected var serverSideState: R = monitor.invoke()
@@ -65,18 +68,19 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater:
         this.requests.clear()
     }
 
-    override fun updateState(side: Side, state: R) {
-        when (side) {
-            Side.CLIENT -> clientSideState = state
-            Side.SERVER -> serverSideState = state
-            else -> {
-                clientSideState = state
-                serverSideState = state
-            }
+    /**
+     * Actually updates the side. This will invoke the [updater] with the actually updated side and the new state for that side
+     */
+    private fun updateState(side: Side, state: R) {
+        if (side == Side.CLIENT || side == Side.BOTH) {
+            clientSideState = state
+            updater.invoke(Side.CLIENT, state)
         }
 
-        println("_")
-        updater.invoke(clientSideState, serverSideState)
+        if (side == Side.SERVER || side == Side.BOTH) {
+            serverSideState = state
+            updater.invoke(Side.SERVER, state)
+        }
     }
 
     enum class Side {

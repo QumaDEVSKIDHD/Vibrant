@@ -5,6 +5,7 @@ import net.cydhra.vibrant.organization.GameResource
 import net.cydhra.vibrant.organization.GameResourceState
 import net.cydhra.vibrant.organization.channel.ChannelBuilder
 import net.cydhra.vibrant.organization.channel.IResourceChannel
+import net.cydhra.vibrant.organization.channel.ResourceChannel
 
 /**
  * This resource handles the player sprinting. This resource updates the sprint flag in client and on the server depending on modules'
@@ -16,7 +17,10 @@ object SprintingResource : GameResource<SprintingResource.SprintResourceState>()
         this[this@SprintingResource] = ChannelBuilder
                 .newBuilder(
                         { SprintResourceState(VibrantClient.minecraft.thePlayer?.isSprinting ?: false) },
-                        { clientSide, _ -> VibrantClient.minecraft.thePlayer?.isSprinting = clientSide.isSprinting })
+                        { side, state ->
+                            if (side == ResourceChannel.Side.CLIENT) // ignore server side since it is the same
+                                VibrantClient.minecraft.thePlayer?.isSprinting = state.isSprinting
+                        })
                 .convergent()
                 .create()
     }

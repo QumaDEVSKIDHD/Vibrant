@@ -15,10 +15,6 @@ abstract class ResourceChannelDecorator<R : Any>(val channel: IResourceChannel<R
         return channel.getCurrentState(side)
     }
 
-    override fun updateState(side: ResourceChannel.Side, state: R) {
-        this.channel.updateState(side, state)
-    }
-
     override fun evaluateNewState() {
         this.channel.evaluateNewState()
     }

@@ -6,7 +6,7 @@ package net.cydhra.vibrant.organization.channel
 class ChannelBuilder<R : Any>(private var channel: IResourceChannel<R>) {
 
     companion object {
-        fun <R : Any> newBuilder(monitor: () -> R, updater: (R, R) -> Unit): ChannelBuilder<R> {
+        fun <R : Any> newBuilder(monitor: () -> R, updater: (ResourceChannel.Side, R) -> Unit): ChannelBuilder<R> {
             return ChannelBuilder(ResourceChannel(monitor, updater))
         }
     }
