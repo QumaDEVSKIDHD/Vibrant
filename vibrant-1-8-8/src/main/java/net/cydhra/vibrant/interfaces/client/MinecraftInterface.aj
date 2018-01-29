@@ -1,9 +1,13 @@
-package net.cydhra.vibrant.interfaces;
+package net.cydhra.vibrant.interfaces.client;
 
 import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
-import net.cydhra.vibrant.api.render.*;
+import net.cydhra.vibrant.api.render.VibrantDynamicTexture;
+import net.cydhra.vibrant.api.render.VibrantEntityRenderer;
+import net.cydhra.vibrant.api.render.VibrantFrustum;
+import net.cydhra.vibrant.api.render.VibrantRenderGlobal;
+import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;

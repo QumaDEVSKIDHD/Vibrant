@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.interfaces;
+package net.cydhra.vibrant.interfaces.world;
 
 import net.cydhra.vibrant.api.entity.VibrantZombie;
 import net.minecraft.entity.monster.EntityZombie;

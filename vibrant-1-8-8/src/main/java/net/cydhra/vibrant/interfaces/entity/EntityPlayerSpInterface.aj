@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.interfaces;
+package net.cydhra.vibrant.interfaces.entity;
 
 import net.cydhra.vibrant.api.client.VibrantMovementInput;
 import net.minecraft.client.entity.EntityPlayerSP;

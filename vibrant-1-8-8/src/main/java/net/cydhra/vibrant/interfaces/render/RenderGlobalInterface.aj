@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.interfaces;
+package net.cydhra.vibrant.interfaces.render;
 
 import net.cydhra.vibrant.api.entity.VibrantEntity;
 import net.cydhra.vibrant.api.render.VibrantFrustum;

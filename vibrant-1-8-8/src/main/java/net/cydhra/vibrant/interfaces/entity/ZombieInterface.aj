@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.interfaces;
+package net.cydhra.vibrant.interfaces.entity;
 
 /**
  *
