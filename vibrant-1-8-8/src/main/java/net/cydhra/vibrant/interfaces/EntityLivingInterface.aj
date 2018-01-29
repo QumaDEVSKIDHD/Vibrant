@@ -24,4 +24,8 @@ public aspect EntityLivingInterface {
     public float EntityLivingBase.getRotationYaw() { return this.rotationYaw; }
     
     public float EntityLivingBase.getRotationPitch() { return this.rotationPitch; }
+    
+    public boolean EntityLivingBase.isCollidedHorizontally() { return this.isCollidedHorizontally; }
+    
+    public boolean EntityLivingBase.isCollidedVertically() { return this.isCollidedVertically; }
 }
