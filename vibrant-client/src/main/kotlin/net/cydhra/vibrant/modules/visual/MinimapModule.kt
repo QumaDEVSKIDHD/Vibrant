@@ -26,17 +26,13 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
 
     private var zombie: VibrantZombie? = null
 
-    override fun onEnable() {
-        this.zombie = mc.theWorld?.createZombie()
-    }
-
     @EventHandler
     fun onRender2D(e: RenderOverlayEvent) {
         if (mc.thePlayer == null)
             return
 
         if (this.zombie == null)
-            mc.theWorld!!.createZombie()
+            factory.createZombie(mc.theWorld!!)
 
         mc.entityRenderer.setupOverlayRendering()
 
