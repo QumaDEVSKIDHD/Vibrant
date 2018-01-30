@@ -1,6 +1,7 @@
 package net.cydhra.vibrant
 
 import net.cydhra.eventsystem.EventManager
+import net.cydhra.vibrant.api.client.VibrantFactory
 import net.cydhra.vibrant.api.client.VibrantMinecraft
 import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
 import net.cydhra.vibrant.modulesystem.ModuleManager
@@ -19,10 +20,13 @@ object VibrantClient {
 
     lateinit var minecraft: VibrantMinecraft
         private set
+    lateinit var factory: VibrantFactory
+        private set
 
-    fun init(minecraft: VibrantMinecraft) {
+    fun init(minecraft: VibrantMinecraft, factory: VibrantFactory) {
         logger.info("Vibrant Client successfully hooked.")
         this.minecraft = minecraft
+        this.factory = factory
 
         VibrantSettings.load()
 

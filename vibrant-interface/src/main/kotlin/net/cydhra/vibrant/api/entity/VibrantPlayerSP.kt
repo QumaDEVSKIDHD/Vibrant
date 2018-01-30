@@ -20,5 +20,5 @@ interface VibrantPlayerSP : VibrantEntityLiving {
 
     fun getHeldItem(): VibrantItemStack?
 
-    fun getEyeHeight(): Double
+    fun getEyeHeight(): Float
 }

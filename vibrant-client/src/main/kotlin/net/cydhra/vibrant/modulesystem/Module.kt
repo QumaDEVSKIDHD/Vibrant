@@ -30,6 +30,9 @@ abstract class Module(val name: String,
     val mc
         get() = VibrantClient.minecraft
 
+    val factory
+        get() = VibrantClient.factory
+
 
     /**
      * @return the name that shall be displayed in-game

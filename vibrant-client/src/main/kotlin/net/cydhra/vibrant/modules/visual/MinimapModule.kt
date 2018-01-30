@@ -43,7 +43,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
         GlStateManager.pushState()
         GlStateManager.pushMatrix()
 
-        val sc = mc.newScaledResolution()
+        val sc = factory.newScaledResolution()
         GL11.glTranslatef((sc.getScaledWidth() - mapRadius.value).toFloat(), (sc.getScaledHeight() - mapRadius.value).toFloat(), 0f)
 
         // prepare circular stencil
@@ -66,7 +66,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
         GL11.glRotatef(mc.thePlayer!!.rotationYaw % 360 - 180, 0f, 1f, 0f)
 
         // prepare view frustum
-        val frustum = mc.newFrustum()
+        val frustum = factory.newFrustum()
         zombie!!.setPositionAndRotation(
                 mc.thePlayer!!.posX - mc.thePlayer!!.getLookVec().xCoord * 8,
                 mc.thePlayer!!.posY + 10,
