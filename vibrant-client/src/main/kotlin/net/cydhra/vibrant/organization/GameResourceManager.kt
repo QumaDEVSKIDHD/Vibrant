@@ -9,6 +9,7 @@ import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 import net.cydhra.vibrant.organization.resources.FlyingResource
 import net.cydhra.vibrant.organization.resources.SprintingResource
+import net.cydhra.vibrant.organization.resources.YawPitchResource
 
 /**
  * Manages in-game resources of the player (like for example sprinting). A module can - while the updateResources state - request, require,
@@ -31,6 +32,7 @@ object GameResourceManager {
 
         registerResource(SprintingResource)
         registerResource(FlyingResource)
+        registerResource(YawPitchResource)
     }
 
     @Suppress("UNCHECKED_CAST")
