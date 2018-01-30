@@ -28,4 +28,16 @@ public aspect EntityLivingInterface {
     public boolean EntityLivingBase.isCollidedHorizontally() { return this.isCollidedHorizontally; }
     
     public boolean EntityLivingBase.isCollidedVertically() { return this.isCollidedVertically; }
+    
+    public double EntityLivingBase.getMotionX() { return this.motionX; }
+    
+    public void EntityLivingBase.setMotionX(double motionX) { this.motionX = motionX; }
+    
+    public double EntityLivingBase.getMotionY() { return this.motionY; }
+    
+    public void EntityLivingBase.setMotionY(double motionY) { this.motionY = motionY; }
+    
+    public double EntityLivingBase.getMotionZ() { return this.motionZ; }
+    
+    public void EntityLivingBase.setMotionZ(double motionZ) { this.motionZ = motionZ; }
 }

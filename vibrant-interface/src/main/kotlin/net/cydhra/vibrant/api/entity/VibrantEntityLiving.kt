@@ -17,9 +17,17 @@ interface VibrantEntityLiving : VibrantEntity {
     val isCollidedHorizontally: Boolean
     val isCollidedVertically: Boolean
 
+    var motionX: Double
+    var motionY: Double
+    var motionZ: Double
+
     fun setPosition(posX: Double, posY: Double, posZ: Double)
 
     fun setPositionAndRotation(posX: Double, posY: Double, posZ: Double, yaw: Float, pitch: Float)
 
     fun getLookVec(): VibrantVec3
+
+    fun getPositionVector(): VibrantVec3
+
+    fun getEyeHeight(): Float
 }

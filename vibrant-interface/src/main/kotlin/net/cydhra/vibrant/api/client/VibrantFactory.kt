@@ -3,6 +3,7 @@ package net.cydhra.vibrant.api.client
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture
 import net.cydhra.vibrant.api.render.VibrantFrustum
 import net.cydhra.vibrant.api.render.VibrantScaledResolution
+import net.cydhra.vibrant.api.util.VibrantVec3
 import java.awt.image.BufferedImage
 
 /**
@@ -16,4 +17,6 @@ interface VibrantFactory {
     fun newDynamicTexture(bufferedImage: BufferedImage): VibrantDynamicTexture
 
     fun newDynamicTexture(width: Int, height: Int): VibrantDynamicTexture
+
+    fun newVec3(x: Double, y: Double, z: Double): VibrantVec3
 }

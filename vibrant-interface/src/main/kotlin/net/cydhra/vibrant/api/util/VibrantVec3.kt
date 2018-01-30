@@ -10,4 +10,6 @@ interface VibrantVec3 {
     val zCoord: Double
 
     fun lengthVector(): Double
+
+    fun addVector(x: Double, y: Double, z: Double): VibrantVec3
 }
