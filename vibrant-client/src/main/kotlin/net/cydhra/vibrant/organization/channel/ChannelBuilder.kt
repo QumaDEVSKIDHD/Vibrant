@@ -1,12 +1,14 @@
 package net.cydhra.vibrant.organization.channel
 
+import net.cydhra.vibrant.organization.GameResourceState
+
 /**
  * Configure and then create an instance of [IResourceChannel]
  */
-class ChannelBuilder<R : Any>(private var channel: IResourceChannel<R>) {
+class ChannelBuilder<R : GameResourceState>(private var channel: IResourceChannel<R>) {
 
     companion object {
-        fun <R : Any> newBuilder(monitor: () -> R, updater: (ResourceChannel.Side, R) -> Unit): ChannelBuilder<R> {
+        fun <R : GameResourceState> newBuilder(monitor: () -> R, updater: (ResourceChannel.Side, R) -> Unit): ChannelBuilder<R> {
             return ChannelBuilder(ResourceChannel(monitor, updater))
         }
     }

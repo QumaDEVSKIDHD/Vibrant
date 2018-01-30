@@ -2,6 +2,7 @@ package net.cydhra.vibrant.modulesystem
 
 import net.cydhra.eventsystem.EventManager
 import net.cydhra.vibrant.VibrantClient
+import net.cydhra.vibrant.organization.GameResourceManager
 
 /**
  * A client module (e.g. a hack). Modules are handled by a [ModuleManager] and therefore must be saved at any position covered by a
@@ -20,6 +21,7 @@ abstract class Module(val name: String,
                     this.onEnable()
                 } else {
                     EventManager.unregisterListeners(this)
+                    GameResourceManager.removeAllLocks(this)
                     this.onDisable()
                 }
             }
