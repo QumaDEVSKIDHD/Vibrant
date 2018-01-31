@@ -55,10 +55,10 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
                 val x = e.scaledResolution.getScaledWidth() - fontRenderer.getStringWidth(module.displayName) - 2F
                 val y = offset
 
-                offset += incrementY + 1
+                offset += incrementY
 
                 glVertex2f(x - 1, y - 1)
-                glVertex2f(x - 1, y + incrementY)
+                glVertex2f(x - 1, y + incrementY - 1)
             }
         }
         glVertex2f(e.scaledResolution.getScaledWidth().toFloat(), offset - 1)
@@ -67,11 +67,11 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
         GlStateManager.enableTexture2D()
         GlStateManager.enableDepthTest()
 
-        offset = 1F
+        offset = 0F
         for (module in ModuleManager.modules) {
             if (module.isEnabled && module.category != DefaultCategories.SYSTEM) {
                 fontRenderer.drawString(module.displayName, e.scaledResolution.getScaledWidth() - fontRenderer.getStringWidth(module.displayName) - 1F, offset, -1)
-                offset += fontRenderer.fontHeight + 2
+                offset += fontRenderer.fontHeight + 3
             }
         }
     }
