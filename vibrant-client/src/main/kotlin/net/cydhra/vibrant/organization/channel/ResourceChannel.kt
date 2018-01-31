@@ -1,5 +1,7 @@
 package net.cydhra.vibrant.organization.channel
 
+import net.cydhra.vibrant.modulesystem.Module
+import net.cydhra.vibrant.organization.GameResourceState
 import net.cydhra.vibrant.organization.channel.ResourceChannel.Side
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 
@@ -8,13 +10,13 @@ import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
  * @param updater a function taking a side (it wont receive [Side.BOTH]) and the new state for that side which will then update the
  * actual resource
  */
-open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater: (Side, R) -> Unit) : IResourceChannel<R> {
+open class ResourceChannel<R : GameResourceState>(protected val monitor: () -> R, val updater: (Side, R) -> Unit) : IResourceChannel<R> {
 
     protected var clientSideState: R = monitor.invoke()
     protected var serverSideState: R = monitor.invoke()
 
     protected val requests: MutableCollection<Request<R>> = mutableListOf()
-
+    protected val locks: MutableMap<Module, Request<R>> = mutableMapOf()
     /**
      * Append a resource state with priority and side that is requested. Whether the new state is accepted depends on the priority and
      * other requests.
@@ -25,6 +27,14 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater:
      */
     override fun appendState(state: R, priority: ResourceRequestPriority, side: Side) {
         requests.add(Request(state, priority, side))
+    }
+
+    override fun addLock(state: R, module: Module, priority: ResourceRequestPriority, side: Side) {
+        locks[module] = Request(state, priority, side)
+    }
+
+    override fun removeLock(module: Module) {
+        locks.remove(module)
     }
 
     /**
@@ -42,6 +52,9 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater:
 
     override fun evaluateNewState() {
         this.clientSideState = monitor.invoke()
+
+        // add requests by locks
+        this.requests.addAll(locks.values)
 
         val newClientSideState = this.requests
                 .stream()
@@ -87,5 +100,5 @@ open class ResourceChannel<R : Any>(protected val monitor: () -> R, val updater:
         CLIENT, SERVER, BOTH
     }
 
-    protected data class Request<R : Any>(val state: R, val priority: ResourceRequestPriority, val side: Side)
+    protected data class Request<R : GameResourceState>(val state: R, val priority: ResourceRequestPriority, val side: Side)
 }

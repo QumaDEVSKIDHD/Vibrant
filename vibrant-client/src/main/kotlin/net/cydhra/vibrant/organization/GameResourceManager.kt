@@ -9,6 +9,7 @@ import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 import net.cydhra.vibrant.organization.resources.FlyingResource
 import net.cydhra.vibrant.organization.resources.SprintingResource
+import net.cydhra.vibrant.organization.resources.YawPitchResource
 
 /**
  * Manages in-game resources of the player (like for example sprinting). A module can - while the updateResources state - request, require,
@@ -22,7 +23,7 @@ import net.cydhra.vibrant.organization.resources.SprintingResource
 object GameResourceManager {
 
     private var canRequestResources: Boolean = false
-    private val resources: MutableMap<GameResource<*>, IResourceChannel<in Any>> = mutableMapOf()
+    private val resources: MutableMap<GameResource<*>, IResourceChannel<in GameResourceState>> = mutableMapOf()
 
     val resourceRequestPriorityComparator: Comparator<ResourceRequestPriority> = DefaultPriorityComparator()
 
@@ -31,6 +32,7 @@ object GameResourceManager {
 
         registerResource(SprintingResource)
         registerResource(FlyingResource)
+        registerResource(YawPitchResource)
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -66,6 +68,29 @@ object GameResourceManager {
             this.resources[resource]!!.appendState(state, priority, side)
         else
             throw IllegalStateException("Cannot request game resources outside of ${Module::requestResources.name}")
+    }
+
+    /**
+     * Add a lock on a game resource
+     * @see [IResourceChannel.addLock]
+     */
+    fun <S : GameResourceState> lockGameResource(
+            resource: GameResource<S>, state: S, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
+        this.resources[resource]!!.addLock(state, module, priority, side)
+    }
+
+    /**
+     * Remove a lock on the given resource. If there is no lock, nothing happens.
+     */
+    fun removeLock(module: Module, resource: GameResource<*>) {
+        this.resources[resource]!!.removeLock(module)
+    }
+
+    /**
+     * Remove all resource locks of the module
+     */
+    fun removeAllLocks(module: Module) {
+        this.resources.values.forEach { it.removeLock(module) }
     }
 
     @Suppress("UNCHECKED_CAST")
