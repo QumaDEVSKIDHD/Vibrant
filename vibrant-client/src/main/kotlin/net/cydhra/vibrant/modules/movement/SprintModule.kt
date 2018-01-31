@@ -5,11 +5,12 @@ import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 import net.cydhra.vibrant.organization.resources.SprintingResource
+import org.lwjgl.input.Keyboard
 
 /**
  *
  */
-class SprintModule : Module("Sprint", DefaultCategories.MOVEMENT) {
+class SprintModule : Module("Sprint", DefaultCategories.MOVEMENT, Keyboard.KEY_G) {
 
     override fun doRequestResources() {
         if (mc.thePlayer?.isCollidedHorizontally == false && mc.thePlayer!!.movementInput.moveForward > 0 && mc.thePlayer!!.onGround) {
