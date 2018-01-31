@@ -16,12 +16,12 @@ import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
  */
 object ModuleManager {
 
-    private val registeredModules = mutableListOf<Module>()
+    private var registeredModules = mutableListOf<Module>()
 
     val modules: List<Module> = registeredModules
 
     /**
-     * Initialize manager. Registere [KeyboardEvent] handler and register all modules.
+     * Initialize manager. Registers [KeyboardEvent] handler and register all modules.
      */
     fun init() {
         EventManager.registerListeners(this)
@@ -31,6 +31,8 @@ object ModuleManager {
         this.registerModule(HudModule())
         this.registerModule(ClickGuiModule())
         this.registerModule(SprintModule())
+
+        registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
     }
 
     /**
@@ -43,7 +45,7 @@ object ModuleManager {
 
     @EventHandler
     fun onKeyEvent(e: KeyboardEvent) {
-        if (e.type == KeyboardEvent.KeyboardEventType.RELEASE) {
+        if (e.type == KeyboardEvent.KeyboardEventType.PRESS) {
             this.modules.filter { it.keycode == e.keycode }.forEach(Module::toggle)
         }
     }
