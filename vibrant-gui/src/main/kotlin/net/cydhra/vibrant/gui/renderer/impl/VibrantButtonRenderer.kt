@@ -55,8 +55,8 @@ class VibrantButtonRenderer : ComponentRenderer<IButton> {
         GlStateManager.popMatrix()
 
         GuiManager.fontRenderer.drawString(component.text,
-                (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(component.text)) / 2).toInt(),
-                (component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(component.text)) / 2 - 1).toInt(),
+                (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(component.text)) / 2).toFloat(),
+                (component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(component.text)) / 2 - 1).toFloat(),
                 theme.primaryTextColor.rgb)
     }
 }

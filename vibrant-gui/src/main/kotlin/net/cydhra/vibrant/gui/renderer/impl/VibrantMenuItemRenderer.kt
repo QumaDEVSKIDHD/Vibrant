@@ -27,7 +27,7 @@ class VibrantMenuItemRenderer : ComponentRenderer<IMenuItem<*>> {
         RenderUtil.fillRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), innerColor)
         RenderUtil.drawRect(component.posX, component.posY, component.width.toInt(), component.height.toInt(), outerColor)
 
-        GuiManager.fontRenderer.drawString(component.text, component.posX + 4, (component.posY + (component.height -
-                GuiManager.fontRenderer.getStringHeight(component.text)) / 2 + 1).toInt(), theme.primaryTextColor.rgb)
+        GuiManager.fontRenderer.drawString(component.text, component.posX + 4F, (component.posY + (component.height -
+                GuiManager.fontRenderer.getStringHeight(component.text)) / 2 + 1).toFloat(), theme.primaryTextColor.rgb)
     }
 }

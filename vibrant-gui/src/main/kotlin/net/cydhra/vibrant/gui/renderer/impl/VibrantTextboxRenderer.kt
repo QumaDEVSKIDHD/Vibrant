@@ -21,7 +21,7 @@ class VibrantTextboxRenderer : ComponentRenderer<VibrantTextbox> {
 
         // draw text
         val textPosY = component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(component.text)) / 2
-        GuiManager.fontRenderer.drawString(component.text, component.posX + VibrantTextbox.MARGIN_LEFT, textPosY.toInt(),
+        GuiManager.fontRenderer.drawString(component.text, component.posX.toFloat() + VibrantTextbox.MARGIN_LEFT, textPosY.toFloat(),
                 theme.primaryTextColor.rgb)
 
         // render marked area

@@ -11,7 +11,7 @@ import java.util.*
 
 class VibrantFontRenderer(awtFont: Font) {
 
-    private var fontHeight: Int
+    var fontHeight: Int
 
     private var font: UnicodeFont = UnicodeFont(awtFont)
 
@@ -27,7 +27,7 @@ class VibrantFontRenderer(awtFont: Font) {
         fontHeight = font.getHeight("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789") / 2
     }
 
-    fun drawString(string: String?, x: Int, y: Int, color: Int): Int {
+    fun drawString(string: String?, x: Float, y: Float, color: Int): Int {
         var fx = x
         var fy = y
         if (string == null) {
@@ -45,16 +45,16 @@ class VibrantFontRenderer(awtFont: Font) {
         fx *= 2
         fy *= 2
 
-        font.drawString(fx.toFloat(), fy.toFloat(), string, org.newdawn.slick.Color(color))
+        font.drawString(fx, fy, string, org.newdawn.slick.Color(color))
 
         glPopMatrix()
         GL11.glPopAttrib()
 
-        return fx
+        return fx.toInt()
     }
 
     fun drawStringWithShadow(string: String, x: Float, y: Float, color: Int): Int {
-        return drawString(string, x.toInt(), y.toInt(), color)
+        return drawString(string, x, y, color)
     }
 
     fun getCharWidth(c: Char): Int {
@@ -90,7 +90,7 @@ class VibrantFontRenderer(awtFont: Font) {
         }
 
         for (builder in lines) {
-            this.drawString(builder.toString(), x, y, textColor)
+            this.drawString(builder.toString(), x.toFloat(), y.toFloat(), textColor)
 
             y += fontHeight
         }

@@ -45,8 +45,8 @@ class VibrantComboboxRenderer : ComponentRenderer<ICombobox<*>> {
         val textToRender = component.selectedItem?.toString() ?: component.text
 
         GuiManager.fontRenderer.drawString(textToRender,
-                component.posX + 10,
-                (component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(textToRender)) / 2 - 1).toInt(),
+                component.posX + 10F,
+                (component.posY + (component.height - GuiManager.fontRenderer.getStringHeight(textToRender)) / 2 - 1).toFloat(),
                 theme.primaryTextColor.rgb)
     }
 

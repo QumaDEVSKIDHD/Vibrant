@@ -40,9 +40,9 @@ class VibrantCheckboxRenderer : ComponentRenderer<ICheckbox> {
         }
         GlStateManager.popMatrix()
 
-        GuiManager.fontRenderer.drawString(component.text, (component.posX + 4 + component.height).toInt(),
+        GuiManager.fontRenderer.drawString(component.text, (component.posX + 4 + component.height).toFloat(),
                 (component.posY + (component.height
-                        - GuiManager.fontRenderer.getStringHeight(component.text)) / 2 - 1).toInt(), theme.primaryTextColor.rgb)
+                        - GuiManager.fontRenderer.getStringHeight(component.text)) / 2 - 1).toFloat(), theme.primaryTextColor.rgb)
     }
 
 }
