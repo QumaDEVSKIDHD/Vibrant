@@ -5,6 +5,7 @@ import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
 import net.cydhra.vibrant.modules.gui.ClickGuiModule
 import net.cydhra.vibrant.modules.movement.FlyModule
+import net.cydhra.vibrant.modules.movement.NoFallModule
 import net.cydhra.vibrant.modules.movement.SprintModule
 import net.cydhra.vibrant.modules.system.HudModule
 import net.cydhra.vibrant.modules.visual.MinimapModule
@@ -31,6 +32,7 @@ object ModuleManager {
         this.registerModule(HudModule())
         this.registerModule(ClickGuiModule())
         this.registerModule(SprintModule())
+        this.registerModule(NoFallModule())
 
         registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
     }
