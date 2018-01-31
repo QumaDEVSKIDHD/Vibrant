@@ -14,7 +14,7 @@ import net.cydhra.vibrant.organization.channel.ResourceChannel
 object SprintingResource : GameResource<SprintingResource.SprintResourceState>() {
 
     override fun register(): MutableMap<GameResource<*>, in IResourceChannel<*>>.() -> Unit = {
-        this[this@SprintingResource] = ChannelBuilder
+        this[SprintingResource] = ChannelBuilder
                 .newBuilder(
                         { SprintResourceState(VibrantClient.minecraft.thePlayer?.isSprinting ?: false) },
                         { side, state ->

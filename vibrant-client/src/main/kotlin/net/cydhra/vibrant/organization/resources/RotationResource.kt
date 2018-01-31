@@ -10,14 +10,14 @@ import net.cydhra.vibrant.organization.channel.ResourceChannel
 /**
  *
  */
-object YawPitchResource : GameResource<YawPitchResource.YawPitchState>() {
+object RotationResource : GameResource<RotationResource.RotationState>() {
 
     override fun register(): MutableMap<GameResource<*>, in IResourceChannel<*>>.() -> Unit = {
         val mc = VibrantClient.minecraft
 
-        this[this@YawPitchResource] = ChannelBuilder.newBuilder(
+        this[RotationResource] = ChannelBuilder.newBuilder(
                 {
-                    YawPitchState(mc.thePlayer?.rotationYaw ?: 0f,
+                    RotationState(mc.thePlayer?.rotationYaw ?: 0f,
                             mc.thePlayer?.rotationPitch ?: 0f)
                 },
                 { side, state ->
@@ -32,5 +32,5 @@ object YawPitchResource : GameResource<YawPitchResource.YawPitchState>() {
     }
 
 
-    data class YawPitchState(val yaw: Float, val pitch: Float) : GameResourceState()
+    data class RotationState(val yaw: Float, val pitch: Float) : GameResourceState()
 }

@@ -26,7 +26,7 @@ class FlyModule : Module("Fly", DefaultCategories.MOVEMENT, Keyboard.KEY_F) {
             if (!VibrantClient.minecraft.thePlayer!!.onGround) {
                 GameResourceManager.requestGameResource(
                         FlyingResource,
-                        FlyingResource.FlyingResourceState(true, true),
+                        FlyingResource.FlyingResourceState(isFlying = true, isAllowedFlying = true),
                         ResourceRequestPriority.movement,
                         ResourceChannel.Side.CLIENT
                 )
