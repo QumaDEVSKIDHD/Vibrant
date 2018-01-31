@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory
  */
 object VibrantClient {
 
-    const val VERSION = "v1.0"
+    const val VERSION = "1.0"
 
     val logger = LoggerFactory.getLogger("Vibrant")!!
 
