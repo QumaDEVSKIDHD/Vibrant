@@ -6,7 +6,7 @@ import net.cydhra.vibrant.api.item.VibrantItemStack
 /**
  *
  */
-interface VibrantPlayerSP : VibrantEntityLiving {
+interface VibrantPlayerSP : VibrantPlayer {
 
     var isAllowedFlying: Boolean
 
