@@ -9,6 +9,12 @@ import net.cydhra.vibrant.organization.GameResourceManager
 class ResourceRequestPriority private constructor(): Comparable<ResourceRequestPriority> {
 
     companion object {
+
+        /**
+         * Always the least priority. Used to update server side channels, if they change from vanilla
+         */
+        val monitor = ResourceRequestPriority()
+
         /**
          * This is probably always the lowest request priority. It should be used for resources that are completely optional for the
          * requesting module and rarely affect the module's functionality or player's (dis-) advantage when unavailable.

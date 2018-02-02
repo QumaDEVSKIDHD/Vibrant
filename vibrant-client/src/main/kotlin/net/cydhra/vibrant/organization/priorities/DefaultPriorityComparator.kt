@@ -6,7 +6,9 @@ package net.cydhra.vibrant.organization.priorities
 class DefaultPriorityComparator : Comparator<ResourceRequestPriority> {
 
     override fun compare(o1: ResourceRequestPriority, o2: ResourceRequestPriority): Int {
-        val order: (ResourceRequestPriority) -> Int = { priority -> when(priority) {
+        val order: (ResourceRequestPriority) -> Int = { priority ->
+            when (priority) {
+                ResourceRequestPriority.monitor -> -1
                 ResourceRequestPriority.optional -> 0
                 ResourceRequestPriority.stealth -> 1
                 ResourceRequestPriority.speed -> 2
