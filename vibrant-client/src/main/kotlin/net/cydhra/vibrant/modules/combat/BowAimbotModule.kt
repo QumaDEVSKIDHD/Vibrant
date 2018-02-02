@@ -8,7 +8,7 @@ import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.organization.channel.ResourceChannel
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
-import net.cydhra.vibrant.organization.resources.YawPitchResource
+import net.cydhra.vibrant.organization.resources.RotationResource
 import net.cydhra.vibrant.util.enemy.EnemyTracker
 import org.lwjgl.input.Keyboard
 
@@ -62,8 +62,8 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
                     val predictedPitch = -(pitchAtan * deg)
 
                     GameResourceManager.requestGameResource(
-                            YawPitchResource,
-                            YawPitchResource.YawPitchState(predictedYaw, predictedPitch),
+                            RotationResource,
+                            RotationResource.RotationState(predictedYaw, predictedPitch),
                             ResourceRequestPriority.combat,
                             ResourceChannel.Side.BOTH)
                 }
