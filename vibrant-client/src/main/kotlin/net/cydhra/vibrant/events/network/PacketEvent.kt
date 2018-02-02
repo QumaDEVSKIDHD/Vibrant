@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.events.minecraft
+package net.cydhra.vibrant.events.network
 
 import net.cydhra.eventsystem.events.Event
 import net.cydhra.eventsystem.events.Typed
