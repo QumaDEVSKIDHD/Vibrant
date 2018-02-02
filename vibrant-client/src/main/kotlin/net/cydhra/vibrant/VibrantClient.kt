@@ -4,6 +4,7 @@ import net.cydhra.eventsystem.EventManager
 import net.cydhra.vibrant.api.client.VibrantFactory
 import net.cydhra.vibrant.api.client.VibrantMinecraft
 import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
+import net.cydhra.vibrant.modulesystem.BypassMode
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.settings.VibrantSettings
@@ -20,8 +21,11 @@ object VibrantClient {
 
     lateinit var minecraft: VibrantMinecraft
         private set
+
     lateinit var factory: VibrantFactory
         private set
+
+    var bypassMode: BypassMode = BypassMode.VANILLA
 
     fun init(minecraft: VibrantMinecraft, factory: VibrantFactory) {
         logger.info("Vibrant Client successfully hooked.")

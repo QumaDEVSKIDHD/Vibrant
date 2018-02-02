@@ -2,7 +2,7 @@ package net.cydhra.vibrant.hooks;
 
 import net.cydhra.eventsystem.EventManager;
 import net.cydhra.vibrant.api.network.VibrantPacket;
-import net.cydhra.vibrant.events.minecraft.PacketEvent;
+import net.cydhra.vibrant.events.network.PacketEvent;
 import net.minecraft.network.Packet;
 
 /**
