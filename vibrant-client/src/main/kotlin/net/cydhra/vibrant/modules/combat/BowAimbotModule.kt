@@ -1,6 +1,6 @@
 package net.cydhra.vibrant.modules.combat
 
-import net.cydhra.vibrant.api.entity.VibrantEntityLiving
+import net.cydhra.vibrant.api.entity.VibrantPlayer
 import net.cydhra.vibrant.api.item.VibrantItemBow
 import net.cydhra.vibrant.api.util.VibrantVec3
 import net.cydhra.vibrant.modulesystem.DefaultCategories
@@ -14,7 +14,7 @@ import org.lwjgl.input.Keyboard
 
 class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.KEY_R) {
 
-    private var entity: VibrantEntityLiving? = null
+    private var entity: VibrantPlayer? = null
 
     override fun doRequestResources() {
         if (mc.thePlayer == null)
@@ -26,7 +26,7 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
         }
 
         if (mc.thePlayer!!.getHeldItem() != null && mc.thePlayer!!.getHeldItem()!!.getItem() is VibrantItemBow) {
-            entity = EnemyTracker.getClosestEntity(mc.thePlayer!!, VibrantEntityLiving::class.java)?.entity
+            entity = EnemyTracker.getClosestEntity(mc.thePlayer!!)?.entity as VibrantPlayer?
 
             if (entity != null) {
                 var arrowVelocity = (72000 - mc.thePlayer!!.getItemInUseCount()) / 20.0
@@ -47,7 +47,11 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
                         mc.thePlayer!!.posY + mc.thePlayer!!.getEyeHeight() - 0.1,
                         mc.thePlayer!!.posZ - Math.sin(Math.toRadians(yaw.toDouble())) * 0.16f)
 
-                val enemyVelocity = factory.newVec3(entity!!.posX - entity!!.prevPosX, 0.0, entity!!.posZ - entity!!.prevPosZ)
+
+                println(mc.timer.renderPartialTicks)
+                val motionX = entity!!.posX - (entity!!.chasingPosX + (entity!!.posX - entity!!.chasingPosX) * mc.timer.renderPartialTicks)
+                val motionZ = entity!!.posZ - (entity!!.chasingPosZ + (entity!!.posZ - entity!!.chasingPosZ) * mc.timer.renderPartialTicks)
+                val enemyVelocity = factory.newVec3(motionX, 0.0, motionZ)
 
                 val prediction = predictArrowDirection(enemyPosition, playerHeadPosition, enemyVelocity, arrowVelocity)
 
