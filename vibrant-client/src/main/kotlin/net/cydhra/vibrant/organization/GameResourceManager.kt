@@ -33,7 +33,7 @@ object GameResourceManager {
 
     val resourceRequestPriorityComparator: Comparator<ResourceRequestPriority> = DefaultPriorityComparator()
 
-    private val packetPolicies: MutableList<(VibrantPacket) -> VibrantPacket> = mutableListOf()
+    private val packetPolicies: MutableMap<GameResource<*>, (VibrantPacket, GameResourceState) -> VibrantPacket> = mutableMapOf()
 
     init {
         EventManager.registerListeners(this)
@@ -107,15 +107,19 @@ object GameResourceManager {
         return this.resources[gameResource]!!.getCurrentState(side) as S
     }
 
-    fun registerPacketManipulation(policy: (VibrantPacket) -> VibrantPacket) {
-        packetPolicies.add(policy)
+    @Suppress("UNCHECKED_CAST")
+    fun <T : GameResourceState> registerPacketManipulation(resource: GameResource<T>, policy: (VibrantPacket, T) -> VibrantPacket) {
+        packetPolicies[resource] = policy as (VibrantPacket, GameResourceState) -> VibrantPacket
     }
 
     @EventHandler(priority = ListenerPriority.HIGH)
     @EventType(0 /*RECV*/)
     fun onPacketReceive(e: PacketEvent) {
-        this.packetPolicies.forEach {
-            e.packet = it.invoke(e.packet)
+        this.packetPolicies.keys.forEach { resource ->
+            packetPolicies[resource]?.apply {
+                e.packet = this.invoke(e.packet,
+                        resources[resource]!!.getCurrentState(ResourceChannel.Side.SERVER) as GameResourceState)
+            }
         }
     }
 }

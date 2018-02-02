@@ -28,21 +28,21 @@ object RotationResource : GameResource<RotationResource.RotationState>() {
                     if (side == ResourceChannel.Side.CLIENT) {
                         mc.thePlayer?.setPositionAndRotation(
                                 mc.thePlayer!!.posX, mc.thePlayer!!.posY, mc.thePlayer!!.posZ, state.yaw, state.pitch)
-                    } else {
-                        GameResourceManager.registerPacketManipulation({
-                            if (it is VibrantPlayerPosPacket) {
-                                VibrantClient.factory.newPlayerPosLookPacket(it.posX, it.posY, it.posZ, state.yaw, state.pitch, it.onGround)
-                            } else if (it is VibrantPlayerPosLookPacket) {
-                                VibrantClient.factory.newPlayerPosLookPacket(it.posX, it.posY, it.posZ, state.yaw, state.pitch, it.onGround)
-                            } else if (it is VibrantPlayerPacket) {
-                                VibrantClient.factory.newPlayerLookPacket(state.yaw, state.pitch, it.onGround)
-                            } else {
-                                it
-                            }
-                        })
                     }
                 })
                 .create()
+
+        GameResourceManager.registerPacketManipulation(RotationResource) { packet, state: RotationState ->
+            if (packet is VibrantPlayerPosPacket) {
+                VibrantClient.factory.newPlayerPosLookPacket(packet.posX, packet.posY, packet.posZ, state.yaw, state.pitch, packet.onGround)
+            } else if (packet is VibrantPlayerPosLookPacket) {
+                VibrantClient.factory.newPlayerPosLookPacket(packet.posX, packet.posY, packet.posZ, state.yaw, state.pitch, packet.onGround)
+            } else if (packet is VibrantPlayerPacket) {
+                VibrantClient.factory.newPlayerLookPacket(state.yaw, state.pitch, packet.onGround)
+            } else {
+                packet
+            }
+        }
     }
 
     data class RotationState(val yaw: Float, val pitch: Float) : GameResourceState()
