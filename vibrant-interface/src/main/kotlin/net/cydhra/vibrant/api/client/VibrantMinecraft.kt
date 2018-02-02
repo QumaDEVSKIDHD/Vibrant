@@ -25,6 +25,8 @@ interface VibrantMinecraft {
 
     val isCurrentlyDisplayingScreen: Boolean
 
+    val timer: VibrantTimer
+
     fun getTextureManager(): VibrantTextureManager
 
     fun displayGuiScreen(screen: VibrantGuiScreen?)

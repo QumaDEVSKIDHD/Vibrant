@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.interfaces.client;
 
 import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
+import net.cydhra.vibrant.api.client.VibrantTimer;
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
 import net.cydhra.vibrant.api.render.VibrantEntityRenderer;
@@ -16,7 +17,7 @@ import net.minecraft.world.World;
 /**
  *
  */
-public aspect MinecraftInterface {
+public privileged aspect MinecraftInterface {
     
     declare parents:(Minecraft)implements net.cydhra.vibrant.api.client.VibrantMinecraft;
     
@@ -39,6 +40,8 @@ public aspect MinecraftInterface {
      * @return the {@link EntityRenderer} instance
      */
     public VibrantEntityRenderer Minecraft.getEntityRenderer() { return (VibrantEntityRenderer) entityRenderer; }
+    
+    public VibrantTimer Minecraft.getTimer() { return (VibrantTimer) this.timer; }
     
     /**
      * Delegate the {@link VibrantGuiScreen} through a {@link VibrantGuiScreenAdapter} to Minecraft
