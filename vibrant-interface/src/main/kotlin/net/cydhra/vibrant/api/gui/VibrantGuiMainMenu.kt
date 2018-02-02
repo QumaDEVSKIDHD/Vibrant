@@ -3,4 +3,4 @@ package net.cydhra.vibrant.api.gui
 /**
  *
  */
-interface VibrantGuiMainMenu
+interface VibrantGuiMainMenu : VibrantGuiController
