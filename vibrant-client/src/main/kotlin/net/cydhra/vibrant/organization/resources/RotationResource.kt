@@ -1,7 +1,11 @@
 package net.cydhra.vibrant.organization.resources
 
 import net.cydhra.vibrant.VibrantClient
+import net.cydhra.vibrant.api.network.VibrantPlayerPacket
+import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket
+import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket
 import net.cydhra.vibrant.organization.GameResource
+import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.organization.GameResourceState
 import net.cydhra.vibrant.organization.channel.ChannelBuilder
 import net.cydhra.vibrant.organization.channel.IResourceChannel
@@ -25,12 +29,21 @@ object RotationResource : GameResource<RotationResource.RotationState>() {
                         mc.thePlayer?.setPositionAndRotation(
                                 mc.thePlayer!!.posX, mc.thePlayer!!.posY, mc.thePlayer!!.posZ, state.yaw, state.pitch)
                     } else {
-                        // TODO
+                        GameResourceManager.registerPacketManipulation({
+                            if (it is VibrantPlayerPosPacket) {
+                                VibrantClient.factory.newPlayerPosLookPacket(it.posX, it.posY, it.posZ, state.yaw, state.pitch, it.onGround)
+                            } else if (it is VibrantPlayerPosLookPacket) {
+                                VibrantClient.factory.newPlayerPosLookPacket(it.posX, it.posY, it.posZ, state.yaw, state.pitch, it.onGround)
+                            } else if (it is VibrantPlayerPacket) {
+                                VibrantClient.factory.newPlayerLookPacket(state.yaw, state.pitch, it.onGround)
+                            } else {
+                                it
+                            }
+                        })
                     }
                 })
                 .create()
     }
-
 
     data class RotationState(val yaw: Float, val pitch: Float) : GameResourceState()
 }

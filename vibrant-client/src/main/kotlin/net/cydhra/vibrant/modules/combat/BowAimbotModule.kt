@@ -65,7 +65,7 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
                             RotationResource,
                             RotationResource.RotationState(predictedYaw, predictedPitch),
                             ResourceRequestPriority.combat,
-                            ResourceChannel.Side.BOTH)
+                            ResourceChannel.Side.SERVER)
                 }
             }
         } else {
