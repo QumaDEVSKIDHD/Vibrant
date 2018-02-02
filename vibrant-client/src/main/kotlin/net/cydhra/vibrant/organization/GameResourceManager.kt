@@ -5,7 +5,7 @@ import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.eventsystem.listeners.EventType
 import net.cydhra.eventsystem.listeners.ListenerPriority
 import net.cydhra.vibrant.api.network.VibrantPacket
-import net.cydhra.vibrant.events.minecraft.PacketEvent
+import net.cydhra.vibrant.events.network.PacketEvent
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.channel.IResourceChannel
