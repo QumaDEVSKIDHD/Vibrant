@@ -26,9 +26,7 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
         }
 
         if (mc.thePlayer!!.getHeldItem() != null && mc.thePlayer!!.getHeldItem()!!.getItem() is VibrantItemBow) {
-            entity = EnemyTracker.getClosestEntity(mc.thePlayer!!)?.entity
-
-            println(entity.toString())
+            entity = EnemyTracker.getClosestEntity(mc.thePlayer!!, VibrantEntityLiving::class.java)?.entity
 
             if (entity != null) {
                 var arrowVelocity = (72000 - mc.thePlayer!!.getItemInUseCount()) / 20.0
@@ -49,7 +47,7 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
                         mc.thePlayer!!.posY + mc.thePlayer!!.getEyeHeight() - 0.1,
                         mc.thePlayer!!.posZ - Math.sin(Math.toRadians(yaw.toDouble())) * 0.16f)
 
-                val enemyVelocity = factory.newVec3(entity!!.motionX, 0.0, entity!!.motionZ)
+                val enemyVelocity = factory.newVec3(entity!!.posX - entity!!.prevPosX, 0.0, entity!!.posZ - entity!!.prevPosZ)
 
                 val prediction = predictArrowDirection(enemyPosition, playerHeadPosition, enemyVelocity, arrowVelocity)
 
