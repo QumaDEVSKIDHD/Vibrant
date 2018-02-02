@@ -1,6 +1,11 @@
 package net.cydhra.vibrant.organization
 
 import net.cydhra.eventsystem.EventManager
+import net.cydhra.eventsystem.listeners.EventHandler
+import net.cydhra.eventsystem.listeners.EventType
+import net.cydhra.eventsystem.listeners.ListenerPriority
+import net.cydhra.vibrant.api.network.VibrantPacket
+import net.cydhra.vibrant.events.minecraft.PacketEvent
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.channel.IResourceChannel
@@ -27,6 +32,8 @@ object GameResourceManager {
     private val resources: MutableMap<GameResource<*>, IResourceChannel<in GameResourceState>> = mutableMapOf()
 
     val resourceRequestPriorityComparator: Comparator<ResourceRequestPriority> = DefaultPriorityComparator()
+
+    private val packetPolicies: MutableList<(VibrantPacket) -> VibrantPacket> = mutableListOf()
 
     init {
         EventManager.registerListeners(this)
@@ -98,5 +105,17 @@ object GameResourceManager {
     @Suppress("UNCHECKED_CAST")
     fun <S : GameResourceState> getCurrentState(gameResource: GameResource<S>, side: ResourceChannel.Side): S {
         return this.resources[gameResource]!!.getCurrentState(side) as S
+    }
+
+    fun registerPacketManipulation(policy: (VibrantPacket) -> VibrantPacket) {
+        packetPolicies.add(policy)
+    }
+
+    @EventHandler(priority = ListenerPriority.HIGH)
+    @EventType(0 /*RECV*/)
+    fun onPacketReceive(e: PacketEvent) {
+        this.packetPolicies.forEach {
+            e.packet = it.invoke(e.packet)
+        }
     }
 }

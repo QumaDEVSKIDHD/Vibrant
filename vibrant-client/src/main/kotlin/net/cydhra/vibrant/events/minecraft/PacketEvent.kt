@@ -10,10 +10,7 @@ import net.cydhra.vibrant.api.network.VibrantPacket
 class PacketEvent(private val type: EventType, var packet: VibrantPacket) : Event(), Typed {
 
     override fun getType(): Int {
-        return when (type) {
-            EventType.SEND -> 0
-            EventType.RECEIVE -> 1
-        }
+        return type.ordinal
     }
 
     enum class EventType {
