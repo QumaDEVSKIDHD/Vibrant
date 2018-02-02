@@ -2,6 +2,10 @@ package net.cydhra.vibrant.interfaces.client;
 
 import net.cydhra.vibrant.api.client.VibrantFactory;
 import net.cydhra.vibrant.api.entity.VibrantZombie;
+import net.cydhra.vibrant.api.network.VibrantPlayerLookPacket;
+import net.cydhra.vibrant.api.network.VibrantPlayerPacket;
+import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket;
+import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket;
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture;
 import net.cydhra.vibrant.api.render.VibrantFrustum;
 import net.cydhra.vibrant.api.render.VibrantScaledResolution;
@@ -12,6 +16,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -56,4 +61,30 @@ public class VibrantFactoryImpl implements VibrantFactory {
     @NotNull
     @Override
     public VibrantZombie createZombie(VibrantWorld world) { return (VibrantZombie) new EntityZombie((World) world); }
+    
+    @NotNull
+    @Override
+    public VibrantPlayerLookPacket newPlayerLookPacket(final float yaw, final float pitch, final boolean onGround) {
+        return (VibrantPlayerLookPacket) new C03PacketPlayer.C05PacketPlayerLook(yaw, pitch, onGround);
+    }
+    
+    @NotNull
+    @Override
+    public VibrantPlayerPacket newPlayerPacket(final boolean onGround) {
+        return (VibrantPlayerPacket) new C03PacketPlayer(onGround);
+    }
+    
+    @NotNull
+    @Override
+    public VibrantPlayerPosLookPacket newPlayerPosLookPacket(final double posX, final double posY, final double posZ, final float yaw,
+            final float pitch,
+            final boolean onGround) {
+        return (VibrantPlayerPosLookPacket) new C03PacketPlayer.C06PacketPlayerPosLook(posX, posY, posZ, yaw, pitch, onGround);
+    }
+    
+    @NotNull
+    @Override
+    public VibrantPlayerPosPacket newPlayerPosPacket(final double posX, final double posY, final double posZ, final boolean onGround) {
+        return (VibrantPlayerPosPacket) new C03PacketPlayer.C04PacketPlayerPosition(posX, posY, posZ, onGround);
+    }
 }
