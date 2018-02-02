@@ -3,6 +3,7 @@ package net.cydhra.vibrant.modulesystem
 import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
+import net.cydhra.vibrant.modules.combat.BowAimbotModule
 import net.cydhra.vibrant.modules.gui.ClickGuiModule
 import net.cydhra.vibrant.modules.movement.FlyModule
 import net.cydhra.vibrant.modules.movement.NoFallModule
@@ -17,7 +18,7 @@ import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
  */
 object ModuleManager {
 
-    private var registeredModules = mutableListOf<Module>()
+    private val registeredModules = mutableListOf<Module>()
 
     val modules: List<Module> = registeredModules
 
@@ -33,6 +34,7 @@ object ModuleManager {
         this.registerModule(ClickGuiModule())
         this.registerModule(SprintModule())
         this.registerModule(NoFallModule())
+        this.registerModule(BowAimbotModule())
 
         registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
     }
