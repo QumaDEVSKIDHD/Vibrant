@@ -2,10 +2,7 @@ package net.cydhra.vibrant.api.client
 
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen
-import net.cydhra.vibrant.api.render.VibrantEntityRenderer
-import net.cydhra.vibrant.api.render.VibrantFramebuffer
-import net.cydhra.vibrant.api.render.VibrantRenderGlobal
-import net.cydhra.vibrant.api.render.VibrantTextureManager
+import net.cydhra.vibrant.api.render.*
 import net.cydhra.vibrant.api.world.VibrantWorld
 
 /**
@@ -28,6 +25,8 @@ interface VibrantMinecraft {
     val timer: VibrantTimer
 
     fun getTextureManager(): VibrantTextureManager
+
+    fun getRenderManager(): VibrantRenderManager
 
     fun displayGuiScreen(screen: VibrantGuiScreen?)
 }

@@ -2,6 +2,7 @@ package net.cydhra.vibrant.modules.system
 
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.VibrantClient
+import net.cydhra.vibrant.api.render.VibrantTextureManager
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
 import net.cydhra.vibrant.gui.font.VibrantFontRenderer
 import net.cydhra.vibrant.gui.util.GlStateManager
@@ -27,13 +28,14 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
     @EventHandler
     fun onRenderOverlay(e: RenderOverlayEvent) {
         val watermark = "Vibrant " + VibrantClient.VERSION
-        watermarkFontRenderer.drawString(watermark, 2F, 2.2F, -1)
+        watermarkFontRenderer.drawString(watermark, 3F, 2.2F, -1)
 
         var underLineOffset = 2
         val underLineWidth = 4 + watermarkFontRenderer.getStringWidth(watermark)
 
         GlStateManager.disableTexture2D()
-        GlStateManager.disableDepthTest()
+
+        glLineWidth(2F)
 
         glBegin(GL11.GL_LINES)
         glVertex2i(2, underLineOffset)
@@ -65,7 +67,6 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
         glEnd()
 
         GlStateManager.enableTexture2D()
-        GlStateManager.enableDepthTest()
 
         offset = 0F
         for (module in ModuleManager.modules) {

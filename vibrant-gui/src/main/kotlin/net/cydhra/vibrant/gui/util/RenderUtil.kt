@@ -7,6 +7,9 @@ import java.awt.Color
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import net.minecraft.client.Minecraft
+
+
 
 
 /**
@@ -124,5 +127,9 @@ object RenderUtil {
         GL11.glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
         GL11.glVertex3d(targetPosX, targetPosY, targetPosZ)
         GL11.glEnd()
+    }
+
+    fun interpolate(now: Double, then: Double, partialTicks: Float): Double {
+        return then + (now - then) *  partialTicks
     }
 }
