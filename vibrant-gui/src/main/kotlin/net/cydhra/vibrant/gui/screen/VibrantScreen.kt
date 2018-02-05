@@ -86,7 +86,7 @@ open class VibrantScreen {
     }
 
     fun onKeyTyped(typedChar: Char, keyCode: Int) {
-        this.components.first?.onKeyTyped(typedChar, keyCode)
+        this.components.firstOrNull()?.onKeyTyped(typedChar, keyCode)
     }
 
     fun draw() {
