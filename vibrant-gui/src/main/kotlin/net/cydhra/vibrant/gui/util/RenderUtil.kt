@@ -7,8 +7,6 @@ import java.awt.Color
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
-import net.minecraft.client.Minecraft
-
 
 
 
