@@ -21,5 +21,8 @@ interface VibrantEntity {
 
     var onGround: Boolean
 
+    var width: Float
+    var height: Float
+
     fun getDistanceSq(x: Double, y: Double, z: Double): Double
 }

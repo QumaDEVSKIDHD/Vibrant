@@ -5,10 +5,17 @@ import net.minecraft.entity.Entity;
 /**
  *
  */
-public aspect EntityInterface {
+privileged public aspect EntityInterface {
     
     declare parents: (Entity) implements net.cydhra.vibrant.api.entity.VibrantEntity;
-    
+
+    public float Entity.getWidth() {
+        return this.width;
+    }
+
+    public float Entity.getHeight() {
+        return this.height;
+    }
     
     public double Entity.getPosX() {
         return this.posX;
@@ -57,6 +64,12 @@ public aspect EntityInterface {
     public double Entity.getMotionZ() { return this.motionZ; }
     
     public void Entity.setMotionZ(double motionZ) { this.motionZ = motionZ; }
-    
-    
+
+    public void Entity.setWidth(float width) {
+        this.width = width;
+    }
+
+    public void Entity.setHeight(float height) {
+        this.height = height;
+    }
 }
