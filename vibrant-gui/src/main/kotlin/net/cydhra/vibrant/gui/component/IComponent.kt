@@ -38,6 +38,11 @@ interface IComponent {
     fun addChildComponent(component: IComponent)
 
     /**
+     * Clear child components
+     */
+    fun clearChildComponents()
+
+    /**
      * Update or determine the hovering state of this component. This method returns true, if this component or any child-component is
      * hovered with the given mouse coordinates and can optionally update the hovering state of all components while doing that.
      *

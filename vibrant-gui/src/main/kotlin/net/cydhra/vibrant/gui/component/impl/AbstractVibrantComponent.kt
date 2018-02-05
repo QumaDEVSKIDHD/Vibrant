@@ -51,6 +51,10 @@ abstract class AbstractVibrantComponent(
         this.children.add(component)
     }
 
+    override fun clearChildComponents() {
+        this.children.clear()
+    }
+
     override fun drawComponent() {
         GuiManager.getRenderer(this.javaClass)?.renderComponent(this, GuiManager.theme)
                 ?: IllegalStateException("No renderer for ${this.javaClass} was set in the GuiManager")
