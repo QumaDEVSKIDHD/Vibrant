@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11
 /**
  * This class extends [VibrantGuiScreen] to override all the properties that must be implemented but are initialized by the adapter class.
  */
-abstract class AbstractVibrantGuiScreen(private val controller: VibrantGuiController) : VibrantGuiScreen {
+abstract class AbstractVibrantGuiScreen(protected val controller: VibrantGuiController) : VibrantGuiScreen {
 
     protected open val clickGuiScreen = VibrantScreen()
 
