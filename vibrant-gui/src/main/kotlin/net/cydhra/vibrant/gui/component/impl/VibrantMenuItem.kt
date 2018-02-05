@@ -7,8 +7,8 @@ import net.cydhra.vibrant.gui.component.IMenuItem
  * A menu item that is derived from the button for simplicity
  */
 open class VibrantMenuItem<T>(override val parent: IMenu<T>,
-                         override var positionX: Double,
-                         override var positionY: Double,
-                         override var width: Double,
-                         override var height: Double,
-                         override val content: T) : VibrantButton(positionX, positionY, width, height, content.toString()), IMenuItem<T>
+                              positionX: Double,
+                              positionY: Double,
+                              width: Double,
+                              height: Double,
+                              override val content: T) : VibrantButton(positionX, positionY, width, height, content.toString()), IMenuItem<T>
