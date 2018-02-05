@@ -18,6 +18,10 @@ open class VibrantScreen {
         this.components.add(component)
     }
 
+    fun clearComponents() {
+        this.components.clear()
+    }
+
     fun updateMousePosition(mouseX: Int, mouseY: Int) {
         var hoveredComponentIdentified = false
         this.components.forEach { comp ->
@@ -86,7 +90,7 @@ open class VibrantScreen {
     }
 
     fun onKeyTyped(typedChar: Char, keyCode: Int) {
-        this.components.first?.onKeyTyped(typedChar, keyCode)
+        this.components.firstOrNull()?.onKeyTyped(typedChar, keyCode)
     }
 
     fun draw() {

@@ -5,6 +5,7 @@ import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
 import net.cydhra.vibrant.modules.combat.BowAimbotModule
 import net.cydhra.vibrant.modules.gui.ClickGuiModule
+import net.cydhra.vibrant.modules.gui.MainMenuModule
 import net.cydhra.vibrant.modules.movement.FlyModule
 import net.cydhra.vibrant.modules.movement.NoFallModule
 import net.cydhra.vibrant.modules.movement.SprintModule
@@ -39,6 +40,7 @@ object ModuleManager {
         this.registerModule(BowAimbotModule())
         this.registerModule(ESPModule())
         this.registerModule(NametagsModule())
+        this.registerModule(MainMenuModule())
 
         registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
     }

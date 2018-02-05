@@ -1,6 +1,8 @@
 package net.cydhra.vibrant.api.client
 
 import net.cydhra.vibrant.api.entity.VibrantZombie
+import net.cydhra.vibrant.api.gui.VibrantGuiController
+import net.cydhra.vibrant.api.gui.VibrantGuiMainMenu
 import net.cydhra.vibrant.api.network.VibrantPlayerLookPacket
 import net.cydhra.vibrant.api.network.VibrantPlayerPacket
 import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket
@@ -35,4 +37,8 @@ interface VibrantFactory {
     fun newPlayerLookPacket(yaw: Float, pitch: Float, onGround: Boolean): VibrantPlayerLookPacket
 
     fun newPlayerPacket(onGround: Boolean): VibrantPlayerPacket
+
+    fun newGuiController(): VibrantGuiController
+
+    fun newGuiMainMenu(): VibrantGuiMainMenu
 }

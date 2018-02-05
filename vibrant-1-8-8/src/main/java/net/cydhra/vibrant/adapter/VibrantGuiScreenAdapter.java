@@ -64,6 +64,7 @@ public class VibrantGuiScreenAdapter extends GuiScreen {
     }
     
     public void onResize(Minecraft mcIn, int screenSizeX, int screenSizeY) {
+        super.onResize(mcIn, screenSizeX, screenSizeY);
         vScreen.onResize((VibrantMinecraft) mcIn, screenSizeX, screenSizeY);
     }
 }
