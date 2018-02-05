@@ -95,10 +95,7 @@ public class VibrantFactoryImpl implements VibrantFactory {
     @NotNull
     @Override
     public VibrantGuiController newGuiController() {
-        GuiGameOver      guiController = new GuiGameOver();
-        ScaledResolution sc            = new ScaledResolution(Minecraft.getMinecraft());
-        guiController.setWorldAndResolution(Minecraft.getMinecraft(), sc.getScaledWidth(), sc.getScaledHeight());
-        return (VibrantGuiController) guiController;
+        return (VibrantGuiController) new GuiGameOver();
     }
     
     @NotNull
