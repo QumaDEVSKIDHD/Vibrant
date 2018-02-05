@@ -7,6 +7,7 @@ import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.renderer.impl.*
 import net.cydhra.vibrant.gui.theme.DefaultTheme
 import net.cydhra.vibrant.gui.theme.Theme
+import net.cydhra.vibrant.gui.util.IFramebuffer
 
 /**
  *
@@ -29,6 +30,17 @@ object GuiManager {
         }
         private set
 
+    private var _framebufferObj: (() -> IFramebuffer)? = null
+    var framebuffer: () -> IFramebuffer
+        get() {
+            if (_framebufferObj != null)
+                throw IllegalStateException("The framebuffer in the gui manager has not been set")
+            return _framebufferObj!!
+        }
+        set(value) {
+            _framebufferObj = value
+        }
+
     init {
         this.setRenderer(VibrantButton::class.java, VibrantButtonRenderer())
         this.setRenderer(VibrantCheckbox::class.java, VibrantCheckboxRenderer())
@@ -38,6 +50,10 @@ object GuiManager {
         this.setRenderer(VibrantDraggablePanel::class.java, VibrantBoxRenderer())
         this.setRenderer(VibrantSlider::class.java, VibrantSliderRenderer())
         this.setRenderer(VibrantTextbox::class.java, VibrantTextboxRenderer())
+
+        this.setRenderer(VibrantSelectableItem::class.java, VibrantSelectableItemRenderer())
+        this.setRenderer(VibrantListbox::class.java, VibrantNullRenderer())
+        this.setRenderer(VibrantScrollpane::class.java, VibrantScrollpaneRenderer())
     }
 
     /**

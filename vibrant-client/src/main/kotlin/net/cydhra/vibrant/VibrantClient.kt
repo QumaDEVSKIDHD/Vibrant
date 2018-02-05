@@ -49,6 +49,8 @@ object VibrantClient {
         VibrantSettings.save()
 
         EventManager.registerListeners(this)
+
+        GuiManager.framebuffer = { minecraft.framebuffer!! }
     }
 
     fun tick() {
