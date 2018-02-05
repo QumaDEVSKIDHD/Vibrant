@@ -56,7 +56,7 @@ object GlStateManager {
      * Set the color attribute of OpenGL, if it is not already set on that value
      */
     fun color(color: Color) {
-        if (color.rgb != this.argbState) {
+//        if (color.rgb != this.argbState) {
             val alpha = color.alpha / 255.0f
             val red = color.red / 255.0f
             val green = color.green / 255.0f
@@ -64,7 +64,7 @@ object GlStateManager {
 
             GL11.glColor4f(red, green, blue, alpha)
             this.argbState = color.rgb
-        }
+//        }
     }
 }
 
