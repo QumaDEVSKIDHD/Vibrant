@@ -5,4 +5,6 @@ package net.cydhra.vibrant.api.gui
  */
 interface VibrantGuiController {
     fun drawRectWithCustomSizedTexture(x: Int, y: Int, u: Float, v: Float, width: Int, height: Int, textureWidth: Float, textureHeight: Float)
+
+    fun actionPerformed(id: Int)
 }
