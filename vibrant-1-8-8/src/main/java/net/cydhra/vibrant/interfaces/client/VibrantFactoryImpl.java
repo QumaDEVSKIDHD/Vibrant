@@ -2,6 +2,7 @@ package net.cydhra.vibrant.interfaces.client;
 
 import net.cydhra.vibrant.api.client.VibrantFactory;
 import net.cydhra.vibrant.api.entity.VibrantZombie;
+import net.cydhra.vibrant.api.gui.VibrantGuiController;
 import net.cydhra.vibrant.api.network.VibrantPlayerLookPacket;
 import net.cydhra.vibrant.api.network.VibrantPlayerPacket;
 import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket;
@@ -12,6 +13,7 @@ import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.util.VibrantVec3;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -86,5 +88,11 @@ public class VibrantFactoryImpl implements VibrantFactory {
     @Override
     public VibrantPlayerPosPacket newPlayerPosPacket(final double posX, final double posY, final double posZ, final boolean onGround) {
         return (VibrantPlayerPosPacket) new C03PacketPlayer.C04PacketPlayerPosition(posX, posY, posZ, onGround);
+    }
+    
+    @NotNull
+    @Override
+    public VibrantGuiController newGuiController() {
+        return (VibrantGuiController) new GuiGameOver();
     }
 }
