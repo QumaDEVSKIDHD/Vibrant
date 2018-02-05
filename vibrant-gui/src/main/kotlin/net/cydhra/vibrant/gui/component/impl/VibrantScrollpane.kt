@@ -25,7 +25,7 @@ class VibrantScrollpane(positionX: Double,
 
         val fb = GuiManager.framebuffer()
         StencilUtil.setupStencil(fb, fb.width, fb.height)
-        RenderUtil.fillRect(this.posX, this.posY, this.width.toInt(), this.height.toInt(), Color.BLACK)
+        RenderUtil.fillRect(this.posX, this.posY, this.width.toInt(), this.height.toInt(), Color(0, 0, 0, 0))
         StencilUtil.enableStencil(StencilUtil.StencilMode.CROP_OUTSIDE)
 
         GL11.glTranslated(this.positionX, this.positionY, 0.0)
