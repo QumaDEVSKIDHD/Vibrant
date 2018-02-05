@@ -60,7 +60,7 @@ abstract class AbstractVibrantGuiScreen(protected val controller: VibrantGuiCont
 
     override fun keyTyped(typedChar: Char, keyCode: Int) {
         if (keyCode == Keyboard.KEY_ESCAPE) {
-            VibrantClient.minecraft.displayGuiScreen(null)
+            this.escapeAction()
         } else {
             clickGuiScreen.onKeyTyped(typedChar, keyCode)
         }
@@ -101,5 +101,9 @@ abstract class AbstractVibrantGuiScreen(protected val controller: VibrantGuiCont
                 GL11.glDisable(GL11.GL_BLEND)
             }
         }
+    }
+
+    open fun escapeAction() {
+        VibrantClient.minecraft.displayGuiScreen(null)
     }
 }

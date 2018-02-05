@@ -34,6 +34,7 @@ class MainMenuScreen(realMainMenu: VibrantGuiMainMenu) : AbstractVibrantGuiScree
         addButton(++counter, "Quit") { this@MainMenuScreen.controller.actionPerformed(ACTION_QUIT_GAME) }
         addButton(++counter, "Language") { this@MainMenuScreen.controller.actionPerformed(ACTION_LANGUAGE_SCREEN) }
         addButton(++counter, "Options") { this@MainMenuScreen.controller.actionPerformed(ACTION_SELECT_OPTIONS_SCREEN) }
+        addButton(++counter, "Account Manager") { }
         addButton(++counter, "Multiplayer") { this@MainMenuScreen.controller.actionPerformed(ACTION_MULTIPLAYER_SCREEN) }
         addButton(++counter, "Singleplayer") { this@MainMenuScreen.controller.actionPerformed(ACTION_SELECT_WORLD_SCREEN) }
     }
@@ -42,4 +43,9 @@ class MainMenuScreen(realMainMenu: VibrantGuiMainMenu) : AbstractVibrantGuiScree
         this.drawDefaultBackground()
         super.drawScreen(mouseX, mouseY, partialTicks)
     }
+
+    /**
+     * Do nothing on escape
+     */
+    override fun escapeAction() {}
 }
