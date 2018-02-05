@@ -12,4 +12,8 @@ public aspect FramebufferInterface {
     public int Framebuffer.getDepthBuffer() { return this.depthBuffer; }
     
     public void Framebuffer.setDepthBuffer(int depthBuffer) { this.depthBuffer = depthBuffer; }
+    
+    public int Framebuffer.getWidth() { return this.framebufferWidth; }
+    
+    public int Framebuffer.getHeight() { return this.framebufferHeight; }
 }

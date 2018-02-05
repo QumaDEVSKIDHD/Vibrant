@@ -33,7 +33,7 @@ object GuiManager {
     private var _framebufferObj: (() -> IFramebuffer)? = null
     var framebuffer: () -> IFramebuffer
         get() {
-            if (_framebufferObj != null)
+            if (_framebufferObj == null)
                 throw IllegalStateException("The framebuffer in the gui manager has not been set")
             return _framebufferObj!!
         }
