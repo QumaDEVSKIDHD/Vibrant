@@ -7,6 +7,9 @@ import net.cydhra.vibrant.api.client.VibrantFactory
 import net.cydhra.vibrant.api.client.VibrantMinecraft
 import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
+import net.cydhra.vibrant.events.render.RenderWorldEvent
+import net.cydhra.vibrant.gui.GuiManager
+import net.cydhra.vibrant.gui.font.VibrantFontRenderer
 import net.cydhra.vibrant.modulesystem.BypassMode
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.GameResourceManager
@@ -30,6 +33,9 @@ object VibrantClient {
 
     var bypassMode: BypassMode = BypassMode.VANILLA
 
+    val fontRenderer: VibrantFontRenderer
+        get() = GuiManager.fontRenderer
+
     fun init(minecraft: VibrantMinecraft, factory: VibrantFactory) {
         logger.info("Vibrant Client successfully hooked.")
         this.minecraft = minecraft
@@ -52,6 +58,11 @@ object VibrantClient {
 
     @EventHandler(priority = ListenerPriority.LOWEST)
     fun afterRenderOverlay(e: RenderOverlayEvent) {
+        minecraft.getTextureManager().bindTexture("textures/gui/icons.png")
+    }
+
+    @EventHandler(priority = ListenerPriority.LOWEST)
+    fun afterRenderWorld(e: RenderWorldEvent) {
         minecraft.getTextureManager().bindTexture("textures/gui/icons.png")
     }
 }
