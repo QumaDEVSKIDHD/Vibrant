@@ -94,7 +94,6 @@ abstract class AbstractVibrantGuiScreen(private val controller: VibrantGuiContro
             if (System.currentTimeMillis() / 1000 % 60 > 54) {
                 mc.getTextureManager().bindTexture(wallpapers[((System.currentTimeMillis() / 60000 + 1) % wallpapers.size).toInt()])
                 GL11.glEnable(GL11.GL_BLEND)
-//                GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA)
 
                 // alpha value depends on current millisecond
                 GL11.glColor4f(1f, 1f, 1f, 1 - (60000 - System.currentTimeMillis() % 60000) / 5000f)
