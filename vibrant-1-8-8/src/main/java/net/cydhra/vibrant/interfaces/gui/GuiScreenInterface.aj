@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.interfaces.gui;
 
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.io.IOException;
 /**
  *
  */
-public aspect GuiScreenInterface {
+public privileged aspect GuiScreenInterface {
     declare parents:(net.minecraft.client.gui.GuiScreen)implements net.cydhra.vibrant.api.gui.VibrantGuiController;
     
     public void GuiScreen.drawRectWithCustomSizedTexture(
