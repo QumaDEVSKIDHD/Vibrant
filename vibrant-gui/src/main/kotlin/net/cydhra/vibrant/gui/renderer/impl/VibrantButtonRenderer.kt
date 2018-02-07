@@ -7,6 +7,7 @@ import net.cydhra.vibrant.gui.theme.Theme
 import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import org.lwjgl.opengl.GL11
+import java.awt.Color
 
 /**
  *
@@ -19,6 +20,19 @@ class VibrantButtonRenderer : ComponentRenderer<IButton> {
         } else {
             theme.primaryColor
         }
+                .let {
+                    if (component.rendererState == null) {
+                        component.rendererState = 20
+                    }
+
+                    if (!component.isMouseOver && component.rendererState as Int >= 20) {
+                        component.rendererState = Math.max(20, component.rendererState as Int - 10)
+                    } else if ((component.rendererState as Int) < it.alpha) {
+                        component.rendererState = Math.min(it.alpha, (component.rendererState as Int) + 10)
+                    }
+
+                    Color(it.red, it.green, it.blue, component.rendererState as Int)
+                }
 
         val outerColor = if (component.isMouseOver) {
             theme.highlightColor(theme.secondaryColor)
