@@ -28,6 +28,11 @@ interface IComponent {
     var isMouseOver: Boolean
 
     /**
+     * State that the renderer can use
+     */
+    var rendererState: Any?
+
+    /**
      * Get a list of all child components of this component
      */
     fun getChildComponents(): List<IComponent>

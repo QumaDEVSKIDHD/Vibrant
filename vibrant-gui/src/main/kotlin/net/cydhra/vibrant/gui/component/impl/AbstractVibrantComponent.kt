@@ -21,6 +21,8 @@ abstract class AbstractVibrantComponent(
 
     override var isMouseOver: Boolean = false
 
+    override var rendererState: Any? = null
+
     override fun updateHovering(mouseX: Int, mouseY: Int, shallUpdate: Boolean): Boolean {
         isMouseOver = false
 
