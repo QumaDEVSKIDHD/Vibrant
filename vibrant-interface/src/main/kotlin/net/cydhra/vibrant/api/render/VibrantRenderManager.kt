@@ -8,4 +8,6 @@ interface VibrantRenderManager {
     var renderPosZ: Double
 
     fun renderEntitySimple(entity: VibrantEntity, partialTicks: Float, unused: Any?): Boolean
+
+    fun getEntityRenderObject(entity: VibrantEntity): Any
 }
