@@ -16,13 +16,14 @@ object EnemyTracker {
 
     private val trackedEntitiesList: MutableList<ITrackedEntity> = mutableListOf()
 
+    val trackedEntities: List<ITrackedEntity> = trackedEntitiesList
+
     init {
         EventManager.registerListeners(this)
     }
 
     @EventHandler
     fun onTick(e: MinecraftTickEvent) {
-        trackedEntitiesList.clear()
 
         val loadedEntities: MutableList<VibrantEntityAlike> = mutableListOf()
         loadedEntities.addAll(VibrantClient.minecraft.theWorld?.getEntityList() ?: return)
@@ -38,7 +39,8 @@ object EnemyTracker {
         }
 
         for (remainingEntity in loadedEntities) {
-            trackedEntitiesList.add(classifyEntity(remainingEntity))
+            if (remainingEntity !== VibrantClient.minecraft.thePlayer)
+                trackedEntitiesList.add(classifyEntity(remainingEntity))
         }
     }
 
