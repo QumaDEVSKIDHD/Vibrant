@@ -3,8 +3,10 @@ package net.cydhra.vibrant.util.enemy
 import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.VibrantClient
+import net.cydhra.vibrant.api.entity.VibrantEntityAlike
 import net.cydhra.vibrant.api.entity.VibrantEntityLiving
 import net.cydhra.vibrant.api.entity.VibrantPlayer
+import net.cydhra.vibrant.api.tileentity.VibrantTileEntity
 import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
 
 /**
@@ -22,8 +24,9 @@ object EnemyTracker {
     fun onTick(e: MinecraftTickEvent) {
         trackedEntitiesList.clear()
 
-        val loadedEntities: MutableList<VibrantEntityLiving> = mutableListOf()
-        loadedEntities.addAll(VibrantClient.minecraft.theWorld?.getEntityList()?.filterIsInstance<VibrantEntityLiving>() ?: return)
+        val loadedEntities: MutableList<VibrantEntityAlike> = mutableListOf()
+        loadedEntities.addAll(VibrantClient.minecraft.theWorld?.getEntityList() ?: return)
+        loadedEntities.addAll(VibrantClient.minecraft.theWorld!!.getTileEntityList())
 
         val trackedEntityIt = trackedEntitiesList.iterator()
         while (trackedEntityIt.hasNext()) {
@@ -60,7 +63,11 @@ object EnemyTracker {
      *
      * @return any instance of [ITrackedEntity] that matches the type of tracked entity
      */
-    private fun classifyEntity(entity: VibrantEntityLiving): ITrackedEntity {
-        return TrackedEnemyEntity(entity)
+    private fun classifyEntity(entity: VibrantEntityAlike): ITrackedEntity {
+        return when (entity) {
+            is VibrantEntityLiving -> TrackedEnemyEntity(entity)
+            is VibrantTileEntity -> TrackedTileEntity(entity)
+            else -> UnclassifiedEntity(entity)
+        }
     }
 }
