@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AjcSettings">
-    <option name="ajcPath" value="$MAVEN_REPOSITORY$/org/aspectj/aspectjtools/1.8.9/aspectjtools-1.8.9.jar" />
+    <option name="ajcPath" value="C:/aspectj1.8/lib/aspectjtools.jar" />
     <option name="cmdLineParams" value="-target 1.8" />
     <option name="aptOptionsEnabled" value="true" />
   </component>
