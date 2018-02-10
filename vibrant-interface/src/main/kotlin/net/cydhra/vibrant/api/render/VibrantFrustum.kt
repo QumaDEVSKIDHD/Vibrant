@@ -9,6 +9,6 @@ interface VibrantFrustum {
 
     fun setPosition(posX: Double, posY: Double, posZ: Double)
 
-    fun isBoundingBoxInFrustum(bounds: VibrantBoundingBox): Boolean
+    fun isBoundingBoxInsideFrustum(bounds: VibrantBoundingBox): Boolean
 
 }

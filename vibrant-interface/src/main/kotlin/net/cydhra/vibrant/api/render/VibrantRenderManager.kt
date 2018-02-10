@@ -9,5 +9,5 @@ interface VibrantRenderManager {
 
     fun renderEntitySimple(entity: VibrantEntity, partialTicks: Float, unused: Any?): Boolean
 
-    fun getEntityRenderObject(entity: VibrantEntity): Any
+    fun <T : VibrantEntity> getEntityRenderObj(entity: T): VibrantRender<T>
 }

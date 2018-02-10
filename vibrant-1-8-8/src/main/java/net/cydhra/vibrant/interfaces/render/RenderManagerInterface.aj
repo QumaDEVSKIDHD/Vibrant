@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.interfaces.render;
 
 import net.cydhra.vibrant.api.entity.VibrantEntity;
+import net.cydhra.vibrant.api.render.VibrantRender;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 
@@ -34,5 +35,9 @@ privileged public aspect RenderManagerInterface {
 
     public void RenderManager.setRenderPosZ(double renderPosZ) {
         this.renderPosZ = renderPosZ;
+    }
+    
+    public <T extends VibrantEntity> VibrantRender<T> RenderManager.getEntityRenderObj(T entity) {
+        return (VibrantRender<T>) this.getEntityRenderObject((Entity) entity);
     }
 }
