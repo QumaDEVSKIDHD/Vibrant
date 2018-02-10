@@ -30,8 +30,8 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
 
     @EventHandler
     fun onRenderOverlay(e: RenderOverlayEvent) {
-        drawWatermarkIcon()
         drawActiveModules(e.scaledResolution)
+        drawWatermarkIcon()
     }
 
     fun drawWatermarkIcon() {
@@ -44,7 +44,6 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
 
         val col = Color.getHSBColor(1F, 0F, 1F)
         val alpha = 100
-
 
         GlStateManager.pushMatrix()
 
