@@ -9,6 +9,7 @@ import net.cydhra.vibrant.api.network.VibrantPlayerPacket;
 import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket;
 import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket;
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture;
+import net.cydhra.vibrant.api.render.VibrantFramebuffer;
 import net.cydhra.vibrant.api.render.VibrantFrustum;
 import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.util.VibrantVec3;
@@ -19,6 +20,7 @@ import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.Vec3;
@@ -105,5 +107,11 @@ public class VibrantFactoryImpl implements VibrantFactory {
         ScaledResolution sc       = new ScaledResolution(Minecraft.getMinecraft());
         mainMenu.setWorldAndResolution(Minecraft.getMinecraft(), sc.getScaledWidth(), sc.getScaledHeight());
         return (VibrantGuiMainMenu) mainMenu;
+    }
+    
+    @NotNull
+    @Override
+    public VibrantFramebuffer newFramebuffer(int displayWidth, int displayHeight, boolean useDepth) {
+        return (VibrantFramebuffer) new Framebuffer(displayWidth, displayHeight, useDepth);
     }
 }

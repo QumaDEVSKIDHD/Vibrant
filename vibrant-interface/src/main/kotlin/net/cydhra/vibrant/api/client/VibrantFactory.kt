@@ -8,6 +8,7 @@ import net.cydhra.vibrant.api.network.VibrantPlayerPacket
 import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket
 import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture
+import net.cydhra.vibrant.api.render.VibrantFramebuffer
 import net.cydhra.vibrant.api.render.VibrantFrustum
 import net.cydhra.vibrant.api.render.VibrantScaledResolution
 import net.cydhra.vibrant.api.util.VibrantVec3
@@ -41,4 +42,6 @@ interface VibrantFactory {
     fun newGuiController(): VibrantGuiController
 
     fun newGuiMainMenu(): VibrantGuiMainMenu
+
+    fun newFramebuffer(displayWidth: Int, displayHeight: Int, useDepth: Boolean): VibrantFramebuffer
 }
