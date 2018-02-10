@@ -71,6 +71,10 @@ object GlStateManager {
 
     fun shadeModel(mode: Int) = GL11.glShadeModel(mode)
 
+    fun clear(mask: Int) = GL11.glClear(mask)
+
+    fun clearColor(red: Float, green: Float, blue: Float, alpha: Float) = GL11.glClearColor(red, green, blue, alpha)
+
     /**
      * Set the color attribute of OpenGL, if it is not already set on that value
      */
