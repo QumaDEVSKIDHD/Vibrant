@@ -16,4 +16,10 @@ public aspect FramebufferInterface {
     public int Framebuffer.getWidth() { return this.framebufferWidth; }
     
     public int Framebuffer.getHeight() { return this.framebufferHeight; }
+    
+    public int Framebuffer.getTextureWidth() { return this.framebufferTextureWidth; }
+    
+    public int Framebuffer.getTextureHeight() { return this.framebufferTextureHeight; }
+    
+    
 }
