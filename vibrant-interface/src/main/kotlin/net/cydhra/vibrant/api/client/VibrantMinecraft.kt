@@ -27,6 +27,8 @@ interface VibrantMinecraft {
 
     val timer: VibrantTimer
 
+    val gameSettings: VibrantGameSettings
+
     fun getTextureManager(): VibrantTextureManager
 
     fun getRenderManager(): VibrantRenderManager
