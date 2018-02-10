@@ -2,6 +2,7 @@ package net.cydhra.vibrant.interfaces.client;
 
 import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
 import net.cydhra.vibrant.api.client.VibrantTimer;
+import net.cydhra.vibrant.api.entity.VibrantEntity;
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
 import net.cydhra.vibrant.api.render.VibrantEntityRenderer;
@@ -12,6 +13,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderGlobal;
+import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
 /**
@@ -68,4 +70,8 @@ public privileged aspect MinecraftInterface {
      * @return true, if no screen is displayed at the moment
      */
     public boolean Minecraft.isCurrentlyDisplayingScreen() { return this.currentScreen != null; }
+    
+    public VibrantEntity Minecraft.getTheRenderViewEntity() { return (VibrantEntity) this.renderViewEntity; }
+    
+    public void Minecraft.setTheRenderViewEntity(VibrantEntity entity) { this.renderViewEntity = (Entity) entity; }
 }

@@ -16,6 +16,8 @@ interface VibrantMinecraft {
     val renderGlobal: VibrantRenderGlobal
     val entityRenderer: VibrantEntityRenderer
 
+    var theRenderViewEntity: VibrantEntity
+
     val framebuffer: VibrantFramebuffer?
 
     val displayWidth: Int
