@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.interfaces.entity;
 
+import net.cydhra.vibrant.api.util.VibrantBoundingBox;
 import net.minecraft.entity.Entity;
 
 /**
@@ -72,4 +73,6 @@ privileged public aspect EntityInterface {
     public void Entity.setHeight(float height) {
         this.height = height;
     }
+    
+    public VibrantBoundingBox Entity.getBoundingBox() { return (VibrantBoundingBox) this.getEntityBoundingBox(); }
 }
