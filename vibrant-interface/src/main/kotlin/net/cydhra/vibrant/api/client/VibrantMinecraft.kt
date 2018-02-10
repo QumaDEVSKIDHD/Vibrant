@@ -35,5 +35,7 @@ interface VibrantMinecraft {
 
     fun getRenderViewEntity(): VibrantEntity
 
+    fun getTileEntityRenderDispatcher(): VibrantTileEntityRendererDispatcher
+
     fun displayGuiScreen(screen: VibrantGuiScreen?)
 }

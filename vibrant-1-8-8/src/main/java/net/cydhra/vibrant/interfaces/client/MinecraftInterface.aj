@@ -8,12 +8,14 @@ import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
 import net.cydhra.vibrant.api.render.VibrantEntityRenderer;
 import net.cydhra.vibrant.api.render.VibrantRenderGlobal;
+import net.cydhra.vibrant.api.render.VibrantTileEntityRendererDispatcher;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderGlobal;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
@@ -43,6 +45,10 @@ public privileged aspect MinecraftInterface {
      * @return the {@link EntityRenderer} instance
      */
     public VibrantEntityRenderer Minecraft.getEntityRenderer() { return (VibrantEntityRenderer) entityRenderer; }
+    
+    public VibrantTileEntityRendererDispatcher Minecraft.getTileEntityRenderDispatcher() {
+        return (VibrantTileEntityRendererDispatcher) TileEntityRendererDispatcher.instance;
+    }
     
     public VibrantTimer Minecraft.getTimer() { return (VibrantTimer) this.timer; }
     
