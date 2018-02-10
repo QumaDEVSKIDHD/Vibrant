@@ -5,7 +5,7 @@ import net.cydhra.vibrant.api.entity.VibrantEntity
 /**
  *
  */
-interface VibrantRender<T : VibrantEntity> {
+interface VibrantRender<in T : VibrantEntity> {
 
-
+    fun render(entity: T, x: Double, y: Double, z: Double, entityYaw: Float, partialTicks: Float)
 }
