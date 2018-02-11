@@ -1,19 +1,9 @@
 group 'net.cydhra'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 subprojects {
     group 'net.cydhra'
     version '1.0'
-
-    sourceCompatibility = 1.8
 
     ext {
         kotlin_version = '1.2.21'
