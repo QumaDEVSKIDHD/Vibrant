@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: kotlin_version
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlin_version
+    compile group: 'com.squareup', name: 'kotlinpoet', version: '0.6.0'
+    compile group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc1'
+
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
