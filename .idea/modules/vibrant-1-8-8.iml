@@ -58,9 +58,72 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: slick" level="project" />
     <orderEntry type="module-library" scope="PROVIDED">
-      <library>
+      <library name="Gradle: 1.8.8">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/workspace/versions/1.8.8/1.8.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: authlib-1.5.21">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: codecjorbis-20101023">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: libraryjavasound-20101123">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: librarylwjglopenal-20100824">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: soundsystem-20120107">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: oshi-core-1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: twitch-6.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/tv/twitch/twitch/6.5/twitch-6.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -109,9 +172,72 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: slick" level="project" />
     <orderEntry type="module-library" scope="RUNTIME">
-      <library>
+      <library name="Gradle: 1.8.8">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/workspace/versions/1.8.8/1.8.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: authlib-1.5.21">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: codecjorbis-20101023">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: libraryjavasound-20101123">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: librarylwjglopenal-20100824">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: soundsystem-20120107">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: oshi-core-1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: twitch-6.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/tv/twitch/twitch/6.5/twitch-6.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -158,135 +284,9 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.ws.rs:jsr311-api:1.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/tv/twitch/twitch/6.5/twitch-6.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" scope="TEST" name="Gradle: slick" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/tv/twitch/twitch/6.5/twitch-6.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="module-library" scope="TEST">
-      <library>
+      <library name="Gradle: 1.8.8">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/workspace/versions/1.8.8/1.8.8.jar!/" />
         </CLASSES>
@@ -294,8 +294,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: authlib-1.5.21">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar!/" />
         </CLASSES>
@@ -303,8 +303,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: codecjorbis-20101023">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
         </CLASSES>
@@ -312,8 +312,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: libraryjavasound-20101123">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
         </CLASSES>
@@ -321,8 +321,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: librarylwjglopenal-20100824">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
         </CLASSES>
@@ -330,8 +330,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: soundsystem-20120107">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
         </CLASSES>
@@ -339,8 +339,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: oshi-core-1.1">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
         </CLASSES>
@@ -348,8 +348,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: twitch-6.5">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../vibrant-1-8-8/lib/tv/twitch/twitch/6.5/twitch-6.5.jar!/" />
         </CLASSES>

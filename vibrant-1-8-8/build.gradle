@@ -13,14 +13,9 @@ buildscript {
     }
 }
 
-group 'net.cydhra'
-version '1.0-SNAPSHOT'
-
 apply plugin: 'aspectj.gradle'
 apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
