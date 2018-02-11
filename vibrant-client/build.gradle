@@ -8,6 +8,8 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'idea'
 
 repositories {
     mavenCentral()
@@ -27,8 +29,23 @@ dependencies {
 
     compile project(":vibrant-interface")
     compile project(":vibrant-gui")
+
+    kapt project(":vibrant-generator")
+    compileOnly project(":vibrant-generator")
 }
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+kapt {
+    generateStubs = true
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "${buildDir}/generated/source/kaptKotlin/"
+        }
+    }
 }
