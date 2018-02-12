@@ -4,9 +4,12 @@
 Latest Nigthly
 
 [![Build Status](https://jenkins.flaflo.xyz/buildStatus/icon?job=Vibrant)](https://jenkins.flaflo.xyz/job/Vibrant)
-## Installation
+
+## Compilation
 1. Clone `https://github.com/Cydhra/Vibrant.git`.
-2. Make sure `Minecraft 1.8.8` vanilla is installed.
-3. Go into the `vibrant-1-8-8` module and run `install`.
-5. Run gradle with task `shadowJar` to build with dependecies.
-6. If all done correctly you should pass without errors.
+2. Choose which Minecraft versions you want to compile for. Make sure you have a clean installation of all those Minecraft versions.
+3. For every version you want to compile, run the `setupWorkspace` gradle task (for the specific submodule)
+5. Run gradle task `shadowJar` to build with dependecies (either for the root project, or for each sub-module that is set up)
+6. Obtain the finished client artifacts from the sub-module build/lib folders.
+
+Warning: The `setupWorkspace` task is untested for unix operating systems.
