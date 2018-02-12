@@ -1,6 +1,18 @@
 group 'net.cydhra'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile gradleApi()
+}
+
 subprojects {
     group 'net.cydhra'
     version '1.0'
