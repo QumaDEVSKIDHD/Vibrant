@@ -182,15 +182,4 @@ class GLShader {
     private enum class State {
         CONSTRUCTION, LINKED
     }
-
-    companion object {
-
-        /**
-         * The default vertex shader with gl texcoord 0 bound to texture 0
-         */
-        val TEX0_VERTEX_SHADER = "void main() {" +
-                "gl_TexCoord[0] = gl_MultiTexCoord0;" +
-                "gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;" +
-                "}"
-    }
 }
