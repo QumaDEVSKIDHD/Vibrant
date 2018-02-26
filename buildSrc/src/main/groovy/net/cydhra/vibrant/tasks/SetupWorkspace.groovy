@@ -72,7 +72,7 @@ class SetupWorkspace extends DefaultTask {
         copyDirectory(ant, "tmp/jars/libraries/com/paulscode/codecjorbis/", "lib/com/paulscode/codecjorbis/")
         copyDirectory(ant, "tmp/jars/libraries/com/paulscode/codecwav/", "lib/com/paulscode/codecwav/")
         copyDirectory(ant, "tmp/jars/libraries/com/paulscode/libraryjavasound/", "lib/com/paulscode/libraryjavasound/")
-        copyDirectory(ant, "tmp/jars/libraries/com/paulscode/librarylwjglopenal/", "lib/paulscode/librarylwjglopenal/")
+        copyDirectory(ant, "tmp/jars/libraries/com/paulscode/librarylwjglopenal/", "lib/com/paulscode/librarylwjglopenal/")
         copyDirectory(ant, "tmp/jars/libraries/com/paulscode/soundsystem/", "lib/com/paulscode/soundsystem/")
         copyDirectory(ant, "tmp/jars/libraries/oshi-project/oshi-core/", "lib/oshi-project/oshi-core/")
         copyDirectory(ant, "tmp/jars/libraries/tv/twitch/", "lib/tv/twitch/")
