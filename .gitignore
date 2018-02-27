@@ -17,9 +17,6 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
-# contains the path to the AJC compiler which is user specific
-/.idea/compiler.xml
-
 # Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries
