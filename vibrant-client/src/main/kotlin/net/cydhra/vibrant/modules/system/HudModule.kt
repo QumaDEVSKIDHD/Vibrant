@@ -43,7 +43,8 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
         val borderOffset = 15
 
         val col = Color.getHSBColor(1F, 0F, 1F)
-        val alpha = 100
+
+        val alpha = 40
 
         GlStateManager.pushMatrix()
 
@@ -88,6 +89,8 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
     }
 
     fun drawActiveModules(scaledResolution: VibrantScaledResolution) {
+        GlStateManager.disableTexture2D()
+
         glBegin(GL11.GL_LINE_STRIP)
         var offset = 0F
         for (module in ModuleManager.modules) {
