@@ -9,7 +9,6 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 
-
 /**
  *
  */
@@ -46,12 +45,23 @@ object RenderUtil {
         this.setOptions(color)
 
         GL11.glBegin(GL11.GL_QUADS)
+
         GL11.glVertex2d(posX.toDouble(), posY.toDouble())
         GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
         GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
         GL11.glVertex2d((posX + width).toDouble(), posY.toDouble())
 
         GL11.glEnd()
+
+        /*val vertecies = createFloatBuffer(8)
+                .put(posX.toFloat()).put(posY.toFloat())
+                .put(posX.toFloat()).put((posY + height).toFloat())
+                .put((posX + width).toFloat()).put((posY + height).toFloat())
+                .put((posX + width).toFloat()).put(posY.toFloat())
+
+        val vbo = glGenBuffers()
+        glBindBuffer(GL_ARRAY_BUFFER, vbo)
+        glBufferData(GL_ARRAY_BUFFER, vertecies, GL_STATIC_DRAW)*/
     }
 
     fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null, lineWidth: Float? = null) {
@@ -97,7 +107,7 @@ object RenderUtil {
         setOptions(color)
 
         GL11.glBegin(GL11.GL_POLYGON)
-        for (i in (beginVertex .. endVertex)) {
+        for (i in (beginVertex..endVertex)) {
             GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
         }
         GL11.glEnd()
@@ -128,6 +138,6 @@ object RenderUtil {
     }
 
     fun interpolate(now: Double, then: Double, partialTicks: Float): Double {
-        return then + (now - then) *  partialTicks
+        return then + (now - then) * partialTicks
     }
 }
