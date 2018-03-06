@@ -29,6 +29,7 @@ open class Outline {
     private var lineWidth: Float = 0F
     private var avgDivisor: Float = 0F
     private var sampleRadius: Int = 0
+    private var maxSampleRadius: Int = 0
 
     private var color: Color? = null
 
@@ -42,6 +43,7 @@ open class Outline {
         this.color = Color.WHITE
         this.lineWidth = 1f
         this.sampleRadius = 1
+        this.maxSampleRadius = this.sampleRadius
         this.avgDivisor = 60f
     }
 
@@ -86,6 +88,7 @@ open class Outline {
         this.setAverageDivisor(this.avgDivisor)
         this.setLineWidth(this.lineWidth)
         this.setColor(this.color)
+        this.setMaxSampleRadius(this.maxSampleRadius)
 
         this.framebuffer!!.drawOntoMinecraftFramebuffer()
         this.shader!!.unbind()
@@ -112,7 +115,7 @@ open class Outline {
     /**
      * @return true if uniforming is possible
      */
-    fun canUniform(): Boolean {
+    private fun canUniform(): Boolean {
         return this.isReady && this.shader!!.isBound
     }
 
@@ -144,6 +147,14 @@ open class Outline {
         }
 
         this.sampleRadius = radius
+    }
+
+    fun setMaxSampleRadius(maxRadius: Int) {
+        if (this.canUniform()) {
+            this.shader!!.uniform("maxSampleRadius", maxRadius)
+        }
+
+        this.maxSampleRadius = maxRadius
     }
 
     /**

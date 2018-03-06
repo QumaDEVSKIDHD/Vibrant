@@ -17,7 +17,8 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
     override fun onEnable() {
         multiOutline.setLineWidth(1F)
         multiOutline.setSampleRadius(4)
-        multiOutline.setAverageDivisor(60F)
+        multiOutline.setAverageDivisor(80F)
+        multiOutline.setMaxSampleRadius(4)
     }
 
     @EventHandler

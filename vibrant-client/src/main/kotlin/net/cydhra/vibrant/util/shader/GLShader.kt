@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11
  */
 class GLShader {
 
-    val programId: Int = glCreateProgramObjectARB()
+    private val programId: Int = glCreateProgramObjectARB()
     private var state = State.CONSTRUCTION
 
     /**
