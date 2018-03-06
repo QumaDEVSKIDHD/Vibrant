@@ -33,14 +33,11 @@ object RotationResource : GameResource<RotationResource.RotationState>() {
                 .create()
 
         GameResourceManager.registerPacketManipulation(RotationResource) { packet, state: RotationState ->
-            if (packet is VibrantPlayerPosPacket) {
-                VibrantClient.factory.newPlayerPosLookPacket(packet.posX, packet.posY, packet.posZ, state.yaw, state.pitch, packet.onGround)
-            } else if (packet is VibrantPlayerPosLookPacket) {
-                VibrantClient.factory.newPlayerPosLookPacket(packet.posX, packet.posY, packet.posZ, state.yaw, state.pitch, packet.onGround)
-            } else if (packet is VibrantPlayerPacket) {
-                VibrantClient.factory.newPlayerLookPacket(state.yaw, state.pitch, packet.onGround)
-            } else {
-                packet
+            when (packet) {
+                is VibrantPlayerPosPacket -> VibrantClient.factory.newPlayerPosLookPacket(packet.posX, packet.posY, packet.posZ, state.yaw, state.pitch, packet.onGround)
+                is VibrantPlayerPosLookPacket -> VibrantClient.factory.newPlayerPosLookPacket(packet.posX, packet.posY, packet.posZ, state.yaw, state.pitch, packet.onGround)
+                is VibrantPlayerPacket -> VibrantClient.factory.newPlayerLookPacket(state.yaw, state.pitch, packet.onGround)
+                else -> packet
             }
         }
     }

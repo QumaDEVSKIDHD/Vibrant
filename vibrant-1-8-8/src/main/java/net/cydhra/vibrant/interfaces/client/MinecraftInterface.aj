@@ -2,6 +2,7 @@ package net.cydhra.vibrant.interfaces.client;
 
 import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
 import net.cydhra.vibrant.api.client.VibrantGameSettings;
+import net.cydhra.vibrant.api.client.VibrantPlayerController;
 import net.cydhra.vibrant.api.client.VibrantTimer;
 import net.cydhra.vibrant.api.entity.VibrantEntity;
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
@@ -53,7 +54,11 @@ public privileged aspect MinecraftInterface {
     public VibrantTimer Minecraft.getTimer() { return (VibrantTimer) this.timer; }
     
     public VibrantGameSettings Minecraft.getGameSettings() { return (VibrantGameSettings) this.gameSettings; }
-    
+
+    public VibrantPlayerController Minecraft.getPlayerController() {
+        return (VibrantPlayerController) this.playerController;
+    }
+
     /**
      * Delegate the {@link VibrantGuiScreen} through a {@link VibrantGuiScreenAdapter} to Minecraft
      * @param screen screen implementation

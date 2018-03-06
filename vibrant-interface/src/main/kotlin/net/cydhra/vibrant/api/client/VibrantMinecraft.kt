@@ -12,6 +12,8 @@ import net.cydhra.vibrant.api.world.VibrantWorld
 interface VibrantMinecraft {
 
     val thePlayer: VibrantPlayerSP?
+    val playerController: VibrantPlayerController?
+
     val theWorld: VibrantWorld?
     val renderGlobal: VibrantRenderGlobal
     val entityRenderer: VibrantEntityRenderer

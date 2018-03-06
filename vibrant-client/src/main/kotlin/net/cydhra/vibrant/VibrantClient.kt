@@ -10,6 +10,7 @@ import net.cydhra.vibrant.events.render.RenderOverlayEvent
 import net.cydhra.vibrant.events.render.RenderWorldEvent
 import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.font.VibrantFontRenderer
+import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.modulesystem.BypassMode
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.GameResourceManager
@@ -58,13 +59,25 @@ object VibrantClient {
         EventManager.callEvent(MinecraftTickEvent())
     }
 
+    @EventHandler(priority = ListenerPriority.HIGHEST)
+    fun beforeRenderOverlay(e: RenderOverlayEvent) {
+        GlStateManager.pushState()
+    }
+
     @EventHandler(priority = ListenerPriority.LOWEST)
     fun afterRenderOverlay(e: RenderOverlayEvent) {
         minecraft.getTextureManager().bindTexture("textures/gui/icons.png")
+        GlStateManager.popState()
+    }
+
+    @EventHandler(priority = ListenerPriority.HIGHEST)
+    fun beforeRenderWorld(e: RenderWorldEvent) {
+        GlStateManager.pushState()
     }
 
     @EventHandler(priority = ListenerPriority.LOWEST)
     fun afterRenderWorld(e: RenderWorldEvent) {
+        GlStateManager.popState()
         minecraft.getTextureManager().bindTexture("textures/gui/icons.png")
     }
 }
