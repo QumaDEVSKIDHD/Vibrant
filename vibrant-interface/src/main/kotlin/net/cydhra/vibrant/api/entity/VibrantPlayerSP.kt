@@ -19,4 +19,6 @@ interface VibrantPlayerSP : VibrantPlayer {
     fun getItemInUseCount(): Int
 
     fun getHeldItem(): VibrantItemStack?
+
+    fun swing()
 }

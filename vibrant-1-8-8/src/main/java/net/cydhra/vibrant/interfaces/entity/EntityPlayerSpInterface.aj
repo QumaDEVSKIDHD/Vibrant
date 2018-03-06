@@ -16,7 +16,11 @@ public aspect EntityPlayerSpInterface {
     public void EntityPlayerSP.setAllowedFlying(boolean allowedFlying) {
         this.capabilities.allowFlying = allowedFlying;
     }
-    
+
+    public void EntityPlayerSP.swing() {
+        this.swingItem();
+    }
+
     public boolean EntityPlayerSP.isFlying() {
         return this.capabilities.isFlying;
     }
