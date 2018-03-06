@@ -12,7 +12,7 @@ import net.cydhra.vibrant.organization.resources.RotationResource
 import net.cydhra.vibrant.util.enemy.EnemyTracker
 import org.lwjgl.input.Keyboard
 
-class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.KEY_R) {
+class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.KEY_U) {
 
     private var entity: VibrantPlayer? = null
 
