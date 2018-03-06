@@ -16,6 +16,8 @@ object VibrantConfiguration {
     private val settings = mutableMapOf<String, VibrantSettingDelegate<*>>()
     private lateinit var values: MutableMap<String, Any?>
 
+    internal var scheduledThread: Thread? = null
+
     @Suppress("UNCHECKED_CAST")
     fun <T> registerSettingDelegate(delegate: VibrantSettingDelegate<T>) {
         if (settings.containsKey(delegate.uniqueId))
@@ -27,6 +29,11 @@ object VibrantConfiguration {
             delegate.value = values[delegate.uniqueId] as T
         } else {
             values[delegate.uniqueId] = delegate.value
+        }
+
+        delegate.observer = {
+            values[delegate.uniqueId] = it
+            scheduleSave()
         }
     }
 
@@ -42,6 +49,13 @@ object VibrantConfiguration {
                 mutableMapOf<String, Any?>()::class.java)
     }
 
+    fun scheduleSave() {
+        synchronized(VibrantConfiguration) {
+            scheduledThread = SaveScheduler()
+            scheduledThread!!.start()
+        }
+    }
+
     fun save() {
         file
                 .apply { parentFile.mkdir() }
@@ -53,5 +67,18 @@ object VibrantConfiguration {
                 .writeText(
                         gson.toJson(this.values)
                 )
+    }
+
+    class SaveScheduler : Thread() {
+        override fun run() {
+            Thread.sleep(1000L)
+
+            synchronized(VibrantConfiguration) {
+                if (VibrantConfiguration.scheduledThread == this) {
+                    VibrantConfiguration.scheduledThread = null
+                    VibrantConfiguration.save()
+                }
+            }
+        }
     }
 }

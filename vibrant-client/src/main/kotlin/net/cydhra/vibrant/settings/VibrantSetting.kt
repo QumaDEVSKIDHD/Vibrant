@@ -8,7 +8,7 @@ import kotlin.reflect.KProperty
  * @param initialValue the initial value for the setting
  * @param initialize a function with a builder as receiver, that can be used to declare the setting's behaviour
  *
- * @param a [VibrantSettingDelegate] instance
+ * @return a [VibrantSettingDelegate] instance
  */
 fun <T : Any> setting(name: String, initialValue: T, initialize: ConfigBuilder<T>.() -> Unit = {}):
         VibrantSettingDelegate<T> {
@@ -44,6 +44,8 @@ open class VibrantSettingDelegate<T>(
         private val decrementingFunc: ((T) -> T)? = null,
         val uniqueId: String) {
     var value: T = initialValue
+
+    lateinit var observer: (T) -> Unit
 
     init {
         @Suppress("LeakingThis")
