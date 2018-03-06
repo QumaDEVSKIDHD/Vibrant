@@ -14,7 +14,7 @@ import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.modulesystem.BypassMode
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.GameResourceManager
-import net.cydhra.vibrant.settings.VibrantSettings
+import net.cydhra.vibrant.settings.VibrantConfiguration
 import org.slf4j.LoggerFactory
 
 /**
@@ -42,12 +42,12 @@ object VibrantClient {
         this.minecraft = minecraft
         this.factory = factory
 
-        VibrantSettings.load()
+        VibrantConfiguration.load()
 
         logger.info("loading modules")
         ModuleManager.init()
 
-        VibrantSettings.save()
+        VibrantConfiguration.save()
 
         EventManager.registerListeners(this)
 

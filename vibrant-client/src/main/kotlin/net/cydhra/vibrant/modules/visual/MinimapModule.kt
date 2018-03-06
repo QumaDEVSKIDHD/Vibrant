@@ -9,20 +9,37 @@ import net.cydhra.vibrant.gui.util.RenderUtil
 import net.cydhra.vibrant.gui.util.StencilUtil
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
-import net.cydhra.vibrant.settings.VibrantConfig
-import net.cydhra.vibrant.settings.VibrantSettings
+import net.cydhra.vibrant.settings.by
+import net.cydhra.vibrant.settings.clamped
+import net.cydhra.vibrant.settings.setting
+import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 
 /**
  *
  */
-class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
+class MinimapModule : Module("Minimap", DefaultCategories.VISUAL, Keyboard.KEY_Z) {
 
-    private val perspectiveAngle = VibrantSettings.registerConfig(VibrantConfig("Map Angle", 45, 40, 70, 1))
-    private val mapRadius = VibrantSettings.registerConfig(VibrantConfig("Map Radius", 80, 50, 100, 1))
-    private val showLines = VibrantSettings.registerConfig(VibrantConfig("Show Map Axis", true))
-    private val lineWidth = VibrantSettings.registerConfig(VibrantConfig("Axis Strength", 0.2, 0.1, 1.0, 0.05))
+    private val perspectiveAngle by setting("Map Angle", 45) {
+        clamped(40, 70)
+        increment by 1
+        decrement by -1
+    }
+
+    private val mapRadius by setting("Map Radius", 80) {
+        clamped(50, 100)
+        increment by 5
+        decrement by -5
+    }
+
+    private val showLines by setting("Show Map Axis", true)
+
+    private val lineWidth by setting("Axis Strength", 0.2) {
+        clamped(0.1, 1.0)
+        increment by 0.05
+        decrement by -0.05
+    }
 
     private var zombie: VibrantZombie? = null
 
@@ -32,7 +49,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
             return
 
         if (this.zombie == null)
-            factory.createZombie(mc.theWorld!!)
+            zombie = factory.createZombie(mc.theWorld!!)
 
         mc.entityRenderer.setupOverlayRendering()
 
@@ -40,7 +57,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
         GlStateManager.pushMatrix()
 
         val sc = factory.newScaledResolution()
-        GL11.glTranslatef((sc.getScaledWidth() - mapRadius.value).toFloat(), (sc.getScaledHeight() - mapRadius.value).toFloat(), 0f)
+        GL11.glTranslatef((sc.getScaledWidth() - mapRadius).toFloat(), (sc.getScaledHeight() - mapRadius).toFloat(), 0f)
 
         // prepare circular stencil
         StencilUtil.setupStencil(mc.framebuffer, mc.displayWidth, mc.displayHeight)
@@ -50,7 +67,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
         GlStateManager.enableColorBlending()
         GlStateManager.enableLineSmoothing()
 
-        RenderUtil.fillCircle(0, 0, mapRadius.value.toDouble(), Color.BLACK)
+        RenderUtil.fillCircle(0, 0, mapRadius.toDouble(), Color.BLACK)
         StencilUtil.enableStencil(StencilUtil.StencilMode.CROP_OUTSIDE)
 
         GlStateManager.enableTexture2D()
@@ -58,7 +75,7 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
 
         // flip and turn
         GL11.glScalef(1f, -1f, 1f)
-        GL11.glRotatef(perspectiveAngle.value.toFloat(), 1f, 0f, 0f)
+        GL11.glRotatef(perspectiveAngle.toFloat(), 1f, 0f, 0f)
         GL11.glRotatef(mc.thePlayer!!.rotationYaw % 360 - 180, 0f, 1f, 0f)
 
         // prepare view frustum
@@ -86,9 +103,9 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL) {
 
         GlStateManager.disableTexture2D()
         GlStateManager.disableDepthTest()
-        if (showLines.value) {
-            RenderUtil.drawLine3d(-200.0, 1.0, 0.0, 200.0, 1.0, 0.0, Color.WHITE, lineWidth.value.toFloat())
-            RenderUtil.drawLine3d(0.0, 1.0, -200.0, 0.0, 1.0, 200.0, Color.WHITE, lineWidth.value.toFloat())
+        if (showLines) {
+            RenderUtil.drawLine3d(-200.0, 1.0, 0.0, 200.0, 1.0, 0.0, Color.WHITE, lineWidth.toFloat())
+            RenderUtil.drawLine3d(0.0, 1.0, -200.0, 0.0, 1.0, 200.0, Color.WHITE, lineWidth.toFloat())
         }
         GlStateManager.enableTexture2D()
 
