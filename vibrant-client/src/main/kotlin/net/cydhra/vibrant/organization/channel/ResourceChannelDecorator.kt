@@ -29,7 +29,7 @@ abstract class ResourceChannelDecorator<R : GameResourceState>(val channel: IRes
         this.channel.removeLock(module)
     }
 
-    override fun updateLockedStateOutOfBands(state: R, module: Module) {
-        this.channel.updateLockedStateOutOfBands(state, module)
+    override fun updateLockedStateOutOfSync(state: R, module: Module) {
+        this.channel.updateLockedStateOutOfSync(state, module)
     }
 }

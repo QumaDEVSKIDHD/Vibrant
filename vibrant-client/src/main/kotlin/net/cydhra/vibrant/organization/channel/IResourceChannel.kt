@@ -31,7 +31,7 @@ interface IResourceChannel<R : GameResourceState> {
     fun removeLock(module: Module)
 
     /**
-     * Update a lock with new state and out of bands update the channel, if the lock is currently active
+     * Update a lock with new state and out of sync update the channel, if the lock is currently active
      */
-    fun updateLockedStateOutOfBands(state: R, module: Module)
+    fun updateLockedStateOutOfSync(state: R, module: Module)
 }

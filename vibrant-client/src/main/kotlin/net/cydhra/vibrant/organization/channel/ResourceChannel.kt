@@ -40,7 +40,7 @@ open class ResourceChannel<R : GameResourceState>(protected val monitor: () -> R
         locks.remove(module)
     }
 
-    override fun updateLockedStateOutOfBands(state: R, module: Module) {
+    override fun updateLockedStateOutOfSync(state: R, module: Module) {
         if (locks[module] == null)
             throw IllegalStateException("Cannot update a lock, when holding no lock.")
 

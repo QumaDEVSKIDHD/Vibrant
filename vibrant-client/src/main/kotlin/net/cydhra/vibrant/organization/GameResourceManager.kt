@@ -88,8 +88,8 @@ object GameResourceManager {
         this.resources[resource]!!.addLock(state, module, priority, side)
     }
 
-    fun <S : GameResourceState> outOfBandUpdate(resource: GameResource<S>, state: S, module: Module) {
-        this.resources[resource]!!.updateLockedStateOutOfBands(state, module)
+    fun <S : GameResourceState> outOfSyncUpdate(resource: GameResource<S>, state: S, module: Module) {
+        this.resources[resource]!!.updateLockedStateOutOfSync(state, module)
     }
 
     /**
