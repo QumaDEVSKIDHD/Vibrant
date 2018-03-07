@@ -9,7 +9,11 @@ import kotlin.math.sin
 /**
  * An angle in 3D space.
  */
-class Angle(val yaw: Double, val pitch: Double) {
+class Angle(yaw: Double, val pitch: Double) {
+
+    val yaw: Double = ((yaw + 180) % 360) - 180
+
+    // btw I've never tested whether those values are correct
     val xCoord: Double = cos(yaw)
     val yCoord: Double = cos(pitch)
     val zCoord: Double = sin(yaw)
