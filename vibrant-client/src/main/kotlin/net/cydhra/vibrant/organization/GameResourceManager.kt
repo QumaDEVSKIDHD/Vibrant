@@ -84,8 +84,12 @@ object GameResourceManager {
      * @see [IResourceChannel.addLock]
      */
     fun <S : GameResourceState> lockGameResource(
-            resource: GameResource<S>, state: S, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
+            resource: GameResource<S>, state: () -> S, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
         this.resources[resource]!!.addLock(state, module, priority, side)
+    }
+
+    fun <S : GameResourceState> outOfBandUpdate(resource: GameResource<S>, state: S, module: Module) {
+        this.resources[resource]!!.updateLockedStateOutOfBands(state, module)
     }
 
     /**

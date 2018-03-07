@@ -13,7 +13,7 @@ class NoFallModule : Module("NoFall", DefaultCategories.MOVEMENT, Keyboard.KEY_N
     override fun onEnable() {
         GameResourceManager.lockGameResource(
                 NoFallResource,
-                NoFallResource.NoFallResourceState(true),
+                { NoFallResource.NoFallResourceState(true) },
                 this,
                 ResourceRequestPriority.movement,
                 ResourceChannel.Side.SERVER

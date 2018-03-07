@@ -23,10 +23,15 @@ interface IResourceChannel<R : GameResourceState> {
      *
      * @see appendState
      */
-    fun addLock(state: R, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side)
+    fun addLock(state: () -> R, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side)
 
     /**
      * Remove the lock of this module. This method does nothing, if the module does not hold any lock on this channel.
      */
     fun removeLock(module: Module)
+
+    /**
+     * Update a lock with new state and out of bands update the channel, if the lock is currently active
+     */
+    fun updateLockedStateOutOfBands(state: R, module: Module)
 }
