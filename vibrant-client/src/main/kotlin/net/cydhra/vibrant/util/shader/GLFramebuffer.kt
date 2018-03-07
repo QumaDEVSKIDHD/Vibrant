@@ -12,16 +12,11 @@ import org.lwjgl.opengl.GL11
  * @author Flaflo
  * @author Cydhra
  */
-class GLFramebuffer
-/**
- * Create a gl framebuffer to render extra stuff to it
- *
- * @param useDepth whether to use depth
- * @param width the width
- * @param height the height
- */
-constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecraft.displayWidth, height: Int = VibrantClient.minecraft.displayHeight) {
-    private var framebuffer: VibrantFramebuffer? = null
+class GLFramebuffer(
+        private val isUsingDepth: Boolean,
+        width: Int = VibrantClient.minecraft.displayWidth,
+        height: Int = VibrantClient.minecraft.displayHeight) {
+    private var framebuffer: VibrantFramebuffer
 
     var isBound: Boolean = false
         private set
@@ -29,20 +24,19 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
         private set
 
     val width: Float
-        get() = framebuffer!!.width.toFloat()
+        get() = framebuffer.width.toFloat()
 
     val height: Float
-        get() = framebuffer!!.height.toFloat()
+        get() = framebuffer.height.toFloat()
 
     val textureWidth: Float
-        get() = framebuffer!!.textureWidth.toFloat()
+        get() = framebuffer.textureWidth.toFloat()
 
     val textureHeight: Float
-        get() = framebuffer!!.textureHeight.toFloat()
+        get() = framebuffer.textureHeight.toFloat()
 
     init {
-        this.framebuffer = VibrantClient.factory.newFramebuffer(width, height,
-                isUsingDepth)
+        this.framebuffer = VibrantClient.factory.newFramebuffer(width, height, isUsingDepth)
     }
 
     /**
@@ -52,7 +46,7 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
      * @param height the height
      */
     fun update(width: Int, height: Int) {
-        this.framebuffer!!.deleteFramebuffer()
+        this.framebuffer.deleteFramebuffer()
         this.framebuffer = VibrantClient.factory.newFramebuffer(width, height, this.isUsingDepth)
     }
 
@@ -60,8 +54,8 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
      * Resize the framebuffer to the size of the display
      */
     fun update() {
-        if (framebuffer!!.width != Display.getWidth() || framebuffer!!.height != Display.getHeight()) {
-            framebuffer!!.deleteFramebuffer()
+        if (framebuffer.width != Display.getWidth() || framebuffer.height != Display.getHeight()) {
+            framebuffer.deleteFramebuffer()
             framebuffer = VibrantClient.factory.newFramebuffer(Display.getWidth(), Display.getHeight(), this.isUsingDepth)
         }
     }
@@ -75,7 +69,7 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
      * Destroy framebuffer
      */
     fun delete() {
-        this.framebuffer!!.deleteFramebuffer()
+        this.framebuffer.deleteFramebuffer()
         this.isDeleted = true
     }
 
@@ -83,7 +77,7 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
      * Bind framebuffer to OpenGL
      */
     fun bind() {
-        this.framebuffer!!.bindFramebuffer(false)
+        this.framebuffer.bindFramebuffer(false)
         this.isBound = true
     }
 
@@ -91,7 +85,7 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
      * Unbind the framebuffer from OpenGL
      */
     fun unbind() {
-        this.framebuffer!!.unbindFramebuffer()
+        this.framebuffer.unbindFramebuffer()
         this.isBound = false
     }
 
@@ -108,7 +102,7 @@ constructor(private val isUsingDepth: Boolean, width: Int = VibrantClient.minecr
      * Draw the framebuffer onto minecraft framebuffer as a 2D texture.
      */
     fun drawOntoMinecraftFramebuffer() {
-        drawFramebuffer(this.framebuffer!!)
+        drawFramebuffer(this.framebuffer)
     }
 
     companion object {

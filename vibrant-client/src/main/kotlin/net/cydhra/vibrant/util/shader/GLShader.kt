@@ -16,16 +16,14 @@ class GLShader {
     private val programId: Int = glCreateProgramObjectARB()
     private var state = State.CONSTRUCTION
 
-    /**
-     * @return true if the shader is bound
-     */
     var isBound: Boolean = false
         private set
-    /**
-     * @return true if the shader is deleted
-     */
+
     var isDeleted: Boolean = false
         private set
+
+    private val canUniform: Boolean
+        get() = this.isBound && !this.isDeleted
 
     /**
      * Compiles and attaches a shader from source code to this shader object
@@ -64,16 +62,14 @@ class GLShader {
         }
 
         glLinkProgramARB(this.programId)
-        if (glGetObjectParameteriARB(this.programId,
-                        GL_OBJECT_LINK_STATUS_ARB) == GL11.GL_FALSE) {
+        if (glGetObjectParameteriARB(this.programId, GL_OBJECT_LINK_STATUS_ARB) == GL11.GL_FALSE) {
             throw ShaderLinkException(glGetInfoLogARB(this.programId,
                     glGetObjectParameteriARB(this.programId, GL_OBJECT_INFO_LOG_LENGTH_ARB)))
         }
 
         // validate shader
         glValidateProgramARB(this.programId)
-        if (glGetObjectParameteriARB(this.programId,
-                        GL_OBJECT_VALIDATE_STATUS_ARB) == GL11.GL_FALSE) {
+        if (glGetObjectParameteriARB(this.programId, GL_OBJECT_VALIDATE_STATUS_ARB) == GL11.GL_FALSE) {
             throw ShaderLinkException(glGetInfoLogARB(this.programId,
                     glGetObjectParameteriARB(this.programId, GL_OBJECT_INFO_LOG_LENGTH_ARB)))
         }
@@ -97,14 +93,6 @@ class GLShader {
     fun unbind() {
         glUseProgramObjectARB(0)
         this.isBound = false
-    }
-
-    /**
-     * Deletes the shader
-     */
-    fun delete() {
-        glDeleteObjectARB(this.programId)
-        this.isDeleted = true
     }
 
     /**
@@ -159,22 +147,15 @@ class GLShader {
     }
 
     private fun checkBeforeUniform(location: String, vararg values: Any) {
-        if (!this.canUniform()) {
+        if (!this.canUniform) {
             throw ShaderUniformException(location, "Shader is not ready to perform a uniform", *values)
         }
     }
 
     /**
-     * @return true if a uniform can be executed
-     */
-    fun canUniform(): Boolean {
-        return this.isBound && !this.isDeleted
-    }
-
-    /**
      * Type of a shader
      */
-    enum class ShaderType private constructor(val GL_SHADER_TYPE: Int) {
+    enum class ShaderType(val GL_SHADER_TYPE: Int) {
         VERTEX_SHADER(ARBVertexShader.GL_VERTEX_SHADER_ARB),
         FRAGMENT_SHADER(ARBFragmentShader.GL_FRAGMENT_SHADER_ARB)
     }
