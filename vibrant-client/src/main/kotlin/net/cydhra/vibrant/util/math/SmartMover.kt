@@ -1,5 +1,8 @@
 package net.cydhra.vibrant.util.math
 
+import kotlin.math.abs
+import kotlin.math.sign
+
 /**
  *
  */
@@ -31,6 +34,10 @@ class AngleSmartMover(initialConfiguration: Angle) {
     fun interpolate(partialTicks: Float): Pair<Double, Double> {
         val (prevX, prevY) = prevComponentVector
         val (currX, currY) = components
-        return Pair(prevX + (currX - prevX) * partialTicks, prevY + (currY - prevY) * partialTicks)
+
+        var distance = currX - prevX
+        if (abs(distance) > 180) distance = (360 - abs(distance)) * -sign(distance)
+
+        return Pair(prevX + (distance) * partialTicks, prevY + (currY - prevY) * partialTicks)
     }
 }
