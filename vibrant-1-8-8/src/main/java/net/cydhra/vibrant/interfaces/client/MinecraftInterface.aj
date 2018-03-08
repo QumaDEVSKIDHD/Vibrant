@@ -20,12 +20,16 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
+import java.lang.reflect.Field;
+
 /**
  *
  */
 public privileged aspect MinecraftInterface {
     
     declare parents:(Minecraft)implements net.cydhra.vibrant.api.client.VibrantMinecraft;
+    
+    private Field Minecraft.sessionField;
     
     /**
      * @return the current {@link EntityPlayerSP} instance
@@ -88,4 +92,21 @@ public privileged aspect MinecraftInterface {
     public VibrantEntity Minecraft.getTheRenderViewEntity() { return (VibrantEntity) this.renderViewEntity; }
     
     public void Minecraft.setTheRenderViewEntity(VibrantEntity entity) { this.renderViewEntity = (Entity) entity; }
+    
+    public net.cydhra.nidhogg.data.Session Minecraft.getMinecraftSession() {
+        return new net.cydhra.nidhogg.data.Session(this.session.getUsername(), this.session.getSessionID(), this.session.getPlayerID());
+    }
+    
+    public void Minecraft.setMinecraftSession(net.cydhra.nidhogg.data.Session session) throws IllegalAccessException, NoSuchFieldException {
+        if (sessionField == null) {
+            sessionField = Minecraft.class.getDeclaredField("session");
+            sessionField.setAccessible(true);
+        }
+        
+        sessionField.set(Minecraft.getMinecraft(),
+                new net.minecraft.util.Session(session.getAlias(), session.getClientToken(), session.getAccessToken(),
+                        "mojang"));
+    }
+    
+    
 }

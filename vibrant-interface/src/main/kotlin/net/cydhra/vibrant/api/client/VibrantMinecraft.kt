@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.api.client
 
+import net.cydhra.nidhogg.data.Session
 import net.cydhra.vibrant.api.entity.VibrantEntity
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen
@@ -30,6 +31,7 @@ interface VibrantMinecraft {
     val timer: VibrantTimer
 
     val gameSettings: VibrantGameSettings
+    var minecraftSession: Session
 
     fun getTextureManager(): VibrantTextureManager
 
