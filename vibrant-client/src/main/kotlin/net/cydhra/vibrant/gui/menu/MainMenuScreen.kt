@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.gui.menu
 
 import net.cydhra.vibrant.api.gui.VibrantGuiMainMenu
+import net.cydhra.vibrant.gui.account.AccountManagerScreen
 import net.cydhra.vibrant.gui.client.AbstractVibrantGuiScreen
 import net.cydhra.vibrant.gui.component.IComponent
 import net.cydhra.vibrant.gui.component.impl.VibrantButton
@@ -34,7 +35,7 @@ class MainMenuScreen(realMainMenu: VibrantGuiMainMenu) : AbstractVibrantGuiScree
         addButton(++counter, "Quit") { this@MainMenuScreen.controller.actionPerformed(ACTION_QUIT_GAME) }
         addButton(++counter, "Language") { this@MainMenuScreen.controller.actionPerformed(ACTION_LANGUAGE_SCREEN) }
         addButton(++counter, "Options") { this@MainMenuScreen.controller.actionPerformed(ACTION_SELECT_OPTIONS_SCREEN) }
-        addButton(++counter, "Account Manager") { }
+        addButton(++counter, "Account Manager") { mc.displayGuiScreen(AccountManagerScreen(this)) }
         addButton(++counter, "Multiplayer") { this@MainMenuScreen.controller.actionPerformed(ACTION_MULTIPLAYER_SCREEN) }
         addButton(++counter, "Singleplayer") { this@MainMenuScreen.controller.actionPerformed(ACTION_SELECT_WORLD_SCREEN) }
     }

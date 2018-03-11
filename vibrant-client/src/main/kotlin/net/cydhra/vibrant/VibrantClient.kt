@@ -15,6 +15,7 @@ import net.cydhra.vibrant.modulesystem.BypassMode
 import net.cydhra.vibrant.modulesystem.ModuleManager
 import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.settings.VibrantConfiguration
+import net.cydhra.vibrant.util.shader.ShaderLibrary
 import org.slf4j.LoggerFactory
 
 /**
@@ -43,6 +44,9 @@ object VibrantClient {
         this.factory = factory
 
         VibrantConfiguration.load()
+
+        logger.info("loading shaders")
+        ShaderLibrary // loading is handled inside, so just init the object
 
         logger.info("loading modules")
         ModuleManager.init()

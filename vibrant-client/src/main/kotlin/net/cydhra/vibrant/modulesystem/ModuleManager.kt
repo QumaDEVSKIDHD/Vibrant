@@ -7,6 +7,7 @@ import net.cydhra.vibrant.modules.combat.BowAimbotModule
 import net.cydhra.vibrant.modules.combat.Killaura
 import net.cydhra.vibrant.modules.gui.ClickGuiModule
 import net.cydhra.vibrant.modules.gui.MainMenuModule
+import net.cydhra.vibrant.modules.misc.TestModule
 import net.cydhra.vibrant.modules.movement.FlyModule
 import net.cydhra.vibrant.modules.movement.NoFallModule
 import net.cydhra.vibrant.modules.movement.SprintModule
@@ -43,6 +44,7 @@ object ModuleManager {
         this.registerModule(NametagsModule())
         this.registerModule(MainMenuModule())
         this.registerModule(Killaura())
+        this.registerModule(TestModule())
 
         registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
     }

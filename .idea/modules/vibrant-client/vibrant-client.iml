@@ -46,7 +46,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="vibrant-interface" scope="PROVIDED" />
     <orderEntry type="module" module-name="vibrant-gui" scope="PROVIDED" />
-    <orderEntry type="module" module-name="vibrant-generator" scope="PROVIDED" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.21" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
