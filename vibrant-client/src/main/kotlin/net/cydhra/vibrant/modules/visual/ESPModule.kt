@@ -27,10 +27,11 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
     override fun onEnable() {
         ShaderLibrary.outlineShaderProgramProgram.sampleRadius = 4
-        ShaderLibrary.outlineShaderProgramProgram.fadeIntensity = 0.5F
+        ShaderLibrary.outlineShaderProgramProgram.fadeIntensity = 0.025F
         ShaderLibrary.outlineShaderProgramProgram.maxSampleRadius = 4
-        ShaderLibrary.outlineShaderProgramProgram.baseColor = Color.BLUE
+        ShaderLibrary.outlineShaderProgramProgram.baseColor = Color.GREEN
         ShaderLibrary.outlineShaderProgramProgram.objectColor = Color.RED
+        ShaderLibrary.outlineShaderProgramProgram.debug = false
     }
 
     @EventHandler

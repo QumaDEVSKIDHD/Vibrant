@@ -39,9 +39,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../vibrant-client/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../../vibrant-client/out" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../vibrant-client/build/generated/source/kaptKotlin">
-      <sourceFolder url="file://$MODULE_DIR$/../../../vibrant-client/build/generated/source/kaptKotlin" isTestSource="false" />
-    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="vibrant-interface" scope="PROVIDED" />
