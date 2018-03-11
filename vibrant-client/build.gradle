@@ -8,7 +8,6 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'idea'
 
 repositories {
@@ -27,9 +26,6 @@ dependencies {
 
     compile project(":vibrant-interface")
     compile project(":vibrant-gui")
-
-    kapt project(":vibrant-generator")
-    compileOnly project(":vibrant-generator")
 }
 
 compileKotlin {
@@ -38,12 +34,4 @@ compileKotlin {
 
 kapt {
     generateStubs = true
-}
-
-sourceSets {
-    main {
-        java {
-            srcDir "${buildDir}/generated/source/kaptKotlin/"
-        }
-    }
 }
