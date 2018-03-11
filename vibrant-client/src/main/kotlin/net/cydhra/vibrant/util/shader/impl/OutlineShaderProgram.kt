@@ -14,7 +14,7 @@ class OutlineShaderProgram : VibrantShaderProgram() {
     private val outlineFragmentShader = VibrantShader("/glsl/OutlineShader.glsl", VibrantShader.ShaderType.FRAGMENT_SHADER)
 
     var debug by uniform(this, "debug", false)
-    var fadeInensity by uniform(this, "fadeIntensity", 60f)
+    var fadeIntensity by uniform(this, "fadeIntensity", 60f)
     var sampleRadius by uniform(this, "sampleRadius", 1)
     var maxSampleRadius by uniform(this, "maxSampleRadius", 1)
     val diffuseSampler by uniform(this, "diffuseSampler", 0)
