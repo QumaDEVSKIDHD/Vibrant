@@ -27,7 +27,7 @@ fun uniform(program: VibrantShaderProgram, name: String, default: Color): Shader
 
 fun uniform(program: VibrantShaderProgram, name: String, default: Vector2f): ShaderUniform<Vector2f> =
         uniform(program, name, default,
-                { pos, color -> ARBShaderObjects.glUniform2fARB(pos, default.x, default.y) })
+                { pos, color -> ARBShaderObjects.glUniform2fARB(pos, color.x, color.y) })
 
 
 /**
