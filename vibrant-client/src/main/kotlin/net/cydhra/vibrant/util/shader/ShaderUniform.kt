@@ -29,7 +29,8 @@ fun uniform(program: VibrantShaderProgram, name: String, default: Vector2f): Sha
         uniform(program, name, default,
                 { pos, color -> ARBShaderObjects.glUniform2fARB(pos, color.x, color.y) })
 
-
+fun uniform(program: VibrantShaderProgram, name: String, default: Boolean): ShaderUniform<Boolean> =
+        uniform(program, name, default, { pos, bool -> ARBShaderObjects.glUniform1iARB(pos, if (bool) 1 else 0) })
 /**
  * A uniform shader pipeline input value of type [T] with only one parameter
  *

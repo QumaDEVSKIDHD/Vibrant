@@ -17,6 +17,7 @@ import net.cydhra.vibrant.util.shader.ShaderLibrary
 import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.Display
 import org.lwjgl.util.vector.Vector2f
+import java.awt.Color
 
 class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
@@ -26,13 +27,15 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
     override fun onEnable() {
         ShaderLibrary.outlineShaderProgramProgram.sampleRadius = 4
-        ShaderLibrary.outlineShaderProgramProgram.averageDivisor = 80F
+        ShaderLibrary.outlineShaderProgramProgram.fadeInensity = 0.5F
         ShaderLibrary.outlineShaderProgramProgram.maxSampleRadius = 4
+        ShaderLibrary.outlineShaderProgramProgram.baseColor = Color.BLUE
+        ShaderLibrary.outlineShaderProgramProgram.objectColor = Color.RED
     }
 
     @EventHandler
     fun onRender2DShaderEsp(e: RenderOverlayEvent) {
-        ShaderLibrary.outlineShaderProgramProgram.texelSize = Vector2f(outlineFramebuffer.width.toFloat(), outlineFramebuffer.height.toFloat())
+        ShaderLibrary.outlineShaderProgramProgram.texelSize = Vector2f(1 / outlineFramebuffer.width.toFloat(), 1 / outlineFramebuffer.height.toFloat())
         outlineFramebuffer.drawOntoCurrentFramebuffer()
     }
 
