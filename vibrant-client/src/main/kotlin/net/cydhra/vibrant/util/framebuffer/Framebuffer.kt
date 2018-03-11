@@ -8,9 +8,15 @@ import org.lwjgl.opengl.GL11
  *
  */
 open class Framebuffer(
-        private var width: Int = VibrantClient.minecraft.displayWidth,
-        private var height: Int = VibrantClient.minecraft.displayHeight,
+        width: Int = VibrantClient.minecraft.displayWidth,
+        height: Int = VibrantClient.minecraft.displayHeight,
         private val isUsingDepth: Boolean) {
+
+    var width = width
+        private set
+
+    var height = height
+        private set
 
     var framebuffer: VibrantFramebuffer = VibrantClient.factory.newFramebuffer(width, height, isUsingDepth)
         private set

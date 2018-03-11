@@ -16,6 +16,7 @@ import net.cydhra.vibrant.util.framebuffer.OutlineFramebuffer
 import net.cydhra.vibrant.util.shader.ShaderLibrary
 import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.Display
+import org.lwjgl.util.vector.Vector2f
 
 class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
@@ -31,6 +32,7 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
     @EventHandler
     fun onRender2DShaderEsp(e: RenderOverlayEvent) {
+        ShaderLibrary.outlineShaderProgramProgram.texelSize = Vector2f(outlineFramebuffer.width.toFloat(), outlineFramebuffer.height.toFloat())
         outlineFramebuffer.drawOntoCurrentFramebuffer()
     }
 

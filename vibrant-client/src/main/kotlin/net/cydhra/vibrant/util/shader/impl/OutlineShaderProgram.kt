@@ -18,8 +18,8 @@ class OutlineShaderProgram : VibrantShaderProgram() {
     var sampleRadius by uniform(this, "sampleRadius", 1)
     var maxSampleRadius by uniform(this, "maxSampleRadius", 1)
     val diffuseSampler by uniform(this, "diffuseSampler", 0)
-    val color by uniform(this, "s_color", Color.WHITE)
-    val texelSize by uniform(this, "texelSize", Vector2f(1 / Display.getWidth().toFloat(), 1 / Display.getHeight().toFloat()))
+    var color by uniform(this, "s_color", Color.WHITE)
+    var texelSize by uniform(this, "texelSize", Vector2f(1 / Display.getWidth().toFloat(), 1 / Display.getHeight().toFloat()))
 
     init {
         try {
