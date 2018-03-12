@@ -25,7 +25,7 @@ uniform vec2 texelSize;
 void main(void) {
     //Value that defines the alpha of the result fragment color
     //Also used to determine the alpha value for the replacement fragment color
-    //If debug is enabled all objects to outline are visible as black fragment
+    //If debug is enabled all objects to outline are visible and linear colored 
     float alpha = debug ? 1 : 0;
 
     //Sample actual color this fragment shader called for
