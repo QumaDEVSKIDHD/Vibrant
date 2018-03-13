@@ -54,6 +54,7 @@ object GuiManager {
         this.setRenderer(VibrantSelectableItem::class.java, VibrantSelectableItemRenderer())
         this.setRenderer(VibrantListbox::class.java, VibrantNullRenderer())
         this.setRenderer(VibrantScrollpane::class.java, VibrantScrollpaneRenderer())
+        this.setRenderer(VibrantPasswordbox::class.java, VibrantPasswordboxRenderer())
     }
 
     /**
