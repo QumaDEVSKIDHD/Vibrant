@@ -13,7 +13,9 @@ class NoFallModule : Module("NoFall", DefaultCategories.MOVEMENT, Keyboard.KEY_N
     override fun onEnable() {
         GameResourceManager.lockGameResource(
                 NoFallResource,
-                { NoFallResource.NoFallResourceState(true) },
+                {
+                    NoFallResource.NoFallResourceState((mc.thePlayer!!.fallDistance > 2.5).also { if (it) mc.thePlayer!!.fallDistance = 0f })
+                },
                 this,
                 ResourceRequestPriority.movement,
                 ResourceChannel.Side.SERVER
