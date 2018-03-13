@@ -11,6 +11,7 @@ import net.cydhra.vibrant.modules.misc.TestModule
 import net.cydhra.vibrant.modules.movement.FlyModule
 import net.cydhra.vibrant.modules.movement.NoFallModule
 import net.cydhra.vibrant.modules.movement.SprintModule
+import net.cydhra.vibrant.modules.movement.StepModule
 import net.cydhra.vibrant.modules.system.HudModule
 import net.cydhra.vibrant.modules.visual.ESPModule
 import net.cydhra.vibrant.modules.visual.MinimapModule
@@ -45,6 +46,7 @@ object ModuleManager {
         this.registerModule(MainMenuModule())
         this.registerModule(Killaura())
         this.registerModule(TestModule())
+        this.registerModule(StepModule())
 
         registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
     }
