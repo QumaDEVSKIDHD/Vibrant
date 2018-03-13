@@ -25,5 +25,7 @@ interface VibrantEntity : VibrantEntityAlike {
 
     val boundingBox: VibrantBoundingBox
 
+    var stepHeight: Float
+
     fun getDistanceSq(x: Double, y: Double, z: Double): Double
 }
