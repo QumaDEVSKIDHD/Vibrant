@@ -8,12 +8,12 @@ import org.lwjgl.input.Keyboard
 /**
  *
  */
-class VibrantTextbox(
-        override var positionX: Double,
-        override var positionY: Double,
-        override var width: Double,
-        override var height: Double,
-        override var text: String) : AbstractVibrantComponent(positionX, positionY, width, height, text), ITextBox {
+open class VibrantTextbox(
+        positionX: Double,
+        positionY: Double,
+        width: Double,
+        height: Double,
+        text: String) : AbstractVibrantComponent(positionX, positionY, width, height, text), ITextBox {
 
     companion object {
         const val MARGIN_LEFT = 4
