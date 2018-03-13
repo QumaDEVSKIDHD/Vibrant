@@ -18,6 +18,7 @@ interface VibrantEntity : VibrantEntityAlike {
     val rotationPitch: Float
 
     var onGround: Boolean
+    var fallDistance: Float
 
     var width: Float
     var height: Float
