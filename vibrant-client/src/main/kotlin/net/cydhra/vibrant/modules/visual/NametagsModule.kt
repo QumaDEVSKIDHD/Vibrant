@@ -5,7 +5,6 @@ import net.cydhra.vibrant.api.entity.VibrantEntityLiving
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
 import net.cydhra.vibrant.events.render.RenderWorldEvent
 import net.cydhra.vibrant.gui.font.VibrantFontRenderer
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
@@ -31,8 +30,8 @@ class NametagsModule : Module("Nametags", DefaultCategories.VISUAL, Keyboard.KEY
 
             glPushMatrix()
 
-            GlStateManager.disableTexture2D()
-            GlStateManager.disableDepthTest()
+            mc.glStateManager.disableTexture2D()
+            mc.glStateManager.disableDepth()
 
             var scale = 0.0272
 
@@ -68,8 +67,8 @@ class NametagsModule : Module("Nametags", DefaultCategories.VISUAL, Keyboard.KEY
 
             nametagFontRenderer.drawString(name, (-width / 2 - 2).toFloat(), -2F, -1)
 
-            GlStateManager.enableTexture2D()
-            GlStateManager.enableDepthTest()
+            mc.glStateManager.enableTexture2D()
+            mc.glStateManager.enableDepth()
 
             glPopMatrix()
         }

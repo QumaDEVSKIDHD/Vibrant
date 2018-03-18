@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.gui.util
 
+import java.awt.Color
 import java.nio.FloatBuffer
 
 /**
@@ -136,6 +137,8 @@ interface IStateManager {
 
     fun color(colorRed: Float, colorGreen: Float, colorBlue: Float)
 
+    fun color(color: Color)
+
     fun resetColor()
 
     fun callList(list: Int)
@@ -143,4 +146,8 @@ interface IStateManager {
     fun disableLineSmooth()
 
     fun enableLineSmooth()
+
+    fun enableStandardItemLighting()
+
+    fun disableStandardItemLighting()
 }

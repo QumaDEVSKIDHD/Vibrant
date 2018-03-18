@@ -1,8 +1,8 @@
 package net.cydhra.vibrant.adapter;
 
+import net.cydhra.vibrant.VibrantClient;
 import net.cydhra.vibrant.api.client.VibrantMinecraft;
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
-import net.cydhra.vibrant.gui.util.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -18,9 +18,9 @@ public class VibrantGuiScreenAdapter extends GuiScreen {
     
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        GlStateManager.INSTANCE.pushState();
+        VibrantClient.INSTANCE.getGlStateManager().pushAttrib();
         vScreen.drawScreen(mouseX, mouseY, partialTicks);
-        GlStateManager.INSTANCE.popState();
+        VibrantClient.INSTANCE.getGlStateManager().popAttrib();
     }
     
     public void keyTyped(char typedChar, int keyCode) {

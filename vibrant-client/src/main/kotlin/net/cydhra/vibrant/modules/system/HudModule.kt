@@ -5,7 +5,6 @@ import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.api.render.VibrantScaledResolution
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
 import net.cydhra.vibrant.gui.font.VibrantFontRenderer
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.modulesystem.ModuleManager
@@ -46,7 +45,7 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
 
         val alpha = 40
 
-        GlStateManager.pushMatrix()
+        mc.glStateManager.pushMatrix()
 
         glPushAttrib(GL11.GL_ENABLE_BIT)
 
@@ -54,14 +53,14 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
 
         glScaled(scale, scale, 0.0)
 
-        GlStateManager.color(Color(col.red, col.green, col.blue, alpha))
+        mc.glStateManager.color(Color(col.red, col.green, col.blue, alpha))
 
         mc.getTextureManager().bindTexture("textures/vibrant.png")
         guiController.drawRectWithCustomSizedTexture(borderOffset, borderOffset, 0F, 0F, width.toInt(), height.toInt(), width, height)
 
         glPopAttrib()
 
-        GlStateManager.popMatrix()
+        mc.glStateManager.popMatrix()
     }
 
     fun drawWatermarkText() {
@@ -71,7 +70,7 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
         var underLineOffset = 2
         val underLineWidth = 4 + watermarkFontRenderer.getStringWidth(watermark)
 
-        GlStateManager.disableTexture2D()
+        mc.glStateManager.disableTexture2D()
 
         glLineWidth(2F)
 
@@ -89,7 +88,7 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
     }
 
     fun drawActiveModules(scaledResolution: VibrantScaledResolution) {
-        GlStateManager.disableTexture2D()
+        mc.glStateManager.disableTexture2D()
 
         glBegin(GL11.GL_LINE_STRIP)
         var offset = 0F
@@ -108,7 +107,7 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
         glVertex2f(scaledResolution.getScaledWidth().toFloat(), offset - 1)
         glEnd()
 
-        GlStateManager.enableTexture2D()
+        mc.glStateManager.enableTexture2D()
 
         offset = 0F
         for (module in ModuleManager.modules) {

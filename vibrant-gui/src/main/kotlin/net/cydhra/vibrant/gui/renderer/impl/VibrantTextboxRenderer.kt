@@ -4,7 +4,6 @@ import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.impl.VibrantTextbox
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import java.awt.Color
 
@@ -37,10 +36,10 @@ open class VibrantTextboxRenderer<in C : VibrantTextbox> : ComponentRenderer<C> 
             val cursorX = (component.posX + VibrantTextbox.MARGIN_LEFT +
                     getContentWidth(component, component.text.substring(0, component.cursorIndex)) + 1)
 
-            GlStateManager.disableLineSmoothing()
+            GuiManager.glStateManager.disableLineSmooth()
             RenderUtil.drawLine(cursorX, (textPosY - 1).toInt(), cursorX,
                     (textPosY + GuiManager.fontRenderer.getStringHeight(component.text) + 1).toInt(), theme.primaryTextColor)
-            GlStateManager.enableLineSmoothing()
+            GuiManager.glStateManager.enableLineSmooth()
         }
     }
 

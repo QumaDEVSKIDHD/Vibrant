@@ -4,7 +4,6 @@ import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.IButton
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import org.lwjgl.opengl.GL11
 import java.awt.Color
@@ -40,7 +39,7 @@ class VibrantButtonRenderer : ComponentRenderer<IButton> {
             theme.secondaryColor
         }
 
-        GlStateManager.pushMatrix()
+        GuiManager.glStateManager.pushMatrix()
         GL11.glTranslated(component.posX + component.height / 2, component.posY + component.height / 2, 0.0)
         val edges = theme.getThemeProperty("edges", 6)
 
@@ -66,7 +65,7 @@ class VibrantButtonRenderer : ComponentRenderer<IButton> {
         RenderUtil.drawPartialCircleLike(
                 (component.width - component.height).toInt(), 0, component.height / 2, edges, 0, edges / 2, outerColor)
 
-        GlStateManager.popMatrix()
+        GuiManager.glStateManager.popMatrix()
 
         GuiManager.fontRenderer.drawString(component.text,
                 (component.posX + (component.width - GuiManager.fontRenderer.getStringWidth(component.text)) / 2).toFloat(),

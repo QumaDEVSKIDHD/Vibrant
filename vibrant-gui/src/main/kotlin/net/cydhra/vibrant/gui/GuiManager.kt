@@ -8,6 +8,7 @@ import net.cydhra.vibrant.gui.renderer.impl.*
 import net.cydhra.vibrant.gui.theme.DefaultTheme
 import net.cydhra.vibrant.gui.theme.Theme
 import net.cydhra.vibrant.gui.util.IFramebuffer
+import net.cydhra.vibrant.gui.util.IStateManager
 
 /**
  *
@@ -40,6 +41,8 @@ object GuiManager {
         set(value) {
             _framebufferObj = value
         }
+
+    lateinit var glStateManager: IStateManager
 
     init {
         this.setRenderer(VibrantButton::class.java, VibrantButtonRenderer())

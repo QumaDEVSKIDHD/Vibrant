@@ -4,7 +4,6 @@ import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.api.entity.VibrantZombie
 import net.cydhra.vibrant.api.render.VibrantRenderGlobal
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import net.cydhra.vibrant.gui.util.StencilUtil
 import net.cydhra.vibrant.modulesystem.DefaultCategories
@@ -53,8 +52,8 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL, Keyboard.KEY_Z
 
         mc.entityRenderer.setupOverlayRendering()
 
-        GlStateManager.pushState()
-        GlStateManager.pushMatrix()
+        mc.glStateManager.pushAttrib()
+        mc.glStateManager.pushMatrix()
 
         val sc = factory.newScaledResolution()
         GL11.glTranslatef((sc.getScaledWidth() - mapRadius).toFloat(), (sc.getScaledHeight() - mapRadius).toFloat(), 0f)
@@ -62,16 +61,16 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL, Keyboard.KEY_Z
         // prepare circular stencil
         StencilUtil.setupStencil(mc.framebuffer, mc.displayWidth, mc.displayHeight)
 
-        GlStateManager.disableDepthTest()
-        GlStateManager.disableTexture2D()
-        GlStateManager.enableColorBlending()
-        GlStateManager.enableLineSmoothing()
+        mc.glStateManager.disableDepth()
+        mc.glStateManager.disableTexture2D()
+        mc.glStateManager.enableBlend()
+        mc.glStateManager.enableLineSmooth()
 
         RenderUtil.fillCircle(0, 0, mapRadius.toDouble(), Color.BLACK)
         StencilUtil.enableStencil(StencilUtil.StencilMode.CROP_OUTSIDE)
 
-        GlStateManager.enableTexture2D()
-        GlStateManager.enableDepthTest()
+        mc.glStateManager.enableTexture2D()
+        mc.glStateManager.enableDepth()
 
         // flip and turn
         GL11.glScalef(1f, -1f, 1f)
@@ -101,20 +100,20 @@ class MinimapModule : Module("Minimap", DefaultCategories.VISUAL, Keyboard.KEY_Z
         mc.renderGlobal.renderBlockLayer(VibrantRenderGlobal.VibrantBlockLayerType.CUTOUT_MIPPED, zombie!!)
         mc.renderGlobal.renderBlockLayer(VibrantRenderGlobal.VibrantBlockLayerType.CUTOUT, zombie!!)
 
-        GlStateManager.disableTexture2D()
-        GlStateManager.disableDepthTest()
+        mc.glStateManager.disableTexture2D()
+        mc.glStateManager.disableDepth()
         if (showLines) {
             RenderUtil.drawLine3d(-200.0, 1.0, 0.0, 200.0, 1.0, 0.0, Color.WHITE, lineWidth.toFloat())
             RenderUtil.drawLine3d(0.0, 1.0, -200.0, 0.0, 1.0, 200.0, Color.WHITE, lineWidth.toFloat())
         }
-        GlStateManager.enableTexture2D()
+        mc.glStateManager.enableTexture2D()
 
         // end circular stencil
         StencilUtil.endStencil()
 
-        GlStateManager.disableLineSmoothing()
-        GlStateManager.enableDepthMask()
-        GlStateManager.popMatrix()
-        GlStateManager.popState()
+        mc.glStateManager.disableLineSmooth()
+        mc.glStateManager.depthMask(true)
+        mc.glStateManager.popMatrix()
+        mc.glStateManager.popAttrib()
     }
 }

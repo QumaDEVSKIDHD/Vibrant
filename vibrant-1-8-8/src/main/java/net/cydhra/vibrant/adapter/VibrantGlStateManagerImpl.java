@@ -2,9 +2,11 @@ package net.cydhra.vibrant.adapter;
 
 import net.cydhra.vibrant.api.render.VibrantGlStateManager;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
 import java.nio.FloatBuffer;
 
 /**
@@ -354,5 +356,20 @@ public class VibrantGlStateManagerImpl implements VibrantGlStateManager {
     @Override
     public void enableLineSmooth() {
         GL11.glEnable(GL11.GL_LINE_SMOOTH);
+    }
+    
+    @Override
+    public void disableStandardItemLighting() {
+        RenderHelper.disableStandardItemLighting();
+    }
+    
+    @Override
+    public void enableStandardItemLighting() {
+        RenderHelper.enableStandardItemLighting();
+    }
+    
+    @Override
+    public void color(@NotNull Color color) {
+        this.color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, color.getAlpha() / 255f);
     }
 }

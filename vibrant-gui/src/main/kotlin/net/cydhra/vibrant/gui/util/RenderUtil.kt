@@ -2,6 +2,7 @@
 
 package net.cydhra.vibrant.gui.util
 
+import net.cydhra.vibrant.gui.GuiManager
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import kotlin.math.PI
@@ -20,7 +21,7 @@ object RenderUtil {
      * @param color [Color] instance
      */
     fun setColor(color: Color) {
-        GlStateManager.color(color)
+        GuiManager.glStateManager.color(color)
     }
 
     private fun setOptions(color: Color? = null, lineWidth: Float? = null) {

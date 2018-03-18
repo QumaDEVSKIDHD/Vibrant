@@ -6,7 +6,6 @@ import net.cydhra.vibrant.api.entity.VibrantEntity
 import net.cydhra.vibrant.api.tileentity.VibrantTileEntity
 import net.cydhra.vibrant.events.render.RenderOverlayEvent
 import net.cydhra.vibrant.events.render.RenderWorldEvent
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
@@ -43,7 +42,7 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
     @EventHandler
     fun onRenderWorldShaderEsp(e: RenderWorldEvent) {
         outlineFramebuffer.bind()
-        GlStateManager.enableStandardItemLighting()
+        mc.glStateManager.enableStandardItemLighting()
 
         val wasDebugBoundingBox = VibrantClient.minecraft.getRenderManager().isDebugBoundingBox
         val wasEntityShadows = VibrantClient.minecraft.gameSettings.renderEntityShadows
@@ -60,7 +59,7 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
         frustum.setPosition(cameraPosX, cameraPosY, cameraPosZ)
 
-        GlStateManager.pushState()
+        mc.glStateManager.pushAttrib()
         EnemyTracker.trackedEntities.stream()
                 .filter { entity -> entity !is TrackedTileEntity && entity.entity != mc.thePlayer!! }
                 .map { entity -> entity.entity as VibrantEntity }
@@ -74,7 +73,7 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
                     VibrantClient.minecraft.getRenderManager().getEntityRenderObj(entity).render(entity, entityPosX, entityPosY, entityPosZ, entity.rotationYaw, VibrantClient.minecraft.timer.renderPartialTicks)
                 }
-        GlStateManager.popState()
+        mc.glStateManager.popAttrib()
 
         EnemyTracker.trackedEntities.stream()
                 .filter { entity -> entity is TrackedTileEntity }
@@ -87,7 +86,7 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
         VibrantClient.minecraft.gameSettings.renderEntityShadows = wasEntityShadows
 
         VibrantClient.minecraft.entityRenderer.disableLightmap()
-        GlStateManager.disableStandardItemLighting()
+        mc.glStateManager.disableStandardItemLighting()
 
         // rebind minecraft framebuffer
         outlineFramebuffer.unbind()
