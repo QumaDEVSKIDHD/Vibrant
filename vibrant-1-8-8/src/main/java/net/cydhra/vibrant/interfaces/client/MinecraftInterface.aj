@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.interfaces.client;
 
+import net.cydhra.vibrant.adapter.VibrantGlStateManagerImpl;
 import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
 import net.cydhra.vibrant.api.client.VibrantGameSettings;
 import net.cydhra.vibrant.api.client.VibrantPlayerController;
@@ -8,6 +9,7 @@ import net.cydhra.vibrant.api.entity.VibrantEntity;
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP;
 import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
 import net.cydhra.vibrant.api.render.VibrantEntityRenderer;
+import net.cydhra.vibrant.api.render.VibrantGlStateManager;
 import net.cydhra.vibrant.api.render.VibrantRenderGlobal;
 import net.cydhra.vibrant.api.render.VibrantTileEntityRendererDispatcher;
 import net.cydhra.vibrant.api.world.VibrantWorld;
@@ -30,6 +32,8 @@ public privileged aspect MinecraftInterface {
     declare parents:(Minecraft)implements net.cydhra.vibrant.api.client.VibrantMinecraft;
     
     private Field Minecraft.sessionField;
+    
+    private final VibrantGlStateManager Minecraft._vibrantGlStateManager = new VibrantGlStateManagerImpl();
     
     /**
      * @return the current {@link EntityPlayerSP} instance
@@ -108,5 +112,7 @@ public privileged aspect MinecraftInterface {
                         "mojang"));
     }
     
-    
+    public VibrantGlStateManager Minecraft.getGlStateManager() {
+        return this._vibrantGlStateManager;
+    }
 }

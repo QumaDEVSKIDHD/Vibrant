@@ -33,6 +33,8 @@ interface VibrantMinecraft {
     val gameSettings: VibrantGameSettings
     var minecraftSession: Session
 
+    val glStateManager: VibrantGlStateManager
+
     fun getTextureManager(): VibrantTextureManager
 
     fun getRenderManager(): VibrantRenderManager
