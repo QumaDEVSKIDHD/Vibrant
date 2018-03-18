@@ -29,10 +29,7 @@ class MainMenuModule : Module("MainMenu", DefaultCategories.SYSTEM) {
 
     @EventHandler
     fun onGuiScreenChange(e: GuiScreenChangeEvent) {
-        if (e.screen is VibrantGuiMainMenu) {
-            e.isCancelled = true
-            mc.displayGuiScreen(MainMenuScreen(e.screen))
-        } else if (e.screen == null && mc.theWorld == null) {
+        if ((e.screen == null && mc.theWorld == null) || e.screen is VibrantGuiMainMenu) {
             e.isCancelled = true
             mc.displayGuiScreen(MainMenuScreen(factory.newGuiMainMenu()))
         }
