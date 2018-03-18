@@ -10,6 +10,8 @@ interface VibrantFramebuffer : IFramebuffer {
     val textureWidth: Int
     val textureHeight: Int
 
+    val textureId: Int
+
     fun deleteFramebuffer()
 
     fun unbindFramebuffer()
