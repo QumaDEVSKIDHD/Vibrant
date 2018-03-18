@@ -139,4 +139,8 @@ interface IStateManager {
     fun resetColor()
 
     fun callList(list: Int)
+
+    fun disableLineSmooth()
+
+    fun enableLineSmooth()
 }

@@ -3,6 +3,7 @@ package net.cydhra.vibrant.adapter;
 import net.cydhra.vibrant.api.render.VibrantGlStateManager;
 import net.minecraft.client.renderer.GlStateManager;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.opengl.GL11;
 
 import java.nio.FloatBuffer;
 
@@ -343,5 +344,15 @@ public class VibrantGlStateManagerImpl implements VibrantGlStateManager {
     @Override
     public void callList(final int list) {
         GlStateManager.callList(list);
+    }
+    
+    @Override
+    public void disableLineSmooth() {
+        GL11.glDisable(GL11.GL_LINE_SMOOTH);
+    }
+    
+    @Override
+    public void enableLineSmooth() {
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
     }
 }
