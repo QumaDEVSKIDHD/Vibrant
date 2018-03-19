@@ -1,14 +1,85 @@
+import net.cydhra.vibrant.tasks.SetupWorkspace
+
 group 'net.cydhra'
 version '1.0-SNAPSHOT'
 
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+    }
+}
+
+apply plugin: 'aspectj.gradle'
 apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url = "https://jitpack.io" }
+}
+
+task setupWorkspace(type: SetupWorkspace) {
+    mcpReleaseUrl = 'http://www.modcoderpack.com/files/mcp931.zip'
+    minecraftVersion = '1.10'
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    compile group: 'it.unimi.dsi', name: 'fastutil', version: '7.0.2'
+    compile group: 'org.lwjgl.lwjgl', name: 'lwjgl_util', version: '2.9.3'
+    compile group: 'com.ibm.icu', name: 'icu4j', version: '58.2'
+    compile group: 'org.apache.directory.studio', name: 'org.apache.commons.codec', version: '1.8'
+    compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '5.0.3'
+    compile group: 'io.netty', name: 'netty-all', version: '4.0.23.Final'
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
+    compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
+
+    compile project(":vibrant-client")
+    compile project(":vibrant-interface")
+
+    compile files('workspace/versions/1.10/1.10.jar')
+    compile files('lib/com/mojang/authlib/1.5.22/authlib-1.5.22.jar')
+    compile files('lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar')
+    compile files('lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar')
+    compile files('lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar')
+    compile files('lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar')
+    compile files('lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar')
+}
+
+shadowJar {
+    baseName = clientBaseName
+    classifier = null
+    version = null
+
+    dependencies {
+        exclude(dependency('io.netty:netty-all'))
+        exclude(dependency('net.sf.jopt-simple:jopt-simple'))
+        exclude(dependency('org.apache.directory.studio:org.apache.commons.codec'))
+        exclude(dependency('com.ibm.icu:icu4j'))
+        exclude(dependency('org.lwjgl.lwjgl:lwjgl_util'))
+        exclude(dependency('it.unimi.dsi:fastutil'))
+        exclude(dependency('com.google.code.gson:gson'))
+        exclude(dependency('org.apache.logging.log4j:log4j-core'))
+        exclude(dependency('com.google.code.findbugs:jsr305'))
+
+        exclude('oshi-project/oshi-core/**')
+        exclude('com/paulscode/soundsystem/**')
+        exclude('com/paulscode/librarylwjglopenal/**')
+        exclude('com/paulscode/libraryjavasound/**')
+        exclude('com/paulscode/codecwav/**')
+        exclude('com/paulscode/codecjorbis/**')
+        exclude('com/mojang/authlib/**')
+    }
 }
