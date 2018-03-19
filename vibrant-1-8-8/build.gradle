@@ -1,7 +1,5 @@
 import net.cydhra.vibrant.tasks.SetupWorkspace
 
-def clientBaseName = 'vibrant'
-
 buildscript {
     repositories {
         mavenCentral()
