@@ -151,6 +151,7 @@ gradle-app.setting
 !/*/workspace/.keep
 
 /*/src/main/java/net/minecraft/
+/*/src/main/java/mcp/
 **/lib/
 !**/lib/slick.jar
 
