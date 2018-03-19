@@ -22,7 +22,6 @@ dependencies {
     compile group: 'com.github.Cydhra', name: 'Nidhogg', version: '1.1'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
-    compile group: 'org.lwjgl.lwjgl', name: 'lwjgl_util', version: '2.9.3'
 
     compile project(":vibrant-interface")
     compile project(":vibrant-gui")
