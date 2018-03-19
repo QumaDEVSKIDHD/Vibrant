@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 package net.cydhra.vibrant.modules.gui
 
 import net.cydhra.eventsystem.listeners.EventHandler
