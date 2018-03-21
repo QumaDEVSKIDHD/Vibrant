@@ -81,7 +81,7 @@ class SetupWorkspace extends DefaultTask {
         copyDirectory(ant, "tmp/jars/", "workspace")
 
         println "Cleanup..."
-        tmpFolder.delete()
+        tmpFolder.deleteDir()
     }
 
     private def copyDirectory(AntBuilder ant, String source, String dest) {
