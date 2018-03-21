@@ -8,7 +8,6 @@ class CustomAspectJPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         project.configurations.create("ajc")
-        project.configurations.create("aspect")
 
         project.task("compile-aspects") {
             // depend on everything necessary to fulfill a jar task. This includes escpecially the assembly of dependent sub-modules

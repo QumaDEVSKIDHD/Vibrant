@@ -43,7 +43,6 @@ dependencies {
     compile project(":vibrant-client")
     compile project(":vibrant-interface")
     compile project(":vibrant-aspects")
-    aspect project(":vibrant-aspects")
 
     compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
     ajc group: 'org.aspectj', name: 'aspectjtools', version: aspectjVersion
