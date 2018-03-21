@@ -1,4 +1,5 @@
 import net.cydhra.vibrant.tasks.SetupWorkspace
+import net.cydhra.vibrant.plugin.CustomAspectJPlugin
 
 buildscript {
     repositories {
@@ -6,13 +7,12 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
         classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
     }
 }
 
-apply plugin: 'aspectj.gradle'
 apply plugin: 'java'
+apply plugin: CustomAspectJPlugin
 apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
@@ -39,10 +39,14 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
-    compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
 
     compile project(":vibrant-client")
     compile project(":vibrant-interface")
+    compile project(":vibrant-aspects")
+    aspect project(":vibrant-aspects")
+
+    compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
+    ajc group: 'org.aspectj', name: 'aspectjtools', version: aspectjVersion
 
     compile files('workspace/versions/1.8.8/1.8.8.jar')
     compile files('lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar')
