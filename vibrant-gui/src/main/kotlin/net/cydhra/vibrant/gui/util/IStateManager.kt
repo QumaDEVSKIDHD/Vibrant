@@ -43,15 +43,15 @@ interface IStateManager {
 
     fun enableBlend()
 
-    fun blendFunc(srcFactor: Int, dstFactor: Int)
+    fun blendFunc(srcFactor: SourceFactor, dstFactor: DestinationFactor)
 
-    fun tryBlendFuncSeparate(srcFactor: Int, dstFactor: Int, srcFactorAlpha: Int, dstFactorAlpha: Int)
+    fun tryBlendFuncSeparate(srcFactor: SourceFactor, dstFactor: DestinationFactor, srcFactorAlpha: SourceFactor, dstFactorAlpha: DestinationFactor)
 
     fun enableFog()
 
     fun disableFog()
 
-    fun setFog(param: Int)
+    fun setFog(param: FogMode)
 
     fun setFogDensity(param: Float)
 
@@ -63,7 +63,7 @@ interface IStateManager {
 
     fun disableCull()
 
-    fun cullFace(mode: Int)
+    fun cullFace(mode: CullFace)
 
     fun enablePolygonOffset()
 
@@ -75,7 +75,7 @@ interface IStateManager {
 
     fun disableColorLogic()
 
-    fun colorLogicOp(opcode: Int)
+    fun colorLogicOp(opcode: LogicOperation)
 
     fun setActiveTexture(texture: Int)
 
@@ -150,4 +150,70 @@ interface IStateManager {
     fun enableStandardItemLighting()
 
     fun disableStandardItemLighting()
+}
+
+enum class CullFace(val mode: Int) {
+    FRONT(1028),
+    BACK(1029),
+    FRONT_AND_BACK(1032)
+}
+
+enum class FogMode(val mode: Int) {
+    LINEAR(9729),
+    EXP(2048),
+    EXP2(2049)
+}
+
+enum class SourceFactor(val factor: Int) {
+    CONSTANT_ALPHA(32771),
+    CONSTANT_COLOR(32769),
+    DST_ALPHA(772),
+    DST_COLOR(774),
+    ONE(1),
+    ONE_MINUS_CONSTANT_ALPHA(32772),
+    ONE_MINUS_CONSTANT_COLOR(32770),
+    ONE_MINUS_DST_ALPHA(773),
+    ONE_MINUS_DST_COLOR(775),
+    ONE_MINUS_SRC_ALPHA(771),
+    ONE_MINUS_SRC_COLOR(769),
+    SRC_ALPHA(770),
+    SRC_ALPHA_SATURATE(776),
+    SRC_COLOR(768),
+    ZERO(0)
+}
+
+enum class DestinationFactor(val factor: Int) {
+    CONSTANT_ALPHA(32771),
+    CONSTANT_COLOR(32769),
+    DST_ALPHA(772),
+    DST_COLOR(774),
+    ONE(1),
+    ONE_MINUS_CONSTANT_ALPHA(32772),
+    ONE_MINUS_CONSTANT_COLOR(32770),
+    ONE_MINUS_DST_ALPHA(773),
+    ONE_MINUS_DST_COLOR(775),
+    ONE_MINUS_SRC_ALPHA(771),
+    ONE_MINUS_SRC_COLOR(769),
+    SRC_ALPHA(770),
+    SRC_COLOR(768),
+    ZERO(0)
+}
+
+enum class LogicOperation(val operator: Int) {
+    AND(5377),
+    AND_INVERTED(5380),
+    AND_REVERSE(5378),
+    CLEAR(5376),
+    COPY(5379),
+    COPY_INVERTED(5388),
+    EQUIV(5385),
+    INVERT(5386),
+    NAND(5390),
+    NOOP(5381),
+    NOR(5384),
+    OR(5383),
+    OR_INVERTED(5389),
+    OR_REVERSE(5387),
+    SET(5391),
+    XOR(5382)
 }

@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.adapter;
 
 import net.cydhra.vibrant.api.render.VibrantGlStateManager;
+import net.cydhra.vibrant.gui.util.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import org.jetbrains.annotations.NotNull;
@@ -104,13 +105,15 @@ public class VibrantGlStateManagerImpl implements VibrantGlStateManager {
     }
     
     @Override
-    public void blendFunc(final int srcFactor, final int dstFactor) {
-        GlStateManager.blendFunc(srcFactor, dstFactor);
+    public void blendFunc(@NotNull final SourceFactor srcFactor, @NotNull final DestinationFactor dstFactor) {
+        GlStateManager.blendFunc(srcFactor.getFactor(), dstFactor.getFactor());
     }
     
     @Override
-    public void tryBlendFuncSeparate(final int srcFactor, final int dstFactor, final int srcFactorAlpha, final int dstFactorAlpha) {
-        GlStateManager.tryBlendFuncSeparate(srcFactor, dstFactor, srcFactorAlpha, dstFactorAlpha);
+    public void tryBlendFuncSeparate(@NotNull final SourceFactor srcFactor, @NotNull final DestinationFactor dstFactor,
+                                     @NotNull final SourceFactor srcFactorAlpha, @NotNull final DestinationFactor dstFactorAlpha) {
+        GlStateManager.tryBlendFuncSeparate(
+                srcFactor.getFactor(), dstFactor.getFactor(), srcFactorAlpha.getFactor(), dstFactorAlpha.getFactor());
     }
     
     @Override
@@ -124,8 +127,8 @@ public class VibrantGlStateManagerImpl implements VibrantGlStateManager {
     }
     
     @Override
-    public void setFog(final int param) {
-        GlStateManager.setFog(param);
+    public void setFog(@NotNull final FogMode param) {
+        GlStateManager.setFog(param.getMode());
     }
     
     @Override
@@ -154,8 +157,8 @@ public class VibrantGlStateManagerImpl implements VibrantGlStateManager {
     }
     
     @Override
-    public void cullFace(final int mode) {
-        GlStateManager.cullFace(mode);
+    public void cullFace(@NotNull final CullFace mode) {
+        GlStateManager.cullFace(mode.getMode());
     }
     
     @Override
@@ -184,8 +187,8 @@ public class VibrantGlStateManagerImpl implements VibrantGlStateManager {
     }
     
     @Override
-    public void colorLogicOp(final int opcode) {
-        GlStateManager.colorLogicOp(opcode);
+    public void colorLogicOp(@NotNull final LogicOperation opcode) {
+        GlStateManager.colorLogicOp(opcode.getOperator());
     }
     
     @Override
