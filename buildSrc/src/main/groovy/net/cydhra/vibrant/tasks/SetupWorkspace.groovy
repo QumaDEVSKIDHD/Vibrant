@@ -46,7 +46,7 @@ class SetupWorkspace extends DefaultTask {
 
         println "Executing MCP..."
         ant.exec(
-                command: "tmp/runtime/bin/python/python_mcp.exe runtime/decompile.py %*",
+                command: "tmp/runtime/bin/python/python_mcp.exe runtime/decompile.py --client --norecompile",
                 dir: "tmp",
                 osfamily: "windows"
         )
