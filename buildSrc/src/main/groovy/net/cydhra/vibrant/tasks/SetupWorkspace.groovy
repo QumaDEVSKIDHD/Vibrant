@@ -51,7 +51,7 @@ class SetupWorkspace extends DefaultTask {
                 osfamily: "windows"
         )
         ant.exec(
-                command: "/bin/bash decompile.sh",
+                command: "/bin/bash decompile.sh --client --norecompile",
                 dir: "tmp",
                 osfamily: "unix"
         )
