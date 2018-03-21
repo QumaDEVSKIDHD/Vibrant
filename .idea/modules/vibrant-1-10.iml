@@ -32,7 +32,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
@@ -138,7 +138,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
@@ -244,7 +244,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: commons-codec:commons-codec:1.8" level="project" />

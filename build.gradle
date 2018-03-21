@@ -19,7 +19,7 @@ subprojects {
 
     ext {
         kotlin_version = '1.2.30'
-        aspectjVersion = '1.8.9'
+        aspectjVersion = '1.8.13'
         clientBaseName = 'vibrant'
     }
 }
