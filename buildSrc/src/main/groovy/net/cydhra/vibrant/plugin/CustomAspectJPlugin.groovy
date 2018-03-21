@@ -11,6 +11,10 @@ class CustomAspectJPlugin implements Plugin<Project> {
         project.configurations.create("aspect")
 
         project.task("compile-aspects") {
+            // depend on everything necessary to fulfill a jar task. This includes escpecially the assembly of dependent sub-modules
+            dependsOn project.configurations*.getTaskDependencyFromProjectDependency(true, "jar")
+            dependsOn project.processResources
+
             doLast {
                 ant.taskdef(resource: "org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties",
                         classpath: project.configurations.ajc.asPath)
@@ -24,11 +28,15 @@ class CustomAspectJPlugin implements Plugin<Project> {
                         failonerror: "true",
                         destDir: project.sourceSets.main.output.classesDir.absolutePath,
                         sourceRoots: project.sourceSets.main.allSource.sourceDirectories.asPath,
-                        classpath: project.sourceSets.main.runtimeClasspath.asPath,
+                        classpath: project.sourceSets.main.compileClasspath.asPath,
                 )
             }
         }
 
-        project.tasks["compileJava"].dependsOn(project.tasks['compile-aspects'])
+        // decompose the java compile task
+        project.tasks.compileJava.deleteAllActions()
+
+        // and add its only new dependency on this task
+        project.tasks.compileJava.dependsOn(project.tasks['compile-aspects'])
     }
 }
