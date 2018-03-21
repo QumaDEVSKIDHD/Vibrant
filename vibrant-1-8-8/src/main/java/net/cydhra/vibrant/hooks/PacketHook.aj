@@ -10,6 +10,6 @@ public aspect PacketHook extends AbstractPacketHook {
 
     @Override
     public pointcut sendPacket(VibrantPacket packet):
-            call(void net.minecraft.client.network.NetHandlerPlayClient.addToSendQueue(Packet))
+            call(void net.minecraft.client.network.NetHandlerPlayClient.addToSendQueue(net.minecraft.network.Packet))
                     && args(packet);
 }

@@ -10,6 +10,6 @@ public aspect ChangeGuiScreenHook extends AbstractChangeGuiScreenHook {
 
     @Override
     public pointcut dispayGuiScreen(VibrantGuiController guiScreen):
-            call(void net.minecraft.client.Minecraft.displayGuiScreen(GuiScreen))
+            call(void net.minecraft.client.Minecraft.displayGuiScreen(net.minecraft.client.gui.GuiScreen))
                     && args(guiScreen);
 }
