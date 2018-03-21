@@ -2,24 +2,28 @@ package net.cydhra.vibrant.hooks;
 
 import net.cydhra.eventsystem.EventManager;
 import net.cydhra.vibrant.api.network.VibrantPacket;
+import net.cydhra.vibrant.aspects.AbstractPacketHook;
 import net.cydhra.vibrant.events.network.PacketEvent;
-import net.minecraft.network.Packet;
 
 /**
  *
  */
-public aspect PacketHook {
-    
-    pointcut sendPacket(Packet packet):
+public aspect PacketHook extends AbstractPacketHook {
+
+    @Override
+    public pointcut sendPacket(VibrantPacket packet):
             call(void net.minecraft.client.network.NetHandlerPlayClient.addToSendQueue(Packet))
                     && args(packet);
-    
-    void around(Packet packet): sendPacket(packet) {
-        PacketEvent packetEvent = new PacketEvent(PacketEvent.EventType.SEND, (VibrantPacket) packet);
+
+    @Override
+    public VibrantPacket sendPacket(VibrantPacket packet) {
+        PacketEvent packetEvent = new PacketEvent(PacketEvent.EventType.SEND, packet);
         EventManager.callEvent(packetEvent);
-        
+
         if (!packetEvent.isCancelled()) {
-            proceed((Packet) packetEvent.getPacket());
+            return packetEvent.getPacket();
         }
+
+        return null;
     }
 }
