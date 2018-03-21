@@ -23,7 +23,7 @@
     <orderEntry type="module" module-name="vibrant-client" scope="PROVIDED" />
     <orderEntry type="module" module-name="vibrant-interface" scope="PROVIDED" />
     <orderEntry type="module" module-name="vibrant-gui" scope="PROVIDED" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="module" module-name="vibrant-aspects" scope="PROVIDED" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
@@ -37,6 +37,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
@@ -137,7 +138,7 @@
     <orderEntry type="module" module-name="vibrant-client" scope="RUNTIME" />
     <orderEntry type="module" module-name="vibrant-interface" scope="RUNTIME" />
     <orderEntry type="module" module-name="vibrant-gui" scope="RUNTIME" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="module" module-name="vibrant-aspects" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
@@ -151,6 +152,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
@@ -251,7 +253,7 @@
     <orderEntry type="module" module-name="vibrant-client" scope="TEST" />
     <orderEntry type="module" module-name="vibrant-interface" scope="TEST" />
     <orderEntry type="module" module-name="vibrant-gui" scope="TEST" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="module" module-name="vibrant-aspects" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
@@ -265,6 +267,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
