@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.interfaces.client;
+package net.cydhra.vibrant.adapter;
 
 import net.cydhra.vibrant.api.client.VibrantFactory;
 import net.cydhra.vibrant.api.entity.VibrantZombie;
