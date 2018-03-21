@@ -11,11 +11,13 @@ import net.minecraft.client.Minecraft;
  * Hooks the initialize method ({@link Minecraft#startGame()}). Calls {@link VibrantClient#init(VibrantMinecraft, VibrantFactory)}
  */
 public aspect InitializerHook extends AbstractInitializerHook {
-    
-    pointcut startGame():
+
+    @Override
+    public pointcut startGame():
             call(void net.minecraft.client.Minecraft.startGame());
-    
-    after(): startGame() {
+
+    @Override
+    public void startGame() {
         VibrantClient.INSTANCE.init((VibrantMinecraft) Minecraft.getMinecraft(), new VibrantFactoryImpl());
     }
 }
