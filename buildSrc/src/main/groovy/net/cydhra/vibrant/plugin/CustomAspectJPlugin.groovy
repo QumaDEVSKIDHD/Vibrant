@@ -3,6 +3,9 @@ package net.cydhra.vibrant.plugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
+/**
+ * A custom AspectJ compiler plugin that is actually capable of including sub-modules into aspect-path.
+ */
 class CustomAspectJPlugin implements Plugin<Project> {
 
     @Override
