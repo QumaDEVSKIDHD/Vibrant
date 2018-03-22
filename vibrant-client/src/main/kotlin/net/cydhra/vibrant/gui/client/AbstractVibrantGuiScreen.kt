@@ -3,8 +3,8 @@ package net.cydhra.vibrant.gui.client
 import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.api.client.VibrantMinecraft
 import net.cydhra.vibrant.api.gui.VibrantGuiController
-import net.cydhra.vibrant.api.gui.VibrantGuiScreen
 import net.cydhra.vibrant.gui.screen.VibrantScreen
+import net.cydhra.vibrant.interfaces.VibrantGuiScreen
 import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.GL11
 

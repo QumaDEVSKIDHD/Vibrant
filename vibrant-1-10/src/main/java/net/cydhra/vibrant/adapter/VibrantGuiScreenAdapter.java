@@ -2,7 +2,7 @@ package net.cydhra.vibrant.adapter;
 
 import net.cydhra.vibrant.VibrantClient;
 import net.cydhra.vibrant.api.client.VibrantMinecraft;
-import net.cydhra.vibrant.api.gui.VibrantGuiScreen;
+import net.cydhra.vibrant.interfaces.VibrantGuiScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 
