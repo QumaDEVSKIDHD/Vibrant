@@ -7,10 +7,11 @@ interface VibrantVertexBuffer {
     val byteBuffer: ByteBuffer
     val vertexCount: Int
     val drawMode: Int
+    val vertexFormat: VibrantVertexFormat
 
     fun markDirty()
 
-//    fun begin(drawMode: Int)
+    fun beginDrawing(drawMode: Int, vertexFormat: VibrantVertexFormat)
 
     fun reset()
 
