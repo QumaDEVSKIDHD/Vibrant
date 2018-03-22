@@ -19,4 +19,6 @@ dependencies {
 
     compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
     ajc group: 'org.aspectj', name: 'aspectjtools', version: aspectjVersion
+
+    testCompile group: 'junit', name: 'junit', version: junitVersion
 }
