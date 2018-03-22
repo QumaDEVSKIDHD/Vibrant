@@ -1,4 +1,4 @@
-package net.cydhra.vibrant.api.gui
+package net.cydhra.vibrant.interfaces
 
 import net.cydhra.vibrant.api.client.VibrantMinecraft
 

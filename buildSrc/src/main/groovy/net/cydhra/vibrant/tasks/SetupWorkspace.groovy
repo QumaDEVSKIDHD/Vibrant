@@ -85,12 +85,15 @@ class SetupWorkspace extends DefaultTask {
     }
 
     private def copyDirectory(AntBuilder ant, String source, String dest) {
-        ant.copy(
-                todir: dest,
-                overwrite: true,
-                verbose: true
-        ) {
-            fileset(dir: source)
+        try {
+            ant.copy(
+                    todir: dest,
+                    overwrite: true,
+                    verbose: true
+            ) {
+                fileset(dir: source)
+            }
+        } catch (Exception ignored) {
         }
     }
 }

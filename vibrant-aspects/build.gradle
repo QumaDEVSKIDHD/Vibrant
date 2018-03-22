@@ -1,0 +1,22 @@
+import net.cydhra.vibrant.plugin.CustomAspectJPlugin
+
+group 'net.cydhra'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: CustomAspectJPlugin
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url = "https://jitpack.io" }
+}
+
+dependencies {
+    compile project(":vibrant-client")
+    compile project(":vibrant-interface")
+
+    compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
+    ajc group: 'org.aspectj', name: 'aspectjtools', version: aspectjVersion
+}

@@ -3,9 +3,9 @@ package net.cydhra.vibrant.api.client
 import net.cydhra.nidhogg.data.Session
 import net.cydhra.vibrant.api.entity.VibrantEntity
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
-import net.cydhra.vibrant.api.gui.VibrantGuiScreen
 import net.cydhra.vibrant.api.render.*
 import net.cydhra.vibrant.api.world.VibrantWorld
+import net.cydhra.vibrant.interfaces.VibrantGuiScreen
 
 /**
  *

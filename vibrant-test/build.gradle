@@ -1,0 +1,16 @@
+group 'net.cydhra'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'junit', name: 'junit', version: junitVersion
+    compile group: 'org.reflections', name: 'reflections', version: orgReflectionsVersion
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+}
