@@ -21,6 +21,7 @@ subprojects {
         kotlin_version = '1.2.30'
         aspectjVersion = '1.8.13'
         junitVersion = '4.12'
+        orgReflectionsVersion = '0.9.9'
         clientBaseName = 'vibrant'
     }
 }

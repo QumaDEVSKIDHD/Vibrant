@@ -57,7 +57,7 @@ dependencies {
     compile files('lib/tv/twitch/twitch/6.5/twitch-6.5.jar')
 
     testCompile group: 'junit', name: 'junit', version: junitVersion
-    testCompile group: 'org.reflections', name: 'reflections', version: '0.9.9'
+    testCompile group: 'org.reflections', name: 'reflections', version: orgReflectionsVersion
     testCompile project(":vibrant-aspects")
 }
 

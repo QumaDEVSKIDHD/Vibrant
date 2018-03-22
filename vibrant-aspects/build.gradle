@@ -21,5 +21,5 @@ dependencies {
     ajc group: 'org.aspectj', name: 'aspectjtools', version: aspectjVersion
 
     testCompile group: 'junit', name: 'junit', version: junitVersion
-    testCompile group: 'org.reflections', name: 'reflections', version: '0.9.9'
+    testCompile group: 'org.reflections', name: 'reflections', version: orgReflectionsVersion
 }
