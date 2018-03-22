@@ -5,4 +5,5 @@ include 'vibrant-interface'
 include 'vibrant-gui'
 include 'vibrant-1-10'
 include 'vibrant-aspects'
+include 'vibrant-test'
 

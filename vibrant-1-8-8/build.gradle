@@ -56,12 +56,15 @@ dependencies {
     compile files('lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar')
     compile files('lib/tv/twitch/twitch/6.5/twitch-6.5.jar')
 
+    testCompile project(":vibrant-test")
     testCompile group: 'junit', name: 'junit', version: junitVersion
     testCompile group: 'org.reflections', name: 'reflections', version: orgReflectionsVersion
-    testCompile project(":vibrant-aspects")
+    testCompile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
 }
 
 shadowJar {
+    dependsOn 'test'
+
     baseName = clientBaseName
     classifier = null
     version = null
