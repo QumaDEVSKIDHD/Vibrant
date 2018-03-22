@@ -34,6 +34,7 @@ interface VibrantMinecraft {
     var minecraftSession: Session
 
     val glStateManager: VibrantGlStateManager
+    val tessellator: VibrantTessellator
 
     fun getTextureManager(): VibrantTextureManager
 
