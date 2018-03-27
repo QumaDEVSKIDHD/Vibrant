@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.interfaces.entity;
 
+import net.cydhra.vibrant.api.inventory.VibrantPlayerInventory;
 import net.minecraft.entity.player.EntityPlayer;
 
 /**
@@ -14,4 +15,8 @@ public aspect EntityPlayerInterface {
     public double EntityPlayer.getChasingPosY() { return this.chasingPosY; }
     
     public double EntityPlayer.getChasingPosZ() { return this.chasingPosZ; }
+
+    public VibrantPlayerInventory EntityPlayer.getPlayerInventory() {
+        return (VibrantPlayerInventory) this.inventory;
+    }
 }
