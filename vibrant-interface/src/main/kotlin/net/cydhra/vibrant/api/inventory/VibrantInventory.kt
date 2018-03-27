@@ -3,6 +3,28 @@ package net.cydhra.vibrant.api.inventory
 import net.cydhra.vibrant.api.entity.VibrantPlayer
 import net.cydhra.vibrant.api.item.VibrantItemStack
 
+/** inclusive min hotbar slot id */
+const val MIN_HOTBAR_INVENTORY_SLOT = 0
+
+/** exclusive max hotbar slot id */
+const val MAX_HOTBAR_INVENTORY_SLOT = 9
+
+/** inclusive min main inventory slot id */
+const val MIN_MAIN_INVENTORY_SLOT = 0
+
+/** exclusive max main inventory slot id */
+const val MAX_MAIN_INVENTORY_SLOT = 37
+
+const val ARMOR_HELMET_ID = 103
+const val ARMOR_CHEST_ID = 102
+const val ARMOR_LEG_ID = 101
+const val ARMOR_BOOTS_ID = 100
+
+const val DROP_ITEM_SLOT_ID = -999
+
+const val MIN_CRAFTING_SLOTS_ID = 80
+const val MAX_CRAFTING_SLOTS_ID = 83
+
 interface VibrantInventory {
 
     fun getSizeInventory(): Int
