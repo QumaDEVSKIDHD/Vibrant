@@ -13,6 +13,12 @@ interface VibrantVertexBuffer {
 
     fun beginDrawing(drawMode: Int, vertexFormat: VibrantVertexFormat)
 
+    fun tex(x: Double, y: Double): VibrantVertexBuffer
+
+    fun lightmap(x: Int, y: Int): VibrantVertexBuffer
+
+    fun putPosition(x: Double, y: Double, z: Double)
+
     fun reset()
 
     fun setTranslation(x: Double, y: Double, z: Double)
