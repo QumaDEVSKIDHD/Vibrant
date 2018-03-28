@@ -1,8 +1,14 @@
 package net.cydhra.vibrant.interfaces.inventory;
 
 import net.cydhra.vibrant.api.entity.VibrantPlayer;
+import net.cydhra.vibrant.api.inventory.InventoryIterator;
+import net.cydhra.vibrant.api.inventory.VibrantInventory;
 import net.cydhra.vibrant.api.item.VibrantItemStack;
+import net.cydhra.vibrant.api.util.VibrantDamageSource;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 
 public aspect InventoryInterface {
 
@@ -26,5 +32,14 @@ public aspect InventoryInterface {
 
     public boolean IInventory.isItemValidInSlot(int index, VibrantItemStack stack) {
         return this.isItemValidForSlot(index, (net.minecraft.item.ItemStack) stack);
+    }
+
+    public InventoryIterator IInventory.iterator() {
+        return new InventoryIterator((VibrantInventory) this);
+    }
+
+    public int IInventory.getEnchantmentModifier(VibrantItemStack[] armor,
+                                                 VibrantDamageSource source) {
+        return EnchantmentHelper.getEnchantmentModifierDamage((ItemStack[]) armor, (DamageSource) source);
     }
 }
