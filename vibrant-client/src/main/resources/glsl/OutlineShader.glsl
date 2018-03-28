@@ -1,10 +1,12 @@
 //This shader is used to outline objects with optional fading
+#version 120
 
 //Determines whether this fragment shader should enable debug features or not
 uniform bool debug;
 
 //The sampler used to sample from when taking samples from the texture
 uniform sampler2D diffuseSampler;
+uniform sampler2D objectMapSampler;
 
 //The intensity which is the alpha value of the faded fragment
 uniform float fadeIntensity;
@@ -22,6 +24,12 @@ uniform vec3 objectColor;
 //The size of a texel on the framebuffer texture
 uniform vec2 texelSize;
 
+//Returns the base color for this fragment
+vec3 getBaseColor(void) {
+    //Sample and return vec3 of object map
+    return baseColor;//texture2D(objectMapSampler, gl_TexCoord[1].st).rgb;
+}
+
 void main(void) {
     //Value that defines the alpha of the result fragment color
     //Also used to determine the alpha value for the replacement fragment color
@@ -31,7 +39,7 @@ void main(void) {
     //Sample actual color this fragment shader called for
     vec4 color = texture2D(diffuseSampler, gl_TexCoord[0].st);
 
-    //Fragment has alpha not zero and therefor is an object to outline but not a fragment to sample
+    //Fragment has alpha not zero and therefore is an object to outline but not a fragment to sample
     if (color.a != 0) {
         //Set color to objects color
         gl_FragColor = vec4(objectColor, alpha);
@@ -52,6 +60,6 @@ void main(void) {
         }
 
         //Sets fragment color with alpha divided by fade intensity
-        gl_FragColor = vec4(baseColor, alpha);
+        gl_FragColor = vec4(getBaseColor(), alpha);
     }
 }

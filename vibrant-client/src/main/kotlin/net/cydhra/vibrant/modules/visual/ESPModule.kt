@@ -13,11 +13,13 @@ import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.util.enemy.EnemyTracker
 import net.cydhra.vibrant.util.enemy.TrackedTileEntity
+import net.cydhra.vibrant.util.framebuffer.Framebuffer
 import net.cydhra.vibrant.util.framebuffer.OutlineFramebuffer
 import net.cydhra.vibrant.util.shader.ShaderLibrary
 import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.Display
-import org.lwjgl.util.vector.Vector2f
+import org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT
+import org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT
 import java.awt.Color
 
 class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
@@ -26,24 +28,42 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
         OutlineFramebuffer(Display.getWidth(), Display.getHeight())
     }
 
+    private val objectMapFramebuffer: Framebuffer by lazy {
+        Framebuffer(Display.getWidth(), Display.getHeight(), true)
+    }
+
     override fun onEnable() {
-        ShaderLibrary.outlineShaderProgramProgram.sampleRadius = 4
-        ShaderLibrary.outlineShaderProgramProgram.fadeIntensity = 0.025F
-        ShaderLibrary.outlineShaderProgramProgram.maxSampleRadius = 4
-        ShaderLibrary.outlineShaderProgramProgram.baseColor = Color.GREEN
+        ShaderLibrary.reloadShaders()
+        ShaderLibrary.outlineShaderProgramProgram.sampleRadius = 8
+        ShaderLibrary.outlineShaderProgramProgram.fadeIntensity = 0.01F
+        ShaderLibrary.outlineShaderProgramProgram.maxSampleRadius = 8
+        ShaderLibrary.outlineShaderProgramProgram.baseColor = Color.RED
         ShaderLibrary.outlineShaderProgramProgram.objectColor = Color.RED
         ShaderLibrary.outlineShaderProgramProgram.debug = false
     }
 
     @EventHandler
     fun onRender2DShaderEsp(e: RenderOverlayEvent) {
-        ShaderLibrary.outlineShaderProgramProgram.texelSize = Vector2f(1 / outlineFramebuffer.width.toFloat(), 1 / outlineFramebuffer.height.toFloat())
+        ShaderLibrary.outlineShaderProgramProgram.objectMapSampler = objectMapFramebuffer.framebuffer.textureId
+        ShaderLibrary.outlineShaderProgramProgram.diffuseSampler = outlineFramebuffer.framebuffer.textureId
+
         outlineFramebuffer.drawOntoCurrentFramebuffer()
     }
 
     @EventHandler
     fun onRenderWorldShaderEsp(e: RenderWorldEvent) {
+        objectMapFramebuffer.bind()
+
+        mc.glStateManager.clearColor(1F, 1F, 0F, 0F)
+        mc.glStateManager.clear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
+        objectMapFramebuffer.unbind()
+
         outlineFramebuffer.bind()
+        drawEntities()
+        outlineFramebuffer.unbind()
+    }
+
+    fun drawEntities() {
         mc.glStateManager.enableStandardItemLighting()
 
         val wasDebugBoundingBox = VibrantClient.minecraft.getRenderManager().isDebugBoundingBox
@@ -75,7 +95,6 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
 
                     VibrantClient.minecraft.getRenderManager().getEntityRenderObj(entity).render(entity, entityPosX, entityPosY, entityPosZ, entity.rotationYaw, VibrantClient.minecraft.timer.renderPartialTicks)
                 }
-        mc.glStateManager.popAttrib()
 
         EnemyTracker.trackedEntities.stream()
                 .filter { entity -> entity is TrackedTileEntity }
@@ -83,14 +102,12 @@ class ESPModule : Module("ESP", DefaultCategories.VISUAL, Keyboard.KEY_B) {
                 .forEach { entity ->
                     VibrantClient.minecraft.getTileEntityRenderDispatcher().doRenderTileEntity(entity, VibrantClient.minecraft.timer.renderPartialTicks, -1)
                 }
+        mc.glStateManager.popAttrib()
 
         VibrantClient.minecraft.getRenderManager().isDebugBoundingBox = wasDebugBoundingBox
         VibrantClient.minecraft.gameSettings.renderEntityShadows = wasEntityShadows
 
         VibrantClient.minecraft.entityRenderer.disableLightmap()
         mc.glStateManager.disableStandardItemLighting()
-
-        // rebind minecraft framebuffer
-        outlineFramebuffer.unbind()
     }
 }
