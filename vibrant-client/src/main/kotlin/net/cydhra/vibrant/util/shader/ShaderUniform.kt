@@ -1,6 +1,8 @@
 package net.cydhra.vibrant.util.shader
 
+import net.cydhra.vibrant.VibrantClient
 import org.lwjgl.opengl.ARBShaderObjects
+import org.lwjgl.opengl.GL13
 import org.lwjgl.util.vector.Vector2f
 import java.awt.Color
 import kotlin.reflect.KProperty
@@ -31,6 +33,13 @@ fun uniform(program: VibrantShaderProgram, name: String, default: Vector2f): Sha
 
 fun uniform(program: VibrantShaderProgram, name: String, default: Boolean): ShaderUniform<Boolean> =
         uniform(program, name, default, { pos, bool -> ARBShaderObjects.glUniform1iARB(pos, if (bool) 1 else 0) })
+
+fun sampler(program: VibrantShaderProgram, name: String, default: Int, texture: Int): ShaderSamplerUniform {
+    return ShaderSamplerUniform(name, default, texture).apply {
+        program.registerSampler(this)
+    }
+}
+
 /**
  * A uniform shader pipeline input value of type [T] with only one parameter
  *
@@ -48,3 +57,10 @@ open class ShaderUniform<T>(val name: String, default: T, val uniforming: (Int, 
         this.value = value
     }
 }
+
+class ShaderSamplerUniform(name: String, default: Int, val texture: Int) : ShaderUniform<Int>(name, default, { pos, value ->
+    VibrantClient.minecraft.glStateManager.setActiveTexture(GL13.GL_TEXTURE0 + texture)
+    VibrantClient.minecraft.glStateManager.enableTexture2D()
+    VibrantClient.minecraft.glStateManager.bindTexture(value)
+    ARBShaderObjects.glUniform1iARB(pos, texture)
+})

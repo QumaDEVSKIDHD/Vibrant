@@ -14,7 +14,7 @@ object ShaderLibrary {
         loadShaders()
     }
 
-    private fun reloadShaders() {
+    fun reloadShaders() {
         outlineShaderProgramProgram.delete()
 
         loadShaders()

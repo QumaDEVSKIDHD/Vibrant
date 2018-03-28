@@ -1,7 +1,9 @@
 package net.cydhra.vibrant.util.shader
 
+import net.cydhra.vibrant.VibrantClient
 import org.lwjgl.opengl.ARBShaderObjects
 import org.lwjgl.opengl.GL11
+import org.lwjgl.opengl.GL13
 
 /**
  *
@@ -12,12 +14,18 @@ abstract class VibrantShaderProgram {
     private var linked = false
 
     protected val uniforms = mutableListOf<ShaderUniform<Any>>()
+    protected val samplerUniforms = mutableListOf<ShaderSamplerUniform>()
 
     /**
      * Register a uniform variable as input for the shader pipeline
      */
     internal fun registerUniform(uniform: ShaderUniform<Any>) {
         uniforms.add(uniform)
+    }
+
+    internal fun registerSampler(uniform: ShaderSamplerUniform) {
+        samplerUniforms.add(uniform)
+        this.registerUniform(uniform as ShaderUniform<Any>)
     }
 
     fun appendShader(shader: VibrantShader) {
@@ -58,6 +66,15 @@ abstract class VibrantShaderProgram {
 
     fun unbind() {
         ARBShaderObjects.glUseProgramObjectARB(0)
+
+        this.samplerUniforms.forEach { sampler ->
+            VibrantClient.glStateManager.setActiveTexture(GL13.GL_TEXTURE0 + sampler.texture)
+            VibrantClient.glStateManager.bindTexture(0)
+        }
+
+        VibrantClient.glStateManager.setActiveTexture(GL13.GL_TEXTURE0)
+        VibrantClient.glStateManager.enableTexture2D()
+        VibrantClient.glStateManager.bindTexture(0)
     }
 
     fun delete() {
