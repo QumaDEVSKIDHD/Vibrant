@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.api.entity
 
+import net.cydhra.vibrant.api.util.VibrantDamageSource
 import net.cydhra.vibrant.api.util.VibrantVec3
 
 /**
@@ -19,4 +20,6 @@ interface VibrantEntityLiving : VibrantEntity {
     fun getPositionVector(): VibrantVec3
 
     fun getEyeHeight(): Float
+
+    fun getDamageSource(): VibrantDamageSource
 }

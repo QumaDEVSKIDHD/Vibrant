@@ -51,7 +51,7 @@ interface VibrantInventory : Iterable<Pair<Int, VibrantItemStack?>> {
 
     fun clear()
 
-    fun getEnchantmentModifier(armor: Array<VibrantItemStack>, source: VibrantDamageSource)
+    fun getEnchantmentModifier(armor: Array<VibrantItemStack>, source: VibrantDamageSource): Int
 }
 
 class InventoryIterator(private val inventory: VibrantInventory) : MutableIterator<Pair<Int, VibrantItemStack?>> {
