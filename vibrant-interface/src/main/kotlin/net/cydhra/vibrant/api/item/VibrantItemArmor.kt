@@ -19,8 +19,8 @@ enum class VibrantArmorMaterial(val maxDamageFactor: Int, val damageReductionAmo
 }
 
 enum class VibrantArmorType(val slotIndex: Int) {
-    BOOTS(1),
-    LEGS(2),
+    HEAD(4),
     CHEST(3),
-    HEAD(4);
+    LEGS(2),
+    BOOTS(1);
 }

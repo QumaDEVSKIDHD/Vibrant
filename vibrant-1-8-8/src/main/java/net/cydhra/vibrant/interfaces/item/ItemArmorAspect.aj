@@ -27,13 +27,13 @@ public privileged aspect ItemArmorAspect {
 
     public VibrantArmorType ItemArmor.getType() {
         switch (this.armorType) {
-            case 0:
-                return VibrantArmorType.BOOTS;
-            case 1:
-                return VibrantArmorType.LEGS;
-            case 2:
-                return VibrantArmorType.CHEST;
             case 3:
+                return VibrantArmorType.BOOTS;
+            case 2:
+                return VibrantArmorType.LEGS;
+            case 1:
+                return VibrantArmorType.CHEST;
+            case 0:
                 return VibrantArmorType.HEAD;
             default:
                 throw new AssertionError();

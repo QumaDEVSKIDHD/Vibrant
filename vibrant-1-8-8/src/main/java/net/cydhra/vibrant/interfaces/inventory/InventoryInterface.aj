@@ -10,6 +10,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
+import java.util.Arrays;
+
 public aspect InventoryInterface {
 
     declare parents:net.minecraft.inventory.IInventory extends net.cydhra.vibrant.api.inventory.VibrantInventory;
@@ -40,6 +42,6 @@ public aspect InventoryInterface {
 
     public int IInventory.getEnchantmentModifier(VibrantItemStack[] armor,
                                                  VibrantDamageSource source) {
-        return EnchantmentHelper.getEnchantmentModifierDamage((ItemStack[]) armor, (DamageSource) source);
+        return EnchantmentHelper.getEnchantmentModifierDamage(Arrays.asList(armor).toArray(new ItemStack[armor.length]), (DamageSource) source);
     }
 }
