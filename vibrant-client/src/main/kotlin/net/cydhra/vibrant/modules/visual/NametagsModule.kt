@@ -26,8 +26,8 @@ class NametagsModule : Module("Nametags", DefaultCategories.VISUAL, Keyboard.KEY
     @EventHandler
     fun onRenderOverlay(e: RenderOverlayEvent) {
         for (nametag in nametags) {
-            val x = nametag.second.x / 2
-            val y = (Display.getHeight() - nametag.second.y) / 2
+            val x = nametag.second.x / e.scaledResolution.getScaleFactor()
+            val y = (Display.getHeight() - nametag.second.y) / e.scaledResolution.getScaleFactor()
 
             var name = nametag.first.toString().substring(nametag.first.toString().indexOf('\'') + 1, nametag.first.toString().length)
             name = name.substring(0, name.indexOf('\''))
