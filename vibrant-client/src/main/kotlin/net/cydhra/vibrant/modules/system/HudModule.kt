@@ -90,6 +90,7 @@ class HudModule : Module("Hud", DefaultCategories.SYSTEM, Keyboard.KEY_H) {
     fun drawActiveModules(scaledResolution: VibrantScaledResolution) {
         mc.glStateManager.disableTexture2D()
 
+        glLineWidth(1.0F)
         glBegin(GL11.GL_LINE_STRIP)
         var offset = 0F
         for (module in ModuleManager.modules) {
