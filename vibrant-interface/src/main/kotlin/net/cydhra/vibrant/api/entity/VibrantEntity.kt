@@ -28,4 +28,6 @@ interface VibrantEntity : VibrantEntityAlike {
     var stepHeight: Float
 
     fun getDistanceSq(x: Double, y: Double, z: Double): Double
+
+    fun getName(): String
 }
