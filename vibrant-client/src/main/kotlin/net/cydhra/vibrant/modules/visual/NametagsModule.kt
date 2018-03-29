@@ -29,10 +29,7 @@ class NametagsModule : Module("Nametags", DefaultCategories.VISUAL, Keyboard.KEY
             val x = nametag.second.x / e.scaledResolution.getScaleFactor()
             val y = (Display.getHeight() - nametag.second.y) / e.scaledResolution.getScaleFactor()
 
-            var name = nametag.first.toString().substring(nametag.first.toString().indexOf('\'') + 1, nametag.first.toString().length)
-            name = name.substring(0, name.indexOf('\''))
-
-            nametagFontRenderer.drawString(name, x - nametagFontRenderer.getStringWidth(name) / 2, y, -1)
+            nametagFontRenderer.drawString(nametag.first.getName(), x - nametagFontRenderer.getStringWidth(nametag.first.getName()) / 2, y, -1)
         }
     }
 
