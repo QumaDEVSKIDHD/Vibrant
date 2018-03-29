@@ -78,6 +78,7 @@ object VibrantClient {
     fun afterRenderOverlay(e: RenderOverlayEvent) {
         minecraft.getTextureManager().bindTexture("textures/gui/icons.png")
         glStateManager.popAttrib()
+        glStateManager.enableBlend()
     }
 
     @EventHandler(priority = ListenerPriority.HIGHEST)
