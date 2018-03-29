@@ -8,4 +8,6 @@ interface VibrantScaledResolution {
     fun getScaledWidth(): Int
 
     fun getScaledHeight(): Int
+
+    fun getScaleFactor(): Int
 }
