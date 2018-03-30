@@ -150,6 +150,8 @@ interface IStateManager {
     fun enableStandardItemLighting()
 
     fun disableStandardItemLighting()
+
+    fun setLightmapTextureCoords(target: Int, s: Float, t: Float)
 }
 
 enum class CullFace(val mode: Int) {
