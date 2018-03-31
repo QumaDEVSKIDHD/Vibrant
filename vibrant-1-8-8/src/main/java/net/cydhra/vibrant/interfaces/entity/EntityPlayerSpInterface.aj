@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.interfaces.entity;
 
 import net.cydhra.vibrant.api.client.VibrantMovementInput;
+import net.cydhra.vibrant.api.inventory.VibrantContainer;
 import net.minecraft.client.entity.EntityPlayerSP;
 
 /**
@@ -30,4 +31,8 @@ public aspect EntityPlayerSpInterface {
     }
     
     public VibrantMovementInput EntityPlayerSP.getMovementInput() { return (VibrantMovementInput) this.movementInput; }
+
+    public VibrantContainer EntityPlayerSP.getOpenContainer() {
+        return (VibrantContainer) this.openContainer;
+    }
 }

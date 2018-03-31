@@ -1,6 +1,7 @@
 package net.cydhra.vibrant.api.entity
 
 import net.cydhra.vibrant.api.client.VibrantMovementInput
+import net.cydhra.vibrant.api.inventory.VibrantContainer
 import net.cydhra.vibrant.api.item.VibrantItemStack
 
 /**
@@ -15,6 +16,8 @@ interface VibrantPlayerSP : VibrantPlayer {
     var isSprinting: Boolean
 
     val movementInput: VibrantMovementInput
+
+    val openContainer: VibrantContainer
 
     fun getItemInUseCount(): Int
 
