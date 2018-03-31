@@ -3,10 +3,8 @@ package net.cydhra.vibrant.api.client
 import net.cydhra.vibrant.api.entity.VibrantZombie
 import net.cydhra.vibrant.api.gui.VibrantGuiController
 import net.cydhra.vibrant.api.gui.VibrantGuiMainMenu
-import net.cydhra.vibrant.api.network.VibrantPlayerLookPacket
-import net.cydhra.vibrant.api.network.VibrantPlayerPacket
-import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket
-import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket
+import net.cydhra.vibrant.api.item.VibrantItemStack
+import net.cydhra.vibrant.api.network.*
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture
 import net.cydhra.vibrant.api.render.VibrantFramebuffer
 import net.cydhra.vibrant.api.render.VibrantFrustum
@@ -38,6 +36,9 @@ interface VibrantFactory {
     fun newPlayerLookPacket(yaw: Float, pitch: Float, onGround: Boolean): VibrantPlayerLookPacket
 
     fun newPlayerPacket(onGround: Boolean): VibrantPlayerPacket
+
+    fun newWindowClickPacket(windowId: Int, slotId: Int, mouseButton: UsedMouseButton, actionNumber: Short,
+                             clickedItem: VibrantItemStack?, clickType: ClickType): VibrantWindowClickPacket
 
     fun newGuiController(): VibrantGuiController
 
