@@ -137,6 +137,13 @@ infix fun Operator<Float>.by(step: Float) = applying { it + step }
 infix fun Operator<Long>.by(step: Long) = applying { it + step }
 
 /**
+ * Operator that cycles through enums
+ */
+infix fun <T : Enum<T>> Operator<T>.cycling(enumValues: Array<T>) {
+    applying { cur: T -> enumValues.let { it[(it.indexOf(cur) + 1) % it.size] } }
+}
+
+/**
  * Define an arbitrary operation on settings that modifies the value. See [ConfigBuilder.increment] or [ConfigBuilder.decrement] for
  * implementation details of this interface
  */
