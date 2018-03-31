@@ -37,7 +37,9 @@ void main(void) {
         //Set color to objects color
         gl_FragColor = vec4(objectColor, alpha);
     } else {
+        //The final color derived from edge fragment of the object
         vec3 finalColor = vec3(0, 0, 0);
+        //True if the fragment color has been determined
         bool foundColor = false;
 
         //Determine objects color
