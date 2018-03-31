@@ -4,6 +4,7 @@ package net.cydhra.vibrant.gui.util
 
 import net.cydhra.vibrant.gui.GuiManager
 import org.lwjgl.BufferUtils
+import org.lwjgl.opengl.Display
 import org.lwjgl.opengl.GL11.*
 import org.lwjgl.util.glu.GLU.gluProject
 import org.lwjgl.util.vector.Vector2f
@@ -56,23 +57,22 @@ object RenderUtil {
         this.setOptions(color)
 
         glBegin(GL_QUADS)
-
         glVertex2d(posX.toDouble(), posY.toDouble())
         glVertex2d(posX.toDouble(), (posY + height).toDouble())
         glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
         glVertex2d((posX + width).toDouble(), posY.toDouble())
-
         glEnd()
+    }
 
-        /*val vertecies = createFloatBuffer(8)
-                .put(posX.toFloat()).put(posY.toFloat())
-                .put(posX.toFloat()).put((posY + height).toFloat())
-                .put((posX + width).toFloat()).put((posY + height).toFloat())
-                .put((posX + width).toFloat()).put(posY.toFloat())
+    fun fillRect(posX: Float, posY: Float, width: Float, height: Float, color: Color? = null) {
+        this.setOptions(color)
 
-        val vbo = glGenBuffers()
-        glBindBuffer(GL_ARRAY_BUFFER, vbo)
-        glBufferData(GL_ARRAY_BUFFER, vertecies, GL_STATIC_DRAW)*/
+        glBegin(GL_QUADS)
+        glVertex2f(posX, posY)
+        glVertex2f(posX, (posY + height))
+        glVertex2f((posX + width), (posY + height))
+        glVertex2f((posX + width), posY)
+        glEnd()
     }
 
     fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null, lineWidth: Float? = null) {
@@ -90,6 +90,25 @@ object RenderUtil {
 
         glVertex2d((posX + width).toDouble(), (posY).toDouble())
         glVertex2d(posX.toDouble(), posY.toDouble())
+
+        glEnd()
+    }
+
+    fun drawRect(posX: Float, posY: Float, width: Float, height: Float, color: Color? = null, lineWidth: Float? = null) {
+        this.setOptions(color, lineWidth)
+
+        glBegin(GL_LINE_STRIP)
+        glVertex2f(posX, posY)
+        glVertex2f(posX, posY + height)
+
+        glVertex2f(posX, posY + height)
+        glVertex2f(posX + width, posY + height)
+
+        glVertex2f(posX + width, posY + height)
+        glVertex2f(posX + width, posY)
+
+        glVertex2f(posX + width, posY)
+        glVertex2f(posX, posY)
 
         glEnd()
     }
@@ -152,12 +171,13 @@ object RenderUtil {
         return then + (now - then) * ticks
     }
 
-    fun project2d(x: Float, y: Float, z: Float): Vector2f {
-        val projected3d = project3d(x, y, z)
+    fun project2d(x: Float, y: Float, z: Float, scaleFactor: Int): Vector2f {
+        val projected3d = project3d(x, y, z, scaleFactor)
+
         return Vector2f(projected3d.x, projected3d.y)
     }
 
-    fun project3d(x: Float, y: Float, z: Float): Vector3f {
+    fun project3d(x: Float, y: Float, z: Float, scaleFactor: Int): Vector3f {
         //Clear buffers
         gluProjectPosition.clear()
 
@@ -172,7 +192,7 @@ object RenderUtil {
 
         //Project and return position buffer as new vector3f
         return if (gluProject(x, y, z, gluProjectModelViewMatrix, gluProjectProjectionMatrix, gluProjectModelViewportMatrix, gluProjectPosition))
-            Vector3f(gluProjectPosition[0], gluProjectPosition[1], gluProjectPosition[2])
+            Vector3f(gluProjectPosition[0] / scaleFactor, (Display.getHeight() - gluProjectPosition[1]) / scaleFactor, gluProjectPosition[2] / scaleFactor)
         else
             Vector3f(0F, 0F, 0F)
     }
