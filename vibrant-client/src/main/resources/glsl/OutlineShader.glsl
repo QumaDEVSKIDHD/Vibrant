@@ -6,7 +6,6 @@ uniform bool debug;
 
 //The sampler used to sample from when taking samples from the texture
 uniform sampler2D diffuseSampler;
-uniform sampler2D objectMapSampler;
 
 //The intensity which is the alpha value of the faded fragment
 uniform float fadeIntensity;
@@ -21,14 +20,8 @@ uniform vec3 baseColor;
 //The color that replaces the fragments of the object to outline
 uniform vec3 objectColor;
 
-//The size of a texel on the framebuffer texture
+//The size of a texel on the texture
 uniform vec2 texelSize;
-
-//Returns the base color for this fragment
-vec3 getBaseColor(void) {
-    //Sample and return vec3 of object map
-    return baseColor;//texture2D(objectMapSampler, gl_TexCoord[1].st).rgb;
-}
 
 void main(void) {
     //Value that defines the alpha of the result fragment color
@@ -44,6 +37,32 @@ void main(void) {
         //Set color to objects color
         gl_FragColor = vec4(objectColor, alpha);
     } else {
+        vec3 finalColor = vec3(0, 0, 0);
+        bool foundColor = false;
+
+        //Determine objects color
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                //Sample color with vector sample x and y added
+                //IMPORTANT: multiply coordinates by texelsize in order to get the right coordinates
+                vec4 sampleColor = texture2D(diffuseSampler, gl_TexCoord[0].st + vec2(x * texelSize.x, y * texelSize.y));
+
+                //Found objects color
+                if (sampleColor.a == 1) {
+                    //Set variables and exit loop
+                    finalColor = sampleColor.rgb;
+                    foundColor = true;
+
+                    break;
+                }
+            }
+
+            //Found color, exit loop
+            if (foundColor) {
+                break;
+            }
+        }
+
         //Sample all fragments in sample radius
         for (int x = -sampleRadius; x <= sampleRadius; x++) {
             for (int y = -sampleRadius; y <= sampleRadius; y++) {
@@ -60,6 +79,6 @@ void main(void) {
         }
 
         //Sets fragment color with alpha divided by fade intensity
-        gl_FragColor = vec4(getBaseColor(), alpha);
+        gl_FragColor = vec4(finalColor, alpha);
     }
 }
