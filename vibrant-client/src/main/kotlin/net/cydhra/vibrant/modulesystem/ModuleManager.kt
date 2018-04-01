@@ -4,7 +4,7 @@ import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
 import net.cydhra.vibrant.modules.combat.BowAimbotModule
-import net.cydhra.vibrant.modules.combat.Killaura
+import net.cydhra.vibrant.modules.combat.KillauraModule
 import net.cydhra.vibrant.modules.gui.ClickGuiModule
 import net.cydhra.vibrant.modules.gui.MainMenuModule
 import net.cydhra.vibrant.modules.inventory.AutoArmorModule
@@ -45,7 +45,7 @@ object ModuleManager {
         this.registerModule(ESPModule())
         this.registerModule(NametagsModule())
         this.registerModule(MainMenuModule())
-        this.registerModule(Killaura())
+        this.registerModule(KillauraModule())
         this.registerModule(TestModule())
         this.registerModule(StepModule())
         this.registerModule(AutoArmorModule())

@@ -6,7 +6,7 @@ import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.util.enemy.EnemyTracker
 import org.lwjgl.input.Keyboard
 
-class Killaura : Module("Killaura", DefaultCategories.COMBAT, Keyboard.KEY_R) {
+class KillauraModule : Module("Killaura", DefaultCategories.COMBAT, Keyboard.KEY_R) {
 
     override fun doRequestResources() {
         val target = EnemyTracker.getClosestEntity(mc.thePlayer!!, VibrantEntity::class.java)
