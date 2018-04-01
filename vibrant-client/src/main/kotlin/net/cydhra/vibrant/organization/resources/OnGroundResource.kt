@@ -9,12 +9,12 @@ import net.cydhra.vibrant.organization.channel.ChannelBuilder
 import net.cydhra.vibrant.organization.channel.IResourceChannel
 import net.cydhra.vibrant.organization.channel.ResourceChannel
 
-object NoFallResource : GameResource<NoFallResource.NoFallResourceState>() {
+object OnGroundResource : GameResource<OnGroundResource.OnGroundResourceState>() {
 
     override fun register(): MutableMap<GameResource<*>, in IResourceChannel<*>>.() -> Unit = {
-        this[NoFallResource] = ChannelBuilder
+        this[OnGroundResource] = ChannelBuilder
                 .newBuilder(
-                        { NoFallResourceState(VibrantClient.minecraft.thePlayer?.onGround ?: false) },
+                        { OnGroundResourceState(VibrantClient.minecraft.thePlayer?.onGround ?: false) },
                         { side, state ->
                             if (side == ResourceChannel.Side.CLIENT) {
                                 VibrantClient.minecraft.thePlayer?.onGround = state.onGround
@@ -22,10 +22,10 @@ object NoFallResource : GameResource<NoFallResource.NoFallResourceState>() {
                         })
                 .create()
 
-        GameResourceManager.registerPacketManipulation(NoFallResource) { it, state: NoFallResourceState ->
+        GameResourceManager.registerPacketManipulation(OnGroundResource) { it, state: OnGroundResourceState ->
             it.takeIf { it is VibrantPlayerPacket }?.apply { (it as VibrantPlayerPacket).onGround = state.onGround } ?: it
         }
     }
 
-    data class NoFallResourceState(val onGround: Boolean = false) : GameResourceState()
+    data class OnGroundResourceState(val onGround: Boolean = false) : GameResourceState()
 }

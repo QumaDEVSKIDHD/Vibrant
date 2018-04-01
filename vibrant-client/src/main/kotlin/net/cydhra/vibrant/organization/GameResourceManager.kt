@@ -13,7 +13,7 @@ import net.cydhra.vibrant.organization.channel.ResourceChannel
 import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 import net.cydhra.vibrant.organization.resources.FlyingResource
-import net.cydhra.vibrant.organization.resources.NoFallResource
+import net.cydhra.vibrant.organization.resources.OnGroundResource
 import net.cydhra.vibrant.organization.resources.RotationResource
 import net.cydhra.vibrant.organization.resources.SprintingResource
 
@@ -41,7 +41,7 @@ object GameResourceManager {
         registerResource(SprintingResource)
         registerResource(FlyingResource)
         registerResource(RotationResource)
-        registerResource(NoFallResource)
+        registerResource(OnGroundResource)
     }
 
     @Suppress("UNCHECKED_CAST")
