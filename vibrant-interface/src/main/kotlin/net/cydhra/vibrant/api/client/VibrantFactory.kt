@@ -37,7 +37,7 @@ interface VibrantFactory {
 
     fun newPlayerPacket(onGround: Boolean): VibrantPlayerPacket
 
-    fun newWindowClickPacket(windowId: Int, slotId: Int, mouseButton: UsedMouseButton, actionNumber: Short,
+    fun newWindowClickPacket(windowId: Int, slotId: Int, mouseButton: Int, actionNumber: Short,
                              clickedItem: VibrantItemStack?, clickType: ClickType): VibrantWindowClickPacket
 
     fun newGuiController(): VibrantGuiController
