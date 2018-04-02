@@ -4,10 +4,8 @@ import net.cydhra.vibrant.api.client.VibrantFactory;
 import net.cydhra.vibrant.api.entity.VibrantZombie;
 import net.cydhra.vibrant.api.gui.VibrantGuiController;
 import net.cydhra.vibrant.api.gui.VibrantGuiMainMenu;
-import net.cydhra.vibrant.api.network.VibrantPlayerLookPacket;
-import net.cydhra.vibrant.api.network.VibrantPlayerPacket;
-import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket;
-import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket;
+import net.cydhra.vibrant.api.item.VibrantItemStack;
+import net.cydhra.vibrant.api.network.*;
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture;
 import net.cydhra.vibrant.api.render.VibrantFramebuffer;
 import net.cydhra.vibrant.api.render.VibrantFrustum;
@@ -27,6 +25,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.image.BufferedImage;
 
@@ -116,5 +115,11 @@ public class VibrantFactoryImpl implements VibrantFactory {
     @Override
     public VibrantFramebuffer newFramebuffer(int displayWidth, int displayHeight, boolean useDepth) {
         return (VibrantFramebuffer) new Framebuffer(displayWidth, displayHeight, useDepth);
+    }
+
+    @NotNull
+    @Override
+    public VibrantWindowClickPacket newWindowClickPacket(int windowId, int slotId, int mouseButton, short actionNumber, @Nullable VibrantItemStack clickedItem, @NotNull ClickType clickType) {
+        return null;
     }
 }

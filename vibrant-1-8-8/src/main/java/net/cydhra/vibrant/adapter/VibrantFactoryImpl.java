@@ -99,11 +99,11 @@ public class VibrantFactoryImpl implements VibrantFactory {
 
     @NotNull
     @Override
-    public VibrantWindowClickPacket newWindowClickPacket(int windowId, int slotId, @NotNull UsedMouseButton mouseButton,
+    public VibrantWindowClickPacket newWindowClickPacket(int windowId, int slotId, @NotNull int mouseButton,
                                                          short actionNumber, @Nullable VibrantItemStack clickedItem,
                                                          @NotNull ClickType clickType) {
         return (VibrantWindowClickPacket)
-                new C0EPacketClickWindow(windowId, slotId, mouseButton.ordinal(),
+                new C0EPacketClickWindow(windowId, slotId, mouseButton,
                         clickType.ordinal(), (ItemStack) clickedItem, actionNumber);
     }
 
