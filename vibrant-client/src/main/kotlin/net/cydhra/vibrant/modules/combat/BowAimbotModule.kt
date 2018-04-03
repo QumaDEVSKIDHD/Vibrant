@@ -1,80 +1,74 @@
 package net.cydhra.vibrant.modules.combat
 
 import net.cydhra.vibrant.api.entity.VibrantPlayer
-import net.cydhra.vibrant.api.item.VibrantItemBow
 import net.cydhra.vibrant.api.util.VibrantVec3
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
-import net.cydhra.vibrant.organization.GameResourceManager
-import net.cydhra.vibrant.organization.channel.ResourceChannel
-import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
-import net.cydhra.vibrant.organization.resources.RotationResource
-import net.cydhra.vibrant.util.enemy.EnemyTracker
 import org.lwjgl.input.Keyboard
 
 class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.KEY_U) {
 
     private var entity: VibrantPlayer? = null
 
-    override fun doRequestResources() {
-        if (mc.thePlayer == null)
-            return
-
-        if (mc.thePlayer!!.getItemInUseCount() == 0) {
-            entity = null
-            return
-        }
-
-        if (mc.thePlayer!!.getHeldItem() != null && mc.thePlayer!!.getHeldItem()!!.getItem() is VibrantItemBow) {
-            entity = EnemyTracker.getClosestEntity(mc.thePlayer!!)?.entity as VibrantPlayer?
-
-            if (entity != null) {
-                var arrowVelocity = (72000 - mc.thePlayer!!.getItemInUseCount()) / 20.0
-                arrowVelocity = (arrowVelocity * arrowVelocity + arrowVelocity * 2.0f)
-
-                if (arrowVelocity < 0.3) {
-                    return
-                }
-
-                if (arrowVelocity > 3) {
-                    arrowVelocity = 3.0
-                }
-
-                val yaw = mc.thePlayer!!.rotationYaw
-
-                val enemyPosition = entity!!.getPositionVector().addVector(0.0, entity!!.getEyeHeight().toDouble(), 0.0)
-                val playerHeadPosition = factory.newVec3(mc.thePlayer!!.posX - Math.cos(Math.toRadians(yaw.toDouble())) * 0.16f,
-                        mc.thePlayer!!.posY + mc.thePlayer!!.getEyeHeight() - 0.1,
-                        mc.thePlayer!!.posZ - Math.sin(Math.toRadians(yaw.toDouble())) * 0.16f)
-
-
-                println(mc.timer.renderPartialTicks)
-                val motionX = entity!!.posX - (entity!!.chasingPosX + (entity!!.posX - entity!!.chasingPosX) * mc.timer.renderPartialTicks)
-                val motionZ = entity!!.posZ - (entity!!.chasingPosZ + (entity!!.posZ - entity!!.chasingPosZ) * mc.timer.renderPartialTicks)
-                val enemyVelocity = factory.newVec3(motionX, 0.0, motionZ)
-
-                val prediction = predictArrowDirection(enemyPosition, playerHeadPosition, enemyVelocity, arrowVelocity)
-
-                if (prediction != null) {
-                    val hypotenuse = Math.hypot(prediction.xCoord, prediction.zCoord)
-
-                    val yawAtan = Math.atan2(prediction.zCoord, prediction.xCoord).toFloat()
-                    val pitchAtan = Math.atan2(prediction.yCoord, hypotenuse).toFloat()
-                    val deg = (180 / Math.PI).toFloat()
-
-                    val predictedYaw = yawAtan * deg - 90f
-                    val predictedPitch = -(pitchAtan * deg)
-
-                    GameResourceManager.requestGameResource(
-                            RotationResource,
-                            RotationResource.RotationState(predictedYaw, predictedPitch),
-                            ResourceRequestPriority.combat,
-                            ResourceChannel.Side.SERVER)
-                }
-            }
-        } else {
-            entity = null
-        }
+    fun doRequestResources() {
+//        if (mc.thePlayer == null)
+//            return
+//
+//        if (mc.thePlayer!!.getItemInUseCount() == 0) {
+//            entity = null
+//            return
+//        }
+//
+//        if (mc.thePlayer!!.getHeldItem() != null && mc.thePlayer!!.getHeldItem()!!.getItem() is VibrantItemBow) {
+//            entity = EnemyTracker.getClosestEntity(mc.thePlayer!!)?.entity as VibrantPlayer?
+//
+//            if (entity != null) {
+//                var arrowVelocity = (72000 - mc.thePlayer!!.getItemInUseCount()) / 20.0
+//                arrowVelocity = (arrowVelocity * arrowVelocity + arrowVelocity * 2.0f)
+//
+//                if (arrowVelocity < 0.3) {
+//                    return
+//                }
+//
+//                if (arrowVelocity > 3) {
+//                    arrowVelocity = 3.0
+//                }
+//
+//                val yaw = mc.thePlayer!!.rotationYaw
+//
+//                val enemyPosition = entity!!.getPositionVector().addVector(0.0, entity!!.getEyeHeight().toDouble(), 0.0)
+//                val playerHeadPosition = factory.newVec3(mc.thePlayer!!.posX - Math.cos(Math.toRadians(yaw.toDouble())) * 0.16f,
+//                        mc.thePlayer!!.posY + mc.thePlayer!!.getEyeHeight() - 0.1,
+//                        mc.thePlayer!!.posZ - Math.sin(Math.toRadians(yaw.toDouble())) * 0.16f)
+//
+//
+//                println(mc.timer.renderPartialTicks)
+//                val motionX = entity!!.posX - (entity!!.chasingPosX + (entity!!.posX - entity!!.chasingPosX) * mc.timer.renderPartialTicks)
+//                val motionZ = entity!!.posZ - (entity!!.chasingPosZ + (entity!!.posZ - entity!!.chasingPosZ) * mc.timer.renderPartialTicks)
+//                val enemyVelocity = factory.newVec3(motionX, 0.0, motionZ)
+//
+//                val prediction = predictArrowDirection(enemyPosition, playerHeadPosition, enemyVelocity, arrowVelocity)
+//
+//                if (prediction != null) {
+//                    val hypotenuse = Math.hypot(prediction.xCoord, prediction.zCoord)
+//
+//                    val yawAtan = Math.atan2(prediction.zCoord, prediction.xCoord).toFloat()
+//                    val pitchAtan = Math.atan2(prediction.yCoord, hypotenuse).toFloat()
+//                    val deg = (180 / Math.PI).toFloat()
+//
+//                    val predictedYaw = yawAtan * deg - 90f
+//                    val predictedPitch = -(pitchAtan * deg)
+//
+//                    GameResourceManager.requestGameResource(
+//                            RotationResource,
+//                            RotationResource.RotationState(predictedYaw, predictedPitch),
+//                            ResourceRequestPriority.combat,
+//                            ResourceChannel.Side.SERVER)
+//                }
+//            }
+//        } else {
+//            entity = null
+//        }
     }
 
     private fun getDirectionByTime(
