@@ -3,7 +3,6 @@ package net.cydhra.vibrant.modules.movement
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.GameResourceManager
-import net.cydhra.vibrant.organization.channel.ResourceChannel
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 import net.cydhra.vibrant.organization.resources.OnGroundResource
 import org.lwjgl.input.Keyboard

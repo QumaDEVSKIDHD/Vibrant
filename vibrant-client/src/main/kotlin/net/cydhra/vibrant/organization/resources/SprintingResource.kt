@@ -2,10 +2,6 @@ package net.cydhra.vibrant.organization.resources
 
 import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.organization.GameResource
-import net.cydhra.vibrant.organization.GameResourceState
-import net.cydhra.vibrant.organization.channel.ChannelBuilder
-import net.cydhra.vibrant.organization.channel.IResourceChannel
-import net.cydhra.vibrant.organization.channel.ResourceChannel
 
 /**
  * This resource handles the player sprinting. This resource updates the sprint flag in client and on the server depending on modules'

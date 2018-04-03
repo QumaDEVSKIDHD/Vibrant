@@ -6,10 +6,6 @@ import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket
 import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket
 import net.cydhra.vibrant.organization.GameResource
 import net.cydhra.vibrant.organization.GameResourceManager
-import net.cydhra.vibrant.organization.GameResourceState
-import net.cydhra.vibrant.organization.channel.ChannelBuilder
-import net.cydhra.vibrant.organization.channel.IResourceChannel
-import net.cydhra.vibrant.organization.channel.ResourceChannel
 
 /**
  *
