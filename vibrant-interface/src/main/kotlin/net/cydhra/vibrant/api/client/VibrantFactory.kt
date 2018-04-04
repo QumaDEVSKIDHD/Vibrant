@@ -10,6 +10,7 @@ import net.cydhra.vibrant.api.render.VibrantFramebuffer
 import net.cydhra.vibrant.api.render.VibrantFrustum
 import net.cydhra.vibrant.api.render.VibrantScaledResolution
 import net.cydhra.vibrant.api.util.VibrantVec3
+import net.cydhra.vibrant.api.util.chat.VibrantChatComponent
 import net.cydhra.vibrant.api.world.VibrantWorld
 import java.awt.image.BufferedImage
 
@@ -45,4 +46,6 @@ interface VibrantFactory {
     fun newGuiMainMenu(): VibrantGuiMainMenu
 
     fun newFramebuffer(displayWidth: Int, displayHeight: Int, useDepth: Boolean): VibrantFramebuffer
+
+    fun newChatTextMessage(message: String): VibrantChatComponent
 }

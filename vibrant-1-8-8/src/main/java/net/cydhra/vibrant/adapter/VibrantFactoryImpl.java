@@ -11,6 +11,7 @@ import net.cydhra.vibrant.api.render.VibrantFramebuffer;
 import net.cydhra.vibrant.api.render.VibrantFrustum;
 import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.util.VibrantVec3;
+import net.cydhra.vibrant.api.util.chat.VibrantChatComponent;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGameOver;
@@ -23,6 +24,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0EPacketClickWindow;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -126,5 +128,10 @@ public class VibrantFactoryImpl implements VibrantFactory {
     @Override
     public VibrantFramebuffer newFramebuffer(int displayWidth, int displayHeight, boolean useDepth) {
         return (VibrantFramebuffer) new Framebuffer(displayWidth, displayHeight, useDepth);
+    }
+
+    @Override
+    public VibrantChatComponent newChatTextMessage(@NotNull String message) {
+        return (VibrantChatComponent) new ChatComponentText(message);
     }
 }
