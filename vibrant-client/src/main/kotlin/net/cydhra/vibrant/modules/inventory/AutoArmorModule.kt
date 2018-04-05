@@ -10,11 +10,10 @@ import net.cydhra.vibrant.api.network.ClickType
 import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
-import org.lwjgl.input.Keyboard
 
 const val PROTOCOL_MAX_ARMOR_SLOT = 8
 
-class AutoArmorModule : Module("AutoArmor", DefaultCategories.INVENTORY, Keyboard.KEY_P) {
+class AutoArmorModule : Module("AutoArmor", DefaultCategories.INVENTORY) {
 
     @EventHandler
     fun onTick(e: MinecraftTickEvent) {
