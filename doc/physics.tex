@@ -1,0 +1,108 @@
+\section{Game Physics}
+
+% =================================
+% CONSTANTS
+% =================================
+\subsection{Constants}
+
+Minecraft's physics system depends on a few constants enlisted here for simplicity. In later formulas or references, only the letters are used.
+
+\begin{center}
+    \begin{tabular}{l l}
+        $g$ &\textit{gravitational constant} \\
+        $r$ & \textit{air resistance factor}
+    \end{tabular}
+\end{center}
+
+Minecraft calculates the gravitational effects on each entity with different values and formulas depending on the type of the entity. This is because the \textit{air resistance factor} is a very weak simulation of air resistance: Neither surface nor mass (and therefore the impulse) is taken into consideration. To provide a more accurate experience the values and formulas are adjusted depending on the entity (Also, gravitational effects on falling players or sheep do not have an actual effect on gameplay - they are only important for projectile motion). The values for $g$ and $r$ are listed in \figurename{} \ref{fig:constants}.
+
+\begin{figure*}[h]
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{l|l l}
+        \textbf{entity} & \textbf{g} & \textbf{r} \\
+        \hline
+        living                                          & 0.08 & 0.98 \\
+        snowballs, eggs, potions, enderpearls           & 0.03 & 0.99 \\
+        arrows                                          & 0.05 & 0.99 \\
+        wither skulls, fireballs, ender dragon charge   & 0    & 1 \\
+        items, blocks                                   & 0.04 & 0.99 \\
+        boats, minecarts                                & 0.04 & 0.95
+    \end{tabular}
+    \caption { physics constants by entity type (source: \href{https://minecraft.gamepedia.com/Entity}{wiki}) }
+    \label{fig:constants}
+\end{figure*}
+
+% =================================
+% GRAVITATION
+% =================================
+\subsection{Gravitation}
+
+There are also two different formulas for gravitational movement although they are very similar. The difference is only in the order of operations.
+
+\begin{mydef}{Gravitation of non-projectile entities}{
+    \begin{eqnarray*}
+        \overrightarrow{v_i}    & \coloneqq & \textit{the entity's speed vector at time i} \\
+        t                       & \coloneqq & \textit{the time in game ticks}
+    \end{eqnarray*}
+}
+    \begin{eqnarray*}
+        \overrightarrow{v_{i + 1}} & = & (\overrightarrow{v_i} - g) \cdot r \\
+        \Rightarrow \overrightarrow{v}(t) & = & \overrightarrow{v_0} \cdot r^t - \sum_{i=1}^{t} (g \cdot r^i)
+    \end{eqnarray*}
+\end{mydef}
+
+
+As shown above, the motion of all entities except thrown projectiles and arrows is calculated by subtracting the gravitational acceleration constant from the last tick's motion and then multiplying with the \textit{air resistance factor}. $\overrightarrow{v}(t)$ is the function resulting from that physical rule: It describes the entity's motion over time $t$. \\
+
+The difference for projectiles is the following: The deceleration from air resistance happens before applying the gravitational constant. This results in an index shift of the sum in the formula - which means that there is no gravitation calculation that is not affected by air resistance, while for other entities there is always one.
+
+\begin{mydef}{Gravitation of projectiles}{
+    \begin{eqnarray*}
+        \overrightarrow{v_i}    & \coloneqq & \textit{the entity's speed vector at time i} \\
+        t                       & \coloneqq & \textit{the time in game ticks}
+    \end{eqnarray*}
+}
+    \begin{eqnarray*}
+        \overrightarrow{v_{i + 1}} & = & \overrightarrow{v_i} \cdot r - g \\
+        \Rightarrow \overrightarrow{v}(t) & = & \overrightarrow{v_0} \cdot r^t - \sum_{i=0}^{t - 1} (g \cdot r^i)
+    \end{eqnarray*}
+\end{mydef}
+
+% =================================
+% POSITION
+% =================================
+\subsection{Position}
+
+Now we do want to calculate a vector that we have to choose for the arrow to shoot in order to hit a moving target. Mathematically we are searching for an intersection point of two functions. The main difficulty, however, comes from the fact that the arrow movement function takes two arguments: Initial direction vector and time. The player's function, of course, takes only one argument. 
+
+When the two functions are set equal to determine the intersection point, the point will be dependent on the time – which we do not know. That involves some extra calculation later on.
+
+At first, we will use the gravitation function from the last section to create a function that takes the initial direction vector (normalized) and the time and calculates the arrows position.
+
+\begin{mydef}{The arrow's position function}{
+    \begin{eqnarray*}
+        \overrightarrow{p}_{player} = {\begin{pmatrix} p_x \\ p_y \\ p_z \end{pmatrix}} & \coloneqq & \textit{the player's head position} \\
+        \overrightarrow{d}_{proj} = {\begin{pmatrix} d_x \\ d_y \\ d_z \end{pmatrix}} & \coloneqq & \textit{the normalized direction of the projectile} \\
+        v_{proj} & \coloneqq & \textit{the initial speed of the projectile} \\
+        r_{proj} & \coloneqq & \textit{the air resistance constant for that specific projectile} \\
+        g_{proj} & \coloneqq & \textit{the gravitational constant for that specific projectile} \\
+    \end{eqnarray*}
+}
+    \begin{eqnarray*}
+        \overrightarrow{s}_{proj}({\begin{pmatrix} d_x \\ d_y \\ d_z \end{pmatrix}}, t) & = & {\begin{pmatrix} p_x \\ p_y \\ p_z \end{pmatrix}} + \sum_{i=0}^{t-1} ({\begin{pmatrix} d_x \\ d_y \\ d_z \end{pmatrix}} \cdot v_{proj} \cdot r_{proj}^i - \sum_{k = 0}^{i - 1}({\begin{pmatrix} 0 \\ g_{proj} \\ 0 \end{pmatrix}} \cdot r_{proj}^k))
+    \end{eqnarray*}
+\end{mydef}
+
+For simplicity in this explanation let us assume that the enemy player has a rather simple position-function. Of course, there can be complex heuristics and consideration of gravitation and factors due to environmental conditions, such as stairs or edges the player moves towards to – but they do not change the overall function, they just yield different results for the player’s position after time t: The discussed formula $\overrightarrow{s}_{enemy}(t)$ just has to be replaced with the more complex one.
+
+\begin{mydef}{The enemy's position function}{
+    \begin{eqnarray*}
+        \overrightarrow{p}_{enemy} = {\begin{pmatrix} e_x \\ e_y \\ e_z \end{pmatrix}} & \coloneqq & \textit{the enemy's head position} \\
+        \overrightarrow{v}_{enemy} = {\begin{pmatrix} v_{x_e} \\ v_{y_e} \\ v_{z_e} \end{pmatrix}} & \coloneqq & \textit{the current velocity of the enemy in x and z direction} \\
+    \end{eqnarray*}
+}
+    \begin{eqnarray*}
+        \overrightarrow{s}_{enemy}(t) & = & {\begin{pmatrix} e_x \\ e_y \\ e_z \end{pmatrix}} + {\begin{pmatrix} v_{x_e} \\ v_{y_e} \\ v_{z_e} \end{pmatrix}} \cdot t
+    \end{eqnarray*}
+\end{mydef}

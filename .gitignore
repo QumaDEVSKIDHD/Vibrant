@@ -151,3 +151,8 @@ gradle-app.setting
 **/lib/
 !**/lib/slick.jar
 
+# Latex files
+*.aux
+*.out
+*.toc
+*.log

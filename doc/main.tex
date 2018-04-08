@@ -1,0 +1,51 @@
+\documentclass[a4paper]{article}
+
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage[
+	colorlinks=true,
+	urlcolor=cyan,
+	linkcolor=blue
+]{hyperref}
+
+\newtheorem*{mydefinition}{Definition}
+
+\newenvironment{mydef}[2]{
+    \par\nobreak\vfil\penalty0\vfilneg\vtop\bgroup
+    \vspace{10pt}
+    \begin{mydefinition} #1 \end{mydefinition}
+    \begin{list}{}{}
+        \item {\hskip 10pt}{\textit{Let}}
+    \end{list}
+    {#2}
+    \begin{list}{}{}
+        \item {\hskip 10pt}{\textit{in}}
+    \end{list}
+}{
+    \par\xdef\tpd{\the\prevdepth}\egroup\prevdepth=\tpd
+}
+
+\onehalfspacing
+
+\title{Calculating the firing direction of a projectile-aimbot}
+
+\author{ Cydhra }
+\date{\today}
+
+%
+% Doc:
+%
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\include{physics}
+\include{vector}
+
+\end{document}
