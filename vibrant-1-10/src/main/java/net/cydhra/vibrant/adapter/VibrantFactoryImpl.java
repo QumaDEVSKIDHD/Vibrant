@@ -13,6 +13,7 @@ import net.cydhra.vibrant.api.render.VibrantScaledResolution;
 import net.cydhra.vibrant.api.util.VibrantVec3;
 import net.cydhra.vibrant.api.util.chat.VibrantChatComponent;
 import net.cydhra.vibrant.api.util.chat.VibrantChatStyle;
+import net.cydhra.vibrant.api.world.VibrantBlockPosition;
 import net.cydhra.vibrant.api.world.VibrantWorld;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGameOver;
@@ -23,6 +24,7 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.network.play.client.CPacketPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
@@ -65,6 +67,12 @@ public class VibrantFactoryImpl implements VibrantFactory {
     @Override
     public VibrantVec3 newVec3(final double x, final double y, final double z) {
         return (VibrantVec3) new Vec3d(x, y, z);
+    }
+
+    @NotNull
+    @Override
+    public VibrantBlockPosition newBlockPosition(int posX, int posY, int posZ) {
+        return (VibrantBlockPosition) new BlockPos(posX, posY, posZ);
     }
 
     @NotNull
