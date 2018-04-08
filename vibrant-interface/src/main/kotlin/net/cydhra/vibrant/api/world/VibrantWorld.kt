@@ -11,4 +11,6 @@ interface VibrantWorld {
     fun getEntityList(): List<VibrantEntity>
 
     fun getTileEntityList(): List<VibrantTileEntity>
+
+    fun getChunkFromBlockCoordinates(pos: VibrantBlockPosition): VibrantChunk
 }

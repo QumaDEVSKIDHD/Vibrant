@@ -2,6 +2,8 @@ package net.cydhra.vibrant.interfaces.world;
 
 import net.cydhra.vibrant.api.entity.VibrantEntity;
 import net.cydhra.vibrant.api.tileentity.VibrantTileEntity;
+import net.cydhra.vibrant.api.world.VibrantBlockPosition;
+import net.cydhra.vibrant.api.world.VibrantChunk;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
@@ -37,5 +39,9 @@ public aspect WorldInterface {
                     }
                 }
         ).collect(Collectors.toList());
+    }
+
+    public VibrantChunk WorldClient.getChunkFromBlockCoordinates(VibrantBlockPosition position) {
+        return (VibrantChunk) this.getChunkFromBlockCoords((net.minecraft.util.BlockPos) position);
     }
 }
