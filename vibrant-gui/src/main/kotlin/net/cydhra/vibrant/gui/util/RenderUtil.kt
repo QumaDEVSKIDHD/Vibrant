@@ -167,6 +167,37 @@ object RenderUtil {
         glEnd()
     }
 
+    fun outlineCube(minX: Double, minY: Double, minZ: Double, maxX: Double, maxY: Double, maxZ: Double, color: Color? = null, lineWidth: Float? = null) {
+        setOptions(color, lineWidth)
+
+        glBegin(GL_LINE_STRIP)
+        glVertex3d(minX, minY, minZ)
+        glVertex3d(maxX, minY, minZ)
+        glVertex3d(maxX, minY, maxZ)
+        glVertex3d(minX, minY, maxZ)
+        glVertex3d(minX, minY, minZ)
+        glEnd()
+
+        glBegin(GL_LINE_STRIP)
+        glVertex3d(minX, maxY, minZ)
+        glVertex3d(maxX, maxY, minZ)
+        glVertex3d(maxX, maxY, maxZ)
+        glVertex3d(minX, maxY, maxZ)
+        glVertex3d(minX, maxY, minZ)
+        glEnd()
+
+        glBegin(GL_LINES)
+        glVertex3d(minX, minY, minZ)
+        glVertex3d(minX, maxY, minZ)
+        glVertex3d(maxX, minY, minZ)
+        glVertex3d(maxX, maxY, minZ)
+        glVertex3d(maxX, minY, maxZ)
+        glVertex3d(maxX, maxY, maxZ)
+        glVertex3d(minX, minY, maxZ)
+        glVertex3d(minX, maxY, maxZ)
+        glEnd()
+    }
+
     fun interpolate(now: Double, then: Double, ticks: Float): Double {
         return then + (now - then) * ticks
     }
