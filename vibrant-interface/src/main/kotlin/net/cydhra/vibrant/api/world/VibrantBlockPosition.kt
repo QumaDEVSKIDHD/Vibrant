@@ -39,14 +39,16 @@ interface VibrantBlockPosition {
     fun offsetSide(facing: VibrantBlockFacing, count: Int): VibrantBlockPosition
 }
 
-enum class VibrantBlockFacing(oppositeIndex: Int, horizontalIndex: Int, axisDirection: VibrantAxisDirection, axis: VibrantAxis,
-                              offsetVec: Triple<Int, Int, Int>) {
+enum class VibrantBlockFacing(oppositeIndex: Int, val horizontalIndex: Int, val axisDirection: VibrantAxisDirection, val axis: VibrantAxis,
+                              val offsetVec: Triple<Int, Int, Int>) {
     DOWN(1, -1, VibrantAxisDirection.NEGATIVE, VibrantAxis.Y, Triple(0, -1, 0)),
     UP(0, -1, VibrantAxisDirection.POSITIVE, VibrantAxis.Y, Triple(0, 1, 0)),
     NORTH(3, 2, VibrantAxisDirection.NEGATIVE, VibrantAxis.Z, Triple(0, 0, -1)),
     SOUTH(2, 0, VibrantAxisDirection.POSITIVE, VibrantAxis.Z, Triple(0, 0, 1)),
     WEST(5, 1, VibrantAxisDirection.NEGATIVE, VibrantAxis.X, Triple(-1, 0, 0)),
     EAST(4, 3, VibrantAxisDirection.POSITIVE, VibrantAxis.X, Triple(1, 0, 0));
+
+    val opposite: VibrantBlockFacing = VibrantBlockFacing.values()[oppositeIndex]
 
     enum class VibrantAxis {
         X, Y, Z
