@@ -11,6 +11,7 @@ data class ModuleCategory(val name: String, val hidden: Boolean = false)
 object DefaultCategories {
     val SYSTEM = ModuleCategory("System", hidden = true)
     val PLAYER = ModuleCategory("Player")
+    val INVENTORY = ModuleCategory("Inventory")
     val MOVEMENT = ModuleCategory("Movement")
     val MISCELLANEOUS = ModuleCategory("Miscellaneous")
     val AUTO = ModuleCategory("Automation");

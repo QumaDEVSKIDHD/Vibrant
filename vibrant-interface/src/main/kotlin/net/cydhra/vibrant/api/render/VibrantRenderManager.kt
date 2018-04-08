@@ -7,6 +7,8 @@ interface VibrantRenderManager {
     var renderPosY: Double
     var renderPosZ: Double
 
+    var renderOutlines: Boolean
+
     var isDebugBoundingBox: Boolean
 
     fun renderEntitySimple(entity: VibrantEntity, partialTicks: Float, unused: Any?): Boolean

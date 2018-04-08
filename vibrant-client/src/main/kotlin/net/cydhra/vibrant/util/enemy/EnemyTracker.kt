@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 package net.cydhra.vibrant.util.enemy
 
 import net.cydhra.eventsystem.EventManager

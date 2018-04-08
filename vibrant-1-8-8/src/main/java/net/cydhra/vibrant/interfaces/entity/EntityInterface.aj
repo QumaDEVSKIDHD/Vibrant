@@ -75,4 +75,12 @@ privileged public aspect EntityInterface {
     }
     
     public VibrantBoundingBox Entity.getBoundingBox() { return (VibrantBoundingBox) this.getEntityBoundingBox(); }
+    
+    public float Entity.getFallDistance() { return this.fallDistance; }
+    
+    public void Entity.setFallDistance(float distance) { this.fallDistance = distance; }
+    
+    public float Entity.getStepHeight() { return this.stepHeight; }
+    
+    public void Entity.setStepHeight(float stepHeight) { this.stepHeight = stepHeight; }
 }

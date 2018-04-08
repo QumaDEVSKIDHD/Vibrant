@@ -3,15 +3,15 @@ package net.cydhra.vibrant.api.client
 import net.cydhra.vibrant.api.entity.VibrantZombie
 import net.cydhra.vibrant.api.gui.VibrantGuiController
 import net.cydhra.vibrant.api.gui.VibrantGuiMainMenu
-import net.cydhra.vibrant.api.network.VibrantPlayerLookPacket
-import net.cydhra.vibrant.api.network.VibrantPlayerPacket
-import net.cydhra.vibrant.api.network.VibrantPlayerPosLookPacket
-import net.cydhra.vibrant.api.network.VibrantPlayerPosPacket
+import net.cydhra.vibrant.api.item.VibrantItemStack
+import net.cydhra.vibrant.api.network.*
 import net.cydhra.vibrant.api.render.VibrantDynamicTexture
 import net.cydhra.vibrant.api.render.VibrantFramebuffer
 import net.cydhra.vibrant.api.render.VibrantFrustum
 import net.cydhra.vibrant.api.render.VibrantScaledResolution
 import net.cydhra.vibrant.api.util.VibrantVec3
+import net.cydhra.vibrant.api.util.chat.VibrantChatComponent
+import net.cydhra.vibrant.api.util.chat.VibrantChatStyle
 import net.cydhra.vibrant.api.world.VibrantWorld
 import java.awt.image.BufferedImage
 
@@ -39,9 +39,16 @@ interface VibrantFactory {
 
     fun newPlayerPacket(onGround: Boolean): VibrantPlayerPacket
 
+    fun newWindowClickPacket(windowId: Int, slotId: Int, mouseButton: Int, actionNumber: Short,
+                             clickedItem: VibrantItemStack?, clickType: ClickType): VibrantWindowClickPacket
+
     fun newGuiController(): VibrantGuiController
 
     fun newGuiMainMenu(): VibrantGuiMainMenu
 
     fun newFramebuffer(displayWidth: Int, displayHeight: Int, useDepth: Boolean): VibrantFramebuffer
+
+    fun newChatTextMessage(message: String): VibrantChatComponent
+
+    fun newChatStyle(): VibrantChatStyle
 }

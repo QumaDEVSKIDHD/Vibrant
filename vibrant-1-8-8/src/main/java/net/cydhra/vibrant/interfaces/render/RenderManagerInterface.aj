@@ -36,7 +36,11 @@ privileged public aspect RenderManagerInterface {
     public void RenderManager.setRenderPosZ(double renderPosZ) {
         this.renderPosZ = renderPosZ;
     }
-    
+
+    public boolean RenderManager.getRenderOutlines() {
+        return this.renderOutlines;
+    }
+
     public <T extends VibrantEntity> VibrantRender<T> RenderManager.getEntityRenderObj(T entity) {
         return (VibrantRender<T>) this.getEntityRenderObject((Entity) entity);
     }

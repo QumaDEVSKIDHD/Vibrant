@@ -8,6 +8,7 @@ import net.cydhra.vibrant.gui.renderer.impl.*
 import net.cydhra.vibrant.gui.theme.DefaultTheme
 import net.cydhra.vibrant.gui.theme.Theme
 import net.cydhra.vibrant.gui.util.IFramebuffer
+import net.cydhra.vibrant.gui.util.IStateManager
 
 /**
  *
@@ -41,6 +42,8 @@ object GuiManager {
             _framebufferObj = value
         }
 
+    lateinit var glStateManager: IStateManager
+
     init {
         this.setRenderer(VibrantButton::class.java, VibrantButtonRenderer())
         this.setRenderer(VibrantCheckbox::class.java, VibrantCheckboxRenderer())
@@ -54,6 +57,7 @@ object GuiManager {
         this.setRenderer(VibrantSelectableItem::class.java, VibrantSelectableItemRenderer())
         this.setRenderer(VibrantListbox::class.java, VibrantNullRenderer())
         this.setRenderer(VibrantScrollpane::class.java, VibrantScrollpaneRenderer())
+        this.setRenderer(VibrantPasswordbox::class.java, VibrantPasswordboxRenderer())
     }
 
     /**

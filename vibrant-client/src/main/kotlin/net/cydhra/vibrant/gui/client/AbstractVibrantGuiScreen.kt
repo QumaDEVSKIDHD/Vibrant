@@ -3,9 +3,8 @@ package net.cydhra.vibrant.gui.client
 import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.api.client.VibrantMinecraft
 import net.cydhra.vibrant.api.gui.VibrantGuiController
-import net.cydhra.vibrant.api.gui.VibrantGuiScreen
 import net.cydhra.vibrant.gui.screen.VibrantScreen
-import net.cydhra.vibrant.gui.util.GlStateManager
+import net.cydhra.vibrant.interfaces.VibrantGuiScreen
 import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.GL11
 
@@ -49,8 +48,8 @@ abstract class AbstractVibrantGuiScreen(protected val controller: VibrantGuiCont
     override fun drawScreen(mouseX: Int, mouseY: Int, partialTicks: Float) {
         clickGuiScreen.updateMousePosition(mouseX, mouseY)
 
-        GlStateManager.disableTexture2D()
-        GlStateManager.enableColorBlending()
+        mc.glStateManager.disableTexture2D()
+        mc.glStateManager.enableBlend()
         clickGuiScreen.draw()
     }
 

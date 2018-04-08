@@ -1,10 +1,11 @@
 package net.cydhra.vibrant.api.client
 
+import net.cydhra.nidhogg.data.Session
 import net.cydhra.vibrant.api.entity.VibrantEntity
 import net.cydhra.vibrant.api.entity.VibrantPlayerSP
-import net.cydhra.vibrant.api.gui.VibrantGuiScreen
 import net.cydhra.vibrant.api.render.*
 import net.cydhra.vibrant.api.world.VibrantWorld
+import net.cydhra.vibrant.interfaces.VibrantGuiScreen
 
 /**
  *
@@ -12,6 +13,8 @@ import net.cydhra.vibrant.api.world.VibrantWorld
 interface VibrantMinecraft {
 
     val thePlayer: VibrantPlayerSP?
+    val playerController: VibrantPlayerController?
+
     val theWorld: VibrantWorld?
     val renderGlobal: VibrantRenderGlobal
     val entityRenderer: VibrantEntityRenderer
@@ -28,6 +31,10 @@ interface VibrantMinecraft {
     val timer: VibrantTimer
 
     val gameSettings: VibrantGameSettings
+    var minecraftSession: Session
+
+    val glStateManager: VibrantGlStateManager
+    val tessellator: VibrantTessellator
 
     fun getTextureManager(): VibrantTextureManager
 

@@ -21,11 +21,15 @@ abstract class ResourceChannelDecorator<R : GameResourceState>(val channel: IRes
         this.channel.evaluateNewState()
     }
 
-    override fun addLock(state: R, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
+    override fun addLock(state: () -> R, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
         this.channel.addLock(state, module, priority, side)
     }
 
     override fun removeLock(module: Module) {
         this.channel.removeLock(module)
+    }
+
+    override fun updateLockedStateOutOfSync(state: R, module: Module) {
+        this.channel.updateLockedStateOutOfSync(state, module)
     }
 }

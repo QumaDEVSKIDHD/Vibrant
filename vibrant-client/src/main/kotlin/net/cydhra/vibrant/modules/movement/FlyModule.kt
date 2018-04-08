@@ -1,5 +1,3 @@
-@file:Suppress("UNUSED_PARAMETER")
-
 package net.cydhra.vibrant.modules.movement
 
 import net.cydhra.vibrant.VibrantClient

@@ -1,9 +1,9 @@
 package net.cydhra.vibrant.gui.renderer.impl
 
+import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.component.impl.VibrantSlider
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import org.lwjgl.opengl.GL11
 
@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11
 class VibrantSliderRenderer : ComponentRenderer<VibrantSlider> {
 
     override fun renderComponent(component: VibrantSlider, theme: Theme) {
-        GlStateManager.pushMatrix()
+        GuiManager.glStateManager.pushMatrix()
         GL11.glTranslated(component.posX + component.height / 2, component.positionY + component.height / 2, 0.0)
         val edges = theme.getThemeProperty("edges", 6)
 
@@ -39,7 +39,7 @@ class VibrantSliderRenderer : ComponentRenderer<VibrantSlider> {
         RenderUtil.drawPartialCircleLike(
                 (component.width - component.height).toInt(), 0, component.height / 2, edges, 0, edges / 2, theme.secondaryColor)
 
-        GlStateManager.popMatrix()
+        GuiManager.glStateManager.popMatrix()
 
         val sliderButtonColor = if (component.isMouseOver) {
             theme.highlightColor(theme.tertiaryColor)
@@ -47,11 +47,11 @@ class VibrantSliderRenderer : ComponentRenderer<VibrantSlider> {
             theme.tertiaryColor
         }
 
-        GlStateManager.pushMatrix()
+        GuiManager.glStateManager.pushMatrix()
         GL11.glTranslated(component.positionX + component.height / 2 + component.value * (component.width - component.height),
                 component.positionY + component.height / 2, 0.0)
         RenderUtil.fillCircleLike(0, 0, component.height / 2, edges, sliderButtonColor)
         RenderUtil.drawCircleLike(0, 0, component.height / 2, edges, theme.secondaryColor)
-        GlStateManager.popMatrix()
+        GuiManager.glStateManager.popMatrix()
     }
 }

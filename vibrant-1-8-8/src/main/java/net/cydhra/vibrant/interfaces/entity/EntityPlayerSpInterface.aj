@@ -1,6 +1,8 @@
 package net.cydhra.vibrant.interfaces.entity;
 
 import net.cydhra.vibrant.api.client.VibrantMovementInput;
+import net.cydhra.vibrant.api.inventory.VibrantContainer;
+import net.cydhra.vibrant.api.util.chat.VibrantChatComponent;
 import net.minecraft.client.entity.EntityPlayerSP;
 
 /**
@@ -16,7 +18,11 @@ public aspect EntityPlayerSpInterface {
     public void EntityPlayerSP.setAllowedFlying(boolean allowedFlying) {
         this.capabilities.allowFlying = allowedFlying;
     }
-    
+
+    public void EntityPlayerSP.swing() {
+        this.swingItem();
+    }
+
     public boolean EntityPlayerSP.isFlying() {
         return this.capabilities.isFlying;
     }
@@ -26,4 +32,16 @@ public aspect EntityPlayerSpInterface {
     }
     
     public VibrantMovementInput EntityPlayerSP.getMovementInput() { return (VibrantMovementInput) this.movementInput; }
+
+    public VibrantContainer EntityPlayerSP.getOpenContainer() {
+        return (VibrantContainer) this.openContainer;
+    }
+
+    public void EntityPlayerSP.sendChatMessageToServer(String message) {
+        this.sendChatMessage(message);
+    }
+
+    public void EntityPlayerSP.displayChatMessageOnClient(VibrantChatComponent message) {
+        this.addChatMessage((net.minecraft.util.IChatComponent) message);
+    }
 }

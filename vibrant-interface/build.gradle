@@ -11,10 +11,12 @@ apply plugin: 'kotlin'
 
 repositories {
     mavenCentral()
+    maven { url="https://jitpack.io" }
 }
 
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlin_version
+    compile group: 'com.github.Cydhra', name: 'Nidhogg', version: '1.1'
 
     compile project(":vibrant-gui")
 }

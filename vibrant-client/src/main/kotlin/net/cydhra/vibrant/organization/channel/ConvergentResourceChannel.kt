@@ -25,7 +25,7 @@ class ConvergentResourceChannel<R : GameResourceState>(channel: IResourceChannel
         return channel.getCurrentState(ResourceChannel.Side.CLIENT)
     }
 
-    override fun addLock(state: R, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
+    override fun addLock(state: () -> R, module: Module, priority: ResourceRequestPriority, side: ResourceChannel.Side) {
         channel.addLock(state, module, priority, ResourceChannel.Side.BOTH)
     }
 }

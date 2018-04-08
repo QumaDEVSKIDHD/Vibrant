@@ -3,5 +3,7 @@ include 'vibrant-client'
 include 'vibrant-1-8-8'
 include 'vibrant-interface'
 include 'vibrant-gui'
-include 'vibrant-generator'
+include 'vibrant-1-10'
+include 'vibrant-aspects'
+include 'vibrant-test'
 

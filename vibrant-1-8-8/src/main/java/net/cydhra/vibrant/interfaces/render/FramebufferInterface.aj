@@ -21,5 +21,5 @@ public aspect FramebufferInterface {
     
     public int Framebuffer.getTextureHeight() { return this.framebufferTextureHeight; }
     
-    
+    public int Framebuffer.getTextureId() { return this.framebufferTexture; }
 }

@@ -46,12 +46,12 @@ class SetupWorkspace extends DefaultTask {
 
         println "Executing MCP..."
         ant.exec(
-                command: "tmp/runtime/bin/python/python_mcp.exe runtime/decompile.py %*",
+                command: "tmp/runtime/bin/python/python_mcp.exe runtime/decompile.py --client --norecompile",
                 dir: "tmp",
                 osfamily: "windows"
         )
         ant.exec(
-                command: "/bin/bash decompile.sh",
+                command: "/bin/python2 runtime/decompile.py --client --norecompile",
                 dir: "tmp",
                 osfamily: "unix"
         )
@@ -81,16 +81,19 @@ class SetupWorkspace extends DefaultTask {
         copyDirectory(ant, "tmp/jars/", "workspace")
 
         println "Cleanup..."
-        tmpFolder.delete()
+        tmpFolder.deleteDir()
     }
 
     private def copyDirectory(AntBuilder ant, String source, String dest) {
-        ant.copy(
-                todir: dest,
-                overwrite: true,
-                verbose: true
-        ) {
-            fileset(dir: source)
+        try {
+            ant.copy(
+                    todir: dest,
+                    overwrite: true,
+                    verbose: true
+            ) {
+                fileset(dir: source)
+            }
+        } catch (Exception ignored) {
         }
     }
 }

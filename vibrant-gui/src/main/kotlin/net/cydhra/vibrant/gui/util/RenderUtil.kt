@@ -2,12 +2,17 @@
 
 package net.cydhra.vibrant.gui.util
 
-import org.lwjgl.opengl.GL11
+import net.cydhra.vibrant.gui.GuiManager
+import org.lwjgl.BufferUtils
+import org.lwjgl.opengl.Display
+import org.lwjgl.opengl.GL11.*
+import org.lwjgl.util.glu.GLU.gluProject
+import org.lwjgl.util.vector.Vector2f
+import org.lwjgl.util.vector.Vector3f
 import java.awt.Color
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
-
 
 
 /**
@@ -15,13 +20,19 @@ import kotlin.math.sin
  */
 object RenderUtil {
 
+    private var gluProjectModelViewMatrix = BufferUtils.createFloatBuffer(16)
+    private var gluProjectProjectionMatrix = BufferUtils.createFloatBuffer(16)
+    private var gluProjectModelViewportMatrix = BufferUtils.createIntBuffer(16)
+
+    private var gluProjectPosition = BufferUtils.createFloatBuffer(3)
+
     /**
      * Set the OpenGL rendering color
      *
      * @param color [Color] instance
      */
     fun setColor(color: Color) {
-        GlStateManager.color(color)
+        GuiManager.glStateManager.color(color)
     }
 
     private fun setOptions(color: Color? = null, lineWidth: Float? = null) {
@@ -29,48 +40,77 @@ object RenderUtil {
             this.setColor(color)
 
         if (lineWidth != null)
-            GL11.glLineWidth(lineWidth)
+            glLineWidth(lineWidth)
 
     }
 
     fun drawLine(startVertexX: Int, startVertexY: Int, endVertexX: Int, endVertexY: Int, color: Color? = null, lineWidth: Float? = null) {
         setOptions(color, lineWidth)
 
-        GL11.glBegin(GL11.GL_LINE_STRIP)
-        GL11.glVertex2d(startVertexX.toDouble(), startVertexY.toDouble())
-        GL11.glVertex2d(endVertexX.toDouble(), endVertexY.toDouble())
-        GL11.glEnd()
+        glBegin(GL_LINE_STRIP)
+        glVertex2d(startVertexX.toDouble(), startVertexY.toDouble())
+        glVertex2d(endVertexX.toDouble(), endVertexY.toDouble())
+        glEnd()
     }
 
     fun fillRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null) {
         this.setOptions(color)
 
-        GL11.glBegin(GL11.GL_QUADS)
-        GL11.glVertex2d(posX.toDouble(), posY.toDouble())
-        GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
-        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
-        GL11.glVertex2d((posX + width).toDouble(), posY.toDouble())
+        glBegin(GL_QUADS)
+        glVertex2d(posX.toDouble(), posY.toDouble())
+        glVertex2d(posX.toDouble(), (posY + height).toDouble())
+        glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+        glVertex2d((posX + width).toDouble(), posY.toDouble())
+        glEnd()
+    }
 
-        GL11.glEnd()
+    fun fillRect(posX: Float, posY: Float, width: Float, height: Float, color: Color? = null) {
+        this.setOptions(color)
+
+        glBegin(GL_QUADS)
+        glVertex2f(posX, posY)
+        glVertex2f(posX, (posY + height))
+        glVertex2f((posX + width), (posY + height))
+        glVertex2f((posX + width), posY)
+        glEnd()
     }
 
     fun drawRect(posX: Int, posY: Int, width: Int, height: Int, color: Color? = null, lineWidth: Float? = null) {
         this.setOptions(color, lineWidth)
 
-        GL11.glBegin(GL11.GL_LINE_STRIP)
-        GL11.glVertex2d(posX.toDouble(), posY.toDouble())
-        GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
+        glBegin(GL_LINE_STRIP)
+        glVertex2d(posX.toDouble(), posY.toDouble())
+        glVertex2d(posX.toDouble(), (posY + height).toDouble())
 
-        GL11.glVertex2d(posX.toDouble(), (posY + height).toDouble())
-        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+        glVertex2d(posX.toDouble(), (posY + height).toDouble())
+        glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
 
-        GL11.glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
-        GL11.glVertex2d((posX + width).toDouble(), (posY).toDouble())
+        glVertex2d((posX + width).toDouble(), (posY + height).toDouble())
+        glVertex2d((posX + width).toDouble(), (posY).toDouble())
 
-        GL11.glVertex2d((posX + width).toDouble(), (posY).toDouble())
-        GL11.glVertex2d(posX.toDouble(), posY.toDouble())
+        glVertex2d((posX + width).toDouble(), (posY).toDouble())
+        glVertex2d(posX.toDouble(), posY.toDouble())
 
-        GL11.glEnd()
+        glEnd()
+    }
+
+    fun drawRect(posX: Float, posY: Float, width: Float, height: Float, color: Color? = null, lineWidth: Float? = null) {
+        this.setOptions(color, lineWidth)
+
+        glBegin(GL_LINE_STRIP)
+        glVertex2f(posX, posY)
+        glVertex2f(posX, posY + height)
+
+        glVertex2f(posX, posY + height)
+        glVertex2f(posX + width, posY + height)
+
+        glVertex2f(posX + width, posY + height)
+        glVertex2f(posX + width, posY)
+
+        glVertex2f(posX + width, posY)
+        glVertex2f(posX, posY)
+
+        glEnd()
     }
 
     /**
@@ -96,38 +136,64 @@ object RenderUtil {
     fun fillPartialCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, beginVertex: Int, endVertex: Int, color: Color? = null) {
         setOptions(color)
 
-        GL11.glBegin(GL11.GL_POLYGON)
-        for (i in (beginVertex .. endVertex)) {
-            GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
+        glBegin(GL_POLYGON)
+        for (i in (beginVertex..endVertex)) {
+            glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
         }
-        GL11.glEnd()
+        glEnd()
     }
 
     fun drawPartialCircleLike(posX: Int, posY: Int, radius: Double, edges: Int, beginVertex: Int, endVertex: Int, color: Color? = null,
                               lineWidth: Float? = null) {
         this.setOptions(color, lineWidth)
 
-        GL11.glBegin(GL11.GL_LINE_STRIP)
+        glBegin(GL_LINE_STRIP)
         for (i in beginVertex until endVertex) {
-            GL11.glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
-            GL11.glVertex2d(posX + sin((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius,
+            glVertex2d(posX + sin(i / edges.toDouble() * 2 * PI) * radius, posY + cos(i / edges.toDouble() * 2 * PI) * radius)
+            glVertex2d(posX + sin((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius,
                     posY + cos((i + 1 % edges) / edges.toDouble() * 2 * PI) * radius)
         }
 
-        GL11.glEnd()
+        glEnd()
     }
 
     fun drawLine3d(sourcePosX: Double, sourcePosY: Double, sourcePosZ: Double, targetPosX: Double, targetPosY: Double, targetPosZ: Double,
                    color: Color? = null, lineWidth: Float? = null) {
         this.setOptions(color, lineWidth)
 
-        GL11.glBegin(GL11.GL_LINE_STRIP)
-        GL11.glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
-        GL11.glVertex3d(targetPosX, targetPosY, targetPosZ)
-        GL11.glEnd()
+        glBegin(GL_LINE_STRIP)
+        glVertex3d(sourcePosX, sourcePosY, sourcePosZ)
+        glVertex3d(targetPosX, targetPosY, targetPosZ)
+        glEnd()
     }
 
-    fun interpolate(now: Double, then: Double, partialTicks: Float): Double {
-        return then + (now - then) *  partialTicks
+    fun interpolate(now: Double, then: Double, ticks: Float): Double {
+        return then + (now - then) * ticks
+    }
+
+    fun project2d(x: Float, y: Float, z: Float, scaleFactor: Int): Vector2f {
+        val projected3d = project3d(x, y, z, scaleFactor)
+
+        return Vector2f(projected3d.x, projected3d.y)
+    }
+
+    fun project3d(x: Float, y: Float, z: Float, scaleFactor: Int): Vector3f {
+        //Clear buffers
+        gluProjectPosition.clear()
+
+        gluProjectModelViewMatrix.clear()
+        gluProjectProjectionMatrix.clear()
+        gluProjectModelViewportMatrix.clear()
+
+        //Refill buffers
+        glGetFloat(GL_MODELVIEW_MATRIX, gluProjectModelViewMatrix)
+        glGetFloat(GL_PROJECTION_MATRIX, gluProjectProjectionMatrix)
+        glGetInteger(GL_VIEWPORT, gluProjectModelViewportMatrix)
+
+        //Project and return position buffer as new vector3f
+        return if (gluProject(x, y, z, gluProjectModelViewMatrix, gluProjectProjectionMatrix, gluProjectModelViewportMatrix, gluProjectPosition))
+            Vector3f(gluProjectPosition[0] / scaleFactor, (Display.getHeight() - gluProjectPosition[1]) / scaleFactor, gluProjectPosition[2] / scaleFactor)
+        else
+            Vector3f(0F, 0F, 0F)
     }
 }

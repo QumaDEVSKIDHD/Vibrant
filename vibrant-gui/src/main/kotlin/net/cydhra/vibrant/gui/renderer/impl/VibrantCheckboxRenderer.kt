@@ -5,7 +5,6 @@ import net.cydhra.vibrant.gui.component.ICheckbox
 import net.cydhra.vibrant.gui.component.impl.VibrantCheckbox
 import net.cydhra.vibrant.gui.renderer.ComponentRenderer
 import net.cydhra.vibrant.gui.theme.Theme
-import net.cydhra.vibrant.gui.util.GlStateManager
 import net.cydhra.vibrant.gui.util.RenderUtil
 import org.lwjgl.opengl.GL11
 
@@ -27,7 +26,7 @@ class VibrantCheckboxRenderer : ComponentRenderer<ICheckbox> {
             theme.secondaryColor
         }
 
-        GlStateManager.pushMatrix()
+        GuiManager.glStateManager.pushMatrix()
         GL11.glTranslated(component.posX + component.height / 2, component.posY + component.height / 2, 0.0)
         val edges = theme.getThemeProperty("edges", 6)
 
@@ -38,7 +37,7 @@ class VibrantCheckboxRenderer : ComponentRenderer<ICheckbox> {
             RenderUtil.fillCircleLike(0, 0, component.height / 4, edges, theme.tertiaryColor)
             RenderUtil.drawCircleLike(0, 0, component.height / 4, edges, outerColor)
         }
-        GlStateManager.popMatrix()
+        GuiManager.glStateManager.popMatrix()
 
         GuiManager.fontRenderer.drawString(component.text, (component.posX + 4 + component.height).toFloat(),
                 (component.posY + (component.height

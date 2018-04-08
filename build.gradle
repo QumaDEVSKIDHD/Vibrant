@@ -1,6 +1,7 @@
 group 'net.cydhra'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'java'
 apply plugin: 'groovy'
 
 repositories {
@@ -9,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
     compile gradleApi()
+    compile localGroovy()
 }
 
 subprojects {
@@ -18,6 +19,10 @@ subprojects {
     version '1.0'
 
     ext {
-        kotlin_version = '1.2.21'
+        kotlin_version = '1.2.31'
+        aspectjVersion = '1.8.13'
+        junitVersion = '4.12'
+        orgReflectionsVersion = '0.9.9'
+        clientBaseName = 'vibrant'
     }
 }

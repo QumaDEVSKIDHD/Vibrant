@@ -1,22 +1,18 @@
 import net.cydhra.vibrant.tasks.SetupWorkspace
-
-def clientBaseName = 'vibrant'
+import net.cydhra.vibrant.plugin.CustomAspectJPlugin
 
 buildscript {
-    ext.aspectjVersion = '1.8.9'
-
     repositories {
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
         classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
     }
 }
 
-apply plugin: 'aspectj.gradle'
 apply plugin: 'java'
+apply plugin: CustomAspectJPlugin
 apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
@@ -30,22 +26,26 @@ task setupWorkspace(type: SetupWorkspace) {
 }
 
 dependencies {
-    compile 'com.google.code.findbugs:jsr305:3.0.1'
-    compile 'org.apache.logging.log4j:log4j-core:2.8'
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'it.unimi.dsi:fastutil:7.0.2'
-    compile 'org.lwjgl.lwjgl:lwjgl_util:2.9.3'
-    compile 'com.ibm.icu:icu4j:58.2'
-    compile 'org.apache.directory.studio:org.apache.commons.codec:1.8'
-    compile 'net.sf.jopt-simple:jopt-simple:5.0.3'
-    compile 'io.netty:netty-all:4.0.23.Final'
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    compile group: 'it.unimi.dsi', name: 'fastutil', version: '7.0.2'
+    compile group: 'org.lwjgl.lwjgl', name: 'lwjgl_util', version: '2.9.3'
+    compile group: 'com.ibm.icu', name: 'icu4j', version: '58.2'
+    compile group: 'org.apache.directory.studio', name: 'org.apache.commons.codec', version: '1.8'
+    compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '5.0.3'
+    compile group: 'io.netty', name: 'netty-all', version: '4.0.23.Final'
 
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
-    compile 'org.aspectj:aspectjrt:1.8.9'
+
     compile project(":vibrant-client")
     compile project(":vibrant-interface")
+    compile project(":vibrant-aspects")
+
+    compile group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersion
+    ajc group: 'org.aspectj', name: 'aspectjtools', version: aspectjVersion
 
     compile files('workspace/versions/1.8.8/1.8.8.jar')
     compile files('lib/com/mojang/authlib/1.5.21/authlib-1.5.21.jar')
@@ -55,9 +55,16 @@ dependencies {
     compile files('lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar')
     compile files('lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar')
     compile files('lib/tv/twitch/twitch/6.5/twitch-6.5.jar')
+
+    testCompile project(":vibrant-test")
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    testCompile group: 'org.reflections', name: 'reflections', version: orgReflectionsVersion
+    testCompile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
 }
 
 shadowJar {
+    dependsOn 'test'
+
     baseName = clientBaseName
     classifier = null
     version = null

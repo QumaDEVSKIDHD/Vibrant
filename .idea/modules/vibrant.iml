@@ -17,15 +17,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: gradle-api-4.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: groovy-all-2.4.11" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: gradle-installation-beacon-4.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: gradle-api-4.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: groovy-all-2.4.11" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: gradle-installation-beacon-4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: gradle-api-4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: groovy-all-2.4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: gradle-installation-beacon-4.0" level="project" />
