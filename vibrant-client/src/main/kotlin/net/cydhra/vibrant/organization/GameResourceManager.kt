@@ -4,6 +4,7 @@ import net.cydhra.eventsystem.EventManager
 import net.cydhra.vibrant.organization.channel.ResourceChannel
 import net.cydhra.vibrant.organization.locks.ResourceLock
 import net.cydhra.vibrant.organization.resources.FlyingResource
+import net.cydhra.vibrant.organization.resources.GameResourceState
 
 /**
  * Manages in-game resources of the player (like for example sprinting). A module can - while the updateResources state - request, require,
@@ -16,7 +17,7 @@ import net.cydhra.vibrant.organization.resources.FlyingResource
  */
 object GameResourceManager {
 
-    private val resourceChannels: MutableList<ResourceChannel> = mutableListOf()
+    private val resourceChannels: MutableList<ResourceChannel<*, *>> = mutableListOf()
 
     init {
         EventManager.registerListeners(this)
@@ -28,7 +29,7 @@ object GameResourceManager {
         resource.register()
     }
 
-    fun lockResource(lock: ResourceLock<*>) {
+    fun <G : GameResource<S>, S : GameResourceState> lockResource(lock: ResourceLock<G, S>) {
         TODO()
     }
 }
