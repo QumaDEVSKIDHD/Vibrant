@@ -3,9 +3,11 @@ package net.cydhra.vibrant.organization.channel
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.GameResource
 import net.cydhra.vibrant.organization.locks.ResourceLock
+import net.cydhra.vibrant.organization.locks.Side
 import net.cydhra.vibrant.organization.resources.GameResourceState
 
-class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private val monitor: () -> S) : ResourceChannel<G, S> {
+class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private val resource: G, internal val monitor: () -> S)
+    : ResourceChannel<G, S> {
 
     private val registeredLocks: MutableList<ResourceLock<G, S>> = mutableListOf()
 
@@ -22,13 +24,17 @@ class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private va
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun evaluateState(locks: List<ResourceLock<G, S>>): S {
+    override fun evaluateState(side: Side) {
+        if (side == Side.BOTH)
+            throw IllegalArgumentException("Cannot evaluate both sides at the same time.")
+
         val monitorState = monitor()
         val currentBuiltState = monitorState.generateEmptyState() as? S ?: throw IllegalArgumentException(
                 "${monitorState.javaClass.simpleName} does not return valid empty state")
 
         // ask the generators for the current priority and state of the lock
-        val stateRequests = locks
+        val stateRequests = registeredLocks
+                .filter { it.side == side }
                 .map { Pair(it.priorityGenerator(), it.stateGenerator()) }
                 .sortedBy { it.first }
 
@@ -65,6 +71,6 @@ class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private va
             }
         }
 
-        return currentBuiltState
+        resource.updateState(side, currentBuiltState)
     }
 }

@@ -3,6 +3,7 @@ package net.cydhra.vibrant.organization.channel
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.GameResource
 import net.cydhra.vibrant.organization.locks.ResourceLock
+import net.cydhra.vibrant.organization.locks.Side
 import net.cydhra.vibrant.organization.resources.GameResourceState
 
 /**
@@ -32,8 +33,6 @@ interface ResourceChannel<G : GameResource<S>, S : GameResourceState> {
 
     /**
      * Evaluate the state of the channel from all locks given to the method
-     *
-     * @param locks a list of [ResourceLocks][ResourceLock] that shall be taken into consideration by the evaluation.
      */
-    fun evaluateState(locks: List<ResourceLock<G, S>>): S
+    fun evaluateState(side: Side)
 }
