@@ -1,10 +1,11 @@
 package net.cydhra.vibrant.organization
 
 import net.cydhra.eventsystem.EventManager
-import net.cydhra.vibrant.organization.channel.ResourceChannel
+import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.locks.ResourceLock
-import net.cydhra.vibrant.organization.resources.FlyingResource
-import net.cydhra.vibrant.organization.resources.GameResourceState
+import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
+import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
+import net.cydhra.vibrant.organization.resources.*
 
 /**
  * Manages in-game resources of the player (like for example sprinting). A module can - while the updateResources state - request, require,
@@ -17,19 +18,28 @@ import net.cydhra.vibrant.organization.resources.GameResourceState
  */
 object GameResourceManager {
 
-    private val resourceChannels: MutableList<ResourceChannel<*, *>> = mutableListOf()
+    private val resources: MutableList<GameResource<*>> = mutableListOf()
+
+    val resourceRequestPriorityComparator: Comparator<ResourceRequestPriority> = DefaultPriorityComparator()
 
     init {
         EventManager.registerListeners(this)
 
-        this.registerResourceChannel(FlyingResource)
+        resources += FlyingResource
+        resources += OnGroundResource
+        resources += RotationResource
+        resources += SprintingResource
     }
 
-    fun registerResourceChannel(resource: GameResource<*>) {
-        resource.register()
+    fun <S : GameResourceState> lockResource(lock: ResourceLock<GameResource<S>, S>) {
+        lock.resource.channel.registerLock(lock)
     }
 
-    fun <G : GameResource<S>, S : GameResourceState> lockResource(lock: ResourceLock<G, S>) {
-        TODO()
+    fun removeAllLocks(module: Module) {
+        resources.forEach { it.channel.releaseAllLocks(module) }
+    }
+
+    fun updateChannelsTick() {
+
     }
 }

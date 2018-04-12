@@ -65,8 +65,8 @@ object VibrantClient {
     }
 
     fun tick() {
-        GameResourceManager.updateResources()
         EventManager.callEvent(MinecraftTickEvent())
+        GameResourceManager.updateChannelsTick()
     }
 
     @EventHandler(priority = ListenerPriority.HIGHEST)

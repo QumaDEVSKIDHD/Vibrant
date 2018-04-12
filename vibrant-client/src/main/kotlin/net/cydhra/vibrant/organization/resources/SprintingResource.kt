@@ -2,6 +2,9 @@ package net.cydhra.vibrant.organization.resources
 
 import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.organization.GameResource
+import net.cydhra.vibrant.organization.channel.ChannelBuilder
+import net.cydhra.vibrant.organization.channel.ResourceChannel
+import net.cydhra.vibrant.organization.locks.Side
 
 /**
  * This resource handles the player sprinting. This resource updates the sprint flag in client and on the server depending on modules'
@@ -9,17 +12,21 @@ import net.cydhra.vibrant.organization.GameResource
  */
 object SprintingResource : GameResource<SprintingResource.SprintResourceState>() {
 
-    override fun register(): MutableMap<GameResource<*>, in IResourceChannel<*>>.() -> Unit = {
-        this[SprintingResource] = ChannelBuilder
-                .newBuilder(
-                        { SprintResourceState(VibrantClient.minecraft.thePlayer?.isSprinting ?: false) },
-                        { side, state ->
-                            if (side == ResourceChannel.Side.CLIENT) // ignore server side since it is the same
-                                VibrantClient.minecraft.thePlayer?.isSprinting = state.isSprinting
-                        })
-                .convergent()
-                .create()
+
+    override val channel: ResourceChannel<GameResource<SprintResourceState>, SprintResourceState> =
+            ChannelBuilder<GameResource<SprintResourceState>, SprintResourceState>(this,
+                    { SprintResourceState(VibrantClient.minecraft.thePlayer!!.isSprinting) })
+                    .create()
+
+    override fun onUpdateState(side: Side, state: SprintResourceState) {
+        if (side == Side.CLIENT) {
+            mc.thePlayer!!.isSprinting = state.isSprinting
+        }
     }
 
-    data class SprintResourceState(val isSprinting: Boolean = false) : GameResourceState()
+    class SprintResourceState(isSprinting: Boolean? = null) : GameResourceState() {
+        val isSprinting by Partial(isSprinting)
+
+        override fun generateEmptyState(): GameResourceState = SprintResourceState()
+    }
 }
