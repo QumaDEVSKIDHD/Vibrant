@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":vibrant-1-10" external.linked.project.path="$MODULE_DIR$/../../../vibrant-1-10" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="net.cydhra" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../../vibrant-1-10/out/production/classes" />
+    <output-test url="file://$MODULE_DIR$/../../../vibrant-1-10/out/test/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../vibrant-1-10">
+      <sourceFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../vibrant-1-10/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="vibrant-client" scope="PROVIDED" />
+    <orderEntry type="module" module-name="vibrant-interface" scope="PROVIDED" />
+    <orderEntry type="module" module-name="vibrant-gui" scope="PROVIDED" />
+    <orderEntry type="module" module-name="vibrant-aspects" scope="PROVIDED" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: it.unimi.dsi:fastutil:7.0.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.ibm.icu:icu4j:58.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.directory.studio:org.apache.commons.codec:1.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: net.sf.jopt-simple:jopt-simple:5.0.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: io.netty:netty-all:4.0.23.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-io:commons-io:2.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.31" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput:2.0.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.31" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.31" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.sun.jersey:jersey-client:1.19.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jutils:jutils:1.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.sun.jersey:jersey-core:1.19.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.ws.rs:jsr311-api:1.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: slick" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: 1.10">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/workspace/versions/1.10/1.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: authlib-1.5.22">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/mojang/authlib/1.5.22/authlib-1.5.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: codecjorbis-20101023">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: libraryjavasound-20101123">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: librarylwjglopenal-20100824">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: soundsystem-20120107">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Gradle: oshi-core-1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="vibrant-client" scope="RUNTIME" />
+    <orderEntry type="module" module-name="vibrant-interface" scope="RUNTIME" />
+    <orderEntry type="module" module-name="vibrant-gui" scope="RUNTIME" />
+    <orderEntry type="module" module-name="vibrant-aspects" scope="RUNTIME" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: it.unimi.dsi:fastutil:7.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.ibm.icu:icu4j:58.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.directory.studio:org.apache.commons.codec:1.8" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.sf.jopt-simple:jopt-simple:5.0.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: io.netty:netty-all:4.0.23.Final" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: commons-io:commons-io:2.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.31" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput:2.0.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.31" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.31" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.sun.jersey:jersey-client:1.19.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jutils:jutils:1.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.sun.jersey:jersey-core:1.19.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: javax.ws.rs:jsr311-api:1.1.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: slick" level="project" />
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: 1.10">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/workspace/versions/1.10/1.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: authlib-1.5.22">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/mojang/authlib/1.5.22/authlib-1.5.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: codecjorbis-20101023">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: libraryjavasound-20101123">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: librarylwjglopenal-20100824">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: soundsystem-20120107">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library name="Gradle: oshi-core-1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="vibrant-client" scope="TEST" />
+    <orderEntry type="module" module-name="vibrant-interface" scope="TEST" />
+    <orderEntry type="module" module-name="vibrant-gui" scope="TEST" />
+    <orderEntry type="module" module-name="vibrant-aspects" scope="TEST" />
+    <orderEntry type="module" module-name="vibrant-test" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.apache.logging.log4j:log4j-core:2.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: it.unimi.dsi:fastutil:7.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.ibm.icu:icu4j:58.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.apache.directory.studio:org.apache.commons.codec:1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: net.sf.jopt-simple:jopt-simple:5.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.netty:netty-all:4.0.23.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.apache.commons:commons-lang3:3.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: commons-io:commons-io:2.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.reflections:reflections:0.9.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.apache.logging.log4j:log4j-api:2.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: commons-codec:commons-codec:1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.31" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.javassist:javassist:3.18.2-GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:annotations:2.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-linux" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput:2.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.31" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.31" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.sun.jersey:jersey-client:1.19.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: net.java.jutils:jutils:1.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-linux" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-windows" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: net.java.jinput:jinput-platform:2.0.5:natives-osx" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.sun.jersey:jersey-core:1.19.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: javax.ws.rs:jsr311-api:1.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: slick" level="project" />
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: 1.10">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/workspace/versions/1.10/1.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: authlib-1.5.22">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/mojang/authlib/1.5.22/authlib-1.5.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: codecjorbis-20101023">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: libraryjavasound-20101123">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: librarylwjglopenal-20100824">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: soundsystem-20120107">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: oshi-core-1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../vibrant-1-10/lib/oshi-project/oshi-core/1.1/oshi-core-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

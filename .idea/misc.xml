@@ -9,6 +9,10 @@
       <item index="0" class="java.lang.String" itemvalue="net.cydhra.eventsystem.listeners.EventHandler" />
     </list>
   </component>
+  <component name="OfflineModuleManager">
+    <module path="$PROJECT_DIR$/.idea/modules/vibrant-1-10.iml" />
+    <module path="$PROJECT_DIR$/.idea/modules/vibrant-1-10/vibrant-1-10.iml" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
