@@ -1,10 +1,8 @@
 package net.cydhra.vibrant.modules.combat
 
-import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.api.entity.VibrantPlayer
 import net.cydhra.vibrant.api.item.VibrantItemBow
 import net.cydhra.vibrant.api.util.VibrantVec3
-import net.cydhra.vibrant.events.minecraft.MinecraftTickEvent
 import net.cydhra.vibrant.modulesystem.DefaultCategories
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.GameResourceManager
@@ -19,16 +17,7 @@ class BowAimbotModule : Module("BowAimbot", DefaultCategories.COMBAT, Keyboard.K
 
     private var entity: VibrantPlayer? = null
 
-    @EventHandler
-    fun onTick(e: MinecraftTickEvent) {
-        if (mc.thePlayer == null)
-            return
-
-        if (mc.thePlayer!!.getItemInUseCount() == 0) {
-            GameResourceManager.removeAllLocks(this)
-            return
-        }
-
+    override fun onEnable() {
         GameResourceManager.lockResource(
                 ResourceLock(
                         this,
