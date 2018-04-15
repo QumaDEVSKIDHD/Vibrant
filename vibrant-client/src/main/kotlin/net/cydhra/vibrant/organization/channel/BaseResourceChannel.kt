@@ -37,6 +37,7 @@ class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private va
                 .filter { it.side == side || it.side == Side.BOTH }
                 .filter { it.isActive() }
                 .map { Triple(it.priorityGenerator(), it.stateGenerator(), it) }
+                .filter { it.second.partialStates.any(GameResourceState.Partial<*>::doesCare) }
                 .sortedBy { it.first }
 
         // build the currentBuiltState from all requests
