@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/vibrant.iml" filepath="$PROJECT_DIR$/.idea/modules/vibrant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/vibrant-1-10/vibrant-1-10.iml" filepath="$PROJECT_DIR$/.idea/modules/vibrant-1-10/vibrant-1-10.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/vibrant-1-8-8.iml" filepath="$PROJECT_DIR$/.idea/modules/vibrant-1-8-8.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/vibrant-aspects/vibrant-aspects.iml" filepath="$PROJECT_DIR$/.idea/modules/vibrant-aspects/vibrant-aspects.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/vibrant-client/vibrant-client.iml" filepath="$PROJECT_DIR$/.idea/modules/vibrant-client/vibrant-client.iml" />

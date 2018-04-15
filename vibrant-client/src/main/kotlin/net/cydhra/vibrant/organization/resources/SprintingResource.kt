@@ -12,7 +12,6 @@ import net.cydhra.vibrant.organization.locks.Side
  */
 object SprintingResource : GameResource<SprintingResource.SprintResourceState>() {
 
-
     override val channel: ResourceChannel<GameResource<SprintResourceState>, SprintResourceState> =
             ChannelBuilder<GameResource<SprintResourceState>, SprintResourceState>(this,
                     { SprintResourceState(VibrantClient.minecraft.thePlayer!!.isSprinting) })
@@ -21,6 +20,8 @@ object SprintingResource : GameResource<SprintingResource.SprintResourceState>()
     override fun onUpdateState(side: Side, state: SprintResourceState) {
         if (side == Side.CLIENT) {
             mc.thePlayer!!.isSprinting = state.isSprinting
+        } else {
+            TODO()
         }
     }
 

@@ -20,6 +20,7 @@
     <orderEntry type="module" module-name="vibrant-gui" scope="PROVIDED" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.31" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.2.31" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
@@ -50,6 +51,7 @@
     <orderEntry type="module" module-name="vibrant-gui" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.31" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.2.31" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
@@ -80,6 +82,7 @@
     <orderEntry type="module" module-name="vibrant-gui" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.aspectj:aspectjrt:1.8.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.31" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.2.31" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.Cydhra:EventSystem:1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.Cydhra:Nidhogg:1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
