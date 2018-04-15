@@ -21,7 +21,7 @@ object SprintingResource : GameResource<SprintingResource.SprintResourceState>()
         if (side == Side.CLIENT) {
             mc.thePlayer!!.isSprinting = state.isSprinting
         } else {
-            TODO()
+
         }
     }
 
