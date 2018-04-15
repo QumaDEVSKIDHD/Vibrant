@@ -34,7 +34,7 @@ class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private va
 
         // ask the generators for the current priority and state of the lock
         val stateRequests = registeredLocks
-                .filter { it.side == side }
+                .filter { it.side == side || it.side == Side.BOTH }
                 .map { Pair(it.priorityGenerator(), it.stateGenerator()) }
                 .sortedBy { it.first }
 
