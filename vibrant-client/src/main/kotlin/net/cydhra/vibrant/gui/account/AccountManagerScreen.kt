@@ -19,7 +19,7 @@ class AccountManagerScreen(private val parent: AbstractVibrantGuiScreen) : Abstr
     private lateinit var passwordTextbox: VibrantTextbox
 
     companion object {
-        val authClient = YggdrasilClient("Vibrant")
+        val authClient = YggdrasilClient(VibrantClient.AUTH_TOKEN)
     }
 
     override fun initGui() {
@@ -28,8 +28,8 @@ class AccountManagerScreen(private val parent: AbstractVibrantGuiScreen) : Abstr
         this.clickGuiScreen.clearComponents()
 
         accountListbox = VibrantListbox(20.0, 20.0, this.width - 40.0, this.height - 100.0, "Accounts")
-        usernameTextbox = VibrantTextbox(this.width / 2 - 205.0, this.height - 60.0, 200.0, 20.0, "username")
-        passwordTextbox = VibrantPasswordbox(this.width / 2 + 5.0, this.height - 60.0, 200.0, 20.0, "password")
+        usernameTextbox = VibrantTextbox(this.width / 2 - 205.0, this.height - 60.0, 200.0, 20.0, "")
+        passwordTextbox = VibrantPasswordbox(this.width / 2 + 5.0, this.height - 60.0, 200.0, 20.0, "")
 
         this.clickGuiScreen.addComponent(accountListbox)
         this.clickGuiScreen.addComponent(usernameTextbox)

@@ -1,5 +1,6 @@
 package net.cydhra.vibrant.interfaces.client;
 
+import net.cydhra.vibrant.VibrantClient;
 import net.cydhra.vibrant.adapter.VibrantGlStateManagerImpl;
 import net.cydhra.vibrant.adapter.VibrantGuiScreenAdapter;
 import net.cydhra.vibrant.api.client.VibrantGameSettings;
@@ -117,7 +118,9 @@ public privileged aspect MinecraftInterface {
     }
 
     public net.cydhra.nidhogg.data.Session Minecraft.getMinecraftSession() {
-        return new net.cydhra.nidhogg.data.Session(this.session.getUsername(), this.session.getSessionID(), this.session.getPlayerID());
+        return new net.cydhra.nidhogg.data.Session(this.session.getUsername(), this.session.getPlayerID(), this.session.getToken(),
+                                                   VibrantClient.INSTANCE.getAUTH_TOKEN()
+        );
     }
 
     public void Minecraft.setMinecraftSession(net.cydhra.nidhogg.data.Session session) throws IllegalAccessException, NoSuchFieldException {
@@ -127,8 +130,8 @@ public privileged aspect MinecraftInterface {
         }
 
         sessionField.set(Minecraft.getMinecraft(),
-                new net.minecraft.util.Session(session.getAlias(), session.getClientToken(), session.getAccessToken(),
-                        "mojang"));
+                         new net.minecraft.util.Session(session.getAlias(), session.getId(), session.getAccessToken(),
+                                                        "mojang"));
     }
 
     public VibrantGlStateManager Minecraft.getGlStateManager() {
