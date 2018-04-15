@@ -50,7 +50,7 @@ abstract class GameResourceState() {
         /**
          * @return true, if the lock defines any state for this partial state
          */
-        fun doesCare() = this.state != DONT_CARE
+        fun doesCare() = this.p_state != DONT_CARE
 
         /**
          * This may only be called by resource channels
