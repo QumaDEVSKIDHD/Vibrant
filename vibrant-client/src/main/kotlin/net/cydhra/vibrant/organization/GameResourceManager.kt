@@ -1,8 +1,10 @@
 package net.cydhra.vibrant.organization
 
 import net.cydhra.eventsystem.EventManager
+import net.cydhra.vibrant.VibrantClient
 import net.cydhra.vibrant.modulesystem.Module
 import net.cydhra.vibrant.organization.locks.ResourceLock
+import net.cydhra.vibrant.organization.locks.Side
 import net.cydhra.vibrant.organization.priorities.DefaultPriorityComparator
 import net.cydhra.vibrant.organization.priorities.ResourceRequestPriority
 import net.cydhra.vibrant.organization.resources.*
@@ -40,6 +42,9 @@ object GameResourceManager {
     }
 
     fun updateChannelsTick() {
-
+        if (VibrantClient.minecraft.thePlayer != null) {
+            resources.map(GameResource<*>::channel).forEach { it.evaluateState(Side.CLIENT) }
+            resources.map(GameResource<*>::channel).forEach { it.evaluateState(Side.SERVER) }
+        }
     }
 }
