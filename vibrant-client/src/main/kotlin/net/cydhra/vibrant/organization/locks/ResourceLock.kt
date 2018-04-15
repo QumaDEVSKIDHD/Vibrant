@@ -11,4 +11,19 @@ class ResourceLock<G : GameResource<S>, S : GameResourceState>(
         val isActive: () -> Boolean,
         val priorityGenerator: () -> ResourceRequestPriority,
         val stateGenerator: () -> S,
-        val side: Side)
+        val side: Side) {
+
+    private var andThen: (S) -> Unit = {}
+
+    fun andThen(block: (S) -> Unit): ResourceLock<G, S> {
+        this.andThen = block
+        return this
+    }
+
+    /**
+     * Called when the lock is fulfilled
+     */
+    fun fulfilled(state: S) {
+        andThen(state)
+    }
+}

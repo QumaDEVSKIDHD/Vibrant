@@ -20,7 +20,9 @@ class NoFallModule : Module("NoFall", DefaultCategories.MOVEMENT, Keyboard.KEY_N
                         { ResourceRequestPriority.defense },
                         { OnGroundResource.OnGroundResourceState(true) },
                         Side.BOTH
-                )
+                ).andThen {
+                    mc.thePlayer!!.fallDistance = 0f
+                }
         )
     }
 }

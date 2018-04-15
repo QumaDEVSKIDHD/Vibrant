@@ -35,17 +35,18 @@ class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private va
         // ask the generators for the current priority and state of the lock
         val stateRequests = registeredLocks
                 .filter { it.side == side || it.side == Side.BOTH }
-                .map { Pair(it.priorityGenerator(), it.stateGenerator()) }
+                .filter { it.isActive() }
+                .map { Triple(it.priorityGenerator(), it.stateGenerator(), it) }
                 .sortedBy { it.first }
 
         // build the currentBuiltState from all requests
         requests@ for (request in stateRequests) {
-            val (_, currentRequestState) = request
+            val (_, currentRequestState, _) = request
 
             // test if current state diverges from request
             for ((index, partialState) in currentRequestState.partialStates.withIndex()) {
-                if (currentBuiltState.partialStates[index].doesCare()
-                        && currentBuiltState.partialStates[index] != partialState) {
+                if (currentBuiltState.partialStates[index].doesCare() && partialState.doesCare()
+                        && currentBuiltState.partialStates[index].state != partialState.state) {
                     // the currently built state diverges at partialStates[index] from the request, so it cannot be fulfilled
                     continue@requests
                 }
@@ -72,5 +73,19 @@ class BaseResourceChannel<G : GameResource<S>, S : GameResourceState>(private va
         }
 
         resource.updateState(side, currentBuiltState)
+
+        // inform fulfilled locks
+        requests@ for (request in stateRequests) {
+            val (_, currentRequestState, lock) = request
+
+            for ((index, partialState) in currentRequestState.partialStates.withIndex()) {
+                if (partialState.doesCare() && currentBuiltState.partialStates[index].state != partialState.state) {
+                    // the currently built state diverges at partialStates[index] from the request, so it cannot be fulfilled
+                    continue@requests
+                }
+            }
+
+            lock.fulfilled(currentBuiltState)
+        }
     }
 }
