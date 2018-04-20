@@ -24,4 +24,8 @@ public aspect GameSettingsInterface {
     public void GameSettings.setGuiScale(int guiScale) {
         this.guiScale = guiScale;
     }
+
+    public float GameSettings.getGammaSetting() { return this.gammaSetting; }
+
+    public void GameSettings.setGammaSetting(float gamma) { this.gammaSetting = gamma; }
 }
