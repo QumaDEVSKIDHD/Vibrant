@@ -15,6 +15,7 @@ import net.cydhra.vibrant.gui.GuiManager
 import net.cydhra.vibrant.gui.font.VibrantFontRenderer
 import net.cydhra.vibrant.modulesystem.BypassMode
 import net.cydhra.vibrant.modulesystem.ModuleManager
+import net.cydhra.vibrant.modulesystem.ReflectionModuleLoader
 import net.cydhra.vibrant.organization.GameResourceManager
 import net.cydhra.vibrant.settings.VibrantConfiguration
 import net.cydhra.vibrant.util.shader.ShaderLibrary
@@ -55,6 +56,7 @@ object VibrantClient {
         ShaderLibrary // loading is handled inside, so just init the object
 
         logger.info("loading modules")
+        ModuleManager.registerModuleLoader(ReflectionModuleLoader())
         ModuleManager.init()
 
         VibrantConfiguration.save()

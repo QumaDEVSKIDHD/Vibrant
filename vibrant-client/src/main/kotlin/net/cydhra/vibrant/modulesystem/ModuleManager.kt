@@ -3,21 +3,6 @@ package net.cydhra.vibrant.modulesystem
 import net.cydhra.eventsystem.EventManager
 import net.cydhra.eventsystem.listeners.EventHandler
 import net.cydhra.vibrant.events.minecraft.KeyboardEvent
-import net.cydhra.vibrant.modules.combat.BowAimbotModule
-import net.cydhra.vibrant.modules.combat.KillauraModule
-import net.cydhra.vibrant.modules.gui.ClickGuiModule
-import net.cydhra.vibrant.modules.gui.MainMenuModule
-import net.cydhra.vibrant.modules.inventory.AutoArmorModule
-import net.cydhra.vibrant.modules.misc.TestModule
-import net.cydhra.vibrant.modules.movement.FlyModule
-import net.cydhra.vibrant.modules.movement.NoFallModule
-import net.cydhra.vibrant.modules.movement.SprintModule
-import net.cydhra.vibrant.modules.movement.StepModule
-import net.cydhra.vibrant.modules.system.HudModule
-import net.cydhra.vibrant.modules.visual.ESPModule
-import net.cydhra.vibrant.modules.visual.FullbrightModule
-import net.cydhra.vibrant.modules.visual.MinimapModule
-import net.cydhra.vibrant.modules.visual.NametagsModule
 import net.cydhra.vibrant.modulesystem.ModuleManager.init
 import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
 
@@ -26,6 +11,7 @@ import net.cydhra.vibrant.modulesystem.ModuleManager.onKeyEvent
  */
 object ModuleManager {
 
+    private val registeredModuleLoaders = mutableListOf<ModuleLoader>()
     private val registeredModules = mutableListOf<Module>()
 
     val modules: List<Module> = registeredModules
@@ -36,31 +22,25 @@ object ModuleManager {
     fun init() {
         EventManager.registerListeners(this)
 
-        this.registerModule(FlyModule())
-        this.registerModule(MinimapModule())
-        this.registerModule(HudModule())
-        this.registerModule(ClickGuiModule())
-        this.registerModule(SprintModule())
-        this.registerModule(NoFallModule())
-        this.registerModule(BowAimbotModule())
-        this.registerModule(ESPModule())
-        this.registerModule(NametagsModule())
-        this.registerModule(MainMenuModule())
-        this.registerModule(KillauraModule())
-        this.registerModule(TestModule())
-        this.registerModule(StepModule())
-        this.registerModule(AutoArmorModule())
-        this.registerModule(FullbrightModule())
+        this.registeredModuleLoaders.forEach { this.registerModules(it.loadModules()) }
 
         registeredModules.sortWith(kotlin.Comparator { m1: Module, m2: Module -> m2.displayName.length - m1.displayName.length })
+    }
+
+    private fun registerModules(modules: Collection<Module>) {
+        this.registeredModules += modules
     }
 
     /**
      * Register a module
      * @param module module to be registered
      */
-    fun registerModule(module: Module) {
-        this.registeredModules.add(module)
+    private fun registerModule(module: Module) {
+        this.registeredModules += module
+    }
+
+    fun registerModuleLoader(moduleLoader: ModuleLoader) {
+        this.registeredModuleLoaders += moduleLoader
     }
 
     @EventHandler

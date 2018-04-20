@@ -12,17 +12,20 @@ apply plugin: 'idea'
 
 repositories {
     mavenCentral()
-    maven { url="https://jitpack.io" }
+    maven { url = "https://jitpack.io" }
 }
 
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlin_version
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlin_version
 
-            compile group: 'com.github.Cydhra', name: 'EventSystem', version: '1.4'
+    compile group: 'com.github.Cydhra', name: 'EventSystem', version: '1.4'
     compile group: 'com.github.Cydhra', name: 'Nidhogg', version: '1.2'
+
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
+
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
 
     compile project(":vibrant-interface")
     compile project(":vibrant-gui")
